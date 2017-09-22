@@ -17,7 +17,7 @@
 		<!--Post Body -->
 			<div class="postbody">
 				<div class="postbodycont">
-					<p><i>What a tiring month! :/</i></p>
+					<p>What a tiring month! :/</p>
 				</div>
 				
 			<!-- Like & Comment Section -->

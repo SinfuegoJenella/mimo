@@ -28,7 +28,7 @@
                     </li>
 					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="material-icons">file_upload</i>Release <span class="caret"></span></a>
 						 <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a href="#"><i class="material-icons">comments</i> Thoughts</a></li>
+                            <li role="presentation"><a href="" data-toggle="modal" data-target="#addThought"><i class="material-icons">comments</i> Thoughts</a></li>
                             <li role="presentation"><a href="#"><i class="material-icons">music_note</i> Audio</a></li>
 						</ul>
                     <li role="presentation"><a href="#"><i class="material-icons">headset_mic</i>My Studio</a></li>	
@@ -117,7 +117,61 @@
 	<div class="col-md-3">
 	<br />
 	<br />
-	
+	<br /><br /><br /><br /><br />
+
+	<!--Add Thought Modal-->
+	<div class="modal fade" id="addThought" tabindex="-1" role="dialog" 
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header" style="background-color: #f9f9f9">
+					<button type="button" class="close" 
+						data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						<span><i class="material-icons">create</i></span>Share a Thought!
+					</h4>
+				</div>
+            
+				<!-- Modal Body -->
+				<div class="modal-body" style="background-color: #f9f9f9">
+					<form role="form">
+					
+						<div class="media">
+							<div class="media-left">
+								<a href="#" >
+								<div class="media-object" style="width: 45px; height: 45px; background-image:url('assets/img/sam.jpg'); border-radius: 50%; 
+									background-size: cover; border: 2px solid orange"></div>
+								</a>
+							</div>
+							<div class="media-body">
+								<textarea class="form-control addthought" name="thought" rows="5" placeholder="Write your thought here..."></textarea>
+							</div>	
+							
+							<div class="modal-footer">
+						
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">
+								Cancel
+							</button>
+							<button type="submit" class="btn btn-warning">
+								Share now!
+							</button>
+							</div>
+						</div>
+					
+					</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--End of Add Thought Modal-->
+		
+		<!--Release Audio Modal-->
+		<!--End of Release Audio Modal-->
 	</div>
 		
 </div><!--End of the Whole Row (LeftNav, Contents, Third Column -->

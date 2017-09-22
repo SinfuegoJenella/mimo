@@ -4,12 +4,15 @@ a.navbar-brand.navbar-link{
   
 }
 
-h4.settings{
+h4.settings {
   font-family:kristen ITC;
   color:white;
   
 }
-
+textarea.addthought {
+	
+	border-radius: 10px; border: 2px solid #b2b2b2; background-color: #f4f4f4;
+}
 
 fieldset.changepass {
     border: 1px groove #ddd !important;
