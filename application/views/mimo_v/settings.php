@@ -18,7 +18,7 @@
                 </form>
 				<!-- Nav Items -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active" role="presentation"><a href="#"><i class="material-icons">speaker</i>Music Hall</a></li>
+                    <li class="presentation" role="presentation"><a href="<?php echo base_url('');?>"><i class="material-icons">speaker</i>Music Hall</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="material-icons">equalizer</i>Browse <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a href="#"><i class="material-icons">person</i>Artist </a></li>
@@ -28,11 +28,11 @@
                     </li>
 					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="material-icons">file_upload</i>Release <span class="caret"></span></a>
 						 <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a href="#"><i class="material-icons">comments</i> Thoughts</a></li>
-                            <li role="presentation"><a href="#"><i class="material-icons">music_note</i> Audio</a></li>
+                            <li role="presentation"><a href="" data-toggle="modal" data-target="#addThought"><i class="material-icons">comments</i> Thoughts</a></li>
+                            <li role="presentation"><a href="" data-toggle="modal" data-target="#addAudio"><i class="material-icons">music_note</i> Audio</a></li>
 						</ul>
                     <li role="presentation"><a href="#"><i class="material-icons">headset_mic</i>My Studio</a></li>	
-					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="material-icons">settings</i> <span class="caret"></span></a>
+					 <li class=" active dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="material-icons">settings</i> <span class="caret"></span></a>
 						 <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a href="#">Account Settings</a></li>
                             <li role="presentation"><a href="#">Logout</a></li>
@@ -53,10 +53,10 @@
 			<div class="col-md-10">
 				<div class="" style="background-color: rgba(255,255,255,0.3)">
 					<br/>
-					<div style="width: 400px; height: 170px; background-image:url('assets/img/s.jpg'); 
+					<div style="width: 400px; height: 170px; background-image:url('http://localhost/mimo/assets/img/s.jpg'); 
 					background-size: cover; padding-top: 10px; margin: 0 auto">
 					<!--DP-->
-					<div style="width: 100px; height: 100px; background-image:url('assets/img/sam.jpg'); border-radius: 50%; 
+					<div style="width: 100px; height: 100px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
 						background-size: cover; margin: 0 auto; border: 2px solid orange"></div>
 							
 					<div class="col-md-12" style="background: linear-gradient(transparent,rgba(0,0,0,0.5)); 
@@ -321,6 +321,9 @@
 				
 			</div>
 			<div class="col-md-1">
+			
+				<?php $this->load->view('templates/post_temp');?>
+				<?php $this->load->view('templates/post_temp');?>
 			</div>
 		</div>
 		<br/>
