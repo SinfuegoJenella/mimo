@@ -44,7 +44,7 @@ class Mimo extends CI_Controller {
 	public function settings()
 	{
 		//check if user is logged in
-		if(!$this->login->isLoggedIn()){
+		if($this->login->isLoggedIn()){
 			$headerdata['title'] = "MimO | Settings";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('mimo_v/settings');
