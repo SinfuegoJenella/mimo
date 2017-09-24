@@ -53,20 +53,20 @@
         <div id="login-box">
             <div class="row">
                 <div class="col-md-12">
-                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                    <form class="form" role="form" method="post" action="" accept-charset="UTF-8" id="login-nav">
                         <legend><a href="http://www.jquery2dotnet.com"><i class="glyphicon glyphicon-globe"></i></a> Sign up!</legend>
                         <div class="col-md-6">
                             <input class="form-control" name="firstname" placeholder="First Name" type="text" required autofocus />
                         </div>
                         <div class="col-md-6">
-                            <input class="form-control" name="lastname" placeholder="Last Name" type="text" required />
+                            <input class="form-control" name="lastname" placeholder="Last Name (Optional)" type="text"  />
                         </div>
                         <div class="col-md-12">
-                        <input class="form-control" name="youremail" placeholder="Your Email" type="email" />
-                        <input class="form-control" name="reenteremail" placeholder="Re-enter Email" type="email" />
-                        <input class="form-control" name="password" placeholder="New Password" type="password" />
+                        <input class="form-control" name="username" placeholder="Stage Name" type="text" required/>
+                        <input class="form-control" name="email" placeholder="you@email.com" type="email" required/>
+                        <input class="form-control" name="password" placeholder="New Password" type="password" required/>
                         <label for="">Birth Date</label>
-                        <input class="form-control" name="bday" placeholder="New Password" type="date" />
+                        <input class="form-control" name="bday" placeholder="New Password" type="date" required/>
                         <label class="radio-inline">
                         <input type="radio" name="sex" id="inlineCheckbox1" value="male" />Male</label>
                         <label class="radio-inline">
