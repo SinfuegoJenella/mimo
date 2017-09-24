@@ -36,7 +36,7 @@
 						 <ul class="dropdown-menu" role="menu">
                             <li role="presentation">
 								<a href="/Mimo/settings">Account Settings</a></li>
-                            <li role="presentation"><a href="#">Logout</a></li>
+                            <li role="presentation"><a href="?a=logout">Logout</a></li>
 						</ul>
                 </ul>
             </div>
