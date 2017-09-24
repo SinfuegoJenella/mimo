@@ -15,18 +15,20 @@ class Accounts extends CI_Controller {
 	
 	public function index()
 	{
-		
+		//check if not logged in
 		if(!$this->login->isLoggedIn()){
+			//if button sign in click
 			if (isset($_POST['signin'])) {
-				
-				$username = $_POST['username'];
+			$username = $_POST['username'];
 		        $password = $_POST['password'];
 		        
 		        $selector = 'username';
 		        $condition = array('username'=>$username);
+			//check if username exists
 		        if($this->users->read($condition,$selector)){
 		        	$selector = 'password';
 		        	$query = $this->users->read($condition,$selector);
+				//check if password is correct
 		        	if(password_verify($password,$query[0]['password'])){
 		        		
 		        		echo 'Logged in!';
@@ -42,14 +44,17 @@ class Accounts extends CI_Controller {
 	                    setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
 	                    redirect ('http://localhost/mimo/');
 		        	}
+				//if not alert invalid password
 		        	else{
 		        		echo "<script type='text/javascript'>alert('invalid pass');</script>";
 		        	}
 		        }
+			//if not alert invalid user
 		        else{
 		        	echo "<script type='text/javascript'>alert('invalid user');</script>";
 		        }
 			}
+			//if button signup is clicked
 			else if(isset($_POST['signup'])){
 				$firstname = $_POST['firstname'];
 				$lastname = $_POST['lastname'];
@@ -60,6 +65,7 @@ class Accounts extends CI_Controller {
 		        $sex = $_POST['sex'];
 		        $selector = 'username';
 		        $condition = array('username'=>$username);
+			//check if username already taken
 		        if (!$this->users->read($condition,$selector)) {
 
 		            if (strlen($username) >= 3 && strlen($username) <= 32) {
@@ -75,8 +81,8 @@ class Accounts extends CI_Controller {
 		                            if (!$this->users->read($condition,$selector)) {
 		                            	$data = array('id'=>null,'username'=>$username,'firstname'=>$firstname, 'lastname'=>$lastname, 'password'=>password_hash($password, PASSWORD_BCRYPT), 'email'=>$email, 'sex'=>$sex, 'birthdate'=>$birthdate, 'verified'=>0);
 		                            	$this->users->create($data);
-		                                
-		                                $this->mail->sendMail('Welcome to our Social Network!', 'Your account has been created!', $email);
+		                                //Send to email your account has been created
+		                                $this->mail->sendMail('Welcome to our Mimo!', 'Your account has been created!', $email);
 		                                redirect ('http://localhost/mimo/');
 		                            } 
 		                            else {
@@ -105,6 +111,7 @@ class Accounts extends CI_Controller {
 		        }
 
 			}
+			//go to signup/login page
 			$headerdata['title'] = "MimO | Login/Sign up";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('mimo_v/login');
@@ -113,7 +120,7 @@ class Accounts extends CI_Controller {
 		else{
 			redirect ('http://localhost/mimo/');
 		}
-	}
+	}//end of index
 	
 	
 
