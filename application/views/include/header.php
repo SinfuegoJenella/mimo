@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ; ?></title>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/fonts/material-icons.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/custom.css">
