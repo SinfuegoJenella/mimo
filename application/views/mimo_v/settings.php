@@ -65,7 +65,6 @@
 					<br/>
 					
 					<div style="width: 400px; height: 170px; background-image:url('http://localhost/mimo/assets/img/s.jpg'); 
-<<<<<<< HEAD
 						background-size: cover; padding-top: 10px; margin: 0 auto">
 						<!--DP-->
 						
@@ -76,16 +75,7 @@
 							background-size: cover; margin: 0 auto; border: 2px solid orange"></div>
 							
 							<h4 style="color: white" class="text-center user">Samantha Millos</h4>
-=======
-						    background-size: cover; padding-top: 10px; margin: 0 auto">
-					<!--DP-->
-						  <div style="width: 100px; height: 100px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
-						          	background-size: cover; margin: 0 auto; border: 2px solid orange"></div>
-							
-						   <div class="col-md-12" style="background: linear-gradient(transparent,rgba(0,0,0,0.5)); 
-												background-size: cover">
-							<a style="color: white" class="text-center user"><h4>Samantha Millos</h4></a>
->>>>>>> master
+
 							<a style="color: white" class="text-center user"><h6>nightingale07</h6></a>
 						</div>
 					</div>
