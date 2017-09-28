@@ -25,21 +25,12 @@
                                         <br />
                                          <form class="form" role="form" method="post" action="" accept-charset="UTF-8" id="login-nav">
                                                 <div class="form-group">
-<<<<<<< HEAD
-                                                     <label class="sr-only" for="email" >Email address</label>
-                                                     <input type="email" class="form-control signupForm" id="email" placeholder="Email address" required>
-                                                </div>
-                                                <div class="form-group">
-                                                     <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                                     <input type="password" class="form-control signupForm" id="exampleInputPassword2" placeholder="Password" required>
-=======
                                                      <label class="sr-only" for="username" >Email address</label>
-                                                     <input type="text" class="form-control" id="username" placeholder="Stage Name" name="username" required>
+                                                     <input type="text" class="form-control signupForm" id="username" placeholder="Stage Name" name="username" required>
                                                 </div>
                                                 <div class="form-group">
                                                      <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                                     <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" name="password" required>
->>>>>>> master
+                                                     <input type="password" class="form-control signupForm" id="exampleInputPassword2" placeholder="Password" name="password" required>
                                                      <div class="help-block text-right"><a href="">Forget the password ?</a></div>
                                                 </div>
                                                 <div class="form-group">
