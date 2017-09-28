@@ -205,7 +205,7 @@ CREATE TABLE `thoughts` (
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `username` varchar(32) NOT NULL,
-  `fullname` varchar(50) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) DEFAULT NULL,
   `password` varchar(60) NOT NULL,
   `email` text NOT NULL,
