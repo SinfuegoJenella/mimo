@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/fonts/material-icons.css">
+	<link rel="stylesheet" href="http://localhost/mimo/assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/custom.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/photoupload.css">
 	  <script type="text/javascript" src="http://localhost/mimo/assets/js/jquery.min.js"></script>
