@@ -23,18 +23,27 @@
                                         Sign In to your Mimo Account
                                         <br />
                                         <br />
-                                         <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                         <form class="form" role="form" method="post" action="" accept-charset="UTF-8" id="login-nav">
                                                 <div class="form-group">
+<<<<<<< HEAD
                                                      <label class="sr-only" for="email" >Email address</label>
                                                      <input type="email" class="form-control signupForm" id="email" placeholder="Email address" required>
                                                 </div>
                                                 <div class="form-group">
                                                      <label class="sr-only" for="exampleInputPassword2">Password</label>
                                                      <input type="password" class="form-control signupForm" id="exampleInputPassword2" placeholder="Password" required>
+=======
+                                                     <label class="sr-only" for="username" >Email address</label>
+                                                     <input type="text" class="form-control" id="username" placeholder="Stage Name" name="username" required>
+                                                </div>
+                                                <div class="form-group">
+                                                     <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                     <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" name="password" required>
+>>>>>>> master
                                                      <div class="help-block text-right"><a href="">Forget the password ?</a></div>
                                                 </div>
                                                 <div class="form-group">
-                                                     <button type="submit" class="btn btn-custom btn-block">Sign In</button>
+                                                     <button type="submit" class="btn btn-custom btn-block" name="signin">Sign In</button>
                                                 </div>
                                                 <div class="checkbox">
                                                      <label>
@@ -78,7 +87,7 @@
                         <input type="radio" name="sex" id="inlineCheckbox2" value="female" />Female</label>
                         <br />
                         <br />
-                        <button class="btn btn-lg btn-custom btn-block" type="submit">Sign up</button>
+                        <button class="btn btn-lg btn-custom btn-block" type="submit" name="signup">Sign up</button>
                         <br />
                         
                         </div>

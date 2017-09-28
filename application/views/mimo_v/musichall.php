@@ -41,9 +41,10 @@
 					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
 						<i class="material-icons">settings</i> <span class="caret"></span></a>
 						 <ul class="dropdown-menu" role="menu">
-                            <li role="presentation">
-								<a href="<?php echo base_url('mimo/settings');?>">Account Settings</a></li>
-                            <li role="presentation"><a href="#">Logout</a></li>
+                     <li role="presentation">
+							        	<a href="<?php echo base_url('mimo/settings');?>">Account Settings</a></li>
+                            <li role="presentation"><a href="?a=logout">Logout</a></li>
+
 						</ul>
                 </ul>
             </div>
