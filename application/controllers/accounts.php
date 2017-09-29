@@ -63,7 +63,7 @@ class Accounts extends CI_Controller {
 			echo '{ "Error": "Invalid username!" }';
             http_response_code(401);
 		}
-	}
+	}//end of signin
 	
 	public function signup(){
 		$firstname = $this->input->post("firstname");
@@ -134,6 +134,6 @@ class Accounts extends CI_Controller {
             http_response_code(401);
 		}
 
-	}
+	}//end of signup
 
 }

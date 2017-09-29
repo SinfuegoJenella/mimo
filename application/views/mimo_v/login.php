@@ -103,6 +103,7 @@
 <footer id="sticky"><a href="" style="color: white">Mimo</a> &copy&nbsp 2017</footer>
 
 
+
 <script type="text/javascript">
     $('#signin').click(function() {
         var username = $("#username").val();

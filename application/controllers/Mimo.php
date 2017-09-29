@@ -8,8 +8,12 @@ class Mimo extends CI_Controller {
 	
 		$this->load->model('users','users');
 		$this->load->model('login_tokens','login_tokens');
+		$this->load->model('posts','posts');
+		$this->load->model('thoughts','thoughts');
 		$this->load->library('login');
 		$this->load->library('mail');
+		$this->load->library('topics');
+
 	}//end of __contruct
 
 	public function index()
@@ -72,6 +76,34 @@ class Mimo extends CI_Controller {
 		}
 		
 	}//end of settings
+
+	public function thoughts(){
+		$thoughts = $this->input->post("thoughts");
+		$id = $this->login->isLoggedIn();
+		if($thoughts!=''){
+			$data = array(
+					'id'=>null,
+					'user_id'=>$id,
+					'likes'=>0,
+					'comments'=>0,
+					'type'=>1
+					);
+			$this->posts->create($data);
+			$topics = $this->topics->getTopics($thoughts);
+			$post_id = $this->posts->c();
+			$data = array(
+					'id'=>null,
+					'post_id'=>$post_id,
+					'body'=>$thoughts,
+					'topics'=>$topics
+					);
+			$this->thoughts->create($data);
+			echo $thoughts;
+		}
+		else{
+			echo 'error';
+		}
+	}
 
 
 	
