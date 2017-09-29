@@ -24,17 +24,18 @@
                                         <br />
                                         <br />
                                          <form class="form" role="form" method="post" action="" accept-charset="UTF-8" id="login-nav">
+                                                <div id="error"></div>
                                                 <div class="form-group">
-                                                     <label class="sr-only" for="username" >Email address</label>
+                                                     <label class="sr-only" for="username" >Stage Name</label>
                                                      <input type="text" class="form-control signupForm" id="username" placeholder="Stage Name" name="username" required>
                                                 </div>
                                                 <div class="form-group">
-                                                     <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                                     <input type="password" class="form-control signupForm" id="exampleInputPassword2" placeholder="Password" name="password" required>
+                                                     <label class="sr-only" for="password">Password</label>
+                                                     <input type="password" class="form-control signupForm" id="password" placeholder="Password" name="password" required>
                                                      <div class="help-block text-right"><a href="">Forget the password ?</a></div>
                                                 </div>
                                                 <div class="form-group">
-                                                     <button type="submit" class="btn btn-custom btn-block" name="signin">Sign In</button>
+                                                     <button type="button" class="btn btn-custom btn-block" name="signin" id="signin">Sign In</button>
                                                 </div>
                                                 <div class="checkbox">
                                                      <label>
@@ -60,25 +61,26 @@
                     <form class="form" role="form" method="post" action="" accept-charset="UTF-8" id="login-nav">
                         <legend>
 							<i class="material-icons">public</i></a> Sign up!</legend>
+                        <div id="log"></div>
                         <div class="col-md-6">
-                            <input class="form-control signupForm" name="firstname" placeholder="First Name" type="text" required autofocus />
+                            <input id="first" class="form-control signupForm" name="firstname" placeholder="First Name" type="text" required autofocus />
                         </div>
                         <div class="col-md-6">
-                            <input class="form-control signupForm" name="lastname" placeholder="Last Name (Optional)" type="text"  />
+                            <input id="last" class="form-control signupForm" name="lastname" placeholder="Last Name (Optional)" type="text"  />
                         </div>
                         <div class="col-md-12">
-                        <input class="form-control signupForm" name="username" placeholder="Stage Name" type="text" required/>
-                        <input class="form-control signupForm" name="email" placeholder="you@email.com" type="email" required/>
-                        <input class="form-control signupForm" name="password" placeholder="New Password" type="password" required/>
+                        <input id="user" class="form-control signupForm" name="username" placeholder="Stage Name" type="text" required/>
+                        <input id="email" class="form-control signupForm" name="email" placeholder="you@email.com" type="email" required/>
+                        <input id="pass" class="form-control signupForm" name="password" placeholder="New Password" type="password" required/>
                         <label for="">Birth Date</label>
-                        <input class="form-control signupForm" name="bday" placeholder="New Password" type="date" required/>
+                        <input id="bday" class="form-control signupForm" name="bday" placeholder="New Password" type="date" required/>
                         <label class="radio-inline">
-                        <input type="radio" name="sex" id="inlineCheckbox1" value="male" />Male</label>
+                        <input class="sex" type="radio" name="sex" id="inlineCheckbox1" value="male" />Male</label>
                         <label class="radio-inline">
-                        <input type="radio" name="sex" id="inlineCheckbox2" value="female" />Female</label>
+                        <input class="sex" type="radio" name="sex" id="inlineCheckbox2" value="female" />Female</label>
                         <br />
                         <br />
-                        <button class="btn btn-lg btn-custom btn-block" type="submit" name="signup">Sign up</button>
+                        <button class="btn btn-lg btn-custom btn-block" type="button" name="signup" id="signup">Sign up</button>
                         <br />
                         
                         </div>
@@ -99,4 +101,60 @@
 <script src="http://localhost/mimo/assets/js/app.js"></script>
 <!-- footer -->
 <footer id="sticky"><a href="" style="color: white">Mimo</a> &copy&nbsp 2017</footer>
+
+
+<script type="text/javascript">
+    $('#signin').click(function() {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url() ?>accounts/signin',
+            data:{
+                username:username,
+                password:password,
+            },
+            success: function(r){
+                console.log(r);
+                window.location = "http://localhost/mimo";
+
+            },
+            error: function(e){
+                $( "#error" ).text( "Invalid Username or Password!" );
+            }
+            
+        });
+
+    });
+    $('#signup').click(function() {
+        var firstname = $("#first").val();
+        var lastname = $("#last").val();
+        var username = $("#user").val();
+        var email = $("#email").val();
+        var password = $("#pass").val();
+        var birthdate = $("#bday").val();
+        var sex = $('input[name="sex"]:checked').val();
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url() ?>accounts/signup',
+            data:{
+                firstname:firstname,
+                lastname:lastname,
+                username:username,
+                email:email,
+                password:password,
+                birthdate:birthdate,
+                sex:sex
+            },
+            success: function(r){
+                console.log(r);
+                alert("Account Created!");
+            },
+            error: function(e){
+                $( "#log" ).text( "Please fill all the fields Correctly!" );
+            }
+
+        });
+    });
+</script>
 </body>

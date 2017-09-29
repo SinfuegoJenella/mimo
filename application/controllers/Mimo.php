@@ -24,7 +24,7 @@ class Mimo extends CI_Controller {
 					$data = array('token'=>sha1($_COOKIE['SNID']));
 					$this->login_tokens->del($data);
 			    }
-			    setcookie('SNID', '', time()-3600);
+			    setcookie('SNID', '1', time()-3600);
 			    setcookie('SNID_', '1', time()-3600);
 			    redirect ('http://localhost/mimo/accounts/');
 			}
