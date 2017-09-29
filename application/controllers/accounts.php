@@ -17,63 +17,7 @@ class Accounts extends CI_Controller {
 	{
 		//check if not logged in
 		if(!$this->login->isLoggedIn()){
-			//if button sign in click
-			if(isset($_POST['signup'])){
-				$firstname = $_POST['firstname'];
-				$lastname = $_POST['lastname'];
-				$username = $_POST['username'];
-		        $password = $_POST['password'];
-		        $email = $_POST['email'];
-		        $birthdate = $_POST['bday'];
-		        $sex = $_POST['sex'];
-		        $selector = 'username';
-		        $condition = array('username'=>$username);
-			//check if username already taken
-		        if (!$this->users->read($condition,$selector)) {
 
-		            if (strlen($username) >= 3 && strlen($username) <= 32) {
-
-		                if (preg_match('/[a-zA-Z0-9_]+/', $username)) {
-
-		                    if (strlen($password) >= 6 && strlen($password) <= 60) {
-
-		                        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-		                        	$selector = 'email';
-		        					$condition = array('email'=>$email);
-		                            if (!$this->users->read($condition,$selector)) {
-		                            	$data = array('id'=>null,'username'=>$username,'firstname'=>$firstname, 'lastname'=>$lastname, 'password'=>password_hash($password, PASSWORD_BCRYPT), 'email'=>$email, 'sex'=>$sex, 'birthdate'=>$birthdate, 'verified'=>0);
-		                            	$this->users->create($data);
-		                                //Send to email your account has been created
-		                                $this->mail->sendMail('Welcome to our Mimo!', 'Your account has been created!', $email);
-		                                redirect ('http://localhost/mimo/');
-		                            } 
-		                            else {
-		                                echo "<script type='text/javascript'>alert('email in use');</script>";
-		                            }
-		                        } 
-		                        else {
-		                                echo "<script type='text/javascript'>alert('invalid email');</script>";
-		                            }
-		                    } 
-		                    else {
-		                            echo "<script type='text/javascript'>alert('invalid password, must be 6>32');</script>";
-		                        }
-		                } 
-		            	else {
-		                    echo "<script type='text/javascript'>alert('invalid username');</script>";
-		                }
-		            } 
-		            else {
-		                echo "<script type='text/javascript'>alert('invalid username');</script>";
-		            }
-
-		        } 
-		        else {
-		                echo "<script type='text/javascript'>alert('username already taken');</script>";
-		        }
-
-			}
 			//go to signup/login page
 			$headerdata['title'] = "MimO | Login/Sign up";
 			$this->load->view('include/header',$headerdata);
