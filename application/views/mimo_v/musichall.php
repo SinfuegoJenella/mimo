@@ -141,4 +141,28 @@
 	</div>
 		
 </div><!--End of the Whole Row (LeftNav, Contents, Third Column -->
+
+
+<script type="text/javascript">
+	$('#thoughts').click(function() {
+		var txt = $("#textarea").val();
+		$.ajax({
+			type:'POST',
+			url: '<?php echo base_url() ?>mimo/thoughts',
+			data:{
+				thoughts:txt
+			},
+			success: function(r){
+				console.log(r);
+				alert('Posted');
+			},
+			error: function(e){
+				console.log(r);
+			}
+
+
+		});
+	});
+</script>
+
 </body>

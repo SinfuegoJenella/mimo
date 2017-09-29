@@ -25,7 +25,7 @@
 								</a>
 							</div>
 							<div class="media-body">
-								<textarea class="form-control addthought" name="thought" rows="5" placeholder="Write your thought here..."></textarea>
+								<textarea id="textarea"class="form-control addthought" name="thought" rows="5" placeholder="Write your thought here..."></textarea>
 							</div>	
 							
 							<div class="modal-footer">
@@ -34,7 +34,7 @@
 								data-dismiss="modal">
 								Cancel
 							</button>
-							<button type="submit" class="btn btn-warning">
+							<button type="button" class="btn btn-warning" id="thoughts">
 								Share now!
 							</button>
 							</div>
