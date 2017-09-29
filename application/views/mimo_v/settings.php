@@ -1,4 +1,4 @@
-<body style="background-color: #1a1a1a">
+<body style="background-color: #333333">
 	<!-- Top Nav Bar -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
@@ -36,7 +36,7 @@
                             <li role="presentation"><a href="" data-toggle="modal" data-target="#addThought"><i class="material-icons">comments</i> Thoughts</a></li>
                             <li role="presentation"><a href="" data-toggle="modal" data-target="#addAudio"><i class="material-icons">music_note</i> Audio</a></li>
 						</ul>
-                    <li role="presentation"><a href="#" class="bar">
+                    <li role="presentation"><a href="<?php echo base_url('mimo/myStudio');?>" class="bar">
 						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>	
 					 <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
 						<i class="material-icons">settings</i> <span class="caret"></span></a>
@@ -56,36 +56,29 @@
 	<div class="row">
 		<div class="row">
 		
-			<div class="col-md-2">
+			<div class="col-md-1">
 			<!--Free Column-->
 			</div>
-			
-			<div class="col-md-8">
-				<div class="" style="background-color: rgba(255,255,255,0.3)">
-					<br/>
+			<div class="col-md-2">
 					
-					<div style="width: 400px; height: 170px; background-image:url('http://localhost/mimo/assets/img/s.jpg'); 
-						background-size: cover; padding-top: 10px; margin: 0 auto">
-						<!--DP-->
-						
-						<div style="background: linear-gradient(transparent,rgba(0,0,0,0.5)); 
-												background-size: cover; height: 162px">
-												
-						<div style="width: 100px; height: 100px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
-							background-size: cover; margin: 0 auto; border: 2px solid orange"></div>
+						<div style="width: 140px; height: 140px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
+							background-size: cover; margin: 0 auto; "></div>
 							
 							<h4 style="color: white" class="text-center user">Samantha Millos</h4>
 
 							<a style="color: white" class="text-center user"><h6>nightingale07</h6></a>
-						</div>
-					</div>
+			</div>
 			
+			
+			<div class="col-md-8">
+				<div class="" style="background: linear-gradient(white,#DCDCDC); border-bottom: 1px solid grey;">
+					
 					<div class="row">
-						<h3 class="text-center" style="font-family: helvetica; color: white;">SETTINGS</h3>
+						<h3 class="text-center" style="color: #1a1a1a;">SETTINGS</h3>
 					</div>
 				</div>
 				
-				<div class="col-md-12" style="background-color: #f9fbff; border: 2px solid grey">
+				<div class="col-md-12" style="background-color: rgb(242,242,242);">
 					
 					<br />
 					<ul class="nav nav-tabs nav-justified">
@@ -145,7 +138,7 @@
 											<legend class="changepass">Change Password</legend>
 												<div class="control-group">
 													<label class="control-label input-label" for="currPass">Current Password :</label>
-														<input type="password" class="form-control" name="currPass" value="samantha"/>
+														<input type="password" class="form-control " name="currPass" value="samantha"/>
 													<br />
 													<label class="control-label input-label" for="newPass">New Password :</label>
 														<input type="password" class="form-control" name="newPass" value=""/>
@@ -244,6 +237,42 @@
 								</div>	
 								
 									<div class="row">
+							<div class="col-md-12">
+								<label>I'm a(n):</label>
+								<div class="row">
+								<div class="col-md-3">
+									<input type="checkbox" name="mcareer" value="singer"> Singer<br>
+									<input type="checkbox" name="mcareer" value="swriter"> Song Writer<br>
+									<input type="checkbox" name="mcareer" value="mprod"> Music Producer<br>
+									<input type="checkbox" name="mcareer" value="compo"> Composer<br>
+								</div>
+								
+								<div class="col-md-3">
+									<input type="checkbox" name="mcareer" value="dj"> DJ<br>
+									<input type="checkbox" name="mcareer" value="rockstar"> Rockstar<br>
+									<input type="checkbox" name="mcareer" value="instrum"> Instrumentalist<br>
+									<input type="checkbox" name="mcareer" value="bgsinger"> Background Singer<br>
+								</div>
+								
+								<div class="col-md-3">
+									<input type="checkbox" name="mcareer" value="lyricist"> Lyricist<br>
+									<input type="checkbox" name="mcareer" value="bandmember"> Band Member<br>
+									<input type="checkbox" name="mcareer" value="pmwriter"> Production Music Writer<br>
+									<input type="checkbox" name="mcareer" value="sounddesigner"> Sound Designer<br>
+								</div>
+								
+								<div class="col-md-3">
+									<input type="checkbox" name="mcareer" value="jwriter"> Jingle Writer<br>
+									<input type="checkbox" name="mcareer" value="accomp"> Accompanist<br>
+									<input type="checkbox" name="mcareer" value="ssinger"> Session Singer<br>
+									<input type="checkbox" name="mcareer" value="smusician"> Session Musician<br>
+								</div>
+								
+								</div>
+							</div>
+						</div>
+						
+									<div class="row">
 										<div class="col-md-12">
 											<button type="submit" class="btn settingsBtn pull-right">
 											Save Changes
@@ -258,7 +287,7 @@
 				
 		</div>
 		
-			<div class="col-md-2">
+			<div class="col-md-1">
 			
 			</div>
 			
