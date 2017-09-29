@@ -56,6 +56,22 @@ class Mimo extends CI_Controller {
 		}
 		
 	}//end of settings
+	
+	public function myStudio()
+	{
+		//check if user is logged in
+		if($this->login->isLoggedIn()){
+			$headerdata['title'] = "MimO | My Studio";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('mimo_v/mystudio');
+			$this->load->view('include/footer');
+		}
+		// if not redirect to login/signup page
+		else{
+			redirect ('http://localhost/mimo/accounts');
+		}
+		
+	}//end of settings
 
 
 	

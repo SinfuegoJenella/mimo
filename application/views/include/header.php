@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title><?php echo $title ; ?></title>
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
+	<link href="http://localhost/mimo/assets/img/mimologo3.png" rel="icon" type="image/png"  />
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/fonts/material-icons.css">
 	<link rel="stylesheet" href="http://localhost/mimo/assets/fonts/font-awesome.min.css">
