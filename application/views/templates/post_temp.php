@@ -17,8 +17,6 @@
 			<div class="postbody">
 				<div class="postbodycont">
 					<p>What a tiring month! :/</p>
-					<p>What a tiring month! :/</p>
-					<p>What a tiring month! :/</p>
 				</div>
 				
 			</div>
