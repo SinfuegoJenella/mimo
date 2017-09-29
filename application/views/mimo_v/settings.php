@@ -63,13 +63,22 @@
 					
 						<div style="width: 140px; height: 140px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
 							background-size: cover; margin: 0 auto; "></div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 02ec6a40a526b116b948d3b769dae4861aab618a
 							
 							<h4 style="color: white" class="text-center user">Samantha Millos</h4>
 
 							<a style="color: white" class="text-center user"><h6>nightingale07</h6></a>
 			</div>
+<<<<<<< HEAD
 			
 			
+=======
+			
+			
+>>>>>>> 02ec6a40a526b116b948d3b769dae4861aab618a
 			<div class="col-md-8">
 				<div class="" style="background: linear-gradient(white,#DCDCDC); border-bottom: 1px solid grey;">
 					
