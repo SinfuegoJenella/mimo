@@ -63,6 +63,7 @@
 					
 						<div style="width: 140px; height: 140px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
 							background-size: cover; margin: 0 auto; "></div>
+
 							
 							<h4 style="color: white" class="text-center user">Samantha Millos</h4>
 
