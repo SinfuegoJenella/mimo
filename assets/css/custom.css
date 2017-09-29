@@ -5,7 +5,6 @@ a.navbar-brand.navbar-link{
   margin-bottom: 8px;
   
 }
-
 h4.settings {
   font-family:kristen ITC;
   color:white;
@@ -59,7 +58,18 @@ li{
 	display: block;
 }
 
-
+.albumBox{
+	margin-top: 20px;
+	background-color: #333333;
+	border: 1px solid rgb(217,217,217);
+	padding: 16px 12px 12px 12px;
+}
+.albumCover{
+	height: 100px;
+	width: 100px;
+	background-size: cover;
+	
+}
 /*Post (Thoughts) CSS*/
 .belowtn{
 	top: 60px;
@@ -108,6 +118,7 @@ li{
 
 #likesection{
 	background-color: #e6e6e6;
+	color: black;
 	border-left: 1px solid 	#cccccc;
 	border-right: 1px solid #cccccc;
 }
@@ -128,16 +139,19 @@ a.user:hover{
 	cursor: pointer;
 }
 
+a.listnav:hover{
+	color: black;
+}
 a.listnav{
-	color: #262626;
+	color: #1a1a1a;
 }
 
 /*Like and CommentButton Properties*/
 .like ,.comment{
-	color: #595959;
+	color: black;
 }
 .like:hover, .comment:hover{
-	color:  #ff9900;
+	color:  #ffa64d;
 }
 
 /*When Like button is pressed*/
@@ -225,7 +239,7 @@ canvas{
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.72);
   -webkit-font-smoothing: antialiased;
 }
-	.signupForm:focus { border: 2px solid #ffa64d; box-shadow: none;}
+	.signupForm:focus { border: 1px solid #ffa64d; box-shadow: none;}
 	.form-control{ margin-bottom: 10px; }
 
 

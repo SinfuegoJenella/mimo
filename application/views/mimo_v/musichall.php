@@ -1,5 +1,4 @@
 <body>
-	<!-- Top Nav Bar -->
    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -36,7 +35,7 @@
                             <li role="presentation"><a href="" data-toggle="modal" data-target="#addThought"><i class="material-icons">comments</i> Thoughts</a></li>
                             <li role="presentation"><a href="" data-toggle="modal" data-target="#addAudio"><i class="material-icons">music_note</i> Audio</a></li>
 						</ul>
-                    <li role="presentation"><a href="#" class="bar">
+                    <li role="presentation"><a href="<?php echo base_url('mimo/myStudio');?>" class="bar">
 						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>	
 					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
 						<i class="material-icons">settings</i> <span class="caret"></span></a>
@@ -65,7 +64,7 @@
 					<!--DP-->
 					<div class="nameBox" style="background: linear-gradient(transparent,rgba(0,0,0,0.2),rgba(0,0,0,0.7)); 
 												background-size: cover; margin: 0 0; height: 162px">
-						<div class="dpSection" style="background-image:url('http://localhost/mimo/assets/img/sam.jpg');"></div>
+						<div class="dpSection media" style="background-image:url('http://localhost/mimo/assets/img/sam.jpg');"></div>
 							
 						
 						<!-- Full name yung sa h4 at username/stagename yung sa h6 -->
@@ -122,6 +121,8 @@
 		
 		<!--Start to place Here the Post/Thought Templates-->
 		<?php $this->load->view('templates/post_temp');?>
+		<?php $this->load->view('templates/audio_temp');?>
+		<?php $this->load->view('templates/audio_temp');?>
 		<?php $this->load->view('templates/post_temp');?>
 		<?php $this->load->view('templates/post_temp');?>
 		
