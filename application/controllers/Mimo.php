@@ -104,6 +104,24 @@ class Mimo extends CI_Controller {
 			echo 'error';
 		}
 	}
+	
+	public function charts()
+	{
+		$headerdata['title'] = "MimO | Charts";
+		$this->load->view('include/header',$headerdata);
+		$this->load->view('charts/charts');
+		$this->load->view('include/footer');
+		
+	}
+	
+	public function playlist()
+	{
+		$headerdata['title'] = "MimO | Charts";
+		$this->load->view('include/header',$headerdata);
+		$this->load->view('charts/playlist');
+		$this->load->view('include/footer');
+		
+	}
 
 
 	
