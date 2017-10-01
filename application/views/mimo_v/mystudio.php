@@ -25,8 +25,8 @@
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
 						<i class="material-icons bar">equalizer</i><p class="hidden-sm bar"> Browse</p><span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li role="presentation"><a href="#"><i class="material-icons">person</i> Artist</a></li>
-								<li role="presentation"><a href="#"><i class="material-icons">music_note</i>Genre </a></li>
+								<li role="presentation"><a href="<?php echo base_url('mimo/artist');?>"><i class="material-icons">person</i> Artist</a></li>
+								<li role="presentation"><a href="<?php echo base_url('mimo/genre');?>"><i class="material-icons">music_note</i>Genre </a></li>
 								<li role="presentation"><a href="#"><i class="material-icons">show_chart</i>Chart </a></li>
 							</ul>
                     </li>
