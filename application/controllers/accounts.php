@@ -29,7 +29,7 @@ class Accounts extends CI_Controller {
 		}
 	}//end of index
 
-	public function signin(){
+	//public function signin(){
 		// $username = $this->input->post("username");
 		// $password = $this->input->post("password");
 
@@ -52,7 +52,7 @@ class Accounts extends CI_Controller {
 	            // setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
 	            // setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
 	            // echo '{ "Token": "'.$token.'" }';
-	            echo json_encode(array('status'=>'success'));
+	          //  echo json_encode(array('status'=>'success'));
 		    // }
 		    // else{
 		    	// echo '{ "Error": "Invalid password!" }';
@@ -65,7 +65,7 @@ class Accounts extends CI_Controller {
 		// }
 	}//end of signin
 	
-	public function signup(){
+	//public function signup(){
 		// $firstname = $this->input->post("firstname");
 		// $lastname = $this->input->post("lastname");
 		// $username = $this->input->post("username");
@@ -88,7 +88,7 @@ class Accounts extends CI_Controller {
 				                    // if (!$this->users->read($condition,$selector)) {
 					                    // $data = array('id'=>null,'username'=>$username,'firstname'=>$firstname, 'lastname'=>$lastname, 'password'=>password_hash($password, PASSWORD_BCRYPT), 'email'=>$email, 'sex'=>$sex, 'birthdate'=>$birthdate, 'verified'=>0);
 					                    // $this->users->create($data);
-					                    Send to email your account has been created
+					                 //   Send to email your account has been created
 					                    // $this->mail->sendMail('Welcome to Mimo!', 'Your account has been created!', $email);
 					                    // echo 'success';
 					                // }
