@@ -1,54 +1,6 @@
 <body style="background-color: #333333">
 	<!-- Top Nav Bar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand navbar-link" href="<?php echo base_url('');?>">
-				<?php $this->load->view('include/mimologo')?>
-				<strong style="margin-top: -5px;">MimO</strong> </a>
-                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            </div>
-            <div class="collapse navbar-collapse" id="navcol-1">
-			 <form class="navbar-form navbar-left">
-                    <div class="input-group">
-						<!--Search Bar -->
-                        <input class="form-control searchbar" type="text" placeholder="Search">
-                        <div class="input-group-btn">
-                            <a class="btn btn-block searchBtn" role="button" href="#"> <i class="glyphicon glyphicon-search"></i></a>
-                        </div>
-                    </div>
-                </form>
-				<!-- Nav Items -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="presentation" role="presentation"><a href="<?php echo base_url('');?>" class="bar">
-						<i class="material-icons bar">speaker</i><p class="bar hidden-sm"> Music Hall</p></a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
-						<i class="material-icons bar">equalizer</i><p class="hidden-sm bar"> Browse</p><span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li role="presentation"><a href="<?php echo base_url('mimo/artist');?>"><i class="material-icons">person</i> Artist</a></li>
-								<li role="presentation"><a href="<?php echo base_url('mimo/genre');?>"><i class="material-icons">music_note</i>Genre </a></li>
-								<li role="presentation"><a href="#"><i class="material-icons">show_chart</i>Chart </a></li>
-							</ul>
-                    </li>
-					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
-						<i class="material-icons bar">file_upload</i><p class="hidden-sm bar"> Release</p><span class="caret"></span></a>
-						 <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a href="" data-toggle="modal" data-target="#addThought"><i class="material-icons">comments</i> Thoughts</a></li>
-                            <li role="presentation"><a href="" data-toggle="modal" data-target="#addAudio"><i class="material-icons">music_note</i> Audio</a></li>
-						</ul>
-                    <li role="presentation"><a href="<?php echo base_url('mimo/myStudio');?>" class="bar">
-						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>	
-					 <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
-						<i class="material-icons">settings</i> <span class="caret"></span></a>
-						 <ul class="dropdown-menu" role="menu">
-                            <li role="presentation">
-								<a href="<?php echo base_url('mimo/settings');?>">Account Settings</a></li>
-                            <li role="presentation"><a href="#">Logout</a></li>
-						</ul>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	
 	
 	<!--This is below Top Navigation Section -->
 	
@@ -63,22 +15,12 @@
 					
 						<div style="width: 140px; height: 140px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
 							background-size: cover; margin: 0 auto; "></div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 02ec6a40a526b116b948d3b769dae4861aab618a
-							
 							<h4 style="color: white" class="text-center user">Samantha Millos</h4>
 
 							<a style="color: white" class="text-center user"><h6>nightingale07</h6></a>
 			</div>
-<<<<<<< HEAD
-			
-			
-=======
-			
-			
->>>>>>> 02ec6a40a526b116b948d3b769dae4861aab618a
+
 			<div class="col-md-8">
 				<div class="" style="background: linear-gradient(white,#DCDCDC); border-bottom: 1px solid grey;">
 					
@@ -297,7 +239,9 @@
 		</div>
 		
 			<div class="col-md-1">
-			
+				<!--Thoughts&Audio Modal-->
+				<?php $this->load->view('templates/addpostmodal');?>
+				<?php $this->load->view('templates/addaudiomodal');?>
 			</div>
 			
 			

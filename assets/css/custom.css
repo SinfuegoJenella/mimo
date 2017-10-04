@@ -60,7 +60,7 @@ li{
 
 .albumBox{
 	margin-top: 20px;
-	background-color: #333333;
+	/* background-color: #e1e1e1; */
 	border: 1px solid rgb(217,217,217);
 	padding: 16px 12px 12px 12px;
 }
@@ -70,6 +70,39 @@ li{
 	background-size: cover;
 	
 }
+
+#releaseaudiobtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+	border-radius: 50%;
+	border: 1px solid black;
+	background-color: #1a1a1a;
+	color: white;
+	line-height: 30px;
+}
+#thoughtbtn {
+    position: fixed;
+    bottom: 20px;
+    right: 80px; 
+	border-radius: 50%;
+	border: 1px solid black;
+	background-color: #1a1a1a;
+	color: white;
+	line-height: 30px;
+}
+#releaseaudiobtn:focus , #thoughtbtn:focus {
+	outline: none;
+}
+#releaseaudiobtn:hover , #thoughtbtn:hover {
+	background-color:  #ff9900;
+	transition: 0.4s;
+	bottom: 30px;
+	/* border: 2px solid #262626; */
+	border: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
 /*Post (Thoughts) CSS*/
 .belowtn{
 	top: 60px;
@@ -92,21 +125,28 @@ li{
 	
 	position: relative;
 	padding: 2px 10px 10px 10px;
-	margin: 5px 10px 5px 5px;
+	margin: 5px 0px 5px 0px;
 }
-
+.posttemp{
+	border: 1px solid #b3b3b3;
+	margin-top: 10px;
+	/* border-radius: 10px; */
+}
 .posthead{
-	margin-top: 20px;
+	
 	background: linear-gradient(white,#DCDCDC);
-	border: 1px solid rgb(217,217,217);
+	background-color: 	white;
+	/* border: 1px solid rgb(217,217,217); */
 	padding: 16px 12px 12px 12px;
+	/* border-radius: 10px; */
 }
 .postbody{
-	background-color: 	#e6e6e6/*rgb(242,242,242)*/;
+	background-color: 	white/*#d9d9d9 #e6e6e6 rgb(242,242,242)*/;
 	padding: 12px 15px;
 	padding-bottom: 2px;
-	border-left: 1px solid 	#cccccc;
-	border-right: 1px solid #cccccc;
+	
+	/* border-left: 1px solid 	#cccccc; */
+	/* border-right: 1px solid #cccccc; */
 }
 .postbodycont{
 	border-radius: 10px;
@@ -117,10 +157,10 @@ li{
 }
 
 #likesection{
-	background-color: #e6e6e6;
-	color: black;
-	border-left: 1px solid 	#cccccc;
-	border-right: 1px solid #cccccc;
+	background-color: white/*#e6e6e6*/;
+	color: #666666;
+	/* border-left: 1px solid 	#cccccc; */
+	/* border-right: 1px solid #cccccc; */
 }
 
 .postPic{
