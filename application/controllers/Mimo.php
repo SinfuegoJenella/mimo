@@ -13,6 +13,7 @@ class Mimo extends CI_Controller {
 		$this->load->library('login');
 		$this->load->library('mail');
 		$this->load->library('topics');
+		$this->load->library('facebook');
 
 	}//end of __contruct
 
@@ -23,6 +24,7 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/topnav');
 			$this->load->view('mimo_v/musichall');
 			$this->load->view('include/footer');
+		// echo $this->login->isLoggedIn();
 
 	}//end of index
 	
@@ -129,6 +131,15 @@ class Mimo extends CI_Controller {
 		
 	}
 
-
+	public function logout() {
+		
+		if (isset($_COOKIE['SNID'])) {
+			    	$data = array('token'=>sha1($_COOKIE['SNID']));
+			        $this->login_tokens->del($data);
+			    }
+			    setcookie('SNID', '1', time()-3600);
+                setcookie('SNID_', '1', time()-3600);
+        redirect('/accounts/signin');
+    }
 	
 }

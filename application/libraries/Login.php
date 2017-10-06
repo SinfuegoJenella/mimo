@@ -20,8 +20,7 @@ class Login {
                                         return $userid;
                                 } 
                                 else {
-                                        $format = "%Y-%m-%d %h:%i %a";
-                                        echo @mdate($format);
+                                        
                                         $cstrong = True;
                                         $token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
                                         $data = array('id'=>null,'token'=>sha1($token), 'user_id'=>$userid, 'login_time'=>NOW());
