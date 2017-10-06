@@ -19,10 +19,7 @@
         <div id="login-box">
             <div class="row">
                 <div class="col-md-12">
-                    Sign In to your Mimo Account
-                    <br />
-                    <br />
-                    <a href="<?php echo $authUrl;?>" role="button" class="btn btn-primary btn-md">Continue with Facebook</a>
+                    <p><i class="material-icons">public</i> Sign In to your Mimo Account</p>
                     <form class="form" role="form" method="post" action="" accept-charset="UTF-8" id="login-nav">
                     <div id="log"></div>
                         <div class="form-group">
@@ -38,6 +35,10 @@
                         <button type="button" class="btn btn-custom btn-block" name="signin" id="signin">Sign In</button>
                     </div>
                     </form>
+					<p class="text-center">or</p>
+					<a href="<?php echo $authUrl;?>" role="button" style="font-size: 17px; width: 100%" class="btn btn-primary btn-md">
+						<i class="fa fa-facebook-square"></i> &nbsp;Continue with Facebook</a>
+						
                 </div>
             </div>
         </div>

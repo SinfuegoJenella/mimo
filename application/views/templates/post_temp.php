@@ -24,13 +24,25 @@
 				
 			</div>
 			<!---->
+			
 			<div id="likesection">
 				<div class="btn-grp btn-group-justified">
+				
 					<a href="#" id="likeBtn" type="button" class="btn like" aria-pressed="false" onclick="handleBtnClick(event)">
-						<span class="fa fa-heart-o"></span> Like</a>
-					<a href="#" id="commentBtn" class="btn comment"><span class="fa fa-commenting-o"></span> Comment</a>
-					<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-share-square-o"></span> Share</a>
+						<span class="fa fa-heart-o">
+						</span> Like <small>
+						<!-- Number of Likes -->
+						<small>(12,367)</small></small></a>
+						
+					<a href="#" id="commentBtn" class="btn comment"><span class="fa fa-commenting-o"></span> Comment 
+						<!-- Number of Comments -->
+						<small><small>(873)</small></small></a>
+	
+					<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-share-square-o"></span> Share 
+						<!-- Number of Shares -->
+						<small><small>(17)</small></small></a>
 					</div>
 			</div>
+			
 			<!---->
 	</div>
