@@ -27,9 +27,9 @@
 			<div id="likesection">
 				<div class="btn-grp btn-group-justified">
 					<a href="#" id="likeBtn" type="button" class="btn like" aria-pressed="false" onclick="handleBtnClick(event)">
-						<span class="glyphicon glyphicon-heart"></span> Like</a>
-					<a href="#" id="commentBtn" class="btn comment"><span class="glyphicon glyphicon-comment"></span> Comment</a>
-					<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-share"></span> Share</a>
+						<span class="fa fa-heart-o"></span> Like</a>
+					<a href="#" id="commentBtn" class="btn comment"><span class="fa fa-commenting-o"></span> Comment</a>
+					<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-share-square-o"></span> Share</a>
 					</div>
 			</div>
 			<!---->
