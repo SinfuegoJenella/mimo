@@ -1,6 +1,8 @@
 <body style="background-color: #d6d6d6">
 <div class="container" style="margin-top: 55px; ">
-	<div class="row" style="background-color: #e1e1e1; padding: 20px; ">
+<div class="row">
+	<div class="row" style="background-color: #e1e1e1; padding: 20px; 
+				background: url('http://localhost/mimo/assets/img/s.jpg') no-repeat center; background-size:cover;">
 		<div class="col-md-6">
 			<div class="media">
 				<div class="media-left">

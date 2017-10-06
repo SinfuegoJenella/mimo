@@ -81,6 +81,7 @@ li{
 	color: white;
 	line-height: 30px;
 }
+
 #thoughtbtn {
     position: fixed;
     bottom: 20px;
@@ -191,13 +192,13 @@ a.listnav{
 	color: black;
 }
 .like:hover, .comment:hover{
-	color:  #ffa64d;
+	color:  orange /*#ffa64d*/;
 }
 
 /*When Like button is pressed*/
 .like[aria-pressed="true"],
 [role="button"][aria-pressed="true"] {
-    color: #ff9900;
+    color: orange /*#ff9900*/;
 }
 
 

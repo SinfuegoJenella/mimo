@@ -81,9 +81,21 @@
 										<label for="">Username <small>(Stage Name)</small>:</label>
 											<input type="text" class="form-control"  name="" value="nightingale07"/>
 										<label for="">Password:</label>
-											<input type="password" class="form-control" name="" value="samantha" readonly />
-								
-									<!-- Start Field Set for Change Password -->
+											<div class="input-group">
+											<input type="password" class="form-control" name="" value="samanthagerrergergtrtgrrgtercfrgetcgtrbet" readonly />
+													<span class="input-group-btn">
+														<a class="btn btn-primary" onclick="document.getElementById('demo').style.display='block'">
+														<i class="glyphicon glyphicon-edit"></i> Send Link to Change Password
+														</a>
+													</span>
+													
+											</div>
+											<p id="demo" style="display:none; color: #565656">
+											<small>The email was sent to sammillos@gmail.com 
+											with the link to change your password.</small></p>
+
+										
+									<!-- Start Field Set for Change Password
 									<br />
 										<fieldset class="changepass">
 											<legend class="changepass">Change Password</legend>
@@ -97,7 +109,7 @@
 													<label class="control-label input-label" for="verPass">Retype Password :</label>
 														<input type="password" class="form-control" name="verPass" value=""/>
 												</div>
-										</fieldset>
+										</fieldset>-->
 									</div>
 								
 									<div class="col-md-6 form-group">
@@ -106,7 +118,7 @@
 											<div class="input-group">
 												<span class="input-group-btn">
 													<span class="btn btn-default btn-file">
-														Choose… <input type="file" id="imgProfile">
+														Choose… <input type="file" id="imgProfile" accept="image/*">
 													</span>
 												</span>
 												<input type="text" class="form-control" readonly>
@@ -119,7 +131,7 @@
 											<div class="input-group">
 												<span class="input-group-btn">
 													<span class="btn btn-default btn-file">
-														Choose… <input type="file" id="imgHeader">
+														Choose… <input type="file" id="imgHeader" accept="image/*">
 													</span>
 												</span>
 												<input type="text" class="form-control" readonly>
