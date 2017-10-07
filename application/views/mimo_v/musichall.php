@@ -33,18 +33,18 @@
 					<div id="listNav" class="col-md-12">
 						<div class="btn-group btn-group-justified">
 						<a  href="" class="listnav btn btn-group">
-						<i class="material-icons">local_mall</i>
-						<p class="">Collection</p>
+						<i class="material-icons">library_music</i>
+						<p><small>Collection</small></p>
 						</a>
 			
 						<a  href="" class="listnav btn btn-group">
-						<i class="material-icons">library_music</i>
-						<p class="">Albums</p>
+						<i class="material-icons">album</i>
+						<p><small>Albums</small></p>
 						</a>
 					
 						<a  href="" class="listnav btn btn-group">
 						<i class="material-icons">favorite</i>
-						<p class="">Favorites</p>
+						<p><small>Favorites</small></p>
 						</a>
 		
 					</div>
@@ -76,7 +76,9 @@
 		<!--Start to place Here the Post/Thought Templates-->
 		<?php $this->load->view('templates/post_temp');?>
 		<?php $this->load->view('templates/post_temp');?>
+		<?php $this->load->view('templates/audio_temp');?>
 		<?php $this->load->view('templates/post_temp');?>
+		<?php $this->load->view('templates/audio_temp');?>
 		<?php $this->load->view('templates/post_temp');?>
 		<?php $this->load->view('templates/post_temp');?>
 		<?php $this->load->view('templates/post_temp');?>
@@ -91,7 +93,9 @@
 <!-- Third Column Div (Beside Contents)-->
 	<div class="col-md-3">
 	<br /> <br /> <br />
-	<div class="row hidden-sm hidden-xs" id="audplayer">
+	
+	<!--DONT MIND MUNA TONG AUDIO PLAYER-->
+	<!--<div class="row hidden-sm hidden-xs" id="audplayer">
 				<div class="col-md-12">
 				<div class="wrapper">
 					<div class="music music-cover">
@@ -128,11 +132,14 @@
 			</div>
 			</div>
 	
-	<!--Para to sa Modal ng Thoughts at Audio-->
-		<audio controls id="music-player" preload="auto" >
+			<audio controls id="music-player" preload="auto" >
 				<source src="http://localhost/mimo/assets/audios/sample.mp3" type="audio/mpeg">
 					Your browser does not support the audio element.
 			</audio>
+			
+			
+		
+	<!-- Para sa POST AND AUDIO MODAL-->
 	<?php $this->load->view('templates/addpostmodal');?>
 	<?php $this->load->view('templates/addaudiomodal');?>
 	
@@ -164,173 +171,5 @@
 		});
 	});
 	
-	var _audio = $("#music-player")[0],
-  _audioDuration = 0,
-  _currentTime = 0,
-  _buffered = 0,
-  _buuferPlayTime = 5;
-
-$(".music-controls .fa").on("click", function() {
-  var $this = $(this);
-  $(".music-controls .seek-bar").css("animation-play-state", "running");
-  if ($this.hasClass("fa-play")) {
-    $this.removeClass("fa-play").addClass("fa-pause");
-    _audio.play();
-    $(".music-controls .seek-bar").addClass("is-animate");
-  } else {
-    $(".music-controls .seek-bar").css("animation-play-state", "paused");
-    $this.removeClass("fa-pause").addClass("fa-play");
-    $(".music-controls .seek-bar");
-    _audio.pause();
-  }
-});
-
-var _setAudioDuration = setInterval(function() {
-  _audioDuration = _audio.duration;
-  if (_audioDuration > 0) {
-    $(".song-duration").html(formatAudio(_audioDuration)).css("opacity", 1);
-    $(".song-current-time").css("opacity", 1);
-    clearInterval(_setAudioDuration);
-  }
-}, 500);
-
-var _animateSeek = setInterval(function() {
-  if ($(".fa").hasClass("fa-pause")) {
-    var _percent = (_audio.currentTime * 100) / _audioDuration;
-    $(".is-animate").css("width", _percent + "%");
-    
-    $(".song-current-time").html(currentTime(_audio.currentTime));
-  }
-}, 500);
-
-_audio.onended = function() {
-  setTimeout(function() {
-    _audio.currentTime = 0;
-    $(".song-current-time").html(currentTime(_audio.currentTime));
-    $(".is-animate").css("width", "0%");
-    
-    $(".music-controls .fa").removeClass("fa-pause").addClass("fa-play");
-  }, 500);
-};
-
-var _checkBuffer = setInterval(function() {
-  if (_audioDuration > 0) {
-    _buffered = (_audio.buffered.end(_audio.buffered.length - 1) * 100) / _audio.duration;
-
-    $(".music-controls .song-buffer").css("width", _buffered + "%");
-    if (_buffered > _buuferPlayTime) {
-      $(".wrapper").addClass("showMP");
-      $(".fa").css({
-        "opacity": "1",
-        "pointer-events": "auto"
-      });
-    }
-    if (_buffered == 100) {
-      clearInterval(_checkBuffer);
-    }
-  }
-}, 500);
-
-function currentTime(songActivity){
-  var _mprefix = "";
-  var _sprefix = "";
-  var _secs = songActivity;
-  var _min = Math.floor(_secs/60);
-
-  var _time = Math.floor(((_secs/60) - _min )*60);
-  if(_min < 10){
-    _mprefix = "0";
-  }
-  if(_time < 10){
-    _sprefix = "0";
-  }
-  return _mprefix + _min + ":" + _sprefix + _time;
-}
-
-function formatAudio(songActivity) {
-  var _mprefix = "",
-    _sprefix = "",
-    _secs = songActivity,
-    _min = Math.floor(_secs / 60),
-    _time = Math.floor(((_secs / 60) - _min) * 60);
-
-  if (_min < 10) {
-    _mprefix = "0";
-  }
-  if (_time < 10) {
-    _sprefix = "0";
-  }
-  return _mprefix + _min + ":" + _sprefix + _time;
-}
-
-
-
-function setCookie(c_name,value,exdays)
-{
-    var exdate=new Date();
-    exdate.setDate(exdate.getDate() + exdays);
-    var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-    document.cookie=c_name + "=" + c_value;
-}
-
-function getCookie(c_name)
-{
-    var i,x,y,ARRcookies=document.cookie.split(";");
-    for (i=0;i<ARRcookies.length;i++)
-    {
-      x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-      y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-      x=x.replace(/^\s+|\s+$/g,"");
-      if (x==c_name)
-        {
-        return unescape(y);
-        }
-      }
-}
-
-var song = document.getElementsByTagName('audio')[0];
-var played = false;
-var tillPlayed = getCookie('timePlayed');
-
-
-function update()
-{
-    if(!played){
-        if(tillPlayed){
-        song.currentTime = tillPlayed;
-        song.play();
-        played = true;
-        }
-        else {
-                song.play();
-                played = true;
-        }
-    }
-
-    else {
-
-    setCookie('timePlayed', song.currentTime);
-	
-    }
-}
-setInterval(update,1000);
-
-</script>
-<script type="text/javascript">
-    if (window.location.hash && window.location.hash == '#_=_') {
-        if (window.history && history.pushState) {
-            window.history.pushState("", document.title, window.location.pathname);
-        } else {
-            // Prevent scrolling by storing the page's current scroll offset
-            var scroll = {
-                top: document.body.scrollTop,
-                left: document.body.scrollLeft
-            };
-            window.location.hash = '';
-            // Restore the scroll offset, should be flicker free
-            document.body.scrollTop = scroll.top;
-            document.body.scrollLeft = scroll.left;
-        }
-    }
 </script>
 </body>
