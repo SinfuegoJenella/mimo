@@ -22,9 +22,6 @@
                     <form class="form" role="form" method="post" action="" accept-charset="UTF-8" id="login-nav">
                         <legend>
                             <i class="material-icons">public</i></a> Sign up!</legend>
-                        <a href="<?php echo $authUrl;?>" role="button" class="btn btn-primary btn-md">Continue with Facebook</a>
-                        <br />
-                        <br />
                         <div id="log"></div>
                         <div class="col-md-6">
                             <input id="first" class="form-control signupForm" name="firstname" placeholder="First Name" type="text" required autofocus />
@@ -33,10 +30,10 @@
                             <input id="last" class="form-control signupForm" name="lastname" placeholder="Last Name (Optional)" type="text"  />
                         </div>
                         <div class="col-md-12">
-                        <input id="user" class="form-control signupForm" name="username" placeholder="Stage Name" type="text" required/>
+                        <input id="user" class="form-control signupForm" name="username" placeholder="Stage Name" type="text" required />
                         <input id="email" class="form-control signupForm" name="email" placeholder="you@email.com" type="email" required />
-                        <input id="pass" class="form-control signupForm" name="password" placeholder="New Password" type="password" required/>
-                        <input id="rpass" class="form-control signupForm" name="password" placeholder="Repeat Password" type="password" required/>
+                        <input id="pass" class="form-control signupForm" name="password" placeholder="New Password" type="password" required />
+                        <input id="rpass" class="form-control signupForm" name="password" placeholder="Repeat Password" type="password" required />
                         <br />
                         <br />
                         <button class="btn btn-lg btn-custom btn-block" type="button" name="signup" id="signup">Sign up</button>
@@ -44,6 +41,9 @@
                         
                         </div>
                     </form>
+						<p class="text-center">or</p>
+					<a href="<?php echo $authUrl;?>" role="button" style="font-size: 14px; width: 100%" class="btn btn-primary btn-md">
+						<i class="fa fa-facebook-square"></i> &nbsp;Continue with Facebook</a>
                 </div>
             </div>
         </div>

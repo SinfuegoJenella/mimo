@@ -1,3 +1,55 @@
+.profile{
+	color: #f2f2f2
+}
+
+#followBtn{
+	background: linear-gradient(to right, #ffcc99 0%, #ff9933 0%);
+	border: 2px solid #f2f2f2;
+	color: #f2f2f2;
+	border-radius: 5px;
+}
+
+#followBtn:hover{
+	background: ;
+	border: 2px solid #f2f2f2;
+	color: #f2f2f2;
+	border-radius: 5px;
+	margin-right: 15px;
+	transition: 0.5s;
+}
+
+
+.tab-content{ 
+	background-color:#f2f2f2; 
+	padding:5px; 
+	/* border: 1px solid #cccccc; */
+}
+
+.nav-tabs{ 
+	margin-top: 0;
+	background-color: #404040;
+}
+
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus
+{
+	/* border-bottom: 2px solid #ff4000; */
+	border-top: 2px solid orange;
+	background-color: #f2f2f2;
+	color: #1a1a1a;
+	font-weight: bold;
+}
+
+.nav-tabs > li > a,
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+	color: white;
+	border-radius: 0%;
+	background-color: #404040;
+	border: none;
+}
+
 a.navbar-brand.navbar-link{
   font-family:kristen ITC;
   color:white;
@@ -11,16 +63,19 @@ h4.settings {
 }
 
 .settingsBtn{
-	background-color: black;
-	/* border: 2px solid orange; */
-	color: rgb(242,242,242);
-}
-.settingsBtn:focus{
+	background-color:  grey;
+	border: 3px solid white;
 	color: white;
-	outline: none;
+	border-radius: 40px;
+	
 }
 .settingsBtn:hover{
 	color: white;
+	background-color:  #ff8c1a;
+	transition: 0.4s;
+}
+.settingsBtn:focus{
+	outline: none;
 }
 textarea.addthought {
 	
@@ -58,15 +113,20 @@ li{
 	display: block;
 }
 
+#albumDesc{
+	color: #808080;
+	font-size: 12px;
+}
+
 .albumBox{
 	margin-top: 20px;
-	/* background-color: #e1e1e1; */
-	border: 1px solid rgb(217,217,217);
+	background-color: #f2f2f2;
+	border: 1px solid #b3b3b3;
 	padding: 16px 12px 12px 12px;
 }
 .albumCover{
-	height: 100px;
-	width: 100px;
+	height: 130px;
+	width: 130px;
 	background-size: cover;
 	
 }
@@ -80,6 +140,7 @@ li{
 	background-color: #1a1a1a;
 	color: white;
 	line-height: 30px;
+	opacity: 0.6;
 }
 
 #thoughtbtn {
@@ -91,6 +152,7 @@ li{
 	background-color: #1a1a1a;
 	color: white;
 	line-height: 30px;
+	opacity: 0.6;
 }
 #releaseaudiobtn:focus , #thoughtbtn:focus {
 	outline: none;
@@ -102,6 +164,7 @@ li{
 	/* border: 2px solid #262626; */
 	border: none;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+	opacity: 1.0;
 }
 
 /*Post (Thoughts) CSS*/
@@ -130,9 +193,10 @@ li{
 }
 .posttemp{
 	border: 1px solid #b3b3b3;
-	margin-top: 10px;
+	margin-top: 20px;
 	/* border-radius: 10px; */
 }
+
 .posthead{
 	
 	background: linear-gradient(white,#DCDCDC);
@@ -149,6 +213,16 @@ li{
 	/* border-left: 1px solid 	#cccccc; */
 	/* border-right: 1px solid #cccccc; */
 }
+
+.postbodyaudio{
+	background-color:  #f2f2f2/*#d9d9d9 #e6e6e6 rgb(242,242,242)*/;
+	padding: 12px 15px;
+	padding-bottom: 2px;
+	
+	/* border-left: 1px solid 	#cccccc; */
+	/* border-right: 1px solid #cccccc; */
+} 
+
 .postbodycont{
 	border-radius: 10px;
 	background-color: white;
@@ -159,6 +233,13 @@ li{
 
 #likesection{
 	background-color: white/*#e6e6e6*/;
+	color: #666666;
+	/* border-left: 1px solid 	#cccccc; */
+	/* border-right: 1px solid #cccccc; */
+}
+
+.likesectionaud{
+	background-color: #f2f2f2/*#e6e6e6*/;
 	color: #666666;
 	/* border-left: 1px solid 	#cccccc; */
 	/* border-right: 1px solid #cccccc; */

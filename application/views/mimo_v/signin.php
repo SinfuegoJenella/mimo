@@ -36,7 +36,7 @@
                     </div>
                     </form>
 					<p class="text-center">or</p>
-					<a href="<?php echo $authUrl;?>" role="button" style="font-size: 17px; width: 100%" class="btn btn-primary btn-md">
+					<a href="<?php echo $authUrl;?>" role="button" style="font-size: 14px; width: 100%" class="btn btn-primary btn-md">
 						<i class="fa fa-facebook-square"></i> &nbsp;Continue with Facebook</a>
 						
                 </div>

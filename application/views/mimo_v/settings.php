@@ -33,9 +33,9 @@
 					
 					<br />
 					<ul class="nav nav-tabs nav-justified">
-						<li class="active"><a style="color: black; border-bottom: orange" data-toggle="tab" href="#personal"><i class="material-icons">library_music</i></span>&nbsp;Personal</a></li>
-						<li><a style="color: black" data-toggle="tab" href="#account" ><span><i class="material-icons">account_circle</i></span>&nbsp;Account</a></li>
-						<li><a style="color: black" data-toggle="tab" href="#mymusic" ><i class="material-icons">library_music</i></span>&nbsp;My Music</a></li>
+						<li class="active"><a data-toggle="tab" href="#personal"><i class="material-icons">library_music</i></span>&nbsp;Personal</a></li>
+						<li><a data-toggle="tab" href="#account" ><span><i class="material-icons">account_circle</i></span>&nbsp;Account</a></li>
+						<li><a data-toggle="tab" href="#mymusic" ><i class="material-icons">library_music</i></span>&nbsp;My Music</a></li>
 					</ul>
 
 						<div class="tab-content">

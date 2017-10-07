@@ -3,7 +3,6 @@ class accounts extends CI_Controller
 {
     function __construct() {
 		parent::__construct();
-
 		$this->load->library('facebook');
 		$this->load->model('login_tokens','login_tokens');
 		$this->load->library('login');
@@ -20,7 +19,6 @@ class accounts extends CI_Controller
 		if($this->facebook->is_authenticated()){
 			// Get user facebook profile details
 			$userProfile = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,gender,locale,picture');
-
             // Preparing data for database insertion
             //if new user ccontinue
             if($userProfile['id']!=null){
@@ -66,7 +64,6 @@ class accounts extends CI_Controller
 							);
 						$this->users->create($usersdata);
 					}//end of users table data insertion
-
 					redirect('accounts/signup/'.$userData['oauth_uid'].'');
 				}
 				else{
@@ -80,7 +77,6 @@ class accounts extends CI_Controller
 				                  
 				    setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
 				    setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
-
 				    $this->facebook->destroy_session();
 					// Remove user data from session
 					$this->session->unset_userdata('userData');
@@ -88,16 +84,12 @@ class accounts extends CI_Controller
 				}
 				
         	}
-
         	//if new user cancelled
         	else{
         		redirect('/accounts');
         	}
-
 		}//end of authentication
-
 		
-
 		else{
             $fbuser = '';
 			
@@ -113,7 +105,6 @@ class accounts extends CI_Controller
         	redirect('mimo');
         }
     }
-
 	
     public function signup($authid) {
     	if(!$this->login->isLoggedIn()){
@@ -192,7 +183,6 @@ class accounts extends CI_Controller
 					                    // $this->mail->sendMail('Welcome to Mimo!', 'Your account has been created!', $email);
 					                    $err = "success";
 		    							echo json_encode(array('status'=>"success",'eventid'=>$err));
-
 					            	}
 					            	else{
 					            		$err = "Password don't match";
@@ -249,7 +239,6 @@ class accounts extends CI_Controller
     	if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	 		$username = $this->input->post("username");
 			$password = $this->input->post("password");
-
 			$selector = 'username';
 	    	$condition = array('username'=>$username);
 		    if($this->users->read($condition,$selector)){

@@ -38,9 +38,7 @@
 						<!-- Number of Comments -->
 						<small><small>(873)</small></small></a>
 	
-					<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-share-square-o"></span> Share 
-						<!-- Number of Shares -->
-						<small><small>(17)</small></small></a>
+					<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-share-square-o"></span> Share </a>
 					</div>
 			</div>
 			
