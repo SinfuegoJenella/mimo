@@ -76,7 +76,6 @@ class Mimo extends CI_Controller {
 		}
 		
 	}//end of settings
-	
 	public function genre()
 	{
 		//check if user is logged in
@@ -93,13 +92,13 @@ class Mimo extends CI_Controller {
 		
 	}//end of settings
 	
-	public function alternativemusic()
+	public function browse()
 	{
 		//check if user is logged in
 		if($this->login->isLoggedIn()){
-			$headerdata['title'] = "MimO | Alternative Music";
+			$headerdata['title'] = "MimO | Browse";
 			$this->load->view('include/header',$headerdata);
-			$this->load->view('mimo_v/alternativemusic');
+			$this->load->view('mimo_v/browse');
 			$this->load->view('include/footer');
 		}
 		// if not redirect to login/signup page
@@ -109,21 +108,7 @@ class Mimo extends CI_Controller {
 		
 	}//end of settings
 	
-	public function blues()
-	{
-		//check if user is logged in
-		if($this->login->isLoggedIn()){
-			$headerdata['title'] = "MimO | Blues";
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('mimo_v/blues');
-			$this->load->view('include/footer');
-		}
-		// if not redirect to login/signup page
-		else{
-			redirect ('http://localhost/mimo/accounts');
-		}
-		
-	}//end of settings
+	
 	
 	
 	public function myStudio()

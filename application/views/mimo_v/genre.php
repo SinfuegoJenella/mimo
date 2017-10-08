@@ -22,13 +22,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="presentation" role="presentation"><a href="<?php echo base_url('');?>" class="bar">
 						<i class="material-icons bar">speaker</i><p class="bar hidden-sm"> Music Hall</p></a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
-						<i class="material-icons bar">equalizer</i><p class="hidden-sm bar"> Browse</p><span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li role="presentation"><a href="<?php echo base_url('mimo/artist');?>"><i class="material-icons">person</i> Artist</a></li>
-								<li role="presentation"><a href="<?php echo base_url('mimo/genre');?>"><i class="material-icons">music_note</i>Genre </a></li>
-								<li role="presentation"><a href="#"><i class="material-icons">show_chart</i>Chart </a></li>
-							</ul>
+                    <li class="presentation" role="presentation"><a href="<?php echo base_url('mimo/browse');?>" class="bar">
+						<i class="material-icons bar">equalizer</i><p class="hidden-sm bar"> Browse</p></a>
+							
                     </li>
 					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
 						<i class="material-icons bar">file_upload</i><p class="hidden-sm bar"> Release</p><span class="caret"></span></a>
@@ -52,63 +48,160 @@
 	
 	<!--This is below Top Navigation Section -->
 	
-<div class="container">
-			<a class="btn icon-btn btn-default" href="#"><span class="glyphicon btn-glyphicon glyphicon-user img-circle text-primary"></span>ARTISTS</a>
-			<a class="btn icon-btn btn-default" href="#"><span class="glyphicon btn-glyphicon glyphicon-cd img-circle text-success"></span>GENRE</a>
-			<a class="btn icon-btn btn-default" href="#"><span class="glyphicon btn-glyphicon glyphicon-equalizer img-circle text-info"></span>CHART</a>
+<div class="container " style="padding-top:50px;">
+<div class="margin">
+	<h3 class="txt" style="color:white;">Genres</h3>
+</div>
+
+<div class="row text-center" style="padding-top:50px;">
+	<div class="col-md-2 " >
+		<div >
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist" ><img src="http://localhost/mimo/assets/img/alt.png" class="img-rounded img-chart "></a></div>			
+			<div><a href="/Mimo/playlist" class="txt ">Alternative Music</a></div>	
 		</div>
-		<br/>
-		<br/>
-		<div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>
-           <h3 style="color: white;" class="user"></i><b style="color: #ff9926"> LIST OF GENRES</b></h3>
-			<a href="<?php echo base_url('mimo/alternativemusic');?>"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">ALTERNATIVE MUSIC</button></a>
-			<a href="<?php echo base_url('mimo/blues');?>"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">BLUES</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">CLASSICAL MUSIC</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">COUNTRY MUSIC</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">DANCE MUSIC</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">EASY LISTENING</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">ELECTRONIC MUSIC</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">EUROPEAN MUSIC </button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">HIP HOP / RAP</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">INDIE POP</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">INSPIRATIONAL</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">ASIAN POP</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">JAZZ</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">LATIN MUSIC</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">NEW AGE</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">OPERA</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">POP (Popular Music)</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">R&B / SOUL</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">REGGAE</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">ROCK</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16;">SINGER / SONGWRITER</button></a>
-			<a href="#"><button type="button" style="background-color: #DEDBD8; color: black; height: 120px; width: 190px;border: 4px solid #F97A16; ">WORLD MUSIC / BEATS</button></a>
-			
-          </p>
-        </div>
 	</div>
-
-
-
-
-
-
-	</body>
+	
+	
+	<div class="col-md-2 " >
+		<div>
+		<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/blues.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
+			<div><a href="/Mimo/playlist" class="txt ">Blues</a></div>	
 		</div>
-		
-			<div class="col-md-1">
-			
-			</div>
-			
-			
 	</div>
-		<br/>
-		<br/>
-		<br/><br/>
-		<br/>
-		<br/>
-</div>		
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/classical.png" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
+			<div><a href="/Mimo/playlist" class="txt">Classical Music</a></div>	
+		</div>
+	</div>
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/country.png" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
+			<div><a href="/Mimo/playlist" class="txt">Country Music</a></div>
+		</div>
+	</div>
+	<div class="col-md-2 " >
+		<div>
+		<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/dance.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
+			<div><a href="/Mimo/playlist" class="txt ">Dance Music</a></div>	
+		</div>
+	</div>
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/easy.png" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
+			<div><a href="/Mimo/playlist" class="txt">Easy Listening</a></div>	
+		</div>
+	</div>
+	
+	
+	<div class="col-md-2 " >
+		<div>
+		<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/electronic.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
+			<div><a href="/Mimo/playlist" class="txt ">Electronic Music</a></div>	
+		</div>
+	</div>
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/european.png" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
+			<div><a href="/Mimo/playlist" class="txt">European Music</a></div>	
+		</div>
+	</div>
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/hip.jpg" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
+			<div><a href="/Mimo/playlist" class="txt">Hip Hop / Rap</a></div>
+		</div>
+	</div>
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/indie.png" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
+			<div><a href="/Mimo/playlist" class="txt">Indie Pop</a></div>
+		</div>
+	</div>
+	<div class="col-md-2 " >
+		<div>
+		<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/inspire.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
+			<div><a href="/Mimo/playlist" class="txt ">Inspirational Music</a></div>	
+		</div>
+	</div>
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/new.jpg" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
+			<div><a href="/Mimo/playlist" class="txt">New Age Music</a></div>	
+		</div>
+	</div>
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/opera.jpg" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
+			<div><a href="/Mimo/playlist" class="txt">Opera</a></div>
+		</div>
+	</div>
+	<div class="col-md-2 " >
+		<div>
+		<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/pop.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
+			<div><a href="/Mimo/playlist" class="txt ">Pop Music</a></div>	
+		</div>
+	</div>
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/rnb.jpg" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
+			<div><a href="/Mimo/playlist" class="txt">R&B / Soul</a></div>	
+		</div>
+	</div>
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/reggae.jpg" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
+			<div><a href="/Mimo/playlist" class="txt">Reggae</a></div>
+		</div>
+	</div>
+	<div class="col-md-2 " >
+		<div>
+		<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/rock.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
+			<div><a href="/Mimo/playlist" class="txt ">Rock Music</a></div>	
+		</div>
+	</div>
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/singer.jpg" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
+			<div><a href="/Mimo/playlist" class="txt">Singer / Songwriter</a></div>	
+		</div>
+	</div>
+	
+	<div class="col-md-2 " >
+		<div>
+			<!--both a href link papunta sa playlist-->
+			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/world.jpg" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
+			<div><a href="/Mimo/playlist" class="txt">World Music / Beats</a></div>
+		</div>
+	</div>
+	</div>
+	<!--end of first row-->	
 </body>
