@@ -35,6 +35,6 @@
 		
 		
 		
-		
+	<?php $this->load->view('include/releasebuttons');?>	
 </div>
 </body>
