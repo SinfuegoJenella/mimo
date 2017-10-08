@@ -60,8 +60,9 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/topnav', $data);
 			$this->load->view('mimo_v/artist');
 			$this->load->view('include/footer');
+
 	}//end of artist
-	
+
 	public function genre()
 	{
 			$id = $this->login->isLoggedIn();
@@ -74,30 +75,15 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/footer');
 	}//end of genre
 	
-	public function alternativemusic()
+
+	public function browse()
 	{
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | Alt Music";
+
+			$headerdata['title'] = "MimO | Browse";
 			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/alternativemusic');
+			$this->load->view('mimo_v/browse');
 			$this->load->view('include/footer');
-	}//end of alt
-	
-	public function blues()
-	{
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | Blues";
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/blues');
-			$this->load->view('include/footer');
-	}//end of blues
-	
+	}//end of browse
 	
 	public function myStudio()
 	{

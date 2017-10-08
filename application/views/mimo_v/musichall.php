@@ -1,6 +1,5 @@
 <body style="background-color: #d9d9d9">
 
- 
 	<!--This is below Top Navigation Section -->
 <div class="container">
 	<!-- Left Nav Section -->

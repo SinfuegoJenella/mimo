@@ -1,5 +1,4 @@
 <body style="background-color: #d6d6d6">
-
 <div class="container" style="margin-top: 55px; ">
 	<div class="row" style="padding: 20px; background: linear-gradient(to bottom right, #bdc3c7 1%, #2c3e50 111%);">
 		<div class="col-md-6">
