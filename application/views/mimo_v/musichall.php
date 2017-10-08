@@ -76,7 +76,7 @@
 		<!--Start to place Here the Post/Thought Templates-->
 
 		<!--End of Post Section -->	
-		
+		</div>
 		<!-- End of Contents Divisions-->
 	</div>
 	
