@@ -12,9 +12,41 @@
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/custom.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/audplay.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/photoupload.css">
-	  <script type="text/javascript" src="http://localhost/mimo/assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://localhost/mimo/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/photoupload.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/likecomment.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/audplay.js"></script>
+
+     <!-- Search NavBar -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.searchbar').keyup(function(e){
+            var sWord = $(this).val();
+            $('.searchresult').html("")
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url() ?>mimo/search',
+                data:{
+                    searchword:sWord
+                },
+                success: function(s){
+                    if(s!=''){
+                        var res = JSON.parse(s);
+                        for (var i = 0; i < res.length; i++) {
+                            console.log(res[i])
+                            $('.searchresult').html($('.searchresult').html()+'<li class="list-group-item"><a href="http://localhost/mimo/mimo/myStudio?username='+res[i].username+'"><span>'+res[i].firstname+' '+res[i].lastname+' ('+res[i].username+')</span></a></li>')
+                        }
+                    }
+                },
+                error: function(e){
+                    console.log(e)
+                    alert('error')
+                }
+            });
+
+
+        });
+    });
+    </script>
 </head>

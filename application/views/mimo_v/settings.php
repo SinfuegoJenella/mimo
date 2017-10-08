@@ -13,12 +13,12 @@
 			</div>
 			<div class="col-md-2">
 					
-						<div style="width: 140px; height: 140px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
+						<div style="width: 140px; height: 140px; background-image:url('<?php echo $users[0]['picture']; ?>'); border-radius: 50%; 
 							background-size: cover; margin: 0 auto; "></div>
 
-							<h4 style="color: white" class="text-center user">Samantha Millos</h4>
+							<h4 style="color: white" class="text-center user"><?php echo $users[0]['firstname'].' '.$users[0]['lastname'];?></h4>
 
-							<a style="color: white" class="text-center user"><h6>nightingale07</h6></a>
+							<a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?> " style="color: white" class="text-center user"><h6><?php echo $users[0]['username'];?></h6></a>
 			</div>
 
 			<div class="col-md-8">

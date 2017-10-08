@@ -11,6 +11,7 @@
                     <div class="input-group">
 						<!--Search Bar -->
                         <input class="form-control searchbar" type="text" placeholder="Search">
+                        <ul class="list-group searchresult" style="position:absolute;width:100%; z-index:100"></ul>
                         <div class="input-group-btn">
                             <a class="btn btn-block searchBtn" role="button" href="#"> <i class="glyphicon glyphicon-search"></i></a>
                         </div>
@@ -28,7 +29,7 @@
 								<li role="presentation"><a href="<?php echo base_url('mimo/charts');?>"><i class="material-icons">show_chart</i>Chart </a></li>
 							</ul>
                     </li>
-                    <li role="presentation"><a href="<?php echo base_url('mimo/myStudio');?>" class="bar">
+                    <li role="presentation"><a href="<?php echo base_url('mimo/myStudio?username='.$users[0]['username'].' ');?>" class="bar">
 						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>	
 					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
 						<i class="material-icons">settings</i> <span class="caret"></span></a>

@@ -27,13 +27,8 @@
 				<!-- Nav Items -->
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active" role="presentation"><a href="#"><i class="material-icons">speaker</i>Music Hall</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="material-icons">equalizer</i>Browse <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a href="<?php echo base_url('mimo/artist');?>"><i class="material-icons">person</i>Artist </a></li>
-                            <li role="presentation"><a href="<?php echo base_url('mimo/genre');?>"><i class="material-icons">music_note</i>Genre </a></li>
-                            <li role="presentation"><a href="#"><i class="material-icons">show_chart</i>Chart </a></li>
-                        </ul>
-                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="material-icons">equalizer</i>Browse </a>
+                        
 					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><i class="material-icons">file_upload</i>Release <span class="caret"></span></a>
 						 <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a href="" data-toggle="modal" data-target="#addThought"><i class="material-icons">comments</i> Thoughts</a></li>

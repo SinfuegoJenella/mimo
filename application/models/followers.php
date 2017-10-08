@@ -1,20 +1,21 @@
 <?php
 
-class users extends CI_Model {
+class followers extends CI_Model {
     
-	private $table = "users";
+	private $table = "followers";
 	
 	public function create($data){
 		$this->db->insert($this->table, $data);
 		return TRUE;	
 	}
 	
-	public function read($condition=null,$selector=null){
+	public function read($userid,$followerid){
 
-		if($selector==null) $selector = '*';
-		$this->db->select($selector);
-		$this->db->from($this->table);
-		if( isset($condition) ) $this->db->where($condition);
+		$this->db->select('follower_id')
+				 ->from($this->table)
+				 ->where('user_id',' '.$userid.' ')
+				 ->where('follower_id', ' '.$followerid.' ');
+
 		$query=$this->db->get();
 
 		return $query->result_array();		
@@ -30,9 +31,5 @@ class users extends CI_Model {
 		$this->db->where($data);
 		$this->db->delete($this->table);
 		return TRUE;	
-	}
-	public function c(){
-		$lastid = $this->db->insert_id();
-		return $lastid;
 	}
 }

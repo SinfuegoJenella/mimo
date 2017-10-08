@@ -1,8 +1,8 @@
 <?php
 
-class users extends CI_Model {
+class post_likes extends CI_Model {
     
-	private $table = "users";
+	private $table = "post_likes";
 	
 	public function create($data){
 		$this->db->insert($this->table, $data);
@@ -10,11 +10,11 @@ class users extends CI_Model {
 	}
 	
 	public function read($condition=null,$selector=null){
-
 		if($selector==null) $selector = '*';
 		$this->db->select($selector);
 		$this->db->from($this->table);
 		if( isset($condition) ) $this->db->where($condition);
+		
 		$query=$this->db->get();
 
 		return $query->result_array();		

@@ -3,12 +3,14 @@ class accounts extends CI_Controller
 {
     function __construct() {
 		parent::__construct();
+
 		$this->load->library('facebook');
 		$this->load->model('login_tokens','login_tokens');
 		$this->load->library('login');
 		$this->load->library('mail');
 		$this->load->model('users','users');
 		$this->load->model('auth');
+		$this->load->model('about','about');
     }
     
     public function index(){
@@ -19,6 +21,7 @@ class accounts extends CI_Controller
 		if($this->facebook->is_authenticated()){
 			// Get user facebook profile details
 			$userProfile = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,gender,locale,picture');
+            
             // Preparing data for database insertion
             //if new user ccontinue
             if($userProfile['id']!=null){
@@ -63,7 +66,11 @@ class accounts extends CI_Controller
 										'header'=>null,
 							);
 						$this->users->create($usersdata);
+						$lastid = $this->users->c();
+					    $data=array('id'=>null,'user_id'=>$lastid,'about'=>null,'genre1'=>null,'genre2'=>null,'genre3'=>null,'career'=>null);
+					    $this->about->create($data);
 					}//end of users table data insertion
+
 					redirect('accounts/signup/'.$userData['oauth_uid'].'');
 				}
 				else{
@@ -77,6 +84,7 @@ class accounts extends CI_Controller
 				                  
 				    setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
 				    setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
+
 				    $this->facebook->destroy_session();
 					// Remove user data from session
 					$this->session->unset_userdata('userData');
@@ -84,6 +92,7 @@ class accounts extends CI_Controller
 				}
 				
         	}
+        	
         	//if new user cancelled
         	else{
         		redirect('/accounts');
@@ -179,6 +188,9 @@ class accounts extends CI_Controller
 													'header'=>null,
 										);
 					                    $this->users->create($data);
+					                    $lastid = $this->users->c();
+									    $data=array('id'=>null,'user_id'=>$lastid,'about'=>null,'genre1'=>null,'genre2'=>null,'genre3'=>null,'career'=>null);
+									    $this->about->create($data);
 					                   // Send to email your account has been created
 					                    // $this->mail->sendMail('Welcome to Mimo!', 'Your account has been created!', $email);
 					                    $err = "success";
