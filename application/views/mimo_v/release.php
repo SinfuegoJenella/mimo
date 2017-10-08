@@ -1,49 +1,6 @@
-<body style="background-color: #d6d6d6">
-
+<body style="background: linear-gradient(to bottom right, #bdc3c7 1%, #2c3e50 111%); background-repeat: no-repeat;
+			background-attachment: fixed">
 <div class="container" style="margin-top: 55px; ">
-	<div class="row" style="padding: 20px; background: linear-gradient(to bottom right, #bdc3c7 1%, #2c3e50 111%);">
-		<div class="col-md-6">
-			<div class="media">
-				<div class="media-left">
-					<a href="#" >
-					
-						<!--Profile Picture Section -->
-						<div class="media-object" 
-								style="width: 130px; height: 130px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
-							background-size: cover; margin: 10px auto; ">
-						</div>
-					</a>
-				</div>
-
-				<!--Profile Info: NAME, STAGENAME, GENRE, CAREER, FOLLOWERS, ALBUM -->
-				<div class="media-body">
-					<h2 class="profile"> Samantha Millos <small style="color: #cccccc" >(nightingale07)</small></h2>
-						<h6 style="padding: 0 2.2em" class="profile"><i class="material-icons">music_note</i><b style="color: #ffc266">Genres:</b> Ballad, Asian Pop, Pop Rock</h6>
-							<h6 style="padding: 0 2.2em" class="profile"><i class="material-icons">business_center</i><b style="color: #ffc266"> Career:</b> Singer , Song Writer, Sound Designer</h6>
-							<h6 style="padding: 0 2.2em" class=" profile"><i class="material-icons">group</i><b style="color: #ffc266"> Followers:</b> 232,651 People</h6>
-							<h6 style="padding: 0 2.2em" class=" profile"><i class="material-icons">album</i><b style="color:#ffc266 "> Album:</b> 56 Released Albums (146 audio)</h6>
-				</div>	
-			</div>
-		</div>	
-		
-		<!--Profile Info: SHOUTOUT(Parang Bio) -->
-		<div class="col-md-6" style="padding-top: 40px; ">
-			<h6 class="user profile"><i class="fa fa-bullhorn"></i><b style="color: #ffc266"> Shoutout:</b></h6>
-			<div class="row" style="background-color: rgba(255,255,255,0.2); padding: 10px; margin-top: 20px;height: 50px">
-				<!--Put here the bio -->
-				<p class="text-center profile" style="padding: 0 2.2em"><i>"You've got to hold your head up high!"</i></p>
-			</div>
-			
-			<!-- FOLLOW-->
-			<div class="row" style="margin-top: 30px;">
-					<a href="#" class="btn follow pull-right"><i class="fa fa-bell-o"></i><span> Follow</span></a>
-			</div>
-		</div>
-	</div>
-	
-	<!-- Para to sa modal ng share thought at audio-->
-	<?php $this->load->view('templates/addpostmodal');?>
-	<?php $this->load->view('templates/addaudiomodal');?>
 	
 	<div class="row">
 	<ul class="nav nav-tabs nav-justified">
@@ -133,14 +90,6 @@
 							</div>		
 						</div>
 </div>
-	<?php $this->load->view('include/releasebuttons');?>
 	</div>
 </div>
 </body>
-
-<script>
-	$(function(){
-     initiateFollow();
-});
-
-</script>
