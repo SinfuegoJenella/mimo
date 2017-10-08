@@ -47,23 +47,25 @@
 						<div class="btn-grp btn-group-justified">
 				
 					
-					<a href="#" id="likeBtn" type="button" class="btn like" aria-pressed="false" onclick="handleBtnClick(event)">
+						<a href="#" id="likeBtn" type="button" class="btn like" aria-pressed="false" onclick="handleBtnClick(event)">
 						<span class="fa fa-heart-o">
 						</span> <small><small>(127,343)</small></small></a>
 						
 						
 						
-					<a href="#" id="commentBtn" class="btn comment"><span class="fa fa-commenting-o"></span>
+						<a id="commentBtn" class="btn comment" data-toggle="modal" data-target="#commentModal">
+						<span class="fa fa-commenting-o"></span>
 						<small><small>(873)</small></small></a>
 	
-					<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-plus-square-o"></span> 
+						<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-plus-square-o"></span> 
 						Add to Collection
 						 </a>
 						
-					<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-lightbulb-o"></span> 
+						<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-lightbulb-o"></span> 
 						Details </a>
-					</div>
+						</div>
+					</div>	
 			</div>
-			</div>
+			<?php $this->load->view('templates/commentModal');?>
 		</div>
 			

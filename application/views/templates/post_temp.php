@@ -34,14 +34,15 @@
 						<!-- Number of Likes -->
 						<small>(12,367)</small></small></a>
 						
-					<a href="#" id="commentBtn" class="btn comment"><span class="fa fa-commenting-o"></span> Comment 
+					<a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal">
+						<span class="fa fa-commenting-o"></span> Comment </a>
 						<!-- Number of Comments -->
-						<small><small>(873)</small></small></a>
 	
-					<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-share-square-o"></span> Share </a>
 					</div>
 					
 			</div>
+			
+			<?php $this->load->view('templates/commentModal');?>
 			
 			<!---->
 	</div>
