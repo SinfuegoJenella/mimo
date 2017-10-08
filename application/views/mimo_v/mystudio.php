@@ -34,9 +34,9 @@
 				<p class="text-center profile" style="padding: 0 2.2em"><i>"You've got to hold your head up high!"</i></p>
 			</div>
 			
-			<!-- Follow Button-->
+			<!-- FOLLOW-->
 			<div class="row" style="margin-top: 30px;">
-				<a id="followBtn" class="btn btn-default pull-right" href="#"><i class="fa fa-bell"></i> Follow</a>
+					<a href="#" class="btn follow pull-right"><i class="fa fa-bell-o"></i><span> Follow</span></a>
 			</div>
 		</div>
 	</div>
@@ -134,5 +134,11 @@
 	<?php $this->load->view('include/releasebuttons');?>
 	</div>
 </div>
-
 </body>
+
+<script>
+	$(function(){
+     initiateFollow();
+});
+
+</script>

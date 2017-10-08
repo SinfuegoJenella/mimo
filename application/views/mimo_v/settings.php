@@ -33,88 +33,23 @@
 					
 					<br />
 					<ul class="nav nav-tabs nav-justified">
-						<li class="active"><a data-toggle="tab" href="#personal"><i class="material-icons">library_music</i></span>&nbsp;Personal</a></li>
-						<li><a data-toggle="tab" href="#account" ><span><i class="material-icons">account_circle</i></span>&nbsp;Account</a></li>
+						<li class="active"><a data-toggle="tab" href="#account" ><span><i class="material-icons">account_circle</i></span>&nbsp;Account</a></li>
 						<li><a data-toggle="tab" href="#mymusic" ><i class="material-icons">library_music</i></span>&nbsp;My Music</a></li>
 					</ul>
 
 						<div class="tab-content">
-							<div id="personal" class="tab-pane fade in active">
-							<form role="form" method="post" class="form-group">
+   
+							<div id="account" class="tab-pane fade in active">
+								<form role="form" method="post" class="form-group">
 								<div class="row">
 								<br />
-									<div class="col-md-3 form-group">
-									</div>
 									<div class="col-md-6 form-group">
+									
 										<label for="">Last Name :</label>
 											<input type="text" class="form-control form-inline" name="" value="Millos"/>
-										<label for="">First Name :</label>
-											<input type="text" class="form-control" name="" value="Samantha"/>
-											
-										<label for="">Birthday <small>(dd/mm/yyyy)</small>:</label>
-											<input type="date" class="form-control" name="" value="1998-09-07"/>
-										<label for="">Sex :</label>
-											<label class="radio-inline">
-												<input type="radio" name="optradio" value="male">Male
-											</label>
-										<label class="radio-inline">
-											<input type="radio" name="optradio" value="female" checked>Female
-										</label>
-									</div>
-								</div>
-								
-								<div class="row">
-									<div class="col-md-12">
-										<button type="submit" class="btn settingsBtn pull-right">
-											Save Changes
-										</button>
-									</div>
-								</div>
-							</form>
-							</div>
-   
-							<div id="account" class="tab-pane fade">
-							<form role="form" method="post" class="form-group">
-								<div class="row">
-								<br />
-									<div class="col-md-6 form-group">
 										<label for="">Username <small>(Stage Name)</small>:</label>
 											<input type="text" class="form-control"  name="" value="nightingale07"/>
-										<label for="">Password:</label>
-											<div class="input-group">
-											<input type="password" class="form-control" name="" value="samanthagerrergergtrtgrrgtercfrgetcgtrbet" readonly />
-													<span class="input-group-btn">
-														<a class="btn btn-primary" onclick="document.getElementById('demo').style.display='block'">
-														<i class="glyphicon glyphicon-edit"></i> Send Link to Change Password
-														</a>
-													</span>
-													
-											</div>
-											<p id="demo" style="display:none; color: #565656">
-											<small>The email was sent to sammillos@gmail.com 
-											with the link to change your password.</small></p>
-
-										
-									<!-- Start Field Set for Change Password
-									<br />
-										<fieldset class="changepass">
-											<legend class="changepass">Change Password</legend>
-												<div class="control-group">
-													<label class="control-label input-label" for="currPass">Current Password :</label>
-														<input type="password" class="form-control " name="currPass" value="samantha"/>
-													<br />
-													<label class="control-label input-label" for="newPass">New Password :</label>
-														<input type="password" class="form-control" name="newPass" value=""/>
-													<br />
-													<label class="control-label input-label" for="verPass">Retype Password :</label>
-														<input type="password" class="form-control" name="verPass" value=""/>
-												</div>
-										</fieldset>-->
-									</div>
-								
-									<div class="col-md-6 form-group">
-										<div class="form-group">
-											<label>Change Profile Picture :</label>
+										<label>Change Profile Picture :</label>
 											<div class="input-group">
 												<span class="input-group-btn">
 													<span class="btn btn-default btn-file">
@@ -124,6 +59,25 @@
 												<input type="text" class="form-control" readonly>
 											</div>
 											<img id='img-Profile'/>
+									</div>
+
+								
+									<div class="col-md-6 form-group">
+										<div class="form-group">
+											<label for="">First Name :</label>
+											<input type="text" class="form-control" name="" value="Samantha"/>
+											<label for="">Password:</label>
+											<div class="input-group">
+												<input type="password" class="form-control" name="" value="samanthagerrergergtrtgrrgtercfrgetcgtrbet" readonly />
+													<span class="input-group-btn">
+														<a class="btn btn-default" onclick="document.getElementById('demo').style.display='block'">
+														<i class="glyphicon glyphicon-edit"></i> Send Link to Change Password
+														</a>
+													</span>	
+											</div>
+												<p id="demo" style="display:none; color: #565656">
+													<small>The email was sent to sammillos@gmail.com 
+													with the link to change your password.</small></p>
 										</div>
 										
 										<div class="form-group">

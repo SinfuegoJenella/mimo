@@ -72,7 +72,6 @@
 	<!-- Post Body (Thoughts) -->
 	<div class="col-md-6 belowtn col-xs-12 col-sm-7">
 		<div class="postcont">
-		
 		<!--Start to place Here the Post/Thought Templates-->
 		<?php $this->load->view('templates/post_temp');?>
 		<?php $this->load->view('templates/post_temp');?>
