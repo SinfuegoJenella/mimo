@@ -1,3 +1,58 @@
+.postComment , .postComment:hover , .postComment:focus{
+	line-height: 10px;
+	background-color: #404040;
+	display: inline-block;
+	border-radius: 3px;
+	color: white;
+	font-size: 13px;
+	outline: none;
+}
+
+.postComment:hover , .postComment:focus{
+	line-height: 10px;
+	background-color: #737373;
+	display: inline-block;
+	border-radius: 3px;
+	color: white;
+	font-size: 13px;
+	outline: none;
+	transition: 0.5;
+}
+
+.commentDiv{
+	background-color: #f2f2f2;
+	width: 100%;
+	padding: 10px;
+	padding-top: 15px;
+	border-top: 1px solid #d9d9d9;
+	position: relative;
+}
+.commentatorDiv{
+	height: 300px;
+	overflow: auto;
+	
+}
+.commentPic{
+	border-radius: 50%; 
+	background-size: cover; 
+	width: 30px; height: 30px;
+}
+.commentUser{
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#commentBox{
+	/* line-height: 20px; */
+	border-radius: 10px;
+	font-size: 12px;
+}
+
+#commentBox:focus{
+	outline: none;
+}
+
+
 a.follow , a.follow:hover , a.follow:focus{
     background-image: linear-gradient(rgb(0, 150, 255), rgb(0, 93, 255));
     color: white;
@@ -19,23 +74,6 @@ a.unfollow:hover,a.unfollow:active {
 .profile{
 	color: #f2f2f2
 }
-
-/* #followBtn{ */
-	/* background: linear-gradient(to right, #ffcc99 0%, #ff9933 0%); */
-	/* border: 2px solid #f2f2f2; */
-	/* color: #f2f2f2; */
-	/* border-radius: 5px; */
-/* } */
-
-/* #followBtn:hover{ */
-	/* background: ; */
-	/* border: 2px solid #f2f2f2; */
-	/* color: #f2f2f2; */
-	/* border-radius: 5px; */
-	/* margin-right: 15px; */
-	/* transition: 0.5s; */
-/* } */
-
 
 .tab-content{ 
 	background-color:#f2f2f2; 
