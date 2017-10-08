@@ -40,6 +40,7 @@
 	
 					<a href="#" id="shareBtn" class="btn comment"><span class="fa fa-share-square-o"></span> Share </a>
 					</div>
+					
 			</div>
 			
 			<!---->
