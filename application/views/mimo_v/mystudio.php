@@ -104,12 +104,6 @@
 									<div class="col-md-6 thoughts">
 										<!-- PUT HERE THE THOUGHTS-->
 										<?php $this->load->view('templates/commentModal');?>
-<<<<<<< HEAD
-										<?php $this->load->view('templates/post_temp');?>
-										<?php $this->load->view('templates/post_temp');?>
-										<?php $this->load->view('templates/post_temp');?>
-=======
->>>>>>> master
 										<!-- -->
 									</div>
 									<div class="col-md-3">
