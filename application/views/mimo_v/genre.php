@@ -24,7 +24,6 @@
 						<i class="material-icons bar">speaker</i><p class="bar hidden-sm"> Music Hall</p></a></li>
                     <li class="presentation" role="presentation"><a href="<?php echo base_url('mimo/browse');?>" class="bar">
 						<i class="material-icons bar">equalizer</i><p class="hidden-sm bar"> Browse</p></a>
-							
                     </li>
 					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
 						<i class="material-icons bar">file_upload</i><p class="hidden-sm bar"> Release</p><span class="caret"></span></a>
@@ -34,7 +33,7 @@
 						</ul>
                     <li role="presentation"><a href="<?php echo base_url('mimo/myStudio');?>" class="bar">
 						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>	
-					 <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
+					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
 						<i class="material-icons">settings</i> <span class="caret"></span></a>
 						 <ul class="dropdown-menu" role="menu">
                             <li role="presentation">

@@ -5,9 +5,8 @@
 	<link rel="stylesheet" href="http://localhost/mimo/assets/css/image.css">
 	<script type="text/javascript" src="../assets/js/charts.js"></script>
 </head>
-
+</style>
 <body style="background-color: #1a1a1a">
-
 <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">

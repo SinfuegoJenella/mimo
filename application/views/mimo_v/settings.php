@@ -1,54 +1,6 @@
 <body style="background-color: #333333">
 	<!-- Top Nav Bar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand navbar-link" href="<?php echo base_url('');?>">
-				<?php $this->load->view('include/mimologo')?>
-				<strong style="margin-top: -5px;">MimO</strong> </a>
-                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            </div>
-            <div class="collapse navbar-collapse" id="navcol-1">
-			 <form class="navbar-form navbar-left">
-                    <div class="input-group">
-						<!--Search Bar -->
-                        <input class="form-control searchbar" type="text" placeholder="Search">
-                        <div class="input-group-btn">
-                            <a class="btn btn-block searchBtn" role="button" href="#"> <i class="glyphicon glyphicon-search"></i></a>
-                        </div>
-                    </div>
-                </form>
-				<!-- Nav Items -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="presentation" role="presentation"><a href="<?php echo base_url('');?>" class="bar">
-						<i class="material-icons bar">speaker</i><p class="bar hidden-sm"> Music Hall</p></a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
-						<i class="material-icons bar">equalizer</i><p class="hidden-sm bar"> Browse</p><span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li role="presentation"><a href="<?php echo base_url('mimo/artist');?>"><i class="material-icons">person</i> Artist</a></li>
-								<li role="presentation"><a href="<?php echo base_url('mimo/genre');?>"><i class="material-icons">music_note</i>Genre </a></li>
-								<li role="presentation"><a href="#"><i class="material-icons">show_chart</i>Chart </a></li>
-							</ul>
-                    </li>
-					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
-						<i class="material-icons bar">file_upload</i><p class="hidden-sm bar"> Release</p><span class="caret"></span></a>
-						 <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a href="" data-toggle="modal" data-target="#addThought"><i class="material-icons">comments</i> Thoughts</a></li>
-                            <li role="presentation"><a href="" data-toggle="modal" data-target="#addAudio"><i class="material-icons">music_note</i> Audio</a></li>
-						</ul>
-                    <li role="presentation"><a href="<?php echo base_url('mimo/myStudio');?>" class="bar">
-						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>	
-					 <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
-						<i class="material-icons">settings</i> <span class="caret"></span></a>
-						 <ul class="dropdown-menu" role="menu">
-                            <li role="presentation">
-								<a href="<?php echo base_url('mimo/settings');?>">Account Settings</a></li>
-                            <li role="presentation"><a href="#">Logout</a></li>
-						</ul>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	
 	
 	<!--This is below Top Navigation Section -->
 	
@@ -64,13 +16,11 @@
 						<div style="width: 140px; height: 140px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
 							background-size: cover; margin: 0 auto; "></div>
 
-							
 							<h4 style="color: white" class="text-center user">Samantha Millos</h4>
 
 							<a style="color: white" class="text-center user"><h6>nightingale07</h6></a>
 			</div>
-			
-			
+
 			<div class="col-md-8">
 				<div class="" style="background: linear-gradient(white,#DCDCDC); border-bottom: 1px solid grey;">
 					
@@ -83,85 +33,51 @@
 					
 					<br />
 					<ul class="nav nav-tabs nav-justified">
-						<li class="active"><a style="color: black; border-bottom: orange" data-toggle="tab" href="#personal"><i class="material-icons">library_music</i></span>&nbsp;Personal</a></li>
-						<li><a style="color: black" data-toggle="tab" href="#account" ><span><i class="material-icons">account_circle</i></span>&nbsp;Account</a></li>
-						<li><a style="color: black" data-toggle="tab" href="#mymusic" ><i class="material-icons">library_music</i></span>&nbsp;My Music</a></li>
+						<li class="active"><a data-toggle="tab" href="#account" ><span><i class="material-icons">account_circle</i></span>&nbsp;Account</a></li>
+						<li><a data-toggle="tab" href="#mymusic" ><i class="material-icons">library_music</i></span>&nbsp;My Music</a></li>
 					</ul>
 
 						<div class="tab-content">
-							<div id="personal" class="tab-pane fade in active">
-							<form role="form" method="post" class="form-group">
+   
+							<div id="account" class="tab-pane fade in active">
+								<form role="form" method="post" class="form-group">
 								<div class="row">
 								<br />
-									<div class="col-md-3 form-group">
-									</div>
 									<div class="col-md-6 form-group">
+									
 										<label for="">Last Name :</label>
 											<input type="text" class="form-control form-inline" name="" value="Millos"/>
-										<label for="">First Name :</label>
-											<input type="text" class="form-control" name="" value="Samantha"/>
-											
-										<label for="">Birthday <small>(dd/mm/yyyy)</small>:</label>
-											<input type="date" class="form-control" name="" value="1998-09-07"/>
-										<label for="">Sex :</label>
-											<label class="radio-inline">
-												<input type="radio" name="optradio" value="male">Male
-											</label>
-										<label class="radio-inline">
-											<input type="radio" name="optradio" value="female" checked>Female
-										</label>
-									</div>
-								</div>
-								
-								<div class="row">
-									<div class="col-md-12">
-										<button type="submit" class="btn settingsBtn pull-right">
-											Save Changes
-										</button>
-									</div>
-								</div>
-							</form>
-							</div>
-   
-							<div id="account" class="tab-pane fade">
-							<form role="form" method="post" class="form-group">
-								<div class="row">
-								<br />
-									<div class="col-md-6 form-group">
 										<label for="">Username <small>(Stage Name)</small>:</label>
 											<input type="text" class="form-control"  name="" value="nightingale07"/>
-										<label for="">Password:</label>
-											<input type="password" class="form-control" name="" value="samantha" readonly />
-								
-									<!-- Start Field Set for Change Password -->
-									<br />
-										<fieldset class="changepass">
-											<legend class="changepass">Change Password</legend>
-												<div class="control-group">
-													<label class="control-label input-label" for="currPass">Current Password :</label>
-														<input type="password" class="form-control " name="currPass" value="samantha"/>
-													<br />
-													<label class="control-label input-label" for="newPass">New Password :</label>
-														<input type="password" class="form-control" name="newPass" value=""/>
-													<br />
-													<label class="control-label input-label" for="verPass">Retype Password :</label>
-														<input type="password" class="form-control" name="verPass" value=""/>
-												</div>
-										</fieldset>
-									</div>
-								
-									<div class="col-md-6 form-group">
-										<div class="form-group">
-											<label>Change Profile Picture :</label>
+										<label>Change Profile Picture :</label>
 											<div class="input-group">
 												<span class="input-group-btn">
 													<span class="btn btn-default btn-file">
-														Choose… <input type="file" id="imgProfile">
+														Choose… <input type="file" id="imgProfile" accept="image/*">
 													</span>
 												</span>
 												<input type="text" class="form-control" readonly>
 											</div>
 											<img id='img-Profile'/>
+									</div>
+
+								
+									<div class="col-md-6 form-group">
+										<div class="form-group">
+											<label for="">First Name :</label>
+											<input type="text" class="form-control" name="" value="Samantha"/>
+											<label for="">Password:</label>
+											<div class="input-group">
+												<input type="password" class="form-control" name="" value="samanthagerrergergtrtgrrgtercfrgetcgtrbet" readonly />
+													<span class="input-group-btn">
+														<a class="btn btn-default" onclick="document.getElementById('demo').style.display='block'">
+														<i class="glyphicon glyphicon-edit"></i> Send Link to Change Password
+														</a>
+													</span>	
+											</div>
+												<p id="demo" style="display:none; color: #565656">
+													<small>The email was sent to sammillos@gmail.com 
+													with the link to change your password.</small></p>
 										</div>
 										
 										<div class="form-group">
@@ -169,7 +85,7 @@
 											<div class="input-group">
 												<span class="input-group-btn">
 													<span class="btn btn-default btn-file">
-														Choose… <input type="file" id="imgHeader">
+														Choose… <input type="file" id="imgHeader" accept="image/*">
 													</span>
 												</span>
 												<input type="text" class="form-control" readonly>
@@ -289,7 +205,9 @@
 		</div>
 		
 			<div class="col-md-1">
-			
+				<!--Thoughts&Audio Modal-->
+				<?php $this->load->view('templates/addpostmodal');?>
+				<?php $this->load->view('templates/addaudiomodal');?>
 			</div>
 			
 			

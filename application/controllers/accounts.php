@@ -1,139 +1,283 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Accounts extends CI_Controller {
-	public function __construct(){
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+class accounts extends CI_Controller
+{
+    function __construct() {
 		parent::__construct();
-	
-		$this->load->model('users','users');
+		$this->load->library('facebook');
 		$this->load->model('login_tokens','login_tokens');
 		$this->load->library('login');
 		$this->load->library('mail');
-	}//end of __contruct
-	
-
-	
-	public function index()
-	{
-		//check if not logged in
+		$this->load->model('users','users');
+		$this->load->model('auth');
+    }
+    
+    public function index(){
+		
 		if(!$this->login->isLoggedIn()){
-
-			//go to signup/login page
-			$headerdata['title'] = "MimO | Login/Sign up";
+		$userData = array();
+		// Check if user is logged in
+		if($this->facebook->is_authenticated()){
+			// Get user facebook profile details
+			$userProfile = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,gender,locale,picture');
+            // Preparing data for database insertion
+            //if new user ccontinue
+            if($userProfile['id']!=null){
+	            $userData['oauth_provider'] = 'facebook';
+	            $userData['oauth_uid'] = $userProfile['id'];
+	            $userData['first_name'] = $userProfile['first_name'];
+	            $userData['last_name'] = $userProfile['last_name'];
+	            $userData['email'] = $userProfile['email'];
+	            $userData['gender'] = $userProfile['gender'];
+	            $userData['locale'] = $userProfile['locale'];
+	            $userData['profile_url'] = 'https://www.facebook.com/'.$userProfile['id'];
+	            $userData['picture_url'] = $userProfile['picture']['data']['url'];
+				
+				$selector = 'email';
+				$condition = array('email'=> $userData['email']);
+				if(!$this->auth->read($condition,$selector)){
+					$data = array('id'=>null,
+								'oauth_provider'=>'facebook',
+								'oauth_uid'=>$userData['oauth_uid'],
+								'first_name'=>$userData['first_name'],
+								'last_name'=>$userData['last_name'],
+								'email'=>$userData['email'],
+								'gender'=>$userData['gender'],
+								'locale'=> $userData['locale'],
+								'profile_url'=>$userData['profile_url'],
+								'picture_url'=>$userData['picture_url']
+								);
+					$this->auth->create($data);
+					 //insert data in users table data
+	            	$email = $userData['email'];
+	            	$selector = 'email';
+					$condition = array('email'=>$email);
+					if(!$this->users->read($condition,$selector)){
+						$usersdata = array(
+										'id'=>null,
+										'username'=>$userData['oauth_uid'],
+										'firstname'=>$userData['first_name'],
+										'lastname'=>$userData['last_name'],
+										'password'=>null,
+										'email'=>$email,
+										'picture'=>$userData['picture_url'],
+										'header'=>null,
+							);
+						$this->users->create($usersdata);
+					}//end of users table data insertion
+					redirect('accounts/signup/'.$userData['oauth_uid'].'');
+				}
+				else{
+					$cstrong = True;
+				    $token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+				    $selector = 'id';
+				    $condition = array('email'=>$userData['email']);
+				    $user_id = $this->users->read($condition,$selector)[0]['id'];
+				    $data = array('id'=>null,'token'=>sha1($token),'user_id'=>$user_id);
+				    $this->login_tokens->create($data);
+				                  
+				    setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
+				    setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
+				    $this->facebook->destroy_session();
+					// Remove user data from session
+					$this->session->unset_userdata('userData');
+				            redirect('mimo');
+				}
+				
+        	}
+        	//if new user cancelled
+        	else{
+        		redirect('/accounts');
+        	}
+		}//end of authentication
+		
+		else{
+            $fbuser = '';
+			
+			// Get login URL
+            $data['authUrl'] =  $this->facebook->login_url();
+            $headerdata['title'] = "MimO | Login/Sign up";
 			$this->load->view('include/header',$headerdata);
-			$this->load->view('mimo_v/login');
+			$this->load->view('mimo_v/login',$data);
+			$this->load->view('include/footer');
+        }
+        }
+        else{
+        	redirect('mimo');
+        }
+    }
+	
+    public function signup($authid) {
+    	if(!$this->login->isLoggedIn()){
+    	$selector = 'username';
+    	$condition = array('username'=>$authid);
+    	if($this->users->read($condition,$selector)){
+    		if(isset($_POST['next'])){
+    		
+    			$username = $this->input->post("stagename");
+	    		$data = array('username'=>$username);
+	    		$id = $this->login->isLoggedIn();
+	    		$condition = array('username'=>$authid);
+	    		$this->users->update($data,$condition);
+	    		
+	    		$cstrong = True;
+				$token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+				$selector = 'id';
+				$condition = array('username'=>$username);
+				$user_id = $this->users->read($condition,$selector)[0]['id'];
+				$data = array('id'=>null,'token'=>sha1($token),'user_id'=>$user_id);
+				$this->login_tokens->create($data);
+					                   
+				setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
+				setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
+	    		redirect('mimo');
+    		}
+    	}
+    	else{
+    		redirect('/accounts');
+    	}
+    	$this->facebook->destroy_session();
+					// Remove user data from session
+					$this->session->unset_userdata('userData');
+    	$data['user'] = $authid;
+		$headerdata['title'] = "MimO | Sign up";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('mimo_v/aftersignup',$data);
 			$this->load->view('include/footer');
 		}
 		else{
-			redirect ('http://localhost/mimo/');
+			redirect('mimo');
 		}
-	}//end of index
-
-	public function signin(){
-		$username = $this->input->post("username");
-		$password = $this->input->post("password");
-
-		$selector = 'username';
-		$condition = array('username'=>$username);
-		if($this->users->read($condition,$selector)){
-
-			$selector = 'password';
-		    $query = $this->users->read($condition,$selector);
-		    if(password_verify($password,$query[0]['password'])){
-		    	echo '{ "username": "'.$username.'" }';
-				echo '{ "password": "'.$password.'" }';
-		    	$cstrong = True;
-	            $token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
-	            $selector = 'id';
-	            $user_id = $this->users->read($condition,$selector)[0]['id'];
-	            $data = array('id'=>null,'token'=>sha1($token),'user_id'=>$user_id);
-	            $this->login_tokens->create($data);
-	                   
-	            setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
-	            setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
-	            echo '{ "Token": "'.$token.'" }';
-	            // echo json_encode(array('status'=>'success'));
-		    }
-		    else{
-		    	echo '{ "Error": "Invalid password!" }';
-                http_response_code(401);
-		    }
-		}
-		else{
-			echo '{ "Error": "Invalid username!" }';
-            http_response_code(401);
-		}
-	}//end of signin
-	
-	public function signup(){
-		$firstname = $this->input->post("firstname");
-		$lastname = $this->input->post("lastname");
-		$username = $this->input->post("username");
-		$email = $this->input->post("email");
-		$password = $this->input->post("password");
-		$birthdate = $this->input->post("birthdate");
-		$sex = $this->input->post("sex");
-
-		if($birthdate!=''){
-			if($sex!=null){
+    }
+    public function createaccount(){
+    	if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$firstname = $this->input->post("firstname");
+			$lastname = $this->input->post("lastname");
+			$username = $this->input->post("username");
+			$email = $this->input->post("email");
+			$password = $this->input->post("password");
+			$rpassword = $this->input->post("rpassword");
+			
+			if($firstname!=''&&$lastname!=''&&$username!=''&&$email!=''&&$password!=''&&$rpassword!=''){
 				$selector = 'username';
 				$condition = array('username'=>$username);
 				if (!$this->users->read($condition,$selector)) {
-					if (strlen($username) >= 3 && strlen($username) <= 32) {
-						if (preg_match('/[a-zA-Z0-9_]+/', $username)) {
-							if (strlen($password) >= 6 && strlen($password) <= 60) {
-								if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-									$selector = 'email';
-				        			$condition = array('email'=>$email);
-				                    if (!$this->users->read($condition,$selector)) {
-					                    $data = array('id'=>null,'username'=>$username,'firstname'=>$firstname, 'lastname'=>$lastname, 'password'=>password_hash($password, PASSWORD_BCRYPT), 'email'=>$email, 'sex'=>$sex, 'birthdate'=>$birthdate, 'verified'=>0);
+					if (preg_match('/[a-zA-Z0-9_]+/', $username)) {
+						if (strlen($password) >= 6 && strlen($password) <= 60) {
+							if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+								$selector = 'email';
+					        	$condition = array('email'=>$email);
+					            if (!$this->users->read($condition,$selector)) {
+					            	if($password==$rpassword){
+					            		$data = array(
+													'id'=>null,
+													'username'=>$username,
+													'firstname'=>$firstname,
+													'lastname'=>$lastname,
+													'password'=>password_hash($password, PASSWORD_BCRYPT),
+													'email'=>$email,
+													'picture'=>null,
+													'header'=>null,
+										);
 					                    $this->users->create($data);
-					                    //Send to email your account has been created
-					                    $this->mail->sendMail('Welcome to Mimo!', 'Your account has been created!', $email);
-					                    echo 'success';
-					                }
-					                else{
-					                	echo '{ "Error": "email in use!" }';
-		            					http_response_code(401);
-					                }
-								}
-								else{
-									echo '{ "Error": "email invalid!" }';
-		            				http_response_code(401);
-								}
-
+					                   // Send to email your account has been created
+					                    // $this->mail->sendMail('Welcome to Mimo!', 'Your account has been created!', $email);
+					                    $err = "success";
+		    							echo json_encode(array('status'=>"success",'eventid'=>$err));
+					            	}
+					            	else{
+					            		$err = "Password don't match";
+		    							echo json_encode(array('status'=>"error",'eventid'=>$err));
+					            	}
+					            }
+					            else{
+					            	$err = "Email in Use";
+		    						echo json_encode(array('status'=>"error",'eventid'=>$err));
+					            }
 							}
 							else{
-								echo '{ "Error": "Password too short or too long!" }';
-		            			http_response_code(401);
+								$err = "Invalid Email";
+		    					echo json_encode(array('status'=>"error",'eventid'=>$err));
 							}
 						}
 						else{
-							echo '{ "Error": "Invalid Username" }';
-		            		http_response_code(401);
+							$err = "Invalid Password length";
+		    				echo json_encode(array('status'=>"error",'eventid'=>$err));
 						}
-
 					}
 					else{
-						echo '{ "Error": "Invalid Username length" }';
-		            	http_response_code(401);
+						$err = "Invalid Username (number and letters only)";
+		    			echo json_encode(array('status'=>"error",'eventid'=>$err));
 					}
 				}
 				else{
-					echo '{ "Error": "Username already taken!" }';
-		            http_response_code(401);
+					$err = "Stage Name Already taken";
+		    		echo json_encode(array('status'=>"error",'eventid'=>$err));
 				}
 			}
 			else{
-				echo '{ "Error": "sex null!" }';
-	            http_response_code(401);
+				$err = "Fill All Required Fields";
+		    	echo json_encode(array('status'=>"error",'eventid'=>$err));
 			}
 		}
 		else{
-			echo '{ "Error": "date null!" }';
-            http_response_code(401);
+			redirect('/accounts');
 		}
-
-	}//end of signup
-
+    }
+    public function signin(){
+    	if(!$this->login->isLoggedIn()){
+    	$data['authUrl'] =  $this->facebook->login_url();
+        $headerdata['title'] = "MimO | Login/Sign up";
+		$this->load->view('include/header',$headerdata);
+		$this->load->view('mimo_v/signin',$data);
+		$this->load->view('include/footer');
+		}
+		else{
+			redirect('mimo');
+		}
+    }
+    public function si(){
+    	if ($_SERVER['REQUEST_METHOD'] == "POST") {
+	 		$username = $this->input->post("username");
+			$password = $this->input->post("password");
+			$selector = 'username';
+	    	$condition = array('username'=>$username);
+		    if($this->users->read($condition,$selector)){
+		    	$selector = 'password';
+			    $query = $this->users->read($condition,$selector);
+			    if($query[0]['password']!=null){
+				    if(password_verify($password,$query[0]['password'])){
+				    	$cstrong = True;
+			            $token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+			            $selector = 'id';
+			            $user_id = $this->users->read($condition,$selector)[0]['id'];
+			            $data = array('id'=>null,'token'=>sha1($token),'user_id'=>$user_id);
+			            $this->login_tokens->create($data);
+			                   
+			            setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
+			            setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
+			            $err = "Success";
+		    			echo json_encode(array('status'=>"success",'eventid'=>$err));
+			        }
+			        else{
+			        	$err = "Wrong Password";
+		    			echo json_encode(array('status'=>"error",'eventid'=>$err));
+		        	}
+		        }
+		        else{
+		        	$err = "Wrong Password";
+		    		echo json_encode(array('status'=>"error",'eventid'=>$err));
+		        }
+		        
+			}
+		    else{
+		    	// echo 'mali';
+		    	$err = "Username Does not exists";
+		    	echo json_encode(array('status'=>"error",'eventid'=>$err));
+		    }
+		}
+		else{
+			redirect('/accounts');
+		}
+    }
+   
 }

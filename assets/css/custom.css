@@ -1,3 +1,111 @@
+.postComment , .postComment:hover , .postComment:focus{
+	line-height: 10px;
+	background-color: #404040;
+	display: inline-block;
+	border-radius: 3px;
+	color: white;
+	font-size: 13px;
+	outline: none;
+}
+
+.postComment:hover , .postComment:focus{
+	line-height: 10px;
+	background-color: #737373;
+	display: inline-block;
+	border-radius: 3px;
+	color: white;
+	font-size: 13px;
+	outline: none;
+	transition: 0.5;
+}
+
+.commentDiv{
+	background-color: #f2f2f2;
+	width: 100%;
+	padding: 10px;
+	padding-top: 15px;
+	border-top: 1px solid #d9d9d9;
+	position: relative;
+}
+.commentatorDiv{
+	height: 300px;
+	overflow: auto;
+	
+}
+.commentPic{
+	border-radius: 50%; 
+	background-size: cover; 
+	width: 30px; height: 30px;
+}
+.commentUser{
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#commentBox{
+	/* line-height: 20px; */
+	border-radius: 10px;
+	font-size: 12px;
+}
+
+#commentBox:focus{
+	outline: none;
+}
+
+
+a.follow , a.follow:hover , a.follow:focus{
+    background-image: linear-gradient(rgb(0, 150, 255), rgb(0, 93, 255));
+    color: white;
+   
+}
+
+a.unfollow {
+    color: #6e6e6e;
+    background: #f3f3f3;
+}
+
+a.unfollow:hover,a.unfollow:active {
+    background: linear-gradient(#eb3845, #d9030a);
+    border-color: #e7473c;
+    color: #fff;
+}
+
+
+.profile{
+	color: #f2f2f2
+}
+
+.tab-content{ 
+	background-color:#f2f2f2; 
+	padding:5px; 
+	/* border: 1px solid #cccccc; */
+}
+
+.nav-tabs{ 
+	margin-top: 0;
+	background-color: #404040;
+}
+
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus
+{
+	/* border-bottom: 2px solid #ff4000; */
+	border-top: 2px solid orange;
+	background-color: #f2f2f2;
+	color: #1a1a1a;
+	font-weight: bold;
+}
+
+.nav-tabs > li > a,
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+	color: white;
+	border-radius: 0%;
+	background-color: #404040;
+	border: none;
+}
+
 a.navbar-brand.navbar-link{
   font-family:kristen ITC;
   color:white;
@@ -11,16 +119,19 @@ h4.settings {
 }
 
 .settingsBtn{
-	background-color: black;
-	/* border: 2px solid orange; */
-	color: rgb(242,242,242);
-}
-.settingsBtn:focus{
+	background-color:  grey;
+	border: 3px solid white;
 	color: white;
-	outline: none;
+	border-radius: 40px;
+	
 }
 .settingsBtn:hover{
 	color: white;
+	background-color:  #ff8c1a;
+	transition: 0.4s;
+}
+.settingsBtn:focus{
+	outline: none;
 }
 textarea.addthought {
 	
@@ -58,18 +169,60 @@ li{
 	display: block;
 }
 
+#albumDesc{
+	color: #808080;
+	font-size: 12px;
+}
+
 .albumBox{
 	margin-top: 20px;
-	background-color: #333333;
-	border: 1px solid rgb(217,217,217);
+	background-color: #f2f2f2;
+	border: 1px solid #b3b3b3;
 	padding: 16px 12px 12px 12px;
 }
 .albumCover{
-	height: 100px;
-	width: 100px;
+	height: 130px;
+	width: 130px;
 	background-size: cover;
 	
 }
+
+#releaseaudiobtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+	border-radius: 50%;
+	border: 1px solid black;
+	background-color: #1a1a1a;
+	color: white;
+	line-height: 30px;
+	opacity: 0.6;
+}
+
+#thoughtbtn {
+    position: fixed;
+    bottom: 20px;
+    right: 80px; 
+	border-radius: 50%;
+	border: 1px solid black;
+	background-color: #1a1a1a;
+	color: white;
+	line-height: 30px;
+	opacity: 0.6;
+}
+#releaseaudiobtn:focus , #thoughtbtn:focus {
+	outline: none;
+}
+#releaseaudiobtn:hover , #thoughtbtn:hover {
+	background-color:  #ff9900;
+	transition: 0.4s;
+	bottom: 30px;
+	/* border: 2px solid #262626; */
+	border: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+	opacity: 1.0;
+}
+
 /*Post (Thoughts) CSS*/
 .belowtn{
 	top: 60px;
@@ -92,22 +245,40 @@ li{
 	
 	position: relative;
 	padding: 2px 10px 10px 10px;
-	margin: 5px 10px 5px 5px;
+	margin: 5px 0px 5px 0px;
+}
+.posttemp{
+	border: 1px solid #b3b3b3;
+	margin-top: 20px;
+	/* border-radius: 10px; */
 }
 
 .posthead{
-	margin-top: 20px;
+	
 	background: linear-gradient(white,#DCDCDC);
-	border: 1px solid rgb(217,217,217);
+	background-color: 	white;
+	/* border: 1px solid rgb(217,217,217); */
 	padding: 16px 12px 12px 12px;
+	/* border-radius: 10px; */
 }
 .postbody{
-	background-color: 	#e6e6e6/*rgb(242,242,242)*/;
+	background-color: 	white/*#d9d9d9 #e6e6e6 rgb(242,242,242)*/;
 	padding: 12px 15px;
 	padding-bottom: 2px;
-	border-left: 1px solid 	#cccccc;
-	border-right: 1px solid #cccccc;
+	
+	/* border-left: 1px solid 	#cccccc; */
+	/* border-right: 1px solid #cccccc; */
 }
+
+.postbodyaudio{
+	background-color:  #f2f2f2/*#d9d9d9 #e6e6e6 rgb(242,242,242)*/;
+	padding: 12px 15px;
+	padding-bottom: 2px;
+	
+	/* border-left: 1px solid 	#cccccc; */
+	/* border-right: 1px solid #cccccc; */
+} 
+
 .postbodycont{
 	border-radius: 10px;
 	background-color: white;
@@ -117,10 +288,17 @@ li{
 }
 
 #likesection{
-	background-color: #e6e6e6;
-	color: black;
-	border-left: 1px solid 	#cccccc;
-	border-right: 1px solid #cccccc;
+	background-color: white/*#e6e6e6*/;
+	color: #666666;
+	/* border-left: 1px solid 	#cccccc; */
+	/* border-right: 1px solid #cccccc; */
+}
+
+.likesectionaud{
+	background-color: #f2f2f2/*#e6e6e6*/;
+	color: #666666;
+	/* border-left: 1px solid 	#cccccc; */
+	/* border-right: 1px solid #cccccc; */
 }
 
 .postPic{
@@ -151,13 +329,13 @@ a.listnav{
 	color: black;
 }
 .like:hover, .comment:hover{
-	color:  #ffa64d;
+	color:  orange /*#ffa64d*/;
 }
 
 /*When Like button is pressed*/
 .like[aria-pressed="true"],
 [role="button"][aria-pressed="true"] {
-    color: #ff9900;
+    color: orange /*#ff9900*/;
 }
 
 

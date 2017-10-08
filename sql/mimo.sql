@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2017 at 02:12 PM
+-- Generation Time: Oct 06, 2017 at 09:59 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -29,8 +29,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `about` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
-  `profileimg` varchar(200) DEFAULT NULL,
-  `headerimg` varchar(200) DEFAULT NULL,
   `about` text,
   `genre1` varchar(50) DEFAULT NULL,
   `genre2` varchar(50) DEFAULT NULL,
@@ -47,8 +45,9 @@ CREATE TABLE `about` (
 CREATE TABLE `albums` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
+  `post_id` int(11) UNSIGNED NOT NULL,
   `cover` varchar(255) DEFAULT NULL,
-  `about` text NOT NULL,
+  `about` text,
   `numsongs` int(11) UNSIGNED NOT NULL,
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='list of albums';
@@ -63,10 +62,9 @@ CREATE TABLE `album_song` (
   `id` int(11) UNSIGNED NOT NULL,
   `album_id` int(11) UNSIGNED NOT NULL,
   `title` varchar(50) NOT NULL,
-  `post_id` int(11) UNSIGNED NOT NULL,
   `path` varchar(200) NOT NULL,
   `genre_id` int(11) UNSIGNED NOT NULL,
-  `favorites` int(11) UNSIGNED NOT NULL
+  `origin` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='listahan ng kanta sa bawat album';
 
 -- --------------------------------------------------------
@@ -122,6 +120,45 @@ CREATE TABLE `followers` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `genre`
+--
+
+CREATE TABLE `genre` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='listahan ng genres';
+
+--
+-- Dumping data for table `genre`
+--
+
+INSERT INTO `genre` (`id`, `name`) VALUES
+(1, 'Alternative Music'),
+(2, 'Blues'),
+(3, 'Classical Music'),
+(4, 'Country Music'),
+(5, 'Dance Music'),
+(6, 'Easy Listening'),
+(7, 'Electronic Music'),
+(8, 'European Music (Folk/Pop)'),
+(9, 'Hip Hop / Rap'),
+(10, 'Indie Pop'),
+(11, 'Inspirational (incl. Gospel)'),
+(12, 'Asian Pop(J-Pop, K-Pop)'),
+(13, 'Jazz'),
+(14, 'Latin Music'),
+(15, 'New Age'),
+(17, 'Opera'),
+(18, 'Pop (Popular Music)'),
+(19, 'R&B / Soul'),
+(20, 'Reggae'),
+(21, 'Rock'),
+(22, 'Folks'),
+(23, 'World Music / Beats');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login_tokens`
 --
 
@@ -129,7 +166,28 @@ CREATE TABLE `login_tokens` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
   `token` char(64) NOT NULL,
-  `login_time` datetime NOT NULL
+  `login_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth`
+--
+
+CREATE TABLE `oauth` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `oauth_provider` varchar(255) NOT NULL,
+  `oauth_uid` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `locale` varchar(10) NOT NULL,
+  `picture_url` varchar(255) NOT NULL,
+  `profile_url` varchar(255) NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -155,7 +213,7 @@ CREATE TABLE `posts` (
   `user_id` int(11) UNSIGNED NOT NULL,
   `likes` int(11) UNSIGNED NOT NULL,
   `comments` int(11) UNSIGNED NOT NULL,
-  `posted_at` datetime NOT NULL,
+  `posted_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `type` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -170,6 +228,24 @@ CREATE TABLE `post_likes` (
   `post_id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `single_songs`
+--
+
+CREATE TABLE `single_songs` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `post_id` int(11) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `genre_id` int(11) UNSIGNED NOT NULL,
+  `about` text,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `path` varchar(255) NOT NULL,
+  `cover` varchar(255) DEFAULT NULL,
+  `origin` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='para sa single upload na audio';
 
 -- --------------------------------------------------------
 
@@ -207,11 +283,11 @@ CREATE TABLE `users` (
   `username` varchar(32) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) DEFAULT NULL,
-  `password` varchar(60) NOT NULL,
+  `password` varchar(60) DEFAULT NULL,
   `email` text NOT NULL,
-  `sex` char(1) NOT NULL DEFAULT 'M',
-  `birthdate` date NOT NULL,
-  `verified` tinyint(1) NOT NULL DEFAULT '0'
+  `picture` varchar(255) DEFAULT NULL,
+  `header` varchar(255) DEFAULT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -261,9 +337,21 @@ ALTER TABLE `followers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `genre`
+--
+ALTER TABLE `genre`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `login_tokens`
 --
 ALTER TABLE `login_tokens`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauth`
+--
+ALTER TABLE `oauth`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -282,6 +370,12 @@ ALTER TABLE `posts`
 -- Indexes for table `post_likes`
 --
 ALTER TABLE `post_likes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `single_songs`
+--
+ALTER TABLE `single_songs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -342,10 +436,20 @@ ALTER TABLE `comments`
 ALTER TABLE `followers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `genre`
+--
+ALTER TABLE `genre`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+--
 -- AUTO_INCREMENT for table `login_tokens`
 --
 ALTER TABLE `login_tokens`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+--
+-- AUTO_INCREMENT for table `oauth`
+--
+ALTER TABLE `oauth`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `password_tokens`
 --
@@ -355,11 +459,16 @@ ALTER TABLE `password_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `single_songs`
+--
+ALTER TABLE `single_songs`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `song_favorites`
@@ -370,12 +479,12 @@ ALTER TABLE `song_favorites`
 -- AUTO_INCREMENT for table `thoughts`
 --
 ALTER TABLE `thoughts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

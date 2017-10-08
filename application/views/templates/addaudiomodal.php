@@ -22,7 +22,7 @@
 								<span class="input-group-btn">
 									<span class="btn btn-default btn-file">
 									<span class="glyphicon glyphicon-open"></span>
-									<input type="file" id="newAudio" />
+									<input type="file" id="newAudio" accept="audio/*" />
 									</span>
 								</span>
 								<input type="text" class="form-control" readonly />
@@ -65,7 +65,7 @@
 										<div class="input-group">
 											<span class="input-group-btn">
 												<span class="btn btn-default btn-file">
-													Choose… <input type="file" id="imgHeader">
+													Choose… <input type="file" id="imgHeader" accept="image/*">
 												</span>
 											</span>
 											<input type="text" class="form-control" readonly />
