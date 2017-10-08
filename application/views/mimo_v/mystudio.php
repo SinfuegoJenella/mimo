@@ -35,9 +35,11 @@
 			</div>
 			
 			<!-- FOLLOW-->
-			<div class="row" style="margin-top: 30px;">
+			<?php if($user[0]['id']!=$users[0]['id']){ ?>
+			<div class="row follow" style="margin-top: 30px;">
 					<a href="#" class="btn follow pull-right"><i class="fa fa-bell-o"></i><span> Follow</span></a>
 			</div>
+			<?php };?>
 		</div>
 	</div>
 	
@@ -55,7 +57,7 @@
 					</ul>
 
 						<div class="tab-content">
-						
+						<?php $this->load->view('templates/commentModal');?>
 						<!-- COLLECTIONS -->
 							<div id="collections" class="tab-pane fade in active">
 							<div class="row">

@@ -190,7 +190,21 @@ class Mimo extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$userid = $this->login->isLoggedIn();
 			$posts = $this->getposts->hallreadthoughts($userid);
-			echo json_encode($posts);
+			$result = array();
+                foreach($posts as $post) {
+
+                      $p=array('PostType'=>$post['type'],
+                      			'PostId'=>$post['id'],
+                      			'PostUserPicture'=>$post['picture'],
+                      			'PostBody'=>$post['body'],
+                      			'PostUser'=>$post['username'],
+                      			'PostLikes'=>$post['likes'],
+                      			'PostComments'=>$post['comments'],
+                      			'PostDate'=>$post['posted_at']
+                      	);
+                      array_push($result,$p);
+                }
+              echo json_encode($result);
 		}
 	}//end of hallposts
 

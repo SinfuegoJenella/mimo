@@ -21,7 +21,7 @@
 						
 						<!-- Full name yung sa h4 at username/stagename yung sa h6 -->
 						<h4 style="color: white" class="text-center user"><?php echo $users[0]['firstname'].' '.$users[0]['lastname'];?></h4>
-						<a style="color: white" class="text-center user"><h6><?php echo $users[0]['username'];?></h6></a>
+						<a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?> " style="color: white" class="text-center user"><h6><?php echo $users[0]['username'];?></h6></a>
 						</div>
 				</div>
 			
@@ -71,8 +71,9 @@
 	
 	<!-- Post Body (Thoughts) -->
 	<div class="col-md-6 belowtn col-xs-12 col-sm-7">
-		<div class="postcont">
-			<?php $this->load->view('templates/commentModal');?>
+		<?php $this->load->view('templates/commentModal');?>
+		<div class="postcont thoughts">
+			
 		<!--Start to place Here the Post/Thought Templates-->
 
 		<!--End of Post Section -->	
@@ -175,11 +176,10 @@ $(document).ready(function(){
         	var posts = JSON.parse(s)
         	console.log(posts);
         	$.each(posts, function(index) {
-        		if(posts[index].type==1){
-        			$('.postcont').html(
-        						$('.postcont').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[index].username+'">'+posts[index].username+'</a><small> shared a thought!<br /><small>'+posts[index].posted_at+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[index].body+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].id+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].likes+')</small></small></a><a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div>'
-        			);
-				}
+        		if(posts[index].PostType==1){
+        		$('.thoughts').html(
+        						$('.thoughts').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'">'+posts[index].PostUser+'</a><small> shared a thought!<br /><small>'+posts[index].PostDate+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[index].PostBody+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div>'
+        						);}
 								$('[data-id]').click(function(e) {
 									e.preventDefault();
 									var buttonid = $(this).attr('data-id');
@@ -193,12 +193,17 @@ $(document).ready(function(){
 											var likes = JSON.parse(s);
 											$("[data-id='"+buttonid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
 										},
-										error: function(xhr, ajaxOptions, thrownError){
+										error: function(e){
 											console.log(e);
+											alert('error');
 										}
 									});
 
 								});
+
+					
+
+					
         	});
         },
         error: function(xhr, ajaxOptions, thrownError){
@@ -206,5 +211,22 @@ $(document).ready(function(){
         }
     });
 });
+</script>
+<script type="text/javascript">
+    if (window.location.hash && window.location.hash == '#_=_') {
+        if (window.history && history.pushState) {
+            window.history.pushState("", document.title, window.location.pathname);
+        } else {
+            // Prevent scrolling by storing the page's current scroll offset
+            var scroll = {
+                top: document.body.scrollTop,
+                left: document.body.scrollLeft
+            };
+            window.location.hash = '';
+            // Restore the scroll offset, should be flicker free
+            document.body.scrollTop = scroll.top;
+            document.body.scrollLeft = scroll.left;
+        }
+    }
 </script>
 </body>
