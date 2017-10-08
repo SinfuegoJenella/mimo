@@ -11,17 +11,17 @@
 			<div class="row" style="margin-left: 10px; margin-right: 10px">
 				<!-- Header -->
 					<!-- Sa 'background-image: url('') mo ilagay yung mga header at profile pic -->
-				<div class="header" style="background-image:url('http://localhost/mimo/assets/img/s.jpg'); width: 100%; height: 170px;
+				<div class="header" style="background-image:url('<?php echo $users[0]['header']; ?>'); width: 100%; height: 170px;
 									margin-left: 0px; background-size: cover;">
 					<!--DP-->
 					<div class="nameBox" style="background: linear-gradient(transparent,rgba(0,0,0,0.2),rgba(0,0,0,0.7)); 
 												background-size: cover; margin: 0 0; height: 162px">
-						<div class="dpSection media" style="background-image:url('http://localhost/mimo/assets/img/sam.jpg');"></div>
+						<div class="dpSection media" style="background-image:url('<?php echo $users[0]['picture']; ?>');"></div>
 							
 						
 						<!-- Full name yung sa h4 at username/stagename yung sa h6 -->
-						<h4 style="color: white" class="text-center user">Samantha Millos</h4>
-						<a style="color: white" class="text-center user"><h6>nightingale07</h6></a>
+						<h4 style="color: white" class="text-center user"><?php echo $users[0]['firstname'].' '.$users[0]['lastname'];?></h4>
+						<a style="color: white" class="text-center user"><h6><?php echo $users[0]['username'];?></h6></a>
 						</div>
 				</div>
 			
@@ -72,17 +72,9 @@
 	<!-- Post Body (Thoughts) -->
 	<div class="col-md-6 belowtn col-xs-12 col-sm-7">
 		<div class="postcont">
+			<?php $this->load->view('templates/commentModal');?>
 		<!--Start to place Here the Post/Thought Templates-->
-		<?php $this->load->view('templates/post_temp');?>
-		<?php $this->load->view('templates/post_temp');?>
-		<?php $this->load->view('templates/audio_temp');?>
-		<?php $this->load->view('templates/post_temp');?>
-		<?php $this->load->view('templates/audio_temp');?>
-		<?php $this->load->view('templates/post_temp');?>
-		<?php $this->load->view('templates/post_temp');?>
-		<?php $this->load->view('templates/post_temp');?>
 
-		
 		<!--End of Post Section -->	
 		</div>
 		<!-- End of Contents Divisions-->
@@ -162,13 +154,57 @@
 				console.log(r);
 				alert('Posted');
 			},
-			error: function(e){
-				console.log(r);
+			error: function(xhr, ajaxOptions, thrownError){
+				console.log(e);
 			}
 
 
 		});
 	});
 	
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.postcont').html("")
+	$.ajax({
+		type: 'POST',
+        url: '<?php echo base_url() ?>mimo/hallposts',
+        data:{
+        },
+        success: function(s){
+        	var posts = JSON.parse(s)
+        	console.log(posts);
+        	$.each(posts, function(index) {
+        		if(posts[index].type==1){
+        			$('.postcont').html(
+        						$('.postcont').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[index].username+'">'+posts[index].username+'</a><small> shared a thought!<br /><small>'+posts[index].posted_at+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[index].body+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].id+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].likes+')</small></small></a><a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div>'
+        			);
+				}
+								$('[data-id]').click(function(e) {
+									e.preventDefault();
+									var buttonid = $(this).attr('data-id');
+									$.ajax({
+										type: 'POST',
+										url: '<?php echo base_url() ?>mimo/likes',
+										data:{
+											postid:buttonid
+										},
+										success: function(s){
+											var likes = JSON.parse(s);
+											$("[data-id='"+buttonid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+										},
+										error: function(xhr, ajaxOptions, thrownError){
+											console.log(e);
+										}
+									});
+
+								});
+        	});
+        },
+        error: function(xhr, ajaxOptions, thrownError){
+        	console.log(e);
+        }
+    });
+});
 </script>
 </body>

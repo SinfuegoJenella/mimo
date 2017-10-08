@@ -1,8 +1,8 @@
 <?php
 
-class users extends CI_Model {
+class about extends CI_Model {
     
-	private $table = "users";
+	private $table = "about";
 	
 	public function create($data){
 		$this->db->insert($this->table, $data);
@@ -10,7 +10,6 @@ class users extends CI_Model {
 	}
 	
 	public function read($condition=null,$selector=null){
-
 		if($selector==null) $selector = '*';
 		$this->db->select($selector);
 		$this->db->from($this->table);
@@ -31,8 +30,5 @@ class users extends CI_Model {
 		$this->db->delete($this->table);
 		return TRUE;	
 	}
-	public function c(){
-		$lastid = $this->db->insert_id();
-		return $lastid;
-	}
+	
 }
