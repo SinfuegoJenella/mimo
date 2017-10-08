@@ -148,6 +148,9 @@ class Mimo extends CI_Controller {
                 }
               echo json_encode($result);
 		}
+		else{
+			redirect('mimo');
+		}
 	}//end of posts function
 	public function likes(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -176,6 +179,9 @@ class Mimo extends CI_Controller {
 			$likes = $this->posts->read($condition,$selector)[0]['likes'];
 			echo json_encode(array('likes'=>$likes));
 		}
+		else{
+			redirect('mimo');
+		}
 	}//end of likes function
 	public function search(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -184,6 +190,9 @@ class Mimo extends CI_Controller {
 				$query = $this->getposts->getsearch($search);
 				echo json_encode($query);
 			}
+		}
+		else{
+			redirect('mimo');
 		}
 	}//end of search()
 	public function hallposts(){
@@ -206,33 +215,41 @@ class Mimo extends CI_Controller {
                 }
               echo json_encode($result);
 		}
+		else{
+			redirect('mimo');
+		}
 	}//end of hallposts
 
 	public function thoughts(){
-		$thoughts = $this->input->post("thoughts");
-		$id = $this->login->isLoggedIn();
-		if($thoughts!=''){
-			$data = array(
-					'id'=>null,
-					'user_id'=>$id,
-					'likes'=>0,
-					'comments'=>0,
-					'type'=>1
-					);
-			$this->posts->create($data);
-			$topics = $this->topics->getTopics($thoughts);
-			$post_id = $this->posts->c();
-			$data = array(
-					'id'=>null,
-					'post_id'=>$post_id,
-					'body'=>$thoughts,
-					'topics'=>$topics
-					);
-			$this->thoughts->create($data);
-			echo $thoughts;
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$thoughts = $this->input->post("thoughts");
+			$id = $this->login->isLoggedIn();
+			if($thoughts!=''){
+				$data = array(
+						'id'=>null,
+						'user_id'=>$id,
+						'likes'=>0,
+						'comments'=>0,
+						'type'=>1
+						);
+				$this->posts->create($data);
+				$topics = $this->topics->getTopics($thoughts);
+				$post_id = $this->posts->c();
+				$data = array(
+						'id'=>null,
+						'post_id'=>$post_id,
+						'body'=>$thoughts,
+						'topics'=>$topics
+						);
+				$this->thoughts->create($data);
+				echo $thoughts;
+			}
+			else{
+				echo 'error';
+			}
 		}
 		else{
-			echo 'error';
+			redirect('mimo');
 		}
 	}//end of thoughts
 	
