@@ -21,7 +21,7 @@
 						<div class="media">
 							<div class="media-left">
 								<a href="#" >
-								<div class="media-object postPic" style="background-image:url('http://localhost/mimo/assets/img/sam.jpg');"></div>
+								<div class="media-object postPic" style="background-image:url('<?php echo $users[0]['picture']; ?>');"></div>
 								</a>
 							</div>
 							<div class="media-body">

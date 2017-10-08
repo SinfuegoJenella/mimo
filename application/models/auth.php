@@ -10,23 +10,11 @@ class auth extends CI_Model {
 	}
 	
 	public function read($condition=null,$selector=null){
-		
-		// SELECT * FROM students
 		if($selector==null) $selector = '*';
 		$this->db->select($selector);
 		$this->db->from($this->table);
-		
-		// $this->db->select()
-				// ->from()
-				// ->join()
-				// ->where();
-		
-		// $this->db->join('table2','table1.key=table2.fk','inner');
-		// $this->db->order_by('field_name');
-		
 		if( isset($condition) ) $this->db->where($condition);
 		
-
 		$query=$this->db->get();
 
 		return $query->result_array();		

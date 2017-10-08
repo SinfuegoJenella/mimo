@@ -8,7 +8,7 @@
 					
 						<!--Profile Picture Section -->
 						<div class="media-object" 
-								style="width: 130px; height: 130px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
+								style="width: 130px; height: 130px; background-image:url('<?php echo $user[0]['picture']; ?>'); border-radius: 50%; 
 							background-size: cover; margin: 10px auto; ">
 						</div>
 					</a>
@@ -16,7 +16,7 @@
 
 				<!--Profile Info: NAME, STAGENAME, GENRE, CAREER, FOLLOWERS, ALBUM -->
 				<div class="media-body">
-					<h2 class="profile"> Samantha Millos <small style="color: #cccccc" >(nightingale07)</small></h2>
+					<h2 class="profile"> <?php echo $user[0]['firstname'].' '.$user[0]['lastname'];?> <small style="color: #cccccc" >(<?php echo $user[0]['username'];?>)</small></h2>
 						<h6 style="padding: 0 2.2em" class="profile"><i class="material-icons">music_note</i><b style="color: #ffc266">Genres:</b> Ballad, Asian Pop, Pop Rock</h6>
 							<h6 style="padding: 0 2.2em" class="profile"><i class="material-icons">business_center</i><b style="color: #ffc266"> Career:</b> Singer , Song Writer, Sound Designer</h6>
 							<h6 style="padding: 0 2.2em" class=" profile"><i class="material-icons">group</i><b style="color: #ffc266"> Followers:</b> 232,651 People</h6>
@@ -34,9 +34,11 @@
 			</div>
 			
 			<!-- FOLLOW-->
-			<div class="row" style="margin-top: 30px;">
+			<?php if($user[0]['id']!=$users[0]['id']){ ?>
+			<div class="row follow" style="margin-top: 30px;">
 					<a href="#" class="btn follow pull-right"><i class="fa fa-bell-o"></i><span> Follow</span></a>
 			</div>
+			<?php };?>
 		</div>
 	</div>
 	
@@ -54,7 +56,7 @@
 					</ul>
 
 						<div class="tab-content">
-						
+						<?php $this->load->view('templates/commentModal');?>
 						<!-- COLLECTIONS -->
 							<div id="collections" class="tab-pane fade in active">
 							<div class="row">
@@ -98,11 +100,9 @@
 								<div class="row">
 									<div class="col-md-3">
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-6 thoughts">
 										<!-- PUT HERE THE THOUGHTS-->
-										<?php $this->load->view('templates/post_temp');?>
-										<?php $this->load->view('templates/post_temp');?>
-										<?php $this->load->view('templates/post_temp');?>
+										<?php $this->load->view('templates/commentModal');?>
 										<!-- -->
 									</div>
 									<div class="col-md-3">
@@ -139,5 +139,57 @@
 	$(function(){
      initiateFollow();
 });
+</script>
 
+<!-- Get Posts thoughts -->
+<script type="text/javascript">
+$(document).ready(function()
+{
+	var buserid = '<?php echo $user[0]['id'];?>';
+	$.ajax({
+		type: 'POST',
+        url: '<?php echo base_url() ?>mimo/posts',
+        data:{
+          	browseuser:buserid
+        },
+        success: function(s){
+			var posts = JSON.parse(s);
+        	console.log(posts);
+        	$.each(posts, function(index) {
+        		$('.thoughts').html(
+        						$('.thoughts').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'">'+posts[index].PostUser+'</a><small> shared a thought!<br /><small>'+posts[index].PostDate+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[index].PostBody+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div>'
+        						);
+								$('[data-id]').click(function(e) {
+									e.preventDefault();
+									var buttonid = $(this).attr('data-id');
+									$.ajax({
+										type: 'POST',
+										url: '<?php echo base_url() ?>mimo/likes',
+										data:{
+											postid:buttonid
+										},
+										success: function(s){
+											var likes = JSON.parse(s);
+											$("[data-id='"+buttonid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+										},
+										error: function(e){
+											console.log(e);
+											alert('error');
+										}
+									});
+
+								});
+
+					
+
+					
+        	});
+        },
+        error: function(xhr, ajaxOptions, thrownError){
+        	console.log(arguments);
+        	alert('error');
+        }
+
+	});
+});
 </script>
