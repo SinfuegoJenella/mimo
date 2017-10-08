@@ -81,6 +81,7 @@
 									
 								<div class="col-md-6">	
 									<!-- PUT HERE THE ALBUMS-->
+
 									<?php $this->load->view('templates/albumbox');?>
 									<?php $this->load->view('templates/albumbox');?>
 									<?php $this->load->view('templates/albumbox');?>

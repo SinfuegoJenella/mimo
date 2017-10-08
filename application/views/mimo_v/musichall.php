@@ -136,6 +136,7 @@
 	
 		<!--Para naman to dun sa fixed button ng release ng thoughts at audio-->
 		<?php $this->load->view('include/releasebuttons');?>
+			<?php $this->load->view('templates/commentModal');?>
 	</div>
 		
 </div><!--End of the Whole Row (LeftNav, Contents, Third Column -->

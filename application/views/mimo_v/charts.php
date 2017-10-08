@@ -73,5 +73,6 @@
 	<!--Thoughts&Audio Modal-->
 				<?php $this->load->view('templates/addpostmodal');?>
 				<?php $this->load->view('templates/addaudiomodal');?>
+				<?php $this->load->view('include/releasebuttons');?>
 </div>	
 	</body>

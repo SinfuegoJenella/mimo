@@ -189,7 +189,7 @@ li{
 
 #releaseaudiobtn {
     position: fixed;
-    bottom: 20px;
+    bottom: 40px;
     right: 20px; 
 	border-radius: 50%;
 	border: 1px solid black;
@@ -201,7 +201,7 @@ li{
 
 #thoughtbtn {
     position: fixed;
-    bottom: 20px;
+    bottom: 40px;
     right: 80px; 
 	border-radius: 50%;
 	border: 1px solid black;
@@ -216,7 +216,7 @@ li{
 #releaseaudiobtn:hover , #thoughtbtn:hover {
 	background-color:  #ff9900;
 	transition: 0.4s;
-	bottom: 30px;
+	bottom: 55px;
 	/* border: 2px solid #262626; */
 	border: none;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
