@@ -22,17 +22,6 @@
 			<!--COMMENTATORS SECTION-->
 			<div class="commentatorDiv">
 			
-				<?php $this->load->view('templates/commentbox'); ?>
-				<?php $this->load->view('templates/commentbox'); ?>
-				<?php $this->load->view('templates/commentbox'); ?>
-				<?php $this->load->view('templates/commentbox'); ?>
-				<?php $this->load->view('templates/commentbox'); ?>
-				<?php $this->load->view('templates/commentbox'); ?>
-				<?php $this->load->view('templates/commentbox'); ?>
-				<?php $this->load->view('templates/commentbox'); ?>
-				<?php $this->load->view('templates/commentbox'); ?>
-				<?php $this->load->view('templates/commentbox'); ?>
-			
 			</div>
 			
 			<!--COMMENTING SECTION-->
@@ -47,7 +36,7 @@
 					<div class="media-body">
 						<form>
 							<textarea id="commentBox" class="form-control" name="comment" placeholder="What yah say?..."></textarea>
-							<button type="submit" class="btn postComment pull-right"><i class="fa fa-comment-o"></i> Comment
+							<button type="button" class="btn postComment pull-right"><i class="fa fa-comment-o"></i> Comment
 										</button>
 						</form>
 					</div>	

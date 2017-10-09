@@ -43,8 +43,18 @@ class getposts extends CI_Model {
 		$query=$this->db->get();
 
 		return $query->result_array();	
+	}
+	public function newthoughts($userid=null){
 
-		// SELECT posts.id, thoughts.body FROM thoughts, posts, users, followers WHERE posts.user_id = followers.user_id AND users.id = posts.user_id AND followers.follower_id = 48 AND thoughts.post_id = posts.id
+		$this->db->select('users.picture,posts.id, posts.likes, posts.comments, posts.posted_at,users.username, thoughts.body')
+				->from('posts')
+				->join('thoughts', 'thoughts.post_id = posts.id')
+				->join('users', 'users.id = posts.user_id')
+				->where('posts.id',' '.$userid.' ');
+
+		$query=$this->db->get();
+
+		return $query->result_array();		
 	}
 
 }
