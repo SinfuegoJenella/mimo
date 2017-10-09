@@ -13,6 +13,7 @@ class Mimo extends CI_Controller {
 		$this->load->model('followers','followers');
 		$this->load->model('post_likes','post_likes');
 		$this->load->model('getposts');
+		$this->load->model('comments');
 		$this->load->library('login');
 		$this->load->library('mail');
 		$this->load->library('topics');
@@ -79,8 +80,12 @@ class Mimo extends CI_Controller {
 	public function browse()
 	{
 
-			$headerdata['title'] = "MimO | Browse";
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | Genres";
 			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
 			$this->load->view('mimo_v/browse');
 			$this->load->view('include/footer');
 	}//end of browse
@@ -228,7 +233,8 @@ class Mimo extends CI_Controller {
 						'topics'=>$topics
 						);
 				$this->thoughts->create($data);
-				echo $thoughts;
+				$query = $this->getposts->newthoughts($post_id);
+				echo json_encode($query);
 			}
 			else{
 				echo 'error';
@@ -238,7 +244,62 @@ class Mimo extends CI_Controller {
 			redirect('mimo');
 		}
 	}//end of thoughts
-	
+
+	public function comment(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$comment = $this->input->post("comment");
+			$postid = $this->input->post("postid");
+			$id = $this->login->isLoggedIn();
+			if($comment!=''){
+				$data = array(
+						'id'=>null,
+						'post_id'=>$postid,
+						'user_id'=>$id,
+						'comment'=>$comment
+						);
+				$this->comments->create($data);
+				$id = $this->comments->c();
+				$datas = $this->comments->aftercom($id);
+				echo json_encode($datas);
+			}
+			else{
+				
+			}
+			
+		}
+		else{
+			redirect('mimo');
+		}
+	}
+	public function getcomments(){
+		$postid = $this->input->post("postid");
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$query = $this->comments->getcom($postid);
+			echo json_encode($query);
+		}
+		else{
+			redirect('mimo');
+		}
+	}
+	public function follow(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$userid = $this->input->post("userid");
+			$followerid = $this->input->post("followerid");
+			if($this->followers->read($userid,$followerid)){
+				$data = array('id'=>null, 'user_id'=>$userid,'follower_id'=>$followerid);
+				$this->followers->create($data);
+				echo 'false-true';
+			}
+			else{
+				$data = array('user_id'=>$userid,'follower_id'=>$followerid);
+				$this->followers->del($data);
+				echo 'tru-false';
+			}
+		}
+		else{
+			redirect('mimo');
+		}
+	}
 	public function charts()
 	{
 			$id = $this->login->isLoggedIn();
@@ -272,8 +333,8 @@ class Mimo extends CI_Controller {
 			    	$data = array('token'=>sha1($_COOKIE['SNID']));
 			        $this->login_tokens->del($data);
 			    }
-			    setcookie('SNID', '1', time()-3600);
-                setcookie('SNID_', '1', time()-3600);
+			    setcookie("SNID", '', time() - 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
+			    setcookie("SNID_", '1', time() - 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
         redirect('/accounts/signin');
     }//end of logout
 	
