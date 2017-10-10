@@ -1,3 +1,7 @@
+.tabbg{
+	background-image: url('http:localhost/mimo/assets/img/nightsky3');
+	filter: blur(25px);
+}
 .postComment , .postComment:hover , .postComment:focus{
 	line-height: 10px;
 	background-color: #404040;
@@ -78,6 +82,7 @@ a.unfollow:hover,a.unfollow:active {
 .tab-content{ 
 	background-color:#f2f2f2; 
 	padding:5px; 
+	padding-bottom: 30px;
 	/* border: 1px solid #cccccc; */
 }
 
@@ -367,6 +372,7 @@ a.listnav{
 	background-color: rgba(242,242,242, .2);
 	color: white;
 	border: none;
+	width: 300px;
 }
 .searchbar:focus{
 	/* border-bottom: 1px solid orange; */
@@ -375,6 +381,43 @@ a.listnav{
 	box-shadow: none;
 }
 
+
+.searchResult{
+	 list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+	position: relative;
+	z-index: 50;
+	border:none;
+	border-radius:0px;
+	width: 200px;
+}
+
+li.sR  a{
+	padding: 0;
+    margin-top: -1px;
+    text-decoration: none; 
+    font-size: 12px; 
+    color: white;
+	position: relative;
+	display: block;
+	
+}
+li.sR:child a:hover{
+	
+    color: grey;
+	
+}
+li.sR{
+		background-color: rgba(80,80,80,0.9);
+		border:none;
+		border-radius:0px;
+
+}
+li.sR:hover{
+		background-color: rgba(200,200,200.0.9);
+		border:none;
+}
 .post{
 	margin: 0 auto;
 }

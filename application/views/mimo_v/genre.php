@@ -1,6 +1,6 @@
 <body style="background-color: #333333">
 	<!-- Top Nav Bar -->
-	<?php $this->load->view('include/topnav');?>
+
 	<!--This is below Top Navigation Section -->
 	
 <div class="container " style="padding-top:50px;">
@@ -157,7 +157,8 @@
 			<div><a href="/Mimo/playlist" class="txt">World Music / Beats</a></div>
 		</div>
 	</div>
+	<?php $this->load->view('include/releasebuttons');?>
+	<?php $this->load->view('templates/addpostmodal');?>
 	</div>
 	<!--end of first row-->	
-	<?php $this->load->view('include/releasebuttons');?>
 </body>

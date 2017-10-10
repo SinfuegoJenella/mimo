@@ -146,7 +146,6 @@ class Mimo extends CI_Controller {
 
 	public function browse()
 	{
-
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
@@ -381,6 +380,19 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/footer');
 		
 	}//end of charts
+	
+	public function upload()
+	{
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | Release Audio";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/release');
+			$this->load->view('include/footer');
+		
+	}//end of upload audio form
 	
 	public function playlist()
 	{

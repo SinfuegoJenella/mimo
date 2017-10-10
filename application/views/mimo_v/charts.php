@@ -71,8 +71,7 @@
 	</div>
 	<!--end of second row-->
 	<!--Thoughts&Audio Modal-->
-				<?php $this->load->view('templates/addpostmodal');?>
-				<?php $this->load->view('templates/addaudiomodal');?>
-				<?php $this->load->view('include/releasebuttons');?>
+	<?php $this->load->view('include/releasebuttons');?>
+	<?php $this->load->view('templates/addpostmodal');?>
 </div>	
 	</body>
