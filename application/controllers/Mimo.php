@@ -15,6 +15,7 @@ class Mimo extends CI_Controller {
 		$this->load->model('getposts');
 
 		$this->load->model('comments');
+		$this->load->model('password_tokens');
 
 		$this->load->model('genre','genre');
 		$this->load->model('about','about');
@@ -106,13 +107,15 @@ class Mimo extends CI_Controller {
 			
 			$this->about->update($data,$condition);
 			}
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
 			$data['genre'] = $this->genre->read();
-			$data['users'] = $this->users->read();
-			$data['about'] = $this->about->read();
+			$data['users'] = $this->users->read($condition);
+			$condition = array('user_id'=>$id);
+			$data['about'] = $this->about->read($condition);
 			$headerdata['title'] = "MimO | Settings";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
-			$this->load->view('include/topnav');
 			$this->load->view('mimo_v/settings', $data);
 			$this->load->view('include/footer');
 
@@ -338,7 +341,7 @@ class Mimo extends CI_Controller {
 		else{
 			redirect('mimo');
 		}
-	}
+	}//end of comment()
 	public function getcomments(){
 		$postid = $this->input->post("postid");
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -348,12 +351,29 @@ class Mimo extends CI_Controller {
 		else{
 			redirect('mimo');
 		}
-	}
-	public function follow(){
+	}//end of getcomments()
+	public function checkfollow(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$userid = $this->input->post("userid");
 			$followerid = $this->input->post("followerid");
 			if($this->followers->read($userid,$followerid)){
+				$isFollowing = true;
+				echo json_encode(array('status'=>$isFollowing));
+			}
+			else{
+				$isFollowing = false;
+				echo json_encode(array('status'=>$isFollowing));
+			}
+		}
+		else{
+			redirect('mimo');
+		}
+	}//end of checkfollow()
+	public function follow(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$userid = $this->input->post("userid");
+			$followerid = $this->input->post("followerid");
+			if(!$this->followers->read($userid,$followerid)){
 				$data = array('id'=>null, 'user_id'=>$userid,'follower_id'=>$followerid);
 				$this->followers->create($data);
 				echo 'false-true';
@@ -366,6 +386,19 @@ class Mimo extends CI_Controller {
 		}
 		else{
 			redirect('mimo');
+		}
+	}//end of follow
+	public function changepass(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$email = $this->input->post("email");
+			$cstrong = True;
+       		$token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+			$selector = 'id';
+			$condition = array('email'=>$email);
+			$userid = $this->users->read($condition,$selector)[0]['id'];
+			$data = array('id'=>null,'token'=>sha1($token),'user_id'=>$userid);
+			$this->password_tokens->create($data);
+			$this->mail->sendMail('Forgot Password!', "<a href='http://localhost/mimo/accounts/change_password?token=$token'>Click here to change your password!</a>", $email);
 		}
 	}
 	public function charts()

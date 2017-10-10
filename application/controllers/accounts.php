@@ -11,6 +11,7 @@ class accounts extends CI_Controller
 		$this->load->model('users','users');
 		$this->load->model('auth');
 		$this->load->model('about','about');
+		$this->load->model('password_tokens');
     }
     
     public function index(){
@@ -63,7 +64,7 @@ class accounts extends CI_Controller
 										'password'=>null,
 										'email'=>$email,
 										'picture'=>$userData['picture_url'],
-										'header'=>null,
+										'header'=>'https://i.imgur.com/FkWkk0Q.png',
 							);
 						$this->users->create($usersdata);
 						$lastid = $this->users->c();
@@ -184,8 +185,8 @@ class accounts extends CI_Controller
 													'lastname'=>$lastname,
 													'password'=>password_hash($password, PASSWORD_BCRYPT),
 													'email'=>$email,
-													'picture'=>null,
-													'header'=>null,
+													'picture'=>'https://i.imgur.com/LQq63AL.jpg',
+													'header'=>'https://i.imgur.com/FkWkk0Q.png',
 										);
 					                    $this->users->create($data);
 					                    $lastid = $this->users->c();
@@ -290,6 +291,68 @@ class accounts extends CI_Controller
 		else{
 			redirect('/accounts');
 		}
+    }
+
+    public function changepass(){
+    	if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    		$cbox = $this->input->post("cbox");
+    		$pass = $this->input->post("pass");
+    		$rpass = $this->input->post("rpass");
+    		$token = $this->input->post("token");
+    		$selector = 'user_id';
+    		$condition = array('token'=>sha1($token));
+    		if($this->password_tokens->read($condition,$selector)){
+    			$userid = $this->password_tokens->read($condition,$selector)[0]['user_id'];
+    			$tokenIsValid = True;
+    			if($cbox=='true'){
+    				$data = array('user_id'=>$userid);
+    				$this->login_tokens->del($data);
+    			}
+    			if($pass==$rpass){
+    				if (strlen($rpass) >= 6 && strlen($rpass) <= 60) {
+    					$data = array('password'=>password_hash($rpass, PASSWORD_BCRYPT));
+    					$condition = array('id'=>$userid);
+    					$this->users->update($data,$condition);
+    					$data = array('user_id'=>$userid);
+    					$this->password_tokens->del($data);
+    					echo json_encode(array('status'=>"success",'error'=>"None"));
+    				}
+    				else{
+    					echo json_encode(array('status'=>"error",'error'=>"Invalid Password Length"));
+    				}
+    			}
+    			else{
+    				echo json_encode(array('status'=>"error",'error'=>"password not match"));
+    			}
+			}
+			else{
+				redirect('/accounts');
+			}
+		}
+		else{
+			redirect('/accounts');
+		}
+    }
+    public function change_password(){
+    	if(isset($_GET['token'])){
+    		$token = $_GET['token'];
+    		$selector = 'user_id';
+    		$condition = array('token'=>sha1($token));
+    		if($this->password_tokens->read($condition,$selector)){
+	    		$data['token'] = $_GET['token'];
+	    		$headerdata['title'] = "MimO | Login/Sign up";
+				$this->load->view('include/header',$headerdata);
+				$this->load->view('mimo_v/changepass',$data);
+				$this->load->view('include/footer');
+			}
+			else{
+				redirect('/accounts');
+			}
+    	}
+    	else{
+			redirect('/accounts');
+		}
+    	
     }
    
 }
