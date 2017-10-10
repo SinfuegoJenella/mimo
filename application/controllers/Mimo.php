@@ -146,10 +146,6 @@ class Mimo extends CI_Controller {
 
 	public function browse()
 	{
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
