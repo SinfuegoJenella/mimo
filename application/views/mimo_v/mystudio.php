@@ -102,10 +102,7 @@
 									</div>
 									<div class="col-md-6 thoughts">
 										<!-- PUT HERE THE THOUGHTS-->
-<<<<<<< HEAD
-										<?php $this->load->view('templates/commentModal');?>
-=======
->>>>>>> master
+
 										<!-- -->
 									</div>
 									<div class="col-md-3">
