@@ -22,21 +22,9 @@
 			<!--papunta sa charts.php-->
 			<div><a href="<?php echo base_url('mimo/charts');?>" ><img  src="http://localhost/mimo/assets/img/charts.jpg" class="img-rounded img-chart " style="width:800px; height: 200px; opacity: 0.9;"></a></div>				
 			</div>
-		
-<<<<<<< HEAD
-</div>
+
+
 	<?php $this->load->view('include/releasebuttons');?>
 	<?php $this->load->view('templates/addpostmodal');?>
-=======
-		
-		
-		
-		
-		
-		
-		
-		
-	<?php $this->load->view('include/releasebuttons');?>	
->>>>>>> master
 </div>
 </body>
