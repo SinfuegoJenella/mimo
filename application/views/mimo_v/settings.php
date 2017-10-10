@@ -13,12 +13,12 @@
 			</div>
 			<div class="col-md-2">
 					
-						<div style="width: 140px; height: 140px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
+						<div style="width: 140px; height: 140px; background-image:url('<?php echo $users[0]['picture'] ?>'); border-radius: 50%; 
 							background-size: cover; margin: 0 auto; "></div>
 
-							<h4 style="color: white" class="text-center user">Samantha Millos</h4>
+							<h4 style="color: white" class="text-center user"><?php echo $users[0]['firstname'].' '.$users[0]['lastname'] ?></h4>
 
-							<a style="color: white" class="text-center user"><h6>nightingale07</h6></a>
+							<a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" style="color: white" class="text-center user"><h6><?php echo $users[0]['username'] ?></h6></a>
 			</div>
 
 			<div class="col-md-8">
@@ -46,26 +46,10 @@
 									<div class="col-md-6 form-group">
 									
 										<label for="lastname">Last Name :</label>
-											<input type="text" class="form-control form-inline" name="lastname" id="lastname" placeholder=" <?php
-											$id = $this->login->isLoggedIn();
-											foreach($users as $s){
-												if($s['id']==$id)
-												{
-												echo $s['lastname'];
-												}
-											}
-											?>"
+											<input type="text" class="form-control form-inline" name="lastname" id="lastname" value="<?php echo $users[0]['lastname'] ?>" />
 											/>
 										<label for="username">Username <small>(Stage Name)</small>:</label>
-											<input type="text" class="form-control"  name="username" id="username" placeholder=" <?php
-											$id = $this->login->isLoggedIn();
-											foreach($users as $s){
-												if($s['id']==$id)
-												{
-												echo $s['username'];
-												}
-											}
-											?>" />
+											<input type="text" class="form-control"  name="username" id="username" value="<?php echo $users[0]['username'] ?>" /> 
 										<label>Change Profile Picture :</label>
 											<div class="input-group">
 												<span class="input-group-btn">
@@ -82,26 +66,18 @@
 									<div class="col-md-6 form-group">
 										<div class="form-group">
 											<label for="firstname">First Name :</label>
-											<input type="text" class="form-control" name="firstname" id="firstname" placeholder=" <?php
-											$id = $this->login->isLoggedIn();
-											foreach($users as $s){
-												if($s['id']==$id)
-												{
-												echo $s['firstname'];
-												}
-											}
-											?>" />
+											<input type="text" class="form-control" name="firstname" id="firstname" value="<?php echo $users[0]['firstname'] ?>" />
 											<label for="">Password:</label>
 											<div class="input-group">
 												<input type="password" class="form-control" name="" value="samanthagerrergergtrtgrrgtercfrgetcgtrbet" readonly />
 													<span class="input-group-btn">
-														<a class="btn btn-default" onclick="document.getElementById('demo').style.display='block'">
+														<a id="changepass"class="btn btn-default" onclick="document.getElementById('demo').style.display='block'">
 														<i class="glyphicon glyphicon-edit"></i> Send Link to Change Password
 														</a>
 													</span>	
 											</div>
 												<p id="demo" style="display:none; color: #565656">
-													<small>The email was sent to sammillos@gmail.com 
+													<small>The email was sent to <?php echo $users[0]['email'];?> 
 													with the link to change your password.</small></p>
 										</div>
 										
@@ -264,4 +240,26 @@
 		<br/>
 		<br/>
 </div>		
+
+<script type="text/javascript">
+	$('#changepass').click(function(e) {
+		e.preventDefault();
+		var email = '<?php echo $users[0]['email'];?> ';
+		$.ajax({
+			type: 'POST',
+			url: '<?php echo base_url() ?>mimo/changepass',
+			data:{
+				email:email
+			},
+			success: function(s){
+				console.log(s)
+			},
+			error: function(e){
+				console.log(e)
+			}
+		});
+	});
+
+</script>
+
 </body>

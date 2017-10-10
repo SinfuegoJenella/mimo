@@ -1,21 +1,19 @@
 <?php
 
-class followers extends CI_Model {
+class password_tokens extends CI_Model {
     
-	private $table = "followers";
+	private $table = "password_tokens";
 	
 	public function create($data){
 		$this->db->insert($this->table, $data);
 		return TRUE;	
 	}
 	
-	public function read($userid,$followerid){
-
-		$this->db->select('*')
-				 ->from($this->table)
-				 ->where('user_id',' '.$userid.' ')
-				 ->where('follower_id', ' '.$followerid.' ');
-
+	public function read($condition=null,$selector=null){
+		if($selector==null) $selector = '*';
+		$this->db->select($selector);
+		$this->db->from($this->table);
+		if( isset($condition) ) $this->db->where($condition);
 		$query=$this->db->get();
 
 		return $query->result_array();		

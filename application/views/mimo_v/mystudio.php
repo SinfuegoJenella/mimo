@@ -38,7 +38,7 @@
 			<!-- FOLLOW-->
 			<?php if($user[0]['id']!=$users[0]['id']){ ?>
 			<div class="row follow" style="margin-top: 30px;">
-					<a href="" id="follow" class="btn follow pull-right"><i class="fa fa-bell-o"></i><span> Follow</span></a>
+					<a id="follow" class="btn follow pull-right"><i class="fa fa-bell-o"></i><span></span></a>
 			</div>
 			<?php };?>
 		</div>
@@ -240,6 +240,70 @@ $(document).ready(function()
         	alert('error');
         }
 
+	});
+
+	var userid = '<?php echo $user[0]['id'];?>';
+	var followerid = '<?php echo $users[0]['id'];?>';
+	$.ajax({
+		type:'POST',
+		url: '<?php echo base_url() ?>mimo/checkfollow',
+		data:{
+			userid:userid,
+			followerid:followerid
+		},
+		success: function(s){
+			var check = JSON.parse(s)
+			if(check.status==true){
+				//Pag di nakatapat yung mouse sa following/unfollow button:
+				 $("#follow").bind("mouseout",function(){
+					 
+					 //Yung text sa button, magiging following
+					$("#follow").children("span").text(" Following");
+					
+					//Idadagdag yung check na icon, tapos
+					//tatanggalin yung icon ng follow button (yung bell)
+					$("#follow").children("i").addClass("fa-check-circle");
+					$("#follow").children("i").removeClass("fa-bell-o");
+				}); 
+
+				
+				//Diba nakafollow na? Kapag pag NAKATAPAT yung mouse don: 
+				$("#follow").bind("mouseover",function(){
+					
+					//Yung kaninang text na FOLLOWING, papalitan ng UNFOLLOW
+					$("#follow").children("span").text(" UnFollow");
+					
+					//Tatanggalin yung icon ng FOLLOWING na check
+					$("#follow").children("i").removeClass("fa-check-circle");
+					
+					//Tapos ipapalit yung icon ng UNFOLLOW na eks
+					$("#follow").children("i").addClass("fa-times-circle");
+				});
+
+			}else{
+				$("a.follow").bind("click",function(){
+					//Pag pinindot mo yung FOLLOW BUTTON, 
+						//Magiging "UNFOLLOW" yung text
+			        $('#follow').children("span").text(" UnFollow");
+					
+					//Tatanggalin nya yung class na follow(blue)
+			        $('#follow').removeClass("follow");
+					
+					//bali dito, ia-add yung class na unfollow, magiging 
+						//RED na yung button
+			        $('#follow').addClass("unfollow");
+					
+					//di ko alam to HAHA
+			        $('#follow').unbind();
+					
+					//basta sama mo to
+			        initiateFollow();
+			    });
+			}
+		},
+		error: function(e){
+			console.log(e)
+		}
 	});
 
 	$('#follow').click(function(e) {
