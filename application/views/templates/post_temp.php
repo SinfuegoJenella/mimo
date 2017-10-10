@@ -31,7 +31,6 @@
 					<a href="#" id="likeBtn" type="button" class="btn like" aria-pressed="false" onclick="handleBtnClick(event)">
 						<span class="fa fa-heart-o">
 						</span> Like <small>
-						<!-- Number of Likes -->
 						<small>(12,367)</small></small></a>
 						
 					<a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal">

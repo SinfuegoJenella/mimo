@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -23,7 +23,7 @@
     $(document).ready(function() {
         $('.searchbar').keyup(function(e){
             var sWord = $(this).val();
-            $('.searchresult').html("")
+            $('.searchresult').html("");
             $.ajax({
                 type: 'POST',
                 url: '<?php echo base_url() ?>mimo/search',
@@ -35,7 +35,7 @@
                         var res = JSON.parse(s);
                         for (var i = 0; i < res.length; i++) {
                             console.log(res[i])
-                            $('.searchresult').html($('.searchresult').html()+'<li class="list-group-item"><a href="http://localhost/mimo/mimo/myStudio?username='+res[i].username+'"><span>'+res[i].firstname+' '+res[i].lastname+' ('+res[i].username+')</span></a></li>')
+                            $('.searchresult').html($('.searchresult').html()+'<li class="list-group-item sR" ><a href="http://localhost/mimo/mimo/myStudio?username='+res[i].username+'"><i class="fa fa-user"></i><span> '+res[i].firstname+' '+res[i].lastname+' <small>('+res[i].username+')</small></span></a></li>')
                         }
                     }
                 },

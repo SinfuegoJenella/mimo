@@ -8,7 +8,9 @@
 					
 						<!--Profile Picture Section -->
 						<div class="media-object" 
-								style="width: 130px; height: 130px; background-image:url('<?php echo $user[0]['picture']; ?>'); border-radius: 50%; 
+								style="width: 130px; height: 130px; 
+								background-image:url('<?php if ($user[0]['picture'] == NULL){ echo 'http://localhost/mimo/assets/img/noimage.jpg'; }
+																else{ echo $user[0]['picture'];} ?>'); border-radius: 50%; 
 							background-size: cover; margin: 10px auto; ">
 						</div>
 					</a>
@@ -42,14 +44,11 @@
 		</div>
 	</div>
 	
-	<!-- Para to sa modal ng share thought at audio-->
-	<?php $this->load->view('templates/addpostmodal');?>
-	<?php $this->load->view('templates/addaudiomodal');?>
 	
 	<div class="row">
 	<ul class="nav nav-tabs nav-justified">
 						<!-- COLLECTIONS, ALBUMS, THOUGHTS, and FAVORITES TABS-->
-						<li class="active"><a data-toggle="tab" href="#collections"><i class="material-icons">library_music</i></span>&nbsp;Collections</a></li>
+						<li class="active"><a data-toggle="tab" href="#collections"><i class="material-icons">library_music</i>&nbsp;Collections</a></li>
 						<li><a data-toggle="tab" href="#albums" ><span><i class="material-icons">album</i></span>&nbsp;Albums</a></li>
 						<li><a data-toggle="tab" href="#thought" ><span><i class="material-icons">chat_bubble</i></span>&nbsp;Thoughts</a></li>
 						<li><a data-toggle="tab" href="#fav" ><i class="material-icons">favorite</i></span>&nbsp;Favorites</a></li>
@@ -104,12 +103,6 @@
 									<div class="col-md-6 thoughts">
 										<!-- PUT HERE THE THOUGHTS-->
 										<?php $this->load->view('templates/commentModal');?>
-<<<<<<< HEAD
-										<?php $this->load->view('templates/post_temp');?>
-										<?php $this->load->view('templates/post_temp');?>
-										<?php $this->load->view('templates/post_temp');?>
-=======
->>>>>>> master
 										<!-- -->
 									</div>
 									<div class="col-md-3">
@@ -138,6 +131,7 @@
 						</div>
 </div>
 	<?php $this->load->view('include/releasebuttons');?>
+	<?php $this->load->view('templates/addpostmodal');?>
 	</div>
 </div>
 </body>

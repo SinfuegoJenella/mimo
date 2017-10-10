@@ -11,23 +11,20 @@
                     <div class="input-group">
 						<!--Search Bar -->
                         <input class="form-control searchbar" type="text" placeholder="Search">
-                        <ul class="list-group searchresult" style="position:absolute;width:100%; z-index:100"></ul>
                         <div class="input-group-btn">
                             <a class="btn btn-block searchBtn" role="button" href="#"> <i class="glyphicon glyphicon-search"></i></a>
                         </div>
+						
                     </div>
+					<ul class="list-group searchresult" style="position: absolute; width:400px; z-index:100"></ul>
                 </form>
 				<!-- Nav Items -->
                 <ul class="nav navbar-nav navbar-right">
                     <li class="presentation" role="presentation"><a href="<?php echo base_url('');?>" class="bar">
-						<i class="material-icons bar">speaker</i><p class="bar hidden-sm"> Music Hall</p></a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="" class="bar">
-						<i class="material-icons bar">equalizer</i><p class="hidden-sm bar"> Browse</p><span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li role="presentation"><a href="<?php echo base_url('mimo/artist');?>"><i class="material-icons">person</i> Artist</a></li>
-								<li role="presentation"><a href="<?php echo base_url('mimo/genre');?>"><i class="material-icons">music_note</i>Genre </a></li>
-								<li role="presentation"><a href="<?php echo base_url('mimo/charts');?>"><i class="material-icons">show_chart</i>Chart </a></li>
-							</ul>
+						<span class="material-icons bar">speaker</span><p class="bar hidden-sm"> Music Hall</p></a></li>
+                    <li class="presentation"><a class="presentation" href="<?php echo base_url('mimo/browse');?>" class="bar">
+						<i class="material-icons bar">equalizer</i><p class="hidden-sm bar"> Browse</p></a>
+							
                     </li>
                     <li role="presentation"><a href="<?php echo base_url('mimo/myStudio?username='.$users[0]['username'].' ');?>" class="bar">
 						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>	
