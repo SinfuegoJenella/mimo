@@ -1,10 +1,6 @@
 <body style="background-color: #333333">
 	<!-- Top Nav Bar -->
-	<?php $this->load->view('include/topnav');?>
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 	<!--This is below Top Navigation Section -->
 	
 <div class="container " style="padding-top:50px;">
@@ -165,8 +161,4 @@
 	<?php $this->load->view('templates/addpostmodal');?>
 	</div>
 	<!--end of first row-->	
-<<<<<<< HEAD
-=======
-	<?php $this->load->view('include/releasebuttons');?>
->>>>>>> master
 </body>
