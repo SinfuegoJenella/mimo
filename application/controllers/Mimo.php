@@ -13,6 +13,12 @@ class Mimo extends CI_Controller {
 		$this->load->model('followers','followers');
 		$this->load->model('post_likes','post_likes');
 		$this->load->model('getposts');
+
+		$this->load->model('comments');
+
+		$this->load->model('genre','genre');
+		$this->load->model('about','about');
+
 		$this->load->library('login');
 		$this->load->library('mail');
 		$this->load->library('topics');
@@ -38,14 +44,76 @@ class Mimo extends CI_Controller {
 	{
 		//check if user is logged in
 		
+			if(isset($_POST['account'])){
 			$id = $this->login->isLoggedIn();
+			$selector= 'username';
 			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
+			$previoususername= $this->users->read($condition,$selector)[0]['username'];
+			$selector= 'lastname';
+			$previouslastname= $this->users->read($condition,$selector)[0]['lastname'];
+			$selector= 'firstname';
+			$previousfirstname= $this->users->read($condition,$selector)[0]['firstname'];
+			$username = $this->input->post("username", TRUE);
+			$lastname = $this->input->post("lastname", TRUE);
+			$firstname= $this->input->post("firstname", TRUE);
+			
+			//$this->image->uploadImage($_FILES['imgHeader'],"UPDATE users SET header= $_FILES['imgHeader'] WHERE id= $id", array('id'=>$id));
+			if ($username==NULL){
+				$username=$previoususername;
+			}
+			if ($lastname==NULL){
+				$lastname=$previouslastname;
+			}
+			if ($firstname==NULL){
+				$firstname=$previousfirstname;
+			}
+			
+			$data = array(
+					'username'=>$username,
+					'lastname'=>$lastname,
+					'firstname'=>$firstname
+					);
+			$this->users->update($data,$condition);
+			
+			}
+			if(isset($_POST['mymusic'])){
+			$id = $this->login->isLoggedIn();
+			$selector= 'career';
+			$condition = array('user_id'=>$id);
+			$previouscareer= $this->about->read($condition,$selector)[0]['career'];
+			$genre1 = $this->input->post("genre1", TRUE);
+			$genre2 = $this->input->post("genre2", TRUE);
+			$genre3 = $this->input->post("genre3", TRUE);
+			$mcareer = $_POST['mcareer'];
+			$career="";
+			if($mcareer==NULL){
+				$career=$previouscareer;
+			}
+			else{
+				foreach($mcareer as $car)
+				{
+					$career .= $car. ", ";
+						
+				}
+			}
+			
+			$data = array(
+					'genre1'=>$genre1,
+					'genre2'=>$genre2,
+					'genre3'=>$genre3,
+					'career'=>$career
+					);
+			
+			$this->about->update($data,$condition);
+			}
+			$data['genre'] = $this->genre->read();
+			$data['users'] = $this->users->read();
+			$data['about'] = $this->about->read();
 			$headerdata['title'] = "MimO | Settings";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
 			$this->load->view('include/topnav');
-			$this->load->view('mimo_v/settings');
+			$this->load->view('mimo_v/settings', $data);
 			$this->load->view('include/footer');
 
 	}//end of settings
@@ -78,10 +146,15 @@ class Mimo extends CI_Controller {
 
 	public function browse()
 	{
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
 			$headerdata['title'] = "MimO | Browse";
+
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
 			$this->load->view('mimo_v/browse');
@@ -231,7 +304,8 @@ class Mimo extends CI_Controller {
 						'topics'=>$topics
 						);
 				$this->thoughts->create($data);
-				echo $thoughts;
+				$query = $this->getposts->newthoughts($post_id);
+				echo json_encode($query);
 			}
 			else{
 				echo 'error';
@@ -241,7 +315,62 @@ class Mimo extends CI_Controller {
 			redirect('mimo');
 		}
 	}//end of thoughts
-	
+
+	public function comment(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$comment = $this->input->post("comment");
+			$postid = $this->input->post("postid");
+			$id = $this->login->isLoggedIn();
+			if($comment!=''){
+				$data = array(
+						'id'=>null,
+						'post_id'=>$postid,
+						'user_id'=>$id,
+						'comment'=>$comment
+						);
+				$this->comments->create($data);
+				$id = $this->comments->c();
+				$datas = $this->comments->aftercom($id);
+				echo json_encode($datas);
+			}
+			else{
+				
+			}
+			
+		}
+		else{
+			redirect('mimo');
+		}
+	}
+	public function getcomments(){
+		$postid = $this->input->post("postid");
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$query = $this->comments->getcom($postid);
+			echo json_encode($query);
+		}
+		else{
+			redirect('mimo');
+		}
+	}
+	public function follow(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$userid = $this->input->post("userid");
+			$followerid = $this->input->post("followerid");
+			if($this->followers->read($userid,$followerid)){
+				$data = array('id'=>null, 'user_id'=>$userid,'follower_id'=>$followerid);
+				$this->followers->create($data);
+				echo 'false-true';
+			}
+			else{
+				$data = array('user_id'=>$userid,'follower_id'=>$followerid);
+				$this->followers->del($data);
+				echo 'tru-false';
+			}
+		}
+		else{
+			redirect('mimo');
+		}
+	}
 	public function charts()
 	{
 			$id = $this->login->isLoggedIn();
@@ -288,8 +417,8 @@ class Mimo extends CI_Controller {
 			    	$data = array('token'=>sha1($_COOKIE['SNID']));
 			        $this->login_tokens->del($data);
 			    }
-			    setcookie('SNID', '1', time()-3600);
-                setcookie('SNID_', '1', time()-3600);
+			    setcookie("SNID", '', time() - 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
+			    setcookie("SNID_", '1', time() - 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
         redirect('/accounts/signin');
     }//end of logout
 	

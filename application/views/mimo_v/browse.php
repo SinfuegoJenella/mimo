@@ -1,7 +1,11 @@
 <body style="background: linear-gradient(to bottom right, #bdc3c7 1%, #2c3e50 111%);
 			background-attachment: fixed">
 	<!-- Top Nav Bar -->
+<<<<<<< HEAD
 	<?php $this->load->view('include/topnav');?>
+=======
+ 	 <?php $this->load->view('include/topnav');?>
+>>>>>>> master
 		<br>
 		<div class="container">
 
@@ -24,8 +28,20 @@
 			<div><a href="<?php echo base_url('mimo/charts');?>" ><img  src="http://localhost/mimo/assets/img/charts.jpg" class="img-rounded img-chart " style="width:800px; height: 200px; opacity: 0.9;"></a></div>				
 			</div>
 		
+<<<<<<< HEAD
 </div>
 	<?php $this->load->view('include/releasebuttons');?>
 	<?php $this->load->view('templates/addpostmodal');?>
+=======
+		
+		
+		
+		
+		
+		
+		
+		
+	<?php $this->load->view('include/releasebuttons');?>	
+>>>>>>> master
 </div>
 </body>

@@ -13,12 +13,12 @@
 			</div>
 			<div class="col-md-2">
 					
-						<div style="width: 140px; height: 140px; background-image:url('<?php echo $users[0]['picture']; ?>'); border-radius: 50%; 
+						<div style="width: 140px; height: 140px; background-image:url('http://localhost/mimo/assets/img/sam.jpg'); border-radius: 50%; 
 							background-size: cover; margin: 0 auto; "></div>
 
-							<h4 style="color: white" class="text-center user"><?php echo $users[0]['firstname'].' '.$users[0]['lastname'];?></h4>
+							<h4 style="color: white" class="text-center user">Samantha Millos</h4>
 
-							<a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?> " style="color: white" class="text-center user"><h6><?php echo $users[0]['username'];?></h6></a>
+							<a style="color: white" class="text-center user"><h6>nightingale07</h6></a>
 			</div>
 
 			<div class="col-md-8">
@@ -45,10 +45,27 @@
 								<br />
 									<div class="col-md-6 form-group">
 									
-										<label for="">Last Name :</label>
-											<input type="text" class="form-control form-inline" name="" value="Millos"/>
-										<label for="">Username <small>(Stage Name)</small>:</label>
-											<input type="text" class="form-control"  name="" value="nightingale07"/>
+										<label for="lastname">Last Name :</label>
+											<input type="text" class="form-control form-inline" name="lastname" id="lastname" placeholder=" <?php
+											$id = $this->login->isLoggedIn();
+											foreach($users as $s){
+												if($s['id']==$id)
+												{
+												echo $s['lastname'];
+												}
+											}
+											?>"
+											/>
+										<label for="username">Username <small>(Stage Name)</small>:</label>
+											<input type="text" class="form-control"  name="username" id="username" placeholder=" <?php
+											$id = $this->login->isLoggedIn();
+											foreach($users as $s){
+												if($s['id']==$id)
+												{
+												echo $s['username'];
+												}
+											}
+											?>" />
 										<label>Change Profile Picture :</label>
 											<div class="input-group">
 												<span class="input-group-btn">
@@ -64,8 +81,16 @@
 								
 									<div class="col-md-6 form-group">
 										<div class="form-group">
-											<label for="">First Name :</label>
-											<input type="text" class="form-control" name="" value="Samantha"/>
+											<label for="firstname">First Name :</label>
+											<input type="text" class="form-control" name="firstname" id="firstname" placeholder=" <?php
+											$id = $this->login->isLoggedIn();
+											foreach($users as $s){
+												if($s['id']==$id)
+												{
+												echo $s['firstname'];
+												}
+											}
+											?>" />
 											<label for="">Password:</label>
 											<div class="input-group">
 												<input type="password" class="form-control" name="" value="samanthagerrergergtrtgrrgtercfrgetcgtrbet" readonly />
@@ -85,7 +110,7 @@
 											<div class="input-group">
 												<span class="input-group-btn">
 													<span class="btn btn-default btn-file">
-														Choose… <input type="file" id="imgHeader" accept="image/*">
+														Choose… <input type="file" id="imgHeader" name="imgHeader" accept="image/*">
 													</span>
 												</span>
 												<input type="text" class="form-control" readonly>
@@ -98,7 +123,7 @@
 								
 								<div class="row">
 									<div class="col-md-12">
-										<button type="submit" class="btn settingsBtn pull-right">
+									<button type="submit" class="btn settingsBtn pull-right" name="account">
 											Save Changes
 										</button>
 									</div>
@@ -116,39 +141,58 @@
 									</div>
 									<div class="col-md-6">
 										<label for="">1.&nbsp;&nbsp;</label>
-											<select class="form-control">
+											<select class="form-control" id="genre1" name="genre1">
 												<!-- Pakilagay ng lang po ito sa database at i-php na lang po :) Listahan ng Music Genres-->
-												<option>New Age</option>
-												<option>Opera</option>
-												<option>Pop (Popular music)</option>
-												<option>R&B / Soul</option>
-												<option>Reggae</option>
-												<option>Rock</option>
-												<option>World Music / Beats</option>
+											<?php
+											foreach($genre as $s){
+												$id = $this->login->isLoggedIn();
+												foreach($about as $a){
+												if($a['user_id']==$id)
+												{  
+													if($a['genre1']==$s['name'])
+													echo '<option selected = "selected" value="'.$s['name'].'">'.$s['name'].'</option>';
+												
+												}
+												else{
+												echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
+											}}}
+											?>
 											</select>
 											
-										<label for="">2.&nbsp;&nbsp;</label>
-											<select class="form-control">
-												<option>Latin Music</option>
-												<option>New Age</option>
-												<option>Opera</option>
-												<option>Pop (Popular music)</option>
-												<option>R&B / Soul</option>
-												<option>Reggae</option>
-												<option>Rock</option>
-												<option>World Music / Beats</option>
+										<label for="genre2">2.&nbsp;&nbsp;</label>
+											<select class="form-control" id="genre2" name="genre2"> 
+												<?php
+											foreach($genre as $s){
+												$id = $this->login->isLoggedIn();
+												foreach($about as $a){
+												if($a['user_id']==$id)
+												{  
+													if($a['genre2']==$s['name'])
+													echo '<option selected = "selected" value="'.$s['name'].'">'.$s['name'].'</option>';
+												
+												}
+												else{
+												echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
+											}}}
+											?>
 											</select>
 											
-										<label for="">3.&nbsp;&nbsp;</label>
-											<select class="form-control">
-												<option>Alternative Music</option>
-												<option>Blues</option>
-												<option>Classical Music</option>
-												<option>Country Music</option>
-												<option>Dance Music</option>
-												<option>Easy Listening</option>
-												<option>Electronic Music</option>
-												<option>European Music (Folk / Pop)</option>
+										<label for="genre3">3.&nbsp;&nbsp;</label>
+											<select class="form-control" id="genre3" name="genre3">
+												<?php
+											foreach($genre as $s){
+												$id = $this->login->isLoggedIn();
+												foreach($about as $a){
+												if($a['user_id']==$id)
+												{  
+													if($a['genre3']==$s['name'])
+													echo '<option selected = "selected" value="'.$s['name'].'">'.$s['name'].'</option>';
+												
+												}
+												else{
+												echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
+											}}}
+											?>
 											</select>
 									</div>
 								</div>	
@@ -157,32 +201,34 @@
 							<div class="col-md-12">
 								<label>I'm a(n):</label>
 								<div class="row">
+							
 								<div class="col-md-3">
-									<input type="checkbox" name="mcareer" value="singer"> Singer<br>
-									<input type="checkbox" name="mcareer" value="swriter"> Song Writer<br>
-									<input type="checkbox" name="mcareer" value="mprod"> Music Producer<br>
-									<input type="checkbox" name="mcareer" value="compo"> Composer<br>
+					
+									<input type="checkbox" name="mcareer[]" value="Singer"> Singer<br>
+									<input type="checkbox" name="mcareer[]" value="Song Writer"> Song Writer<br>
+									<input type="checkbox" name="mcareer[]" value="Music Producer"> Music Producer<br>
+									<input type="checkbox" name="mcareer[]" value="Composer"> Composer<br>
 								</div>
 								
 								<div class="col-md-3">
-									<input type="checkbox" name="mcareer" value="dj"> DJ<br>
-									<input type="checkbox" name="mcareer" value="rockstar"> Rockstar<br>
-									<input type="checkbox" name="mcareer" value="instrum"> Instrumentalist<br>
-									<input type="checkbox" name="mcareer" value="bgsinger"> Background Singer<br>
+									<input type="checkbox" name="mcareer[]" value="DJ"> DJ<br>
+									<input type="checkbox" name="mcareer[]" value="Rockstar"> Rockstar<br>
+									<input type="checkbox" name="mcareer[]" value="Instrumentalist"> Instrumentalist<br>
+									<input type="checkbox" name="mcareer[]" value="Background Singer"> Background Singer<br>
 								</div>
 								
 								<div class="col-md-3">
-									<input type="checkbox" name="mcareer" value="lyricist"> Lyricist<br>
-									<input type="checkbox" name="mcareer" value="bandmember"> Band Member<br>
-									<input type="checkbox" name="mcareer" value="pmwriter"> Production Music Writer<br>
-									<input type="checkbox" name="mcareer" value="sounddesigner"> Sound Designer<br>
+									<input type="checkbox" name="mcareer[]" value="Lyricist">Lyricist<br>
+									<input type="checkbox" name="mcareer[]" value="Band Member"> Band Member<br>
+									<input type="checkbox" name="mcareer[]" value="Production Music Writer"> Production Music Writer<br>
+									<input type="checkbox" name="mcareer[]" value="Sound Designer"> Sound Designer<br>
 								</div>
 								
 								<div class="col-md-3">
-									<input type="checkbox" name="mcareer" value="jwriter"> Jingle Writer<br>
-									<input type="checkbox" name="mcareer" value="accomp"> Accompanist<br>
-									<input type="checkbox" name="mcareer" value="ssinger"> Session Singer<br>
-									<input type="checkbox" name="mcareer" value="smusician"> Session Musician<br>
+									<input type="checkbox" name="mcareer[]" value="Sound Designer"> Sound Designer<br>
+									<input type="checkbox" name="mcareer[]" value="Accompanist"> Accompanist<br>
+									<input type="checkbox" name="mcareer[]" value="Session Singer"> Session Singer<br>
+									<input type="checkbox" name="mcareer[]" value="Session Musician"> Session Musician<br>
 								</div>
 								
 								</div>
@@ -191,7 +237,7 @@
 						
 									<div class="row">
 										<div class="col-md-12">
-											<button type="submit" class="btn settingsBtn pull-right">
+											<button type="submit" class="btn settingsBtn pull-right" name="mymusic">
 											Save Changes
 											</button>
 										</div>
