@@ -59,9 +59,11 @@
                 success: function(r){
                     var posts = JSON.parse(r)
                     console.log(posts);
-                    $('.thoughts').prepend('<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[0].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[0].username+'">'+posts[0].username+'</a><small> shared a thought!<br /><small>'+posts[0].posted_at+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[0].body+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[0].id+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[0].likes+')</small></small></a><a class="commentBtn btn comment" data-did="'+posts[0].id+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div>'
+                    $('.thoughts').prepend('<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[0].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[0].username+'">'+posts[0].username+'</a><small> shared a thought!<br /><small>'+posts[0].posted_at+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[0].body+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[0].id+'"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[0].likes+')</small></small></a><a class="commentBtn btn comment" data-did="'+posts[0].id+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div>'
                                 );
-                        alert('Posted');
+                        alert('Your thought was successfully posted!');
+						$('#addThought').modal('hide');
+						
                 },
                 error: function(xhr, ajaxOptions, thrownError){
                     console.log(e);
