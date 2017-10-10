@@ -72,10 +72,7 @@
 	<div class="col-md-6 belowtn col-xs-12 col-sm-7">
 		<?php $this->load->view('templates/commentModal');?>
 		<div class="postcont thoughts">
-<<<<<<< HEAD
-=======
 			
->>>>>>> master
 		<!--Start to place Here the Post/Thought Templates-->
 
 		<!--End of Post Section -->	
@@ -144,28 +141,6 @@
 </div><!--End of the Whole Row (LeftNav, Contents, Third Column -->
 
 
-<<<<<<< HEAD
-<script type="text/javascript">
-	$('#thoughts').click(function() {
-		var txt = $("#textarea").val();
-		$.ajax({
-			type:'POST',
-			url: '<?php echo base_url() ?>mimo/thoughts',
-			data:{
-				thoughts:txt
-			},
-			success: function(r){
-				console.log(r);
-				alert('Your thought has been successfully posted!');
-				$('#addThought').modal('hide');
-			},
-			error: function(xhr, ajaxOptions, thrownError){
-				console.log(e);
-			}
-
-=======
->>>>>>> master
-
 <script type="text/javascript">
 $(document).ready(function(){
 	$('.postcont').html("")
@@ -180,11 +155,9 @@ $(document).ready(function(){
         	$.each(posts, function(index) {
         		if(posts[index].PostType==1){
         		$('.thoughts').html(
-<<<<<<< HEAD
+
         						$('.thoughts').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'">'+posts[index].PostUser+'</a><small> shared a thought!<br /><small>'+posts[index].PostDate+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[index].PostBody+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div>'
-=======
-        						$('.thoughts').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'">'+posts[index].PostUser+'</a><small> shared a thought!<br /><small>'+posts[index].PostDate+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[index].PostBody+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-did="'+posts[index].PostId+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div>'
->>>>>>> master
+
         						);}
 								$('[data-id]').click(function(e) {
 									e.preventDefault();
