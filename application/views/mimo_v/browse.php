@@ -1,11 +1,6 @@
 <body style="background: linear-gradient(to bottom right, #bdc3c7 1%, #2c3e50 111%);
 			background-attachment: fixed">
 	<!-- Top Nav Bar -->
-<<<<<<< HEAD
-	<?php $this->load->view('include/topnav');?>
-=======
- 	 <?php $this->load->view('include/topnav');?>
->>>>>>> master
 		<br>
 		<div class="container">
 
