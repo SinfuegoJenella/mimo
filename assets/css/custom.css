@@ -1,3 +1,7 @@
+#img-Head{
+	margin: 10px auto;
+}
+
 .tabbg{
 	background-image: url('http:localhost/mimo/assets/img/nightsky3');
 	filter: blur(25px);

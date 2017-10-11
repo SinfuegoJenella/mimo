@@ -49,9 +49,9 @@
 	<ul class="nav nav-tabs nav-justified">
 						<!-- COLLECTIONS, ALBUMS, THOUGHTS, and FAVORITES TABS-->
 						<li class="active"><a data-toggle="tab" href="#collections"><i class="material-icons">library_music</i>&nbsp;Collections</a></li>
-						<li><a data-toggle="tab" href="#albums" ><span><i class="material-icons">album</i></span>&nbsp;Albums</a></li>
+						<li><a data-toggle="tab" href="#audios" ><span><i class="material-icons">music_note</i></span>&nbsp;Audios</a></li>
 						<li><a data-toggle="tab" href="#thought" ><span><i class="material-icons">chat_bubble</i></span>&nbsp;Thoughts</a></li>
-						<li><a data-toggle="tab" href="#fav" ><i class="material-icons">favorite</i></span>&nbsp;Favorites</a></li>
+						<li><a data-toggle="tab" href="#vids" ><i class="material-icons">videocam</i></span>&nbsp;Videos</a></li>
 					</ul>
 
 						<div class="tab-content">
@@ -74,7 +74,7 @@
 							</div>
    
 						<!-- ALBUMS-->
-							<div id="albums" class="tab-pane fade" >
+							<div id="audios" class="tab-pane fade" >
 							<div class="row">
 								<div class="col-md-3"></div>
 									
@@ -111,7 +111,7 @@
 							</div>	
 							
 							<!-- FAVORITES-->
-							<div id="fav" class="tab-pane fade">
+							<div id="vids" class="tab-pane fade">
 							<div class="row">
 								<div class="col-md-3"></div>
 									
@@ -132,6 +132,7 @@
 </div>
 	<?php $this->load->view('include/releasebuttons');?>
 	<?php $this->load->view('templates/addpostmodal');?>
+	<?php $this->load->view('templates/addaudiomodal');?>
 	</div>
 </div>
 </body>
