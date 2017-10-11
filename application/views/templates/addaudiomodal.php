@@ -9,7 +9,7 @@
                        <span aria-hidden="true">&times;</span>
                        <span class="sr-only">Close</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">
+					<h4 class="modal-title text-center" id="myModalLabel">
 						<span><i class="material-icons">mic</i></span>Release Audio
 					</h4>
 				</div>
@@ -17,63 +17,85 @@
 				<!-- Modal Body -->
 				<div class="modal-body" style="background-color: #f9f9f9">
 					<form role="form">
-						<h5>Choose an audio to release: <small>(allowed audio format: .mp3, .ogg, .wav)</small></h5>
+					<div class="row">
+						<div class="col-md-1">
+						</div>
+						<div class="col-md-10">
+						<h5 ><b>*Upload Audio </b><small>(allowed audio format: .mp3, .ogg, .wav)</small></h5>
 							<div class="input-group">
 								<span class="input-group-btn">
 									<span class="btn btn-default btn-file">
 									<span class="glyphicon glyphicon-open"></span>
-									<input type="file" id="newAudio" accept="audio/*" />
+									<input type="file" id="audioUpload" accept="audio/*" />
 									</span>
 								</span>
 								<input type="text" class="form-control" readonly />
 							</div>
-						<hr />
+									
+							<div style="margin: 10px auto">
+								<h5><b>*Preview: </b></h5>
+								<audio width="100%" id="audPreview" controls="" controlsList="noDownload"></audio>
+							</div>
+						
+						</div>
+						<div class="col-md-1">
+						</div>
+					</div>
+					
+
 						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-								<tr><label>Audio Details</label></tr>
-									<table class="table table-striped">
-										<tr>
-											<td>Title:</td>
-											<td><input type="text" class="form-control" value="Moonlight Drawn" /></td>
-										</tr>
-											<td><p>Origin:</p></td>
-											<td>
-												<label class="radio-inline">
-													<input type="radio" name="optradio" value="own">Own Music
-												</label>
-												<label class="radio-inline">
-													<input type="radio" name="optradio" value="cover">Cover
-												</label>
-											</td>
-										</tr>
-										<tr>
-											<td><p>Genre:</p></td>
-											<td><select class="form-control">
-												<option value="alternative">Alternative</option>
-												<option value="blues">Blues</option>
-												</select></td>
-										</tr>
-									</table>
-								</div>
+							<div class="col-md-1">
 							</div>
 							
-							<div class="col-md-6">
+							<div class="col-md-7">
 								<div class="form-group">
-									<label>Audio Art</label>
+								<h5 class="text-center"><b>Audio Details</b></h5>
+									<p>Title:</p> 
+									<input type="text" class="form-control" value="" placeholder=""/>
+									<p>Genre:</p> 
+									<select class="form-control">
+										<option value="alternative">Alternative</option>
+										<option value="blues">Blues</option>
+										</select>
+								</div>
+							</div>	
+							
+							<div class="col-md-3">
+							<div class="form-group">
+								<h5 class="text-center"><b>Audio Art</b></h5>
 									<br />
 										<div class="input-group">
 											<span class="input-group-btn">
 												<span class="btn btn-default btn-file">
-													Choose… <input type="file" id="imgHeader" accept="image/*">
+													<span class="glyphicon glyphicon-picture"></span> Add
+													<input type="file" id="imgHeader" accept="image/*">
 												</span>
 											</span>
 											<input type="text" class="form-control" readonly />
 										</div>
-									<img id='img-Head'/>
+									<div>
+									<img id='img-Head' style="margin-top: 10px; " />
+									</div>
 								</div>
 							</div>
 							
+							<div class="col-md-1">
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-1">
+							</div>
+							
+							<div class="col-md-10">
+								<p class="">Description:</p>
+									<textarea id="audDescInput"class="form-control" name="audDesc" rows="3" placeholder="Write the audio description here."></textarea>
+							</div>
+							
+							<div class="col-md-1">
+							</div>
+							
+
 						</div>
 				</div>
 					
@@ -92,4 +114,14 @@
 			</form>
 	</div>
 </div>
-		<!--End of Add Thought Modal-->
+
+<script>
+audioUpload.onchange = function(e){
+  var audPreview = document.getElementById('audPreview');
+  audPreview.src = URL.createObjectURL(this.files[0]);
+  audPreview.onend = function(e) {
+    URL.revokeObjectURL(this.src);
+  }
+}
+ </script>
+		<!--End of Add Audio Modal-->
