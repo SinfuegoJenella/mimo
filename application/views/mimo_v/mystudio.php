@@ -66,6 +66,7 @@
 									<?php $this->load->view('templates/audio_temp');?>
 									<?php $this->load->view('templates/audio_temp');?>
 									<?php $this->load->view('templates/audio_temp');?>
+									<?php $this->load->view('templates/post_temp');?>
 								<!-- -->
 								</div>
 								

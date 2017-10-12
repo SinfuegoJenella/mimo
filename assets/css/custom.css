@@ -1,6 +1,7 @@
 #img-Head{
 	margin: 10px auto;
 }
+
 .del, .collect , .view, .view:hover{
 	color: grey;
 }

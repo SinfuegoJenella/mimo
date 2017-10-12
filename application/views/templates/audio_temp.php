@@ -10,13 +10,17 @@
 
 				<div class="media-body">
 					<h4 class="media-heading"><a class="user">BLACKPINK</a><small> released an audio!</small>
-					<a href="#">
+					<a class="btn del pull-right">
+						<span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span>
+						</a>
+					
+					<!--<a href="#">
 						<span class="pull-right fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span>
 					</a>
 					<!---->
 					<br />
 					<small><small> 12:20 AM 2/3/2017</small></small><small></small>
-					<span style="font-size: 12px"="pull-right" class="pull-right" >123,234 plays</span>
+					
 					</h4>
 				</div>
 			</div>
@@ -61,13 +65,20 @@
 						<a id="commentBtn" class="btn comment" data-toggle="modal" data-target="#commentModal">
 						<span class="fa fa-commenting-o" data-toggle="tooltip" data-placement="top" title="Comment"></span>
 						<small><small>(873)</small></small></a>
-	
+					
 						<!--DELETE BUTTON -->
 						<!--SHOULD NOT BE VISIBLE WHEN ITS A POST BY CURRENT CAMOUS -->
-						<a class="btn del">
+						<!--<a class="btn del">
 						<span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span> <small>Delete</small>
-						</a>
+						</a>-->
 						
+						<a href="#" class="btn">
+						<span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span>
+						
+						<a class="btn view disabled">
+						<span style="font-size: 12px;" class="glyphicon glyphicon-play"></span>
+						<small class="pull-right"> 123,234 plays</small>
+						</a>
 				</div>
 			</div>	
 		</div>

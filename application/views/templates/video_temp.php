@@ -11,13 +11,11 @@
 				<div class="media-body">
 					<h4 class="media-heading"><a class="user">BTS</a><small> shared a video!</small>
 				
-					<a href="#">
-						<span class="pull-right fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span>
-					</a>
-					<!---->
+					<a class="btn del pull-right">
+						<span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span>
+						</a>
 					<br />
 					<small><small> 12:20 AM 2/3/2017</small></small>
-					<span style="font-size: 12px"="pull-right" class="pull-right" >123,234 plays</span>
 					</h4>
 				</div>	
 			</div>
@@ -26,17 +24,18 @@
 		<!--Post Body -->
 		<div class="postbodyaudio">
 			<h5 class="media-heading text-center"><i class="fa fa-video-camera"></i> BTS - Serendipity (Comeback Teaser)</h5>
-			<h6 style="color: #1e1e1e">This is BTS (방탄소년단)'s September comeback teaser with the song "Serendipity" sung by Jimin.</h6>
 			<div class="row" >
 				<div class="col-md-12">
 					<video src="http://localhost/mimo/assets/videos/serendipity.mp4" style="width:100%; height: 250px" controls controlsList="nodownload">
 					</video>
 				</div>
 			</div>
+			
+			<h6 style="color: #1e1e1e">This is BTS (방탄소년단)'s September comeback teaser with the song "Serendipity" sung by Jimin.</h6>
 			<br />
 			<div id="likesectionaud">
 				<div class="btn-grp btn-group-justified">
-					<a href="#" id="likeBtn" type="button" class="btn like">
+						<a href="#" id="likeBtn" type="button" class="btn like">
 						<!-- Like -->
 						<span class="fa fa-heart-o"></span> 
 						<small><small>(127,343)</small></small></a>
@@ -47,7 +46,14 @@
 						<span class="fa fa-commenting-o"></span>
 						<small><small>(873)</small></small></a>
 	
+						<!--<a href="">
 						<span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span> <small>Delete</small>
+						</a>-->
+						
+						<a class="btn view disabled">
+						<span style="font-size: 12px;" class="glyphicon glyphicon-play"></span>
+						<small class="pull-right"> 123,234 plays</small>
+						</a>
 				
 				</div>
 				</div>	
