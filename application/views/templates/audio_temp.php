@@ -13,11 +13,6 @@
 					<a class="btn del pull-right">
 						<span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span>
 						</a>
-					
-					<!--<a href="#">
-						<span class="pull-right fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span>
-					</a>
-					<!---->
 					<br />
 					<small><small> 12:20 AM 2/3/2017</small></small><small></small>
 					
@@ -65,15 +60,9 @@
 						<a id="commentBtn" class="btn comment" data-toggle="modal" data-target="#commentModal">
 						<span class="fa fa-commenting-o" data-toggle="tooltip" data-placement="top" title="Comment"></span>
 						<small><small>(873)</small></small></a>
-					
-						<!--DELETE BUTTON -->
-						<!--SHOULD NOT BE VISIBLE WHEN ITS A POST BY CURRENT CAMOUS -->
-						<!--<a class="btn del">
-						<span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span> <small>Delete</small>
-						</a>-->
 						
 						<a href="#" class="btn">
-						<span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span>
+						<span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a>
 						
 						<a class="btn view disabled">
 						<span style="font-size: 12px;" class="glyphicon glyphicon-play"></span>
