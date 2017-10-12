@@ -72,4 +72,28 @@
         });//end of thoughts click()
     });
     </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('#releasebtn').click(function(e) {
+            e.preventDefault();
+            // var file_data = $('#audioUpload').prop('files')[0];   
+            var form_data = new FormData($('#form')[0]);       
+            $.ajax({
+                type:'POST',
+                url: '<?php echo base_url() ?>mimo/audios',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                success: function(r){
+                    alert('php_script_response');
+                    console.log(r)
+                },
+                error: function(xhr, ajaxOptions, thrownError){
+                    console.log(e);
+                }
+            });
+        });
+    });
+    </script>
 </head>
