@@ -98,7 +98,6 @@ vidUpload.onchange = function(e){
   var vidPreview = document.getElementById('vidPreview');
   vidPreview.src = URL.createObjectURL(this.files[0]);
     URL.revokeObjectURL(this.src);
-  
 }
  </script>
  <script>
