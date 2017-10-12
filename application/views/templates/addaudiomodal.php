@@ -16,7 +16,7 @@
             
 				<!-- Modal Body -->
 				<div class="modal-body" style="background-color: #f9f9f9">
-					<form role="form">
+					<form role="form" id="form">
 					<div class="row">
 						<div class="col-md-1">
 						</div>
@@ -26,7 +26,7 @@
 								<span class="input-group-btn">
 									<span class="btn btn-default btn-file">
 									<span class="glyphicon glyphicon-open"></span>
-									<input type="file" id="audioUpload" accept="audio/*" />
+									<input type="file" id="audioUpload" accept="audio/*" name="file"/>
 									</span>
 								</span>
 								<input type="text" class="form-control" readonly />
@@ -51,9 +51,9 @@
 								<div class="form-group">
 								<h5 class="text-center"><b>Audio Details</b></h5>
 									<p>Title:</p> 
-									<input type="text" class="form-control" value="" placeholder=""/>
+									<input type="text" class="form-control" value="" placeholder="" id="title" name="title"/>
 									<p>Genre:</p> 
-									<select class="form-control" id="selectGenre">
+									<select class="form-control" id="selectGenre" name="genre">
 										<option value="blues">None</option>
 										<option value="alternative">Alternative</option>
 										<option value="blues">Blues</option>
@@ -90,7 +90,7 @@
 							
 							<div class="col-md-10">
 								<p class="">Description:</p>
-									<textarea id="audDescInput"class="form-control" name="audDesc" rows="3" placeholder="Write the audio description here."></textarea>
+									<textarea id="audDescInput"class="form-control" name="audDescInput" rows="3" placeholder="Write the audio description here."></textarea>
 							</div>
 							
 							<div class="col-md-1">
@@ -106,7 +106,7 @@
 							<button type="button" class="btn btn-default reset" data-dismiss="modal">
 								Cancel
 							</button>
-							<button type="submit" class="btn btn-warning">
+							<button type="submit" class="btn btn-warning" id="releasebtn">
 								Release
 							</button>
 						</div>
