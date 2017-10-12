@@ -28,7 +28,7 @@
 			<div id="likesection">
 				<div class="btn-grp btn-group-justified">
 				
-					<a href="#" id="likeBtn" type="button" class="btn like" aria-pressed="false" onclick="handleBtnClick(event)">
+					<a href="#" id="likeBtn" type="button" class="btn like">
 						<span class="fa fa-heart-o">
 						</span> Like <small>
 						<small>(12,367)</small></small></a>
@@ -36,8 +36,11 @@
 					<a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal">
 						<span class="fa fa-commenting-o"></span> Comment </a>
 						<!-- Number of Comments -->
-	
-					</div>
+						
+					<a class="btn del">
+						<span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span> <small>Delete</small>
+						</a>
+				</div>
 					
 			</div>
 			

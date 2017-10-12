@@ -1,7 +1,15 @@
 #img-Head{
 	margin: 10px auto;
 }
-
+.del, .collect , .view, .view:hover{
+	color: grey;
+}
+.del:hover{
+	color: red;
+}
+.collect:hover{
+	color: #ff9900;
+}
 .tabbg{
 	background-image: url('http:localhost/mimo/assets/img/nightsky3');
 	filter: blur(25px);
@@ -86,7 +94,7 @@ a.unfollow:hover,a.unfollow:active {
 .tab-content{ 
 	background-color:#f2f2f2; 
 	padding:5px; 
-	padding-bottom: 30px;
+	padding-bottom: 80px;
 	/* border: 1px solid #cccccc; */
 }
 
@@ -178,7 +186,7 @@ li{
 	display: block;
 }
 
-#albumDesc{
+#audDesc{
 	color: #808080;
 	font-size: 12px;
 }
@@ -312,6 +320,7 @@ li{
 #likesection{
 	background-color: white/*#e6e6e6*/;
 	color: #666666;
+	border-top: #e6e6e6;
 	/* border-left: 1px solid 	#cccccc; */
 	/* border-right: 1px solid #cccccc; */
 }
