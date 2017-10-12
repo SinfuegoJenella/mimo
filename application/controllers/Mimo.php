@@ -15,6 +15,7 @@ class Mimo extends CI_Controller {
 		$this->load->model('getposts');
 
 		$this->load->model('comments');
+		$this->load->model('upload');
 		$this->load->model('password_tokens');
 
 		$this->load->model('genre','genre');
@@ -315,6 +316,80 @@ class Mimo extends CI_Controller {
 			redirect('mimo');
 		}
 	}//end of thoughts
+
+	public function audios(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$title = $_POST['title'];
+			$desc = $_POST['audDescInput'];
+			$genre = $_POST['genre'];
+			$type = explode('.', $_FILES["file"]["name"]);
+			$type = strtolower($type[count($type)-1]);
+			$noover = uniqid(rand()).'.'.$type;
+			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
+		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
+		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
+
+		    $id = $this->login->isLoggedIn();
+				$data = array(
+						'id'=>null,
+						'user_id'=>$id,
+						'likes'=>0,
+						'comments'=>0,
+						'type'=>2
+						);
+				$this->posts->create($data);
+				$topics = $this->topics->getTopics($desc);
+				$post_id = $this->posts->c();
+				$data = array(
+							'id'=>null,
+							'post_id'=>$post_id,
+							'title'=>$title,
+							'genre'=>$genre,
+							'about'=>$desc,
+							'path'=>$path,
+							'cover'=>null,
+							'topics'=>$topics
+
+					);
+				$this->upload->insert('audios',$data);
+		    
+		}
+	}//end of audio()
+	public function videos(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$title = $_POST['title'];
+			$desc = $_POST['vidDescInput'];
+			$types = explode('.', $_FILES["vidUpload"]["name"]);
+			$types = strtolower($types[count($types)-1]);
+			$noover = uniqid(rand()).'.'.$types;
+			$url = "C:\wamp64\www\mimo\assets\uploads/videos/".$noover;
+		    move_uploaded_file($_FILES['vidUpload']['tmp_name'], $url);
+		    $path = "http://localhost/mimo/assets/uploads/videos/".$noover;
+
+		    $id = $this->login->isLoggedIn();
+				$data = array(
+						'id'=>null,
+						'user_id'=>$id,
+						'likes'=>0,
+						'comments'=>0,
+						'type'=>3
+						);
+				$this->posts->create($data);
+				$topics = $this->topics->getTopics($desc);
+				$post_id = $this->posts->c();
+				$data = array(
+							'id'=>null,
+							'post_id'=>$post_id,
+							'title'=>$title,
+							'about'=>$desc,
+							'path'=>$path,
+							'topics'=>$topics
+
+					);
+				$this->upload->insert('videos',$data);
+		    
+		}
+	}//end of videos()
 
 	public function comment(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {

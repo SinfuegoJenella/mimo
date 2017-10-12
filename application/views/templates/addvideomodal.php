@@ -16,7 +16,7 @@
             
 				<!-- Modal Body -->
 				<div class="modal-body" style="background-color: #f9f9f9">
-					<form role="form">
+					<form role="form" id="forms">
 					<div class="row">
 						<div class="col-md-1">
 						</div>
@@ -26,10 +26,10 @@
 								<span class="input-group-btn">
 									<span class="btn btn-default btn-file">
 									<span class="glyphicon glyphicon-open"></span>
-									<input type="file" id="vidUpload" accept="video/*" />
+									<input type="file" id="vidUpload" accept="video/*"  name="vidUpload"/>
 									</span>
 								</span>
-								<input type="text" class="form-control" readonly />
+								<input type="text" class="form-control" name="files" readonly />
 							</div>
 									
 							<div style="margin: 10px auto">
@@ -53,8 +53,8 @@
 								<div class="form-group">
 								<h5 class="text-center"><b>Video Details</b></h5>
 									<p>Title:</p> 
-									<input type="text" class="form-control" value="" placeholder="" />
-								</div>
+									<input type="text" class="form-control" value="" name="title" placeholder="" />
+								</div> 
 							</div>	
 							
 							<div class="col-md-1">
@@ -67,7 +67,7 @@
 							
 							<div class="col-md-10">
 								<p class="">Description:</p>
-									<textarea id="vidDescInput" class="form-control" name="vidDesc" rows="3" placeholder="Write a video description here."></textarea>
+									<textarea id="vidDescInput" class="form-control" name="vidDescInput" rows="3" placeholder="Write a video description here."></textarea>
 							</div>
 							
 							<div class="col-md-1">
@@ -83,7 +83,7 @@
 							<button type="button" class="btn btn-default reset" data-dismiss="modal">
 								Cancel
 							</button>
-							<button type="submit" class="btn btn-warning">
+							<button type="submit" class="btn btn-warning" id="videobtn">
 								Release
 							</button>
 						</div>
