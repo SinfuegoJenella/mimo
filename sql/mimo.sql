@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2017 at 04:49 PM
+-- Generation Time: Oct 12, 2017 at 06:17 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -35,14 +35,6 @@ CREATE TABLE `about` (
   `genre3` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `career` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `about`
---
-
-INSERT INTO `about` (`id`, `user_id`, `about`, `genre1`, `genre2`, `genre3`, `career`) VALUES
-(4, 53, NULL, NULL, NULL, NULL, NULL),
-(5, 54, NULL, 'Alternative Music', 'Alternative Music', 'Alternative Music', 'Music Producer, Composer, Sound Designer, ');
 
 -- --------------------------------------------------------
 
@@ -100,18 +92,6 @@ CREATE TABLE `comments` (
   `posted_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `post_id`, `user_id`, `comment`, `posted_at`) VALUES
-(127, 55, 53, 'First Comment!', '2017-10-10 21:57:04'),
-(128, 54, 53, 'Comment here!', '2017-10-10 21:59:44'),
-(129, 54, 54, 'Hey Mimo!', '2017-10-10 22:02:43'),
-(130, 54, 53, 'whatdcdwedwe', '2017-10-12 15:13:00'),
-(131, 54, 53, 'saasa', '2017-10-12 19:24:12'),
-(132, 54, 53, 'asdasd', '2017-10-12 19:33:09');
-
 -- --------------------------------------------------------
 
 --
@@ -123,13 +103,6 @@ CREATE TABLE `followers` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `follower_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `followers`
---
-
-INSERT INTO `followers` (`id`, `user_id`, `follower_id`) VALUES
-(4, 53, 54);
 
 -- --------------------------------------------------------
 
@@ -183,14 +156,6 @@ CREATE TABLE `login_tokens` (
   `login_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `login_tokens`
---
-
-INSERT INTO `login_tokens` (`id`, `user_id`, `token`, `login_time`) VALUES
-(219, 54, '5b80fe43acc303a03396fcf3a7b84c71b3785129', '2017-10-11 01:58:22'),
-(222, 53, '628543b10d79a339b6fab8dbe1fc3c5b6805878a', '2017-10-12 15:10:35');
-
 -- --------------------------------------------------------
 
 --
@@ -240,17 +205,6 @@ CREATE TABLE `posts` (
   `type` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`id`, `user_id`, `likes`, `comments`, `posted_at`, `type`) VALUES
-(54, 53, 0, 0, '2017-10-10 20:57:41', 1),
-(55, 54, 0, 0, '2017-10-10 21:11:38', 1),
-(56, 54, 0, 0, '2017-10-10 22:03:06', 1),
-(57, 53, 1, 0, '2017-10-12 21:31:37', 1),
-(58, 53, 0, 0, '2017-10-12 21:32:30', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -262,13 +216,6 @@ CREATE TABLE `post_likes` (
   `post_id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `post_likes`
---
-
-INSERT INTO `post_likes` (`id`, `post_id`, `user_id`) VALUES
-(11, 57, 53);
 
 -- --------------------------------------------------------
 
@@ -295,18 +242,6 @@ CREATE TABLE `thoughts` (
   `topics` varchar(400) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `thoughts`
---
-
-INSERT INTO `thoughts` (`id`, `post_id`, `body`, `topics`) VALUES
-(49, 54, 'Mimo :)', ''),
-(50, 55, 'Shei Shei First Post', ''),
-(51, 56, 'Witness Greateness', ''),
-(52, 57, '  try', ''),
-(53, 58, 'try2', ''),
-(54, 59, '#hastags topics', 'hastags,');
-
 -- --------------------------------------------------------
 
 --
@@ -325,14 +260,6 @@ CREATE TABLE `users` (
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `password`, `email`, `picture`, `header`, `created`) VALUES
-(53, 'Mimo', 'Mimo', 'Music', '$2y$10$u7lk5O.C7dAIVZ7MGYObseTTGLxQLkObqzIIv2QAgeDyx12cO6Q8i', 'thisismimomusic@gmail.com', 'https://i.imgur.com/QmJ4Bwy.png', NULL, '2017-10-10 20:52:54'),
-(54, 'SheiShei', 'Shei', 'Shei', '$2y$10$fVR7UMadCcRU2yibEvUY2OnovbUELKK29ZgHV05BjTeYM222ndf0q', 's.cmanawit@gmail.com', 'https://i.imgur.com/LQq63AL.jpg', 'https://i.imgur.com/FkWkk0Q.png', '2017-10-10 21:10:49');
-
 -- --------------------------------------------------------
 
 --
@@ -345,7 +272,8 @@ CREATE TABLE `videos` (
   `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `about` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `topics` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='for uploading video';
 
 --
@@ -456,12 +384,12 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `audios`
 --
 ALTER TABLE `audios`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `collections`
 --
@@ -476,12 +404,12 @@ ALTER TABLE `collection_songs`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `genre`
 --
@@ -491,7 +419,7 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT for table `login_tokens`
 --
 ALTER TABLE `login_tokens`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `oauth`
 --
@@ -506,12 +434,12 @@ ALTER TABLE `password_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `song_favorites`
 --
@@ -521,17 +449,17 @@ ALTER TABLE `song_favorites`
 -- AUTO_INCREMENT for table `thoughts`
 --
 ALTER TABLE `thoughts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
