@@ -47,7 +47,6 @@
 									
 										<label for="lastname">Last Name :</label>
 											<input type="text" class="form-control form-inline" name="lastname" id="lastname" value="<?php echo $users[0]['lastname'] ?>" />
-											/>
 										<label for="username">Username <small>(Stage Name)</small>:</label>
 											<input type="text" class="form-control"  name="username" id="username" value="<?php echo $users[0]['username'] ?>" /> 
 										<label>Change Profile Picture :</label>
@@ -120,18 +119,9 @@
 											<select class="form-control" id="genre1" name="genre1">
 												<!-- Pakilagay ng lang po ito sa database at i-php na lang po :) Listahan ng Music Genres-->
 											<?php
-											foreach($genre as $s){
-												$id = $this->login->isLoggedIn();
-												foreach($about as $a){
-												if($a['user_id']==$id)
-												{  
-													if($a['genre1']==$s['name'])
-													echo '<option selected = "selected" value="'.$s['name'].'">'.$s['name'].'</option>';
-												
+												foreach($genre as $s){
+													echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
 												}
-												else{
-												echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
-											}}}
 											?>
 											</select>
 											

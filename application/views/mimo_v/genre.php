@@ -159,6 +159,8 @@
 	</div>
 	<?php $this->load->view('include/releasebuttons');?>
 	<?php $this->load->view('templates/addpostmodal');?>
+	<?php $this->load->view('templates/addaudiomodal');?>
+	<?php $this->load->view('templates/addvideomodal');?>
 	</div>
 	<!--end of first row-->	
 </body>

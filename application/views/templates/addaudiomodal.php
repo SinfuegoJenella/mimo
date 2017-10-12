@@ -4,7 +4,7 @@
 			<div class="modal-content">
 				<!-- Modal Header -->
 				<div class="modal-header" style="background-color: #f9f9f9">
-					<button type="button" class="close" 
+					<button type="button" class="close reset" 
 						data-dismiss="modal">
                        <span aria-hidden="true">&times;</span>
                        <span class="sr-only">Close</span>
@@ -53,7 +53,8 @@
 									<p>Title:</p> 
 									<input type="text" class="form-control" value="" placeholder=""/>
 									<p>Genre:</p> 
-									<select class="form-control">
+									<select class="form-control" id="selectGenre">
+										<option value="blues">None</option>
 										<option value="alternative">Alternative</option>
 										<option value="blues">Blues</option>
 										</select>
@@ -68,13 +69,13 @@
 											<span class="input-group-btn">
 												<span class="btn btn-default btn-file">
 													<span class="glyphicon glyphicon-picture"></span> Add
-													<input type="file" id="imgHeader" accept="image/*">
+													<input type="file" id="uploadAudioImg" accept="image/*">
 												</span>
 											</span>
 											<input type="text" class="form-control" readonly />
 										</div>
 									<div>
-									<img id='img-Head' style="margin-top: 10px; " />
+									<img id="imgPreview" style="width: 50%; margin: 5px auto" />
 									</div>
 								</div>
 							</div>
@@ -102,7 +103,7 @@
 							
 						<div class="modal-footer">
 						
-							<button type="button" class="btn btn-default" data-dismiss="modal">
+							<button type="button" class="btn btn-default reset" data-dismiss="modal">
 								Cancel
 							</button>
 							<button type="submit" class="btn btn-warning">
@@ -123,5 +124,26 @@ audioUpload.onchange = function(e){
     URL.revokeObjectURL(this.src);
   }
 }
+uploadAudioImg.onchange = function(e){
+  var imgPreview = document.getElementById('imgPreview');
+  imgPreview.src = URL.createObjectURL(this.files[0]);
+}
+ </script>
+ <script>
+ $(document).ready(function() {
+    $(".reset").click(function() {
+		var audPreview = document.getElementById('audPreview');
+		var imgPreview = document.getElementById('imgPreview');
+		var audioUpload = document.getElementById('audioUpload');
+		var audDescInput = document.getElementById('audDescInput');
+		var selectGenre = document.getElementById('selectGenre');
+		 $("input").val("");
+		 audioUpload.val = ("");
+		 audPreview.src = ("");
+		 imgPreview.src = ("");
+		 $("textarea#audDescInput").val("");
+		 selectGenre.options[0].selected = true;
+    });
+});
  </script>
 		<!--End of Add Audio Modal-->
