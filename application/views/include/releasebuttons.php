@@ -1,3 +1,8 @@
+	<span data-toggle="modal" data-target="#addVideo" >
+		<a class="btn" id="addvideobtn" data-toggle="tooltip" data-placement="top" title="Upload Video" >
+			<i class="material-icons">videocam</i></a>
+	</span>
+	
 	<span data-toggle="modal" data-target="#addAudio" >
 		<a class="btn" id="releaseaudiobtn" data-toggle="tooltip" data-placement="top" title="Release Audio">
 			<i class="material-icons">music_note</i></a>
