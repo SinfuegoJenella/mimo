@@ -133,6 +133,7 @@
 	<!-- Para sa POST AND AUDIO MODAL-->
 	<?php $this->load->view('templates/addpostmodal');?>
 	<?php $this->load->view('templates/addaudiomodal');?>
+	<?php $this->load->view('templates/addvideomodal');?>
 	
 		<!--Para naman to dun sa fixed button ng release ng thoughts at audio-->
 		<?php $this->load->view('include/releasebuttons');?>
