@@ -197,6 +197,9 @@ class Mimo extends CI_Controller {
 				if($this->users->read($condition)){
 					$user = $this->users->read($condition);
 					$data['user'] = $user;
+					$user_id=$user[0]['id'];
+					$condition = array('user_id'=>$user_id);
+					$data['about'] = $this->about->read($condition);
 					// echo $username;
 				}
 				else{
@@ -210,6 +213,7 @@ class Mimo extends CI_Controller {
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
+			
 			$headerdata['title'] = "MimO | My Studio";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
@@ -351,10 +355,13 @@ class Mimo extends CI_Controller {
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
 			$noover = uniqid(rand()).'.'.$type;
+			$image= $_FILES['uploadAudioImg'];
+			$audioart=$this->image->uploadImage($image); 
+			print_r($audioart);
 			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
-
+			
 		    $id = $this->login->isLoggedIn();
 				$data = array(
 						'id'=>null,
@@ -373,7 +380,7 @@ class Mimo extends CI_Controller {
 							'genre'=>$genre,
 							'about'=>$desc,
 							'path'=>$path,
-							'cover'=>null,
+							'cover'=>$audioart,
 							'topics'=>$topics
 
 					);

@@ -19,8 +19,8 @@
 				<!--Profile Info: NAME, STAGENAME, GENRE, CAREER, FOLLOWERS, ALBUM -->
 				<div class="media-body">
 					<h2 class="profile"> <?php echo $user[0]['firstname'].' '.$user[0]['lastname'];?> <small style="color: #cccccc" >(<?php echo $user[0]['username'];?>)</small></h2>
-						<h6 style="padding: 0 2.2em" class="profile"><i class="material-icons">music_note</i><b style="color: #ffc266">Genres:</b> Ballad, Asian Pop, Pop Rock</h6>
-							<h6 style="padding: 0 2.2em" class="profile"><i class="material-icons">business_center</i><b style="color: #ffc266"> Career:</b> Singer , Song Writer, Sound Designer</h6>
+						<h6 style="padding: 0 2.2em" class="profile"><i class="material-icons">music_note</i><b style="color: #ffc266">Genres:</b> <?php echo $about[0]['genre1'].' ,' .$about[0]['genre2'].' ,' .$about[0]['genre3'];?></h6>
+							<h6 style="padding: 0 2.2em" class="profile"><i class="material-icons">business_center</i><b style="color: #ffc266"> Career:</b> <?php echo $about[0]['career'];?></h6>
 							<h6 style="padding: 0 2.2em" class=" profile"><i class="material-icons">group</i><b style="color: #ffc266"> Followers:</b> 232,651 People</h6>
 							<h6 style="padding: 0 2.2em" class=" profile"><i class="material-icons">album</i><b style="color:#ffc266 "> Album:</b> 56 Released Albums (146 audio)</h6>
 				</div>	
