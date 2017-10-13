@@ -69,7 +69,7 @@
 											<span class="input-group-btn">
 												<span class="btn btn-default btn-file">
 													<span class="glyphicon glyphicon-picture"></span> Add
-													<input type="file" id="uploadAudioImg" accept="image/*">
+													<input type="file" id="uploadAudioImg" name="uploadAudioImg" accept="image/*">
 												</span>
 											</span>
 											<input type="text" class="form-control" readonly />
