@@ -1,8 +1,23 @@
-<body style="background-color: #e1e1e1">
+<body style="background: linear-gradient(to bottom right, #bdc3c7 1%, #2c3e50 111%);
+			background-attachment: fixed">
+	<!-- Top Nav Bar -->
 
+	<!--This is below Top Navigation Section -->
+<div class="col-md-10" style="padding-top: 80px; margin-left: 100px;  ">
+						<h1> Browse </h1>
+
+			<nav class="navbar navbar-default" style="width:500px;">
+			<ul class="nav navbar-nav ">
+				<li class="navbar: hover;"><a href="<?php echo base_url('mimo/browse');?>">Overview</a></li>
+				<li><a href="<?php echo base_url('mimo/artist');?>"> Artists </a></li>
+				<li><a href="<?php echo base_url('mimo/genre');?>"> Genres </a></li>
+				<li><a href="<?php echo base_url('mimo/charts');?>"> Charts </a></li>
+			</ul>
+			</div>
 <br />
 <br />
 <br />
+<div class="container " style="padding-top:50px;">
 <div class="margin">
 	<h3 class="txt">Featured Charts</h3>
 </div>
