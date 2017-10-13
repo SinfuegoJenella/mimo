@@ -10,12 +10,12 @@
 			<div class="row" style="margin-left: 10px; margin-right: 10px">
 				<!-- Header -->
 					<!-- Sa 'background-image: url('') mo ilagay yung mga header at profile pic -->
-				<div class="header" style="background-image:url('<?php if ($users[0]['header'] == NULL){ echo 'http://localhost/mimo/assets/img/headerdef.jpg'; }else{ echo $users[0]['header'];} ?>'); width: 100%; height: 170px;
+				<div class="header" style="background-image:url('<?php echo $users[0]['header']; ?>'); width: 100%; height: 170px;
 									margin-left: 0px; background-size: cover;">
 					<!--DP-->
 					<div class="nameBox" style="background: linear-gradient(transparent,rgba(0,0,0,0.2),rgba(0,0,0,0.7)); 
 												background-size: cover; margin: 0 0; height: 162px">
-						<div class="dpSection media" style="background-image:url('<?php if ($users[0]['picture'] == NULL){ echo 'http://localhost/mimo/assets/img/noimage.jpg'; }else{ echo $users[0]['picture'];} ?>')"></div>
+						<div class="dpSection media" style="background-image:url('<?php echo $users[0]['picture']; ?>');"></div>
 							
 						
 						<!-- Full name yung sa h4 at username/stagename yung sa h6 -->
@@ -133,6 +133,7 @@
 	<!-- Para sa POST AND AUDIO MODAL-->
 	<?php $this->load->view('templates/addpostmodal');?>
 	<?php $this->load->view('templates/addaudiomodal');?>
+	<?php $this->load->view('templates/addvideomodal');?>
 	
 		<!--Para naman to dun sa fixed button ng release ng thoughts at audio-->
 		<?php $this->load->view('include/releasebuttons');?>
@@ -140,6 +141,7 @@
 	</div>
 		
 </div><!--End of the Whole Row (LeftNav, Contents, Third Column -->
+
 
 
 <script type="text/javascript">
@@ -156,9 +158,7 @@ $(document).ready(function(){
         	$.each(posts, function(index) {
         		if(posts[index].PostType==1){
         		$('.thoughts').html(
-
-        						$('.thoughts').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'">'+posts[index].PostUser+'</a><small> shared a thought!<br /><small>'+posts[index].PostDate+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[index].PostBody+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div>'
-
+        						$('.thoughts').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'">'+posts[index].PostUser+'</a><small> shared a thought!<br /><small>'+posts[index].PostDate+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[index].PostBody+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-did="'+posts[index].PostId+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div>'
         						);}
 								$('[data-id]').click(function(e) {
 									e.preventDefault();
@@ -178,6 +178,7 @@ $(document).ready(function(){
 											alert('error');
 										}
 									});
+
 								});
 
 								$('[data-did]').click(function(e) {
@@ -195,7 +196,7 @@ $(document).ready(function(){
         									console.log(comments);
         									$.each(comments, function(index) {
 	        									$('.commentatorDiv').html(
-					        						$('.commentatorDiv').html()+'<div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+comments[index].username+'"><div class="media-object commentPic" style="background-image:url('+comments[index].picture+');"></div></a></div><div class="media-body"><h5 class="media-heading"><a style="font-weight:bold" class="user">'+comments[index].username+'</a><small><small> '+comments[index].posted_at+'</small></small></h5><h6>'+comments[index].comment+'</h6></div></div>'
+					        						$('.commentatorDiv').html()+'<div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+comments[index].username+'"><div class="media-object commentPic" style="background-image:url('+comments[index].picture+');"></div></a></div><div class="media-body"><h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+comments[index].username+'" style="font-weight:bold" class="user">'+comments[index].username+'</a><small><small> '+comments[index].posted_at+'</small></small></h5><h6>'+comments[index].comment+'</h6></div></div>'
 					        						)
         									});
 										},
@@ -219,7 +220,7 @@ $(document).ready(function(){
 							                	if(r!=''){
 							                    var comment = JSON.parse(r)
 							                    console.log(comment)
-							                    $( ".commentatorDiv" ).prepend( '<div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+comment[0].username+'"><div class="media-object commentPic" style="background-image:url('+comment[0].picture+');"></div></a></div><div class="media-body"><h5 class="media-heading"><a style="font-weight:bold" class="user">'+comment[0].username+'</a><small><small> '+comment[0].posted_at+'</small></small></h5><h6>'+comment[0].comment+'</h6></div></div>' );}
+							                    $( ".commentatorDiv" ).prepend( '<div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+comment[0].username+'"><div class="media-object commentPic" style="background-image:url('+comment[0].picture+');"></div></a></div><div class="media-body"><h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+comment[0].username+'" style="font-weight:bold" class="user">'+comment[0].username+'</a><small><small> '+comment[0].posted_at+'</small></small></h5><h6>'+comment[0].comment+'</h6></div></div>' );}
 							                },
 							                error: function(xhr, ajaxOptions, thrownError){
 							                    console.log(e);
@@ -230,6 +231,8 @@ $(document).ready(function(){
 
 							        });//end of postComment click()
 								});
+
+					
 
 					
         	});

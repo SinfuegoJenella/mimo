@@ -38,7 +38,7 @@
 			<!-- FOLLOW-->
 			<?php if($user[0]['id']!=$users[0]['id']){ ?>
 			<div class="row follow" style="margin-top: 30px;">
-					<a id="follow" class="btn follow pull-right"><i class="fa fa-bell-o"></i><span></span></a>
+					<a id="follow" class="btn follow pull-right"><i class="fa fa-bell-o"></i><span> Follow</span></a>
 			</div>
 			<?php };?>
 		</div>
@@ -117,12 +117,8 @@
 									
 								<div class="col-md-6">	
 									<!-- PUT HERE THE FAVORITES-->
-									<?php $this->load->view('templates/albumbox');?>
-									<?php $this->load->view('templates/albumbox');?>
-									<?php $this->load->view('templates/albumbox');?>
-									<?php $this->load->view('templates/albumbox');?>
-									<?php $this->load->view('templates/albumbox');?>
-									<?php $this->load->view('templates/albumbox');?>
+									<?php $this->load->view('templates/video_temp');?>
+					
 									<!-- -->
 								</div>
 								
@@ -133,6 +129,7 @@
 	<?php $this->load->view('include/releasebuttons');?>
 	<?php $this->load->view('templates/addpostmodal');?>
 	<?php $this->load->view('templates/addaudiomodal');?>
+	<?php $this->load->view('templates/addvideomodal');?>
 	</div>
 </div>
 </body>
