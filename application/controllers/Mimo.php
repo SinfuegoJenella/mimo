@@ -541,4 +541,23 @@ class Mimo extends CI_Controller {
         redirect('/accounts/signin');
     }//end of logout
 	
+	
+	
+	public function audioplayer()
+	{
+		$headerdata['title'] = "MimO | Audio Player";
+		$this->load->view('include/header',$headerdata);
+		$this->load->view('mimo_v/audio_player');
+		$this->load->view('include/footer');
+		
+	}
+	
+	public function errorpage()
+	{
+		$headerdata['title'] = "MimO | Error Page";
+		$this->load->view('include/header',$headerdata);
+		$this->load->view('mimo_v/error_page');
+		$this->load->view('include/footer');
+		
+	}
 }
