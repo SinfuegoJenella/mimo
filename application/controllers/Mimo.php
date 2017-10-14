@@ -174,7 +174,7 @@ class Mimo extends CI_Controller {
 	
 	public function artist()
 	{
-		if($this->login->isLoggedIn){
+		if($this->login->isLoggedIn()){
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
@@ -191,7 +191,7 @@ class Mimo extends CI_Controller {
 
 	public function genre()
 	{
-		if($this->login->isLoggedIn){
+		if($this->login->isLoggedIn()){
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
@@ -209,7 +209,7 @@ class Mimo extends CI_Controller {
 
 	public function browse()
 	{
-		if($this->login->isLoggedIn){
+		if($this->login->isLoggedIn()){
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
@@ -227,7 +227,7 @@ class Mimo extends CI_Controller {
 	
 	public function myStudio()
 	{
-		if($this->login->isLoggedIn){
+		if($this->login->isLoggedIn()){
 			if(isset($_GET['username'])){
 				$username = $_GET['username'];
 				//check if user exists
