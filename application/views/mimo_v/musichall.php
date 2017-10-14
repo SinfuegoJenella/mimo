@@ -38,12 +38,12 @@
 			
 						<a  href="" class="listnav btn btn-group">
 						<i class="material-icons">album</i>
-						<p><small>Albums</small></p>
+						<p><small>Audios</small></p>
 						</a>
 					
 						<a  href="" class="listnav btn btn-group">
-						<i class="material-icons">favorite</i>
-						<p><small>Favorites</small></p>
+						<i class="material-icons">videocam</i>
+						<p><small>Videos</small></p>
 						</a>
 		
 					</div>
