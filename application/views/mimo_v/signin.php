@@ -10,7 +10,16 @@
                 <!---->
                 <strong>MimO</strong> </a>
                 <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            </div>
+			</div>	
+			
+			  <div class="collapse navbar-collapse" id="navcol-1">
+				 <ul class="nav navbar-nav navbar-right">
+					<li class="presentation" role="presentation"><a class="disabled">
+					<p class=""> No account yet? </p></a></li>
+                    <li class="" role="presentation"><a href="<?php echo base_url('accounts');?>" class=" btn bar">
+					<p class="hidden-sm"><b>Sign Up!</b></p></a></li>
+				</ul>
+				</div>
              
         </div>
     </nav>

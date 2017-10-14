@@ -568,3 +568,4 @@ class Mimo extends CI_Controller {
 		
 	}
 }
+
