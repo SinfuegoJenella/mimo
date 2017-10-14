@@ -31,6 +31,7 @@ class Mimo extends CI_Controller {
 
 	public function index()
 	{
+		if($this->login->isLoggedIn()){
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
@@ -39,6 +40,10 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/topnav', $data);
 			$this->load->view('mimo_v/musichall');
 			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
 		// echo $this->login->isLoggedIn();
 
 	}//end of index
@@ -46,7 +51,7 @@ class Mimo extends CI_Controller {
 	public function settings()
 	{
 		//check if user is logged in
-		
+		if($this->login->isLoggedIn()){
 			if(isset($_POST['account'])){
 			$id = $this->login->isLoggedIn();
 			$selector= 'username';
@@ -146,11 +151,16 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/topnav', $data);
 			$this->load->view('mimo_v/settings', $data);
 			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
 
 	}//end of settings
 	
 	public function artist()
 	{
+		if($this->login->isLoggedIn){
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
@@ -159,11 +169,15 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/topnav', $data);
 			$this->load->view('mimo_v/artist');
 			$this->load->view('include/footer');
-
+		}
+		else{
+			redirect('accounts/signin');
+		}
 	}//end of artist
 
 	public function genre()
 	{
+		if($this->login->isLoggedIn){
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
@@ -172,11 +186,16 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/topnav', $data);
 			$this->load->view('mimo_v/genre');
 			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
 	}//end of genre
 	
 
 	public function browse()
 	{
+		if($this->login->isLoggedIn){
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
@@ -186,10 +205,15 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/topnav', $data);
 			$this->load->view('mimo_v/browse');
 			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
 	}//end of browse
 	
 	public function myStudio()
 	{
+		if($this->login->isLoggedIn){
 			if(isset($_GET['username'])){
 				$username = $_GET['username'];
 				//check if user exists
@@ -220,6 +244,10 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/topnav');
 			$this->load->view('mimo_v/mystudio');
 			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
 	
 	}//end of myStudio
 	public function posts(){
@@ -242,9 +270,29 @@ class Mimo extends CI_Controller {
               echo json_encode($result);
 		}
 		else{
-			redirect('mimo');
+			redirect('error');
 		}
 	}//end of posts function
+	public function audioposts(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$browseUserid = $this->input->post("browseuser");
+			$posts = $this->getposts->readaudios($browseUserid);
+            echo json_encode($posts);
+		}
+		else{
+			redirect('error');
+		}
+	}//end of audioposts function
+	public function videoposts(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$browseUserid = $this->input->post("browseuser");
+			$posts = $this->getposts->readvideos($browseUserid);
+            echo json_encode($posts);
+		}
+		else{
+			redirect('error');
+		}
+	}//end of videoposts function
 	public function likes(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$postid = $this->input->post("postid");
@@ -273,7 +321,7 @@ class Mimo extends CI_Controller {
 			echo json_encode(array('likes'=>$likes));
 		}
 		else{
-			redirect('mimo');
+			redirect('mimo/errorpage');
 		}
 	}//end of likes function
 	public function search(){
@@ -285,31 +333,39 @@ class Mimo extends CI_Controller {
 			}
 		}
 		else{
-			redirect('mimo');
+			redirect('mimo/errorpage');
 		}
 	}//end of search()
 	public function hallposts(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$userid = $this->login->isLoggedIn();
-			$posts = $this->getposts->hallreadthoughts($userid);
+			$posts = $this->getposts->allposts($userid);
 			$result = array();
                 foreach($posts as $post) {
 
                       $p=array('PostType'=>$post['type'],
                       			'PostId'=>$post['id'],
                       			'PostUserPicture'=>$post['picture'],
-                      			'PostBody'=>$post['body'],
                       			'PostUser'=>$post['username'],
                       			'PostLikes'=>$post['likes'],
                       			'PostComments'=>$post['comments'],
-                      			'PostDate'=>$post['posted_at']
+                      			'PostDate'=>$post['posted_at'],
+                      			'thoughtBody'=>$post['body'],
+                      			'audioAbout'=>$post['about'],
+                      			'videoAbout'=>$post['description'],
+                      			'audioPath'=>$post['path'],
+                      			'videoPath'=>$post['url'],
+                      			'audioTitle'=>$post['title'],
+                      			'videoTitle'=>$post['name'],
+                      			'audioGenre'=>$post['genre'],
+                      			'audioCover'=>$post['cover'],
                       	);
                       array_push($result,$p);
                 }
               echo json_encode($result);
 		}
 		else{
-			redirect('mimo');
+			redirect('error');
 		}
 	}//end of hallposts
 
@@ -343,7 +399,7 @@ class Mimo extends CI_Controller {
 			}
 		}
 		else{
-			redirect('mimo');
+			redirect('error');
 		}
 	}//end of thoughts
 
@@ -357,7 +413,6 @@ class Mimo extends CI_Controller {
 			$noover = uniqid(rand()).'.'.$type;
 			$image= $_FILES['uploadAudioImg'];
 			$audioart=$this->image->uploadImage($image); 
-			print_r($audioart);
 			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
@@ -385,7 +440,12 @@ class Mimo extends CI_Controller {
 
 					);
 				$this->upload->insert('audios',$data);
+				$query = $this->getposts->newaudios($post_id);
+				echo json_encode($query);
 		    
+		}
+		else{
+			redirect('error');
 		}
 	}//end of audio()
 	public function videos(){
@@ -395,7 +455,7 @@ class Mimo extends CI_Controller {
 			$types = explode('.', $_FILES["vidUpload"]["name"]);
 			$types = strtolower($types[count($types)-1]);
 			$noover = uniqid(rand()).'.'.$types;
-			$url = "C:\wamp\www\mimo\assets\uploads/videos/".$noover;
+			$url = "C:\wamp64\www\mimo\assets\uploads/videos/".$noover;
 		    move_uploaded_file($_FILES['vidUpload']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/videos/".$noover;
 
@@ -413,14 +473,18 @@ class Mimo extends CI_Controller {
 				$data = array(
 							'id'=>null,
 							'post_id'=>$post_id,
-							'title'=>$title,
-							'about'=>$desc,
-							'path'=>$path,
+							'name'=>$title,
+							'description'=>$desc,
+							'url'=>$path,
 							'topics'=>$topics
 
 					);
 				$this->upload->insert('videos',$data);
-		    
+		    	$query = $this->getposts->newvideos($post_id);
+				echo json_encode($query);
+		}
+		else{
+			redirect('error');
 		}
 	}//end of videos()
 
@@ -447,7 +511,7 @@ class Mimo extends CI_Controller {
 			
 		}
 		else{
-			redirect('mimo');
+			redirect('error');
 		}
 	}//end of comment()
 	public function getcomments(){
@@ -457,7 +521,7 @@ class Mimo extends CI_Controller {
 			echo json_encode($query);
 		}
 		else{
-			redirect('mimo');
+			redirect('error');
 		}
 	}//end of getcomments()
 	public function checkfollow(){
@@ -474,7 +538,7 @@ class Mimo extends CI_Controller {
 			}
 		}
 		else{
-			redirect('mimo');
+			redirect('error');
 		}
 	}//end of checkfollow()
 	public function follow(){
@@ -493,7 +557,7 @@ class Mimo extends CI_Controller {
 			}
 		}
 		else{
-			redirect('mimo');
+			redirect('error');
 		}
 	}//end of follow
 	public function changepass(){
@@ -508,9 +572,13 @@ class Mimo extends CI_Controller {
 			$this->password_tokens->create($data);
 			$this->mail->sendMail('Forgot Password!', "<a href='http://localhost/mimo/accounts/change_password?token=$token'>Click here to change your password!</a>", $email);
 		}
+		else{
+			redirect('error');
+		}
 	}
 	public function charts()
 	{
+		if($this->login->isLoggedIn()){
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
@@ -520,12 +588,17 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/topnav');
 			$this->load->view('mimo_v/charts');
 			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
 		
 	}//end of charts
 	
 	
 	public function playlist()
 	{
+		if($this->login->isLoggedIn()){
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
@@ -534,6 +607,10 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/topnav', $data);
 			$this->load->view('charts/playlist');
 			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
 		
 	}//end of playlist
 
@@ -552,6 +629,7 @@ class Mimo extends CI_Controller {
 	
 	public function audioplayer()
 	{
+
 		$headerdata['title'] = "MimO | Audio Player";
 		$this->load->view('include/header',$headerdata);
 		$this->load->view('mimo_v/audio_player');
@@ -559,13 +637,6 @@ class Mimo extends CI_Controller {
 		
 	}
 	
-	public function errorpage()
-	{
-		$headerdata['title'] = "MimO | Error Page";
-		$this->load->view('include/header',$headerdata);
-		$this->load->view('mimo_v/error_page');
-		$this->load->view('include/footer');
-		
-	}
+
 }
 
