@@ -35,7 +35,9 @@
 								232,651 People</h6>
 							</div>
 						</div>
+
 					</div>
+
 		</div>
 			
 	</div>

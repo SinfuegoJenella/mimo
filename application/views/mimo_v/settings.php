@@ -40,7 +40,7 @@
 						<div class="tab-content">
    
 							<div id="account" class="tab-pane fade in active">
-								<form role="form" method="post" class="form-group">
+								<form role="form" method="post" class="form-group" enctype="multipart/form-data" >
 								<div class="row">
 								<br />
 									<div class="col-md-6 form-group">
@@ -53,7 +53,7 @@
 											<div class="input-group">
 												<span class="input-group-btn">
 													<span class="btn btn-default btn-file">
-														Choose… <input type="file" id="imgProfile" accept="image/*">
+														Choose… <input type="file" id="imgProfile" name="imgProfile" accept="image/*">
 													</span>
 												</span>
 												<input type="text" class="form-control" readonly>
@@ -119,9 +119,29 @@
 											<select class="form-control" id="genre1" name="genre1">
 												<!-- Pakilagay ng lang po ito sa database at i-php na lang po :) Listahan ng Music Genres-->
 											<?php
-												foreach($genre as $s){
+											foreach($genre as $s){
+												$id = $this->login->isLoggedIn();
+												foreach($about as $a){
+												if($a['user_id']==$id)
+												{  
+													
+													if($a['genre1']==NULL)
+													{
 													echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
+													}
+													else{
+													
+														if($a['genre1']==$s['name'])
+															{
+															echo '<option selected = "selected" value="'.$s['name'].'">'.$s['name'].'</option>';
+															}
+														else{
+															echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
+															}
+														}
 												}
+																	}
+																	}
 											?>
 											</select>
 											
@@ -133,13 +153,24 @@
 												foreach($about as $a){
 												if($a['user_id']==$id)
 												{  
-													if($a['genre2']==$s['name'])
-													echo '<option selected = "selected" value="'.$s['name'].'">'.$s['name'].'</option>';
-												
+													
+													if($a['genre2']==NULL)
+													{
+													echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
+													}
+													else{
+													
+														if($a['genre2']==$s['name'])
+															{
+															echo '<option selected = "selected" value="'.$s['name'].'">'.$s['name'].'</option>';
+															}
+														else{
+															echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
+															}
+														}
 												}
-												else{
-												echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
-											}}}
+																	}
+																	}
 											?>
 											</select>
 											
@@ -151,13 +182,24 @@
 												foreach($about as $a){
 												if($a['user_id']==$id)
 												{  
-													if($a['genre3']==$s['name'])
-													echo '<option selected = "selected" value="'.$s['name'].'">'.$s['name'].'</option>';
-												
+													
+													if($a['genre3']==NULL)
+													{
+													echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
+													}
+													else{
+													
+														if($a['genre3']==$s['name'])
+															{
+															echo '<option selected = "selected" value="'.$s['name'].'">'.$s['name'].'</option>';
+															}
+														else{
+															echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
+															}
+														}
 												}
-												else{
-												echo '<option value="'.$s['name'].'">'.$s['name'].'</option>';
-											}}}
+																	}
+																	}
 											?>
 											</select>
 									</div>

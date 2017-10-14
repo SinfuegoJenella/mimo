@@ -20,11 +20,12 @@ class Mimo extends CI_Controller {
 
 		$this->load->model('genre','genre');
 		$this->load->model('about','about');
-
+		
 		$this->load->library('login');
 		$this->load->library('mail');
 		$this->load->library('topics');
 		$this->load->library('facebook');
+		$this->load->library('image');
 
 	}//end of __contruct
 
@@ -55,11 +56,35 @@ class Mimo extends CI_Controller {
 			$previouslastname= $this->users->read($condition,$selector)[0]['lastname'];
 			$selector= 'firstname';
 			$previousfirstname= $this->users->read($condition,$selector)[0]['firstname'];
+			$selector= 'picture';
+			$previousprofile= $this->users->read($condition,$selector)[0]['picture'];
+			$selector= 'header';
+			$previousheader= $this->users->read($condition,$selector)[0]['header'];
+			
 			$username = $this->input->post("username", TRUE);
 			$lastname = $this->input->post("lastname", TRUE);
 			$firstname= $this->input->post("firstname", TRUE);
 			
-			//$this->image->uploadImage($_FILES['imgHeader'],"UPDATE users SET header= $_FILES['imgHeader'] WHERE id= $id", array('id'=>$id));
+			$profileimage= $_FILES['imgProfile'];
+			$headerimage= $_FILES['imgHeader'];
+			if($profileimage['name']=='') {
+					//echo "<h2>An Image Please.</h2>";
+					$profilelink=$previousprofile;
+			}
+			else{
+			//print_r ($image);
+			$profilelink=$this->image->uploadImage($profileimage); 
+			}
+			
+			if($headerimage['name']=='') {  
+					//echo "<h2>An Image Please.</h2>";
+					$headerlink=$previousheader;
+			}
+			else{
+			//print_r ($image);
+			$headerlink=$this->image->uploadImage($headerimage); 
+			}
+			
 			if ($username==NULL){
 				$username=$previoususername;
 			}
@@ -73,7 +98,9 @@ class Mimo extends CI_Controller {
 			$data = array(
 					'username'=>$username,
 					'lastname'=>$lastname,
-					'firstname'=>$firstname
+					'firstname'=>$firstname,
+					'picture'=>$profilelink,
+					'header'=>$headerlink
 					);
 			$this->users->update($data,$condition);
 			
@@ -110,11 +137,10 @@ class Mimo extends CI_Controller {
 			}
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
-			$data['genre'] = $this->genre->read();
 			$data['users'] = $this->users->read($condition);
 			$condition = array('user_id'=>$id);
 			$data['about'] = $this->about->read($condition);
-			// print_r($data['genre']);
+			$data['genre'] = $this->genre->read();
 			$headerdata['title'] = "MimO | Settings";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
@@ -171,6 +197,9 @@ class Mimo extends CI_Controller {
 				if($this->users->read($condition)){
 					$user = $this->users->read($condition);
 					$data['user'] = $user;
+					$user_id=$user[0]['id'];
+					$condition = array('user_id'=>$user_id);
+					$data['about'] = $this->about->read($condition);
 					// echo $username;
 				}
 				else{
@@ -184,6 +213,7 @@ class Mimo extends CI_Controller {
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
+			
 			$headerdata['title'] = "MimO | My Studio";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
@@ -325,10 +355,13 @@ class Mimo extends CI_Controller {
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
 			$noover = uniqid(rand()).'.'.$type;
-			$url = "C:\wamp\www\mimo\assets\uploads\audios/".$noover;
+			$image= $_FILES['uploadAudioImg'];
+			$audioart=$this->image->uploadImage($image); 
+			print_r($audioart);
+			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
-
+			
 		    $id = $this->login->isLoggedIn();
 				$data = array(
 						'id'=>null,
@@ -347,7 +380,7 @@ class Mimo extends CI_Controller {
 							'genre'=>$genre,
 							'about'=>$desc,
 							'path'=>$path,
-							'cover'=>null,
+							'cover'=>$audioart,
 							'topics'=>$topics
 
 					);
@@ -515,4 +548,23 @@ class Mimo extends CI_Controller {
         redirect('/accounts/signin');
     }//end of logout
 	
+	
+	
+	public function audioplayer()
+	{
+		$headerdata['title'] = "MimO | Audio Player";
+		$this->load->view('include/header',$headerdata);
+		$this->load->view('mimo_v/audio_player');
+		$this->load->view('include/footer');
+		
+	}
+	
+	public function errorpage()
+	{
+		$headerdata['title'] = "MimO | Error Page";
+		$this->load->view('include/header',$headerdata);
+		$this->load->view('mimo_v/error_page');
+		$this->load->view('include/footer');
+		
+	}
 }
