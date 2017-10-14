@@ -10,12 +10,14 @@
 			<div class="row" style="margin-left: 10px; margin-right: 10px">
 				<!-- Header -->
 					<!-- Sa 'background-image: url('') mo ilagay yung mga header at profile pic -->
-				<div class="header" style="background-image:url('<?php echo $users[0]['header']; ?>'); width: 100%; height: 170px;
+				<div class="header" style="background-image:url('<?php if ($users[0]['header'] == NULL){ echo 'http://localhost/mimo/assets/img/grey-background.png'; }
+																else{ echo $users[0]['header'];} ?>'); width: 100%; height: 170px;
 									margin-left: 0px; background-size: cover;">
 					<!--DP-->
 					<div class="nameBox" style="background: linear-gradient(transparent,rgba(0,0,0,0.2),rgba(0,0,0,0.7)); 
 												background-size: cover; margin: 0 0; height: 162px">
-						<div class="dpSection media" style="background-image:url('<?php echo $users[0]['picture']; ?>');"></div>
+						<div class="dpSection media" style="background-image:url('<?php if ($users[0]['picture'] == NULL){ echo 'http://localhost/mimo/assets/img/noimage.jpg'; }
+																else{ echo $users[0]['picture'];} ?>');"></div>
 							
 						
 						<!-- Full name yung sa h4 at username/stagename yung sa h6 -->

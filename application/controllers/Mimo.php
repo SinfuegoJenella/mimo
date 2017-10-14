@@ -74,6 +74,11 @@ class Mimo extends CI_Controller {
 			else{
 			//print_r ($image);
 			$profilelink=$this->image->uploadImage($profileimage); 
+				if($profilelink==NULL)
+				{
+					$profilelink=$previousprofile;
+					echo "<script type='text/javascript'>alert('Connection Error');</script>";
+				}
 			}
 			
 			if($headerimage['name']=='') {  
@@ -113,18 +118,27 @@ class Mimo extends CI_Controller {
 			$genre1 = $this->input->post("genre1", TRUE);
 			$genre2 = $this->input->post("genre2", TRUE);
 			$genre3 = $this->input->post("genre3", TRUE);
-			$mcareer = $_POST['mcareer'];
+			$mcareer =$this->input->post("mcareer", TRUE);
 			$career="";
-			if($mcareer==NULL){
+			if($mcareer==""){
 				$career=$previouscareer;
 			}
 			else{
 				foreach($mcareer as $car)
 				{
-					$career .= $car. ", ";
+					$career .= $car. " , ";
 						
 				}
 			}
+			if($genre1=="None")
+				{ $genre1=NULL;
+				}
+			if($genre2=="None")
+				{ $genre2=NULL;
+				}
+			if($genre3=="None")
+				{ $genre3=NULL;
+				}
 			
 			$data = array(
 					'genre1'=>$genre1,
