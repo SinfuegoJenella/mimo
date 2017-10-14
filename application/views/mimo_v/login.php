@@ -35,7 +35,7 @@
                             <input id="first" class="form-control signupForm" name="firstname" placeholder="First Name" type="text" required autofocus />
                         </div>
                         <div class="col-md-6">
-                            <input id="last" class="form-control signupForm" name="lastname" placeholder="Last Name (Optional)" type="text"  />
+                            <input id="last" class="form-control signupForm" name="lastname" placeholder="Last Name" type="text"  />
                         </div>
                         <div class="col-md-12">
                         <input id="user" class="form-control signupForm" name="username" placeholder="Stage Name" type="text" required />
