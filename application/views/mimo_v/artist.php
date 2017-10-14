@@ -1,36 +1,27 @@
-<body style="background-color: #333333">
+<body style="background-color: #d9d9d9">
 	<!-- Top Nav Bar -->
 	<?php $this->load->view('include/topnav');?>
 	
 	<!--This is below Top Navigation Section -->
 		
 <div class="container" >
-			<br/>
-		<br/>
-		<br/>
+	<br />
 		
-<div class="col-md-6" style="padding-top: 40px; ">
-<div class="container"><div class="col-lg-12"><p><a href="#"><h3>New MimO Artists</h3></a></p></div>
-
-<br/>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> nightingale07 &emsp;&emsp; <button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> IzzayBenedicto &emsp;&emsp;<button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> CarlyyAbends &emsp;&emsp;<button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> GeloGeloGelo &emsp;&emsp; <button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> SheiShei &emsp;&emsp;&emsp;&emsp;<button type="submit" form="form1" value="Submit" style="color:black">Follow</button> </p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> JenJen &emsp;&emsp;&emsp;&emsp;<button type="submit" form="form1" value="Submit" style="color:black">Follow</button> </p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> Geisheeeerrr &emsp; <button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> Audeng &emsp;&emsp;&emsp; <button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> lalagyan pa &emsp;&emsp;<button type="submit" form="form1" value="Submit" style="color:black">Follow</button> </p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> ba ng follow &emsp;&emsp; <button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> button dito? &emsp;&emsp;<button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> o subscribe &emsp;&emsp;<button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> na lang? &emsp;&emsp;<button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> Hehe &emsp;&emsp;&emsp;<button type="submit" form="form1" value="Submit" style="color:black">Follow</button></p></div></div></a>
-</div>
-</div>
-<div class="col-md-5" style="padding-top: 40px; ">
-			<h3 style="color: white;" class="user"></i><b style="color: #ff9926; "> Top 20 Mimo Artists</b></h3>
+	<div class="col-md-6 belowtn" style="padding-top: 40px; background-color: white">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="text-center">New Artists</h3>
+			<br/>
+				<?php $this->load->view('templates/artist_temp');?>
+				<?php $this->load->view('templates/artist_temp');?>
+				<?php $this->load->view('templates/artist_temp');?>
+				<?php $this->load->view('templates/artist_temp');?>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-5" style="padding-top: 40px; ">
+		<h3 style="color: white;" class="user"></i><b style="color: #ff9926; "> Top 20 Most Followed Artists</b></h3>
 			<div class="tbl">
 		<table class="table">
 			<thead>

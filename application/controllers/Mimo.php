@@ -325,7 +325,7 @@ class Mimo extends CI_Controller {
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
 			$noover = uniqid(rand()).'.'.$type;
-			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
+			$url = "C:\wamp\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
 
@@ -362,7 +362,7 @@ class Mimo extends CI_Controller {
 			$types = explode('.', $_FILES["vidUpload"]["name"]);
 			$types = strtolower($types[count($types)-1]);
 			$noover = uniqid(rand()).'.'.$types;
-			$url = "C:\wamp64\www\mimo\assets\uploads/videos/".$noover;
+			$url = "C:\wamp\www\mimo\assets\uploads/videos/".$noover;
 		    move_uploaded_file($_FILES['vidUpload']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/videos/".$noover;
 

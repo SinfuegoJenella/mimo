@@ -61,13 +61,14 @@
 						<span class="fa fa-commenting-o" data-toggle="tooltip" data-placement="top" title="Comment"></span>
 						<small><small>(873)</small></small></a>
 						
+						<a class="btn view disabled">
+						<span class="glyphicon glyphicon-play "></span>
+						<small>1,364</small>
+						</a>
+						
 						<a href="#" class="btn">
 						<span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a>
 						
-						<a class="btn view disabled">
-						<span style="font-size: 12px;" class="glyphicon glyphicon-play"></span>
-						<small class="pull-right"> 123,234 plays</small>
-						</a>
 				</div>
 			</div>	
 		</div>

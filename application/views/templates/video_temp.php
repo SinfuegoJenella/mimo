@@ -52,7 +52,7 @@
 						
 						<a class="btn view disabled">
 						<span style="font-size: 12px;" class="glyphicon glyphicon-play"></span>
-						<small class="pull-right"> 123,234 plays</small>
+						<small> 123,234</small>
 						</a>
 				
 				</div>
