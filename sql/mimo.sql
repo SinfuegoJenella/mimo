@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2017 at 12:47 PM
+-- Generation Time: Oct 14, 2017 at 01:18 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -152,28 +152,28 @@ CREATE TABLE `genre` (
 --
 
 INSERT INTO `genre` (`id`, `name`) VALUES
-(1, 'Alternative Music'),
-(2, 'Blues'),
-(3, 'Classical Music'),
-(4, 'Country Music'),
-(5, 'Dance Music'),
-(6, 'Easy Listening'),
-(7, 'Electronic Music'),
-(8, 'European Music (Folk/Pop)'),
-(9, 'Hip Hop / Rap'),
-(10, 'Indie Pop'),
-(11, 'Inspirational (incl. Gospel)'),
-(12, 'Asian Pop(J-Pop, K-Pop)'),
-(13, 'Jazz'),
-(14, 'Latin Music'),
-(15, 'New Age'),
+(1, 'None'),
+(2, 'Alternative Music'),
+(3, 'Blues'),
+(4, 'Classical Music'),
+(5, 'Country Music'),
+(6, 'Dance Music'),
+(7, 'Easy Listening'),
+(8, 'Electronic Music'),
+(9, 'European Music (Folk / Pop)'),
+(10, 'Hip Hop / Rap'),
+(11, 'Indie Pop'),
+(12, 'Inspirational (incl. Gospel)'),
+(13, 'Asian Pop (J-Pop, K-pop, OPM)'),
+(14, 'Jazz'),
+(15, 'Latin Music'),
+(16, 'New Age'),
 (17, 'Opera'),
-(18, 'Pop (Popular Music)'),
+(18, 'Pop (Popular music)'),
 (19, 'R&B / Soul'),
 (20, 'Reggae'),
 (21, 'Rock'),
-(22, 'Folks'),
-(23, 'World Music / Beats');
+(22, 'World Music / Beats');
 
 -- --------------------------------------------------------
 
@@ -252,7 +252,8 @@ INSERT INTO `posts` (`id`, `user_id`, `likes`, `comments`, `posted_at`, `type`) 
 (1, 1, 0, 0, '2017-10-14 20:18:46', 1),
 (2, 1, 0, 0, '2017-10-14 20:20:02', 2),
 (3, 1, 0, 0, '2017-10-14 20:21:42', 3),
-(4, 2, 0, 0, '2017-10-14 20:46:44', 1);
+(4, 2, 0, 0, '2017-10-14 20:46:44', 1),
+(5, 2, 0, 0, '2017-10-14 21:14:47', 1);
 
 -- --------------------------------------------------------
 
@@ -297,7 +298,8 @@ CREATE TABLE `thoughts` (
 
 INSERT INTO `thoughts` (`id`, `post_id`, `body`, `topics`) VALUES
 (1, 1, 'Post thought test', ''),
-(2, 4, 'Hi', '');
+(2, 4, 'Hi', ''),
+(3, 5, 'Testing', '');
 
 -- --------------------------------------------------------
 
@@ -389,12 +391,6 @@ ALTER TABLE `followers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `genre`
---
-ALTER TABLE `genre`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `login_tokens`
 --
 ALTER TABLE `login_tokens`
@@ -483,11 +479,6 @@ ALTER TABLE `comments`
 ALTER TABLE `followers`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `genre`
---
-ALTER TABLE `genre`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
---
 -- AUTO_INCREMENT for table `login_tokens`
 --
 ALTER TABLE `login_tokens`
@@ -506,7 +497,7 @@ ALTER TABLE `password_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `post_likes`
 --
@@ -521,7 +512,7 @@ ALTER TABLE `song_favorites`
 -- AUTO_INCREMENT for table `thoughts`
 --
 ALTER TABLE `thoughts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --
