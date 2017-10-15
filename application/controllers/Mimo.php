@@ -74,11 +74,7 @@ class Mimo extends CI_Controller {
 			else{
 			//print_r ($image);
 			$profilelink=$this->image->uploadImage($profileimage); 
-				if($profilelink==NULL)
-				{
-					$profilelink=$previousprofile;
-					echo "<script type='text/javascript'>alert('Connection Error');</script>";
-				}
+				
 			}
 			
 			if($headerimage['name']=='') {  
@@ -120,13 +116,14 @@ class Mimo extends CI_Controller {
 			$genre3 = $this->input->post("genre3", TRUE);
 			$mcareer =$this->input->post("mcareer", TRUE);
 			$career="";
-			if($mcareer==""){
+			if($mcareer=="")
+			{
 				$career=$previouscareer;
 			}
 			else{
 				foreach($mcareer as $car)
 				{
-					$career .= $car. " , ";
+					$career .= $car. " . ";
 						
 				}
 			}
@@ -369,13 +366,16 @@ class Mimo extends CI_Controller {
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
 			$noover = uniqid(rand()).'.'.$type;
-			$image= $_FILES['uploadAudioImg'];
-			$audioart=$this->image->uploadImage($image); 
-			print_r($audioart);
 			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
-			
+			$image= $_FILES['uploadAudioImg'];
+			if($image['name']=='') {
+					$audioart=NULL;
+			}
+			else{
+				$audioart=$this->image->uploadImage($image); 
+				}
 		    $id = $this->login->isLoggedIn();
 				$data = array(
 						'id'=>null,
