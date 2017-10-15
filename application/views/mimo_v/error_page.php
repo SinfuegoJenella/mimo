@@ -31,7 +31,7 @@
 			
 			<div >
 				<span>
-				<p class="text1"> Oops! Something went wrong, please try again or  go to our <a href="http://localhost/mimo/mimo/index">homepage</a>.</p>
+				<p class="text1"> Oops! Something went wrong, please try again or  go to our <a href="http://localhost/mimo/">homepage</a>.</p>
 				</span>
 			</div>
 			

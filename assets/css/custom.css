@@ -2,9 +2,14 @@
 	margin: 10px auto;
 }
 
-.del, .collect , .view, .view:hover{
+.del, .collect{
 	color: grey;
 }
+
+.view, .view:hover{
+	color: black;
+}
+
 .del:hover{
 	color: red;
 }
@@ -76,15 +81,14 @@ a.follow , a.follow:hover , a.follow:focus{
    
 }
 
-a.unfollow {
-    color: #6e6e6e;
-    background: #f3f3f3;
+a.unfollow , a.unfollow:hover , a.unfollow:focus {
+    color: white;
+    background: #ff1a1a;
 }
 
-a.unfollow:hover,a.unfollow:active {
-    background: linear-gradient(#eb3845, #d9030a);
-    border-color: #e7473c;
-    color: #fff;
+a.following {
+    color: #333333;
+    background: #f3f3f3;
 }
 
 
@@ -261,13 +265,24 @@ li{
 	
 }
 .header{
-	width: 100%; height: 170px;
+	width: 100%; height: 140px;
 	background-size: cover; 
 	padding-top: 10px;
+}
+.headerStudio{
+	width: 100%; height: 400px;
+	background-size: cover; 
+	padding-top: 20px;
 }
 
 .dpSection{
 	width: 100px; height: 100px;
+	border-radius: 50%; 
+	background-size: cover; 
+	margin: 0 auto; border: 2px solid orange;
+}
+.dpSectionStudio{
+	width: 120px; height: 120px;
 	border-radius: 50%; 
 	background-size: cover; 
 	margin: 0 auto; border: 2px solid orange;
@@ -357,10 +372,10 @@ a.listnav{
 }
 
 /*Like and CommentButton Properties*/
-.like ,.comment{
+.like ,.comment, .view{
 	color: black;
 }
-.like:hover, .comment:hover{
+.like:hover, .comment:hover, .liked{
 	color:  orange /*#ffa64d*/;
 }
 
@@ -526,9 +541,9 @@ canvas{
   width: 100%;
   height: 100%;
   background-color: #46494f;
-  background-image: url('http://localhost/mimo/assets/img/nightsky3.jpg');
-  background-size: cover;
+  background-image: url('http://localhost/mimo/assets/img/mp3.jpg');
   background-position: 100% 100%;
+  background-attachment: center;
   background-repeat: no-repeat;
 }
 #sticky {

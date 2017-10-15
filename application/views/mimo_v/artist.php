@@ -1,21 +1,12 @@
-<html>
-<head>
-    <title>My Page</title>
-    <link rel="stylesheet" type="text/css" href="http://localhost/mimo/assets/css/artist.css">
-</head>
-
-
-<body style="background-color: #333333">
 	<!-- Top Nav Bar -->
 	<?php $this->load->view('include/topnav');?>
 	
 	<!--This is below Top Navigation Section -->
 		
 <div class="container" >
-			<br/>
-		<br/>
-		<br/>
+	<br />
 		
+
 <div class="col-md-6" style="padding-top: 40px; ">
 <div class="container"><div class="col-lg-12"><p><a href="#"><h3>New MimO Artists</h3></a></p></div>
 
@@ -39,6 +30,7 @@
 </div>
 <div class="col-md-5" style="padding-top: 40px; ">
 			<h3 style="color: white;" class="user"></i><b style="color: #ff9926; "> Top 20 Mimo Artists</b></h3>
+
 			<div class="tbl">
 		<table class="table">
 			<thead>

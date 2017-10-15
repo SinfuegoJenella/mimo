@@ -64,7 +64,7 @@ class accounts extends CI_Controller
 										'password'=>null,
 										'email'=>$email,
 										'picture'=>$userData['picture_url'],
-										'header'=>'https://i.imgur.com/FkWkk0Q.png',
+										'header'=>'https://i.imgur.com/Np6wf8U.jpg',
 							);
 						$this->users->create($usersdata);
 						$lastid = $this->users->c();
@@ -186,7 +186,7 @@ class accounts extends CI_Controller
 													'password'=>password_hash($password, PASSWORD_BCRYPT),
 													'email'=>$email,
 													'picture'=>'https://i.imgur.com/LQq63AL.jpg',
-													'header'=>'https://i.imgur.com/FkWkk0Q.png',
+													'header'=>'https://i.imgur.com/Np6wf8U.jpg',
 										);
 					                    $this->users->create($data);
 					                    $lastid = $this->users->c();
