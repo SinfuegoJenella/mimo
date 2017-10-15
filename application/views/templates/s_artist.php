@@ -8,7 +8,9 @@
 
 		<div class="media-body">
 			<h4 class="media-heading"><a class="user">BTS</a><small> ( 56,345 followers )</small>
-				<a href="" class="btn btn-sm btn-info pull-right"> Visit Studio</a>
+				<?php //if($user[0]['id']!=$users[0]['id']){ ?>
+					<a id="follow" class="btn follow pull-right" style="margin: 10px"><i class="fa fa-bell-o"></i><span> Follow</span></a>
+				<?php //};?>
 				<br /><small><small>Singer, Song Writer, Sound Designer</small></small>
 			</h4>
 		</div>	

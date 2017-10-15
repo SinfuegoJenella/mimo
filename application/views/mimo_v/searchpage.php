@@ -8,7 +8,8 @@
 			<div class="row">
 				
 				<div class="col-md-12" style="background-color:grey; color: white; padding: 8px;">
-					<h3 style="color: #ffb84d"><i class="glyphicon glyphicon-search"></i> &nbsp;Search</h3>
+					<h3 style="color: #ffb84d"><i class="glyphicon glyphicon-search"></i> &nbsp;Search Result:</h3>
+					<hr />
 					<h6>You have searched for: </h6>
 					<h4 class="text-center"><b>searchkeywordhere</b></h4>
 				</div>
@@ -19,11 +20,6 @@
 	<!-- Search -->
 	
 		<div class="col-md-8 belowtn col-xs-12 col-sm-7" style="margin-left: 10px; margin-top: 25px; margin-right: 10px;">
-			<div class="row">
-				<div class="col-md-12" style="	background: linear-gradient(white,#DCDCDC); color: grey">
-					<h4 class="text-center">&nbsp;Search result:</h3>
-				</div>
-			</div>
 			
 			<!-- Dito lalabas -->
 			<div class="row">
