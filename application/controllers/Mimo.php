@@ -499,7 +499,7 @@ class Mimo extends CI_Controller {
 			$headerdata['title'] = "MimO | Charts";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
-			$this->load->view('charts/playlist');
+			$this->load->view('mimo_v/playlist');
 			$this->load->view('include/footer');
 		
 	}//end of playlist
@@ -531,6 +531,15 @@ class Mimo extends CI_Controller {
 		$headerdata['title'] = "MimO | Error Page";
 		$this->load->view('include/header',$headerdata);
 		$this->load->view('mimo_v/error_page');
+		$this->load->view('include/footer');
+		
+	}
+	
+	public function artistplaylist()
+	{
+		$headerdata['title'] = "MimO | Artist Playlist";
+		$this->load->view('include/header',$headerdata);
+		$this->load->view('mimo_v/artist_playlist');
 		$this->load->view('include/footer');
 		
 	}
