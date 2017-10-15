@@ -8,7 +8,7 @@
 
 		<div class="media-body">
 			<h4 class="media-heading"><a class="user">BTS</a><small> ( 56,345 followers )</small>
-				<a href="" class="btn btn-sm btn-primary pull-right"> Visit Studio</a>
+				<a href="" class="btn btn-sm btn-info pull-right"> Visit Studio</a>
 				<br /><small><small>Singer, Song Writer, Sound Designer</small></small>
 			</h4>
 		</div>	
