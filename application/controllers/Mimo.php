@@ -350,6 +350,19 @@ class Mimo extends CI_Controller {
 			redirect('mimo/errorpage');
 		}
 	}//end of search()
+	
+	public function searchpage(){
+		$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | Search";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/searchpage');
+			$this->load->view('include/footer');
+	}//end of searchpage()
+	
+	
 	public function hallposts(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$userid = $this->login->isLoggedIn();
