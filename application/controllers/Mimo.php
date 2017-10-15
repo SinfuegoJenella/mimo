@@ -440,7 +440,7 @@ class Mimo extends CI_Controller {
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
 			$image= $_FILES['uploadAudioImg'];
 			if($image['name']=='') {
-					$audioart=NULL;
+					$audioart= "https://i.imgur.com/GZr4AiQ.jpg";
 			}
 			else{
 				$audioart=$this->image->uploadImage($image); 
