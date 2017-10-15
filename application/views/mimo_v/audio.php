@@ -3,11 +3,21 @@
 	<!-- Top Nav Bar -->
 
 	<!--This is below Top Navigation Section -->
+	<div class="col-md-10" style="padding-top: 80px; margin-left: 100px;  ">
+						
+
+			<nav class="navbar navbar-default" style="width:500px;">
+			<ul class="nav navbar-nav ">
+				<li><a href="<?php echo base_url('mimo/collection');?>"> Collection </a></li>
+				<li><a href="<?php echo base_url('mimo/audio');?>"> Audio </a></li>
+				<li><a href="<?php echo base_url('mimo/video');?>"> Videos </a></li>
+			</ul>
+			</div>
 <div class="container" style="padding-top:70px;">
     
     <div class="row">
         <div class="col-lg-12">
-            <h3>Audio Collection </h3>
+            <h3 style="margin-left: 100px;">Audio Collection </h3>
         </div>
     </div>
     
