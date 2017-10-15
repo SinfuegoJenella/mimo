@@ -55,9 +55,8 @@ td, th {
 	font-size:12 px;
 	line-height: 1.42;
 	border-radius: 15px;
-	color:white;
+	color:grey;
 }
-
 
 *:focus {outline:none !important}
 
