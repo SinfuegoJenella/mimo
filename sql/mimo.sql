@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2017 at 01:18 PM
+-- Generation Time: Oct 16, 2017 at 10:17 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -42,8 +42,8 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`id`, `user_id`, `about`, `genre1`, `genre2`, `genre3`, `career`, `followers`) VALUES
-(1, 1, NULL, NULL, NULL, NULL, NULL, 0),
-(2, 2, NULL, NULL, NULL, NULL, NULL, 0);
+(1, 1, NULL, 'Alternative Music', 'Blues', 'Classical Music', 'Music Producer , Production Music Writer , Sound Designer , ', 1),
+(2, 2, NULL, 'Country Music', 'Dance Music', 'Easy Listening', 'Singer , Song Writer , Music Producer , ', 1);
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,7 @@ CREATE TABLE `audios` (
 --
 
 INSERT INTO `audios` (`id`, `post_id`, `title`, `genre`, `about`, `date`, `path`, `cover`, `topics`) VALUES
-(1, 2, 'Random Audio', 'alternative', 'Random Audio description', '2017-10-14 20:20:02', 'http://localhost/mimo/assets/uploads/audios/449159e200ed9e388.mp3', 'https://i.imgur.com/cMMFS7i.jpg', '');
+(1, 1, 'Audio #Testing', 'alternative', 'Audio Testing #topics and mention @sheishei', '2017-10-16 17:58:54', 'http://localhost/mimo/assets/uploads/audios/2868359e482d85e95b.mp3', 'https://i.imgur.com/h79ions.jpg', 'topics,');
 
 -- --------------------------------------------------------
 
@@ -113,9 +113,10 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `user_id`, `comment`, `posted_at`) VALUES
-(1, 1, 1, 'Post Comment Test', '2017-10-14 20:19:12'),
-(2, 2, 1, 'Test Comment', '2017-10-14 20:22:31'),
-(3, 3, 1, 'Test Comment again', '2017-10-14 20:22:44');
+(1, 3, 2, 'Comment Testing', '2017-10-16 18:03:21'),
+(2, 1, 2, 'Test Comment', '2017-10-16 18:03:36'),
+(3, 2, 1, 'Test comment again', '2017-10-16 18:05:03'),
+(4, 1, 1, 'ayoko na pre', '2017-10-16 18:05:25');
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,8 @@ CREATE TABLE `followers` (
 --
 
 INSERT INTO `followers` (`id`, `user_id`, `follower_id`) VALUES
-(1, 1, 2);
+(1, 2, 1),
+(2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -193,7 +195,7 @@ CREATE TABLE `login_tokens` (
 --
 
 INSERT INTO `login_tokens` (`id`, `user_id`, `token`, `login_time`) VALUES
-(4, 2, '75a709e2239460e309a9cffe71ea9eaa7b575835', '2017-10-14 20:45:58');
+(5, 2, 'fb437b64da20dd0c4ba1689a934e2938254d4e31', '2017-10-16 18:08:23');
 
 -- --------------------------------------------------------
 
@@ -249,11 +251,9 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `likes`, `comments`, `posted_at`, `type`) VALUES
-(1, 1, 0, 0, '2017-10-14 20:18:46', 1),
-(2, 1, 0, 0, '2017-10-14 20:20:02', 2),
-(3, 1, 0, 0, '2017-10-14 20:21:42', 3),
-(4, 2, 0, 0, '2017-10-14 20:46:44', 1),
-(5, 2, 0, 0, '2017-10-14 21:14:47', 1);
+(1, 2, 0, 0, '2017-10-16 17:58:54', 2),
+(2, 2, 0, 0, '2017-10-16 18:00:32', 1),
+(3, 1, 2, 0, '2017-10-16 18:01:48', 3);
 
 -- --------------------------------------------------------
 
@@ -266,6 +266,14 @@ CREATE TABLE `post_likes` (
   `post_id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `post_likes`
+--
+
+INSERT INTO `post_likes` (`id`, `post_id`, `user_id`) VALUES
+(1, 3, 2),
+(2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -297,9 +305,7 @@ CREATE TABLE `thoughts` (
 --
 
 INSERT INTO `thoughts` (`id`, `post_id`, `body`, `topics`) VALUES
-(1, 1, 'Post thought test', ''),
-(2, 4, 'Hi', ''),
-(3, 5, 'Testing', '');
+(1, 2, 'Share a Thought #test @mimo', 'test,');
 
 -- --------------------------------------------------------
 
@@ -324,8 +330,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `password`, `email`, `picture`, `header`, `created`) VALUES
-(1, 'SheiShei', 'Sheira', 'Man-awit', '$2y$10$SnA.ckhG5PyKrysC0GmfZeja9QyIi1vV8Q7T5h494UW4fdpivSeYW', 's.cmanawit@gmail.com', 'https://i.imgur.com/LQq63AL.jpg', 'https://i.imgur.com/Np6wf8U.jpg', '2017-10-14 20:17:53'),
-(2, 'Mimo', 'Mimo', 'Music', '$2y$10$R3p/YmOI4yO/Faq4nX4XfOYROYji6LyYxatJOKVd0ZTmcrIGvFCQ6', 'thisismimomusic@gmail.com', 'https://i.imgur.com/LQq63AL.jpg', 'https://i.imgur.com/Np6wf8U.jpg', '2017-10-14 20:45:49');
+(1, 'SheiShei', 'Sheira', 'Man-awit', '$2y$10$5OYbHhx7iI.1RZt.YusH1On0bcRXkWUKPlqZZ8lkCZMCwVkxwLwi.', 's.cmanawit@gmail.com', 'https://i.imgur.com/LQq63AL.jpg', 'https://i.imgur.com/B7CeTTN.jpg', '2017-10-16 17:52:30'),
+(2, 'Mimo', 'Mimo', 'Music', '$2y$10$rjx8bNNs2BDcBACeaozifeHmZ81KtdNXKv9jqBiQErUhuXiy/.cH6', 'thisismimomusic@gmail.com', 'https://i.imgur.com/gLKSEYf.jpg', 'https://i.imgur.com/J4JESzZ.jpg', '2017-10-16 17:53:04');
 
 -- --------------------------------------------------------
 
@@ -348,7 +354,7 @@ CREATE TABLE `videos` (
 --
 
 INSERT INTO `videos` (`id`, `post_id`, `name`, `description`, `date`, `url`, `topics`) VALUES
-(1, 3, 'Agrarian reform', 'Agrarian reform importance, effects, etc.', '2017-10-14 20:21:42', 'http://localhost/mimo/assets/uploads/videos/1151259e201566f1b4.mp4', '');
+(1, 3, 'Video Testing', 'Test Video #topics and mentions @sheishei', '2017-10-16 18:01:48', 'http://localhost/mimo/assets/uploads/videos/2939159e4838c8f3ca.mp4', 'topics,');
 
 --
 -- Indexes for dumped tables
@@ -472,17 +478,17 @@ ALTER TABLE `collection_songs`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `login_tokens`
 --
 ALTER TABLE `login_tokens`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `oauth`
 --
@@ -497,12 +503,12 @@ ALTER TABLE `password_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `song_favorites`
 --
@@ -512,7 +518,7 @@ ALTER TABLE `song_favorites`
 -- AUTO_INCREMENT for table `thoughts`
 --
 ALTER TABLE `thoughts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --

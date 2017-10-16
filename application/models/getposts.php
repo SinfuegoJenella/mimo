@@ -53,18 +53,6 @@ class getposts extends CI_Model {
 
 		return $query->result_array();		
 	}
-	public function getsearch($like){
-		$this->db->select('username,firstname,lastname')
-				->from('users')
-				->like('username',$like)
-				->or_like('firstname',$like)
-				->or_like('lastname',$like)
-				->limit(10);
-
-		$query=$this->db->get();
-
-		return $query->result_array();	
-	}
 	public function allposts($userid=null){
 
 		$this->db->select('users.picture,posts.id, posts.type, posts.likes, posts.comments, posts.posted_at,users.username, thoughts.body, audios.title,audios.genre,audios.cover,audios.path,audios.about,videos.url,videos.description,videos.name')

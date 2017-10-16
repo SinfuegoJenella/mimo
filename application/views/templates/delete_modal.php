@@ -1,6 +1,3 @@
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Delete</button>
- 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -12,10 +9,10 @@
         <h4 class="modal-title">Delete Post</h4>
       </div>
       <div class="modal-body">
-        <p>Are you sure?</p>
+        <p>Are you sure you want to delete this post?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="delyes">Yes</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
       </div>
     </div>
