@@ -72,7 +72,6 @@
 	
 	<!-- Post Body (Thoughts) -->
 	<div class="col-md-6 belowtn col-xs-12 col-sm-7">
-		<?php $this->load->view('templates/commentModal');?>
 		<div class="postcont">
 
 		</div>
