@@ -66,12 +66,13 @@
 						<small>1,364</small>
 						</a>
 						
-						<a href="#" class="btn">
+						<a id="addCollect" class="btn comment" data-toggle="modal" data-target="#collectModal"> 
 						<span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a>
 						
 				</div>
 			</div>	
 		</div>
+		<?php $this->load->view('templates/colmodal');?>
 		<?php $this->load->view('templates/commentModal');?>
 	</div>
 	<script>
