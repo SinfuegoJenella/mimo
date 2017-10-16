@@ -29,7 +29,7 @@
 				<div class="media">
 					<div class="media-left">
 						<a href="#">
-							<div class="media-object commentPic" style="background-image:url('<?php echo $users[0]['username'];?>');"></div>
+							<div class="media-object commentPic" style="background-image:url('<?php echo $users[0]['picture'];?>');"></div>
 						</a>
 					</div>
 
