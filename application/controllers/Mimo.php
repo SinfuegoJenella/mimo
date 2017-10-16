@@ -641,7 +641,63 @@ class Mimo extends CI_Controller {
 		}
 		
 	}//end of playlist
+	
+	
+	
+	public function collection()
+	{
+		if($this->login->isLoggedIn()){
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | My Collection";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/collection');
+			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
+		
+	}//end of collection
+	
+	public function audio()
+	{
+		if($this->login->isLoggedIn()){
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | My Collection";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/audio');
+			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
+		
+	}//end of collection
 
+	public function video()
+	{
+		if($this->login->isLoggedIn()){
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | My Collection";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/video');
+			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
+		
+	}//end of collection
+	
 	public function logout() {
 		
 		if (isset($_COOKIE['SNID'])) {

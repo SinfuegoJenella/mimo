@@ -33,19 +33,19 @@
 			<div class="row" style="margin-left: 10px; margin-right: 10px">
 					<div id="listNav" class="col-md-12">
 						<div class="btn-group btn-group-justified">
-						<a  href="" class="listnav btn btn-group">
+						<a  href="<?php echo base_url('mimo/collection');?>" class="listnav btn btn-group">
 						<i class="material-icons">library_music</i>
 						<p><small>Collection</small></p>
 						</a>
 			
-						<a  href="" class="listnav btn btn-group">
+						<a  href="<?php echo base_url('mimo/audio');?>" class="listnav btn btn-group">
 						<i class="material-icons">album</i>
-						<p><small>Audios</small></p>
+						<p><small>Audio</small></p>
 						</a>
 					
-						<a  href="" class="listnav btn btn-group">
+						<a  href="<?php echo base_url('mimo/video');?>" class="listnav btn btn-group">
 						<i class="material-icons">videocam</i>
-						<p><small>Videos</small></p>
+						<p><small>Video</small></p>
 						</a>
 		
 					</div>
