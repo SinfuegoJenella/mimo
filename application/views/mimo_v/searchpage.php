@@ -32,8 +32,6 @@
 				</ul>
 
 					<div class="tab-content">
-						<?php $this->load->view('templates/commentModal');?>
-						
 						<!-- ARTIST -->
 							<div id="sartist" class="tab-pane fade in active">
 								<div class="row">
