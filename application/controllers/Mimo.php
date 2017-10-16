@@ -73,17 +73,12 @@ class Mimo extends CI_Controller {
 			$profileimage= $_FILES['imgProfile'];
 			$headerimage= $_FILES['imgHeader'];
 			if($profileimage['name']=='') {
-					//echo "<h2>An Image Please.</h2>";
+				
 					$profilelink=$previousprofile;
 			}
 			else{
-			//print_r ($image);
+		
 			$profilelink=$this->image->uploadImage($profileimage); 
-				if($profilelink==NULL)
-				{
-					$profilelink=$previousprofile;
-					echo "<script type='text/javascript'>alert('Connection Error');</script>";
-				}
 			}
 			
 			if($headerimage['name']=='') {  
@@ -93,6 +88,7 @@ class Mimo extends CI_Controller {
 			else{
 			//print_r ($image);
 			$headerlink=$this->image->uploadImage($headerimage); 
+			
 			}
 			
 			if ($username==NULL){
@@ -113,7 +109,7 @@ class Mimo extends CI_Controller {
 					'header'=>$headerlink
 					);
 			$this->users->update($data,$condition);
-			
+		
 			}
 			if(isset($_POST['mymusic'])){
 			$id = $this->login->isLoggedIn();
@@ -131,7 +127,7 @@ class Mimo extends CI_Controller {
 			else{
 				foreach($mcareer as $car)
 				{
-					$career .= $car. " , ";
+					$career .= $car. " . ";
 						
 				}
 			}
@@ -490,12 +486,16 @@ class Mimo extends CI_Controller {
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
 			$noover = uniqid(rand()).'.'.$type;
-			$image= $_FILES['uploadAudioImg'];
-			$audioart=$this->image->uploadImage($image); 
 			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
-			
+			$image= $_FILES['uploadAudioImg'];
+			if($image['name']=='') {
+					$audioart= "https://i.imgur.com/GZr4AiQ.jpg";
+			}
+			else{
+				$audioart=$this->image->uploadImage($image); 
+				}
 		    $id = $this->login->isLoggedIn();
 				$data = array(
 						'id'=>null,
