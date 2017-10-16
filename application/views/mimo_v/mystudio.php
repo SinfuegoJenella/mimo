@@ -140,12 +140,8 @@
 	<?php $this->load->view('templates/addpostmodal');?>
 	<?php $this->load->view('templates/addaudiomodal');?>
 	<?php $this->load->view('templates/addvideomodal');?>
-<<<<<<< HEAD
 	<?php $this->load->view('templates/colmodal');?>
-=======
-
 	<?php $this->load->view('templates/delete_modal');?>
->>>>>>> master
 	</div>
 </div>
 </body>
