@@ -12,7 +12,7 @@
 					</button>
 					<h4 class="">
 						<span></span> Comments
-						<small> on <?php echo $users[0]['username'];?>'s post</small>
+						<small> on ... post</small>
 					</h4>
 			</div>
             
