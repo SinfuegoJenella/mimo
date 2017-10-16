@@ -137,7 +137,6 @@
 		<?php $this->load->view('include/releasebuttons');?>
 			<?php $this->load->view('templates/commentModal');?>
 			<?php $this->load->view('templates/colmodal');?>
-			<?php $this->load->view('templates/delete_modal');?>
 	</div>
 		
 </div><!--End of the Whole Row (LeftNav, Contents, Third Column -->
