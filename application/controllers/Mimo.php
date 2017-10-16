@@ -79,11 +79,7 @@ class Mimo extends CI_Controller {
 			else{
 			//print_r ($image);
 			$profilelink=$this->image->uploadImage($profileimage); 
-				if($profilelink==NULL)
-				{
-					$profilelink=$previousprofile;
-					echo "<script type='text/javascript'>alert('Connection Error');</script>";
-				}
+				
 			}
 			
 			if($headerimage['name']=='') {  
@@ -125,13 +121,14 @@ class Mimo extends CI_Controller {
 			$genre3 = $this->input->post("genre3", TRUE);
 			$mcareer =$this->input->post("mcareer", TRUE);
 			$career="";
-			if($mcareer==""){
+			if($mcareer=="")
+			{
 				$career=$previouscareer;
 			}
 			else{
 				foreach($mcareer as $car)
 				{
-					$career .= $car. " , ";
+					$career .= $car. " . ";
 						
 				}
 			}
@@ -438,12 +435,16 @@ class Mimo extends CI_Controller {
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
 			$noover = uniqid(rand()).'.'.$type;
-			$image= $_FILES['uploadAudioImg'];
-			$audioart=$this->image->uploadImage($image); 
 			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
-			
+			$image= $_FILES['uploadAudioImg'];
+			if($image['name']=='') {
+					$audioart= "https://i.imgur.com/GZr4AiQ.jpg";
+			}
+			else{
+				$audioart=$this->image->uploadImage($image); 
+				}
 		    $id = $this->login->isLoggedIn();
 				$data = array(
 						'id'=>null,
@@ -640,7 +641,63 @@ class Mimo extends CI_Controller {
 		}
 		
 	}//end of playlist
+	
+	
+	
+	public function collection()
+	{
+		if($this->login->isLoggedIn()){
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | My Collection";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/collection');
+			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
+		
+	}//end of collection
+	
+	public function audio()
+	{
+		if($this->login->isLoggedIn()){
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | My Collection";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/audio');
+			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
+		
+	}//end of collection
 
+	public function video()
+	{
+		if($this->login->isLoggedIn()){
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | My Collection";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/video');
+			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
+		
+	}//end of collection
+	
 	public function logout() {
 		
 		if (isset($_COOKIE['SNID'])) {

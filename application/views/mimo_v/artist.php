@@ -16,9 +16,28 @@
 			</ul>
 			</nav>
 			</div>
-<div class="container" >
-	<br />
+<div class="container-fluid " style="margin-left: 100px; margin-right: 100px; ">
+ <div id="wrapper" >
+  <div class="row margin" >
+  
+<!-- Top 10 Most Followed Artists -->
+    <div class="col-md-3 col-sm-3  pre-scrollable " style="background-color:white; max-height:440px; ">
+		<span><h2 class="text-center"> Top 10 Most Followed Artists</h2></span>
+		<div style="background-color: #e1e1e1; height:150px; margin-top: 5%;" >
+			<div style="float: left; padding-top:6%; padding-left:6%;">
+				<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/IU.jpg" class="img-circle img"></a></div>
+				<div style="padding-left:40%;"><a href="<?php echo base_url('mimo/artistplaylist');?>" >IU</a></div>
+			</div>
+			<div style="padding-top:10%; padding-left:10%;"> 
+				<h6 style=" color: black" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+						<!-- Follow button -->
+				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+				color:grey;background-color:#e1e1e1;" >Follow</div>
+			</div>
+		</div>
 		
+<<<<<<< HEAD
 <div class="col-md-6" style="padding-top: 40px; ">
 <div class="container"><div class="col-lg-12"><p><a href="#"><h3>New MimO Artists</h3></a></p></div>
 
@@ -54,8 +73,301 @@
 				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; MarisRacal <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>
 				
 
+=======
+		<div style="background-color: #e1e1e1; height:150px; margin-top: 5%;" >
+			<div style="float: left; padding-top:6%; padding-left:6%;">
+				<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/IU.jpg" class="img-circle img"></a></div>
+				<div style="padding-left:40%;"><a href="<?php echo base_url('mimo/artistplaylist');?>" >IU</a></div>
+			</div>
+			<div style="padding-top:10%; padding-left:10%;"> 
+				<h6 style=" color: black" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+						<!-- Follow button -->
+				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+				color:grey;background-color:#e1e1e1;" >Follow</div>
 			</div>
 		</div>
+		
+		<div style="background-color: #e1e1e1; height:150px; margin-top: 5%;" >
+			<div style="float: left; padding-top:6%; padding-left:6%;">
+				<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/IU.jpg" class="img-circle img"></a></div>
+				<div style="padding-left:40%;"><a href="<?php echo base_url('mimo/artistplaylist');?>" >IU</a></div>
+			</div>
+			<div style="padding-top:10%; padding-left:10%;"> 
+				<h6 style=" color: black" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+						<!-- Follow button -->
+				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+				color:grey;background-color:#e1e1e1;" >Follow</div>
+>>>>>>> master
+			</div>
+		</div>
+		
+		<div style="background-color: #e1e1e1; height:150px; margin-top: 5%;" >
+			<div style="float: left; padding-top:6%; padding-left:6%;">
+				<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/IU.jpg" class="img-circle img"></a></div>
+				<div style="padding-left:40%;"><a href="<?php echo base_url('mimo/artistplaylist');?>" >IU</a></div>
+			</div>
+			<div style="padding-top:10%; padding-left:10%;"> 
+				<h6 style=" color: black" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+						<!-- Follow button -->
+				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+				color:grey;background-color:#e1e1e1;" >Follow</div>
+			</div>
+		</div>
+		
+		<div style="background-color: #e1e1e1; height:150px; margin-top: 5%;" >
+			<div style="float: left; padding-top:6%; padding-left:6%;">
+				<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/IU.jpg" class="img-circle img"></a></div>
+				<div style="padding-left:40%;"><a href="<?php echo base_url('mimo/artistplaylist');?>" >IU</a></div>
+			</div>
+			<div style="padding-top:10%; padding-left:10%;"> 
+				<h6 style=" color: black" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+						<!-- Follow button -->
+				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+				color:grey;background-color:#e1e1e1;" >Follow</div>
+			</div>
+		</div>
+		
+		<div style="background-color: #e1e1e1; height:150px; margin-top: 5%;" >
+			<div style="float: left; padding-top:6%; padding-left:6%;">
+				<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/IU.jpg" class="img-circle img"></a></div>
+				<div style="padding-left:40%;"><a href="<?php echo base_url('mimo/artistplaylist');?>" >IU</a></div>
+			</div>
+			<div style="padding-top:10%; padding-left:10%;"> 
+				<h6 style=" color: black" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+						<!-- Follow button -->
+				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+				color:grey;background-color:#e1e1e1;" >Follow</div>
+			</div>
+		</div>
+		
+		<div style="background-color: #e1e1e1; height:150px; margin-top: 5%;" >
+			<div style="float: left; padding-top:6%; padding-left:6%;">
+				<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/IU.jpg" class="img-circle img"></a></div>
+				<div style="padding-left:40%;"><a href="<?php echo base_url('mimo/artistplaylist');?>" >IU</a></div>
+			</div>
+			<div style="padding-top:10%; padding-left:10%;"> 
+				<h6 style=" color: black" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+						<!-- Follow button -->
+				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+				color:grey;background-color:#e1e1e1;" >Follow</div>
+			</div>
+		</div>
+		
+		<div style="background-color: #e1e1e1; height:150px; margin-top: 5%;" >
+			<div style="float: left; padding-top:6%; padding-left:6%;">
+				<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/IU.jpg" class="img-circle img"></a></div>
+				<div style="padding-left:40%;"><a href="<?php echo base_url('mimo/artistplaylist');?>" >IU</a></div>
+			</div>
+			<div style="padding-top:10%; padding-left:10%;"> 
+				<h6 style=" color: black" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+						<!-- Follow button -->
+				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+				color:grey;background-color:#e1e1e1;" >Follow</div>
+			</div>
+		</div>
+		
+		<div style="background-color: #e1e1e1; height:150px; margin-top: 5%;" >
+			<div style="float: left; padding-top:6%; padding-left:6%;">
+				<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/IU.jpg" class="img-circle img"></a></div>
+				<div style="padding-left:40%;"><a href="<?php echo base_url('mimo/artistplaylist');?>" >IU</a></div>
+			</div>
+			<div style="padding-top:10%; padding-left:10%;"> 
+				<h6 style=" color: black" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+						<!-- Follow button -->
+				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+				color:grey;background-color:#e1e1e1;" >Follow</div>
+			</div>
+		</div>
+		
+		<div style="background-color: #e1e1e1; height:150px; margin-top: 5%;" >
+			<div style="float: left; padding-top:6%; padding-left:6%;">
+				<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/IU.jpg" class="img-circle img"></a></div>
+				<div style="padding-left:40%;"><a href="<?php echo base_url('mimo/artistplaylist');?>" >IU</a></div>
+			</div>
+			<div style="padding-top:10%; padding-left:10%;"> 
+				<h6 style=" color: black" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+						<!-- Follow button -->
+				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+				color:grey;background-color:#e1e1e1;" >Follow</div>
+			</div>
+		</div>
+		<!-- End Top 10 Most Followed Artists -->
+		
+		
+		
+	</div>
+	<!-- Start of new artists Artists -->
+    <div class="col-md-9 col-sm-9 pre-scrollable phone " style="background-color:#1a1a1a; margin:auto; max-height:440px;" >
+		<div class="row margin" >
+			<span> <h2 style="color:white;">New Artists</h2></span>
+			<div class="text-center " >
+				<div class="col-md-4 col-sm-4" class="artist" style="padding-top:2%;">
+					<div >
+						<!--both a href link papunta sa playlist-->
+						<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/1.jpg" class="img-circle  cen"></a></div>			
+						<div style="background-color:#666666; margin-top: 5%; height: 110px;">	
+							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;">Miley Cyrus</a></div>	
+							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+							<!-- Follow button -->
+							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+							color:grey;background-color:#e1e1e1;" >Follow</div>
+						</div>
+					</div>
+				</div> 
+			
+			
+				<div class="col-md-4 col-sm-4"  style="padding-top:2%;">
+					<div >
+					<!--both a href link papunta sa playlist-->
+						<div><a href="<?php echo base_url('mimo/artistplaylist');?>"><img src="http://localhost/mimo/assets/img/2.jpg" class="img-circle  "></a></div>
+						<div style="background-color:#666666; margin-top: 5%; height: 110px;" >
+							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;" >JLo</a></div>	
+							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+									<!-- Follow button -->
+							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+							color:grey;background-color:#e1e1e1;" >Follow</div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="col-md-4 col-sm-4"  style="padding-top:2%;">
+					<div>
+						<!--both a href link papunta sa playlist-->
+						<div><a href="<?php echo base_url('mimo/artistplaylist');?>"><img src="http://localhost/mimo/assets/img/3.jpg" class="img-circle  "></a></div>
+						<div style="background-color:#666666; margin-top: 5%; height: 110px;">
+							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;" >GD</a></div>
+							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+									<!-- Follow button -->
+							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+							color:grey;background-color:#e1e1e1;" >Follow</div>
+						</div>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+		
+		
+		<div class="row margin" >
+			
+			<div class="text-center" >
+				<div class="col-md-4 col-sm-4" class="artist" style="padding-top:2%;">
+					<div >
+						<!--both a href link papunta sa playlist-->
+						<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/1.jpg" class="img-circle  "></a></div>			
+						<div style="background-color:#666666; margin-top: 5%; height: 110px;">	
+							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;">Miley Cyrus</a></div>	
+							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+							<!-- Follow button -->
+							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+							color:grey;background-color:#e1e1e1;" >Follow</div>
+						</div>
+					</div>
+				</div> 
+			
+			
+				<div class="col-md-4 col-sm-4" style="padding-top:2%;" >
+					<div >
+					<!--both a href link papunta sa playlist-->
+						<div><a href="<?php echo base_url('mimo/artistplaylist');?>"><img src="http://localhost/mimo/assets/img/2.jpg" class="img-circle  "></a></div>
+						<div style="background-color:#666666; margin-top: 5%; height: 110px;" >
+							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;" >JLo</a></div>	
+							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+									<!-- Follow button -->
+							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+							color:grey;background-color:#e1e1e1;" >Follow</div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="col-md-4 col-sm-4"  style="padding-top:2%;">
+					<div>
+						<!--both a href link papunta sa playlist-->
+						<div><a href="<?php echo base_url('mimo/artistplaylist');?>"><img src="http://localhost/mimo/assets/img/3.jpg" class="img-circle  "></a></div>
+						<div style="background-color:#666666; margin-top: 5%; height: 110px;">
+							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;" >GD</a></div>
+							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+									<!-- Follow button -->
+							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+							color:grey;background-color:#e1e1e1;" >Follow</div>
+						</div>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+		
+		<div class="row margin" >
+			
+			<div class=" text-center " >
+				<div class="col-md-4 col-sm-4" class="artist" style="padding-top:2%;">
+					<div >
+						<!--both a href link papunta sa playlist-->
+						<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/1.jpg" class="img-circle  "></a></div>			
+						<div style="background-color:#666666; margin-top: 5%; height: 110px;">	
+							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;">Miley Cyrus</a></div>	
+							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+							<!-- Follow button -->
+							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+							color:grey;background-color:#e1e1e1;" >Follow</div>
+						</div>
+					</div>
+				</div> 
+			
+			
+				<div class="col-md-4 col-sm-4" style="padding-top:2%;" >
+					<div >
+					<!--both a href link papunta sa playlist-->
+						<div><a href="<?php echo base_url('mimo/artistplaylist');?>"><img src="http://localhost/mimo/assets/img/2.jpg" class="img-circle  "></a></div>
+						<div style="background-color:#666666; margin-top: 5%; height: 110px;" >
+							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;" >JLo</a></div>	
+							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+									<!-- Follow button -->
+							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+							color:grey;background-color:#e1e1e1;" >Follow</div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="col-md-4 col-sm-4" style="padding-top:2%;" >
+					<div >
+						<!--both a href link papunta sa playlist-->
+						<div><a href="<?php echo base_url('mimo/artistplaylist');?>"><img src="http://localhost/mimo/assets/img/3.jpg" class="img-circle  "></a></div>
+						<div style="background-color:#666666; margin-top: 5%; height: 110px;">
+							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;" >GD</a></div>
+							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
+									232,651 People</h6>
+									<!-- Follow button -->
+							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
+							color:grey;background-color:#e1e1e1;" >Follow</div>
+						</div>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+	</div>
+	<!-- End of new artists Artists -->
+  </div>
+  </div>
+</div>
 		
 		
 		

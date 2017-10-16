@@ -32,8 +32,11 @@
 				</ul>
 
 					<div class="tab-content">
+<<<<<<< HEAD
 						
 						
+=======
+>>>>>>> master
 						<!-- ARTIST -->
 							<div id="sartist" class="tab-pane fade in active">
 								<div class="row">
