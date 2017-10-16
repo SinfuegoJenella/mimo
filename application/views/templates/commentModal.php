@@ -12,7 +12,7 @@
 					</button>
 					<h4 class="">
 						<span></span> Comments
-						<small> on nightingale07's post</small>
+						<small> on <?php echo $users[0]['username'];?>'s post</small>
 					</h4>
 			</div>
             
@@ -29,7 +29,7 @@
 				<div class="media">
 					<div class="media-left">
 						<a href="#">
-							<div class="media-object commentPic" style="background-image:url('http://localhost/mimo/assets/img/sam.jpg');"></div>
+							<div class="media-object commentPic" style="background-image:url('<?php echo $users[0]['username'];?>');"></div>
 						</a>
 					</div>
 
