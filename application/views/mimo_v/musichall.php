@@ -33,19 +33,19 @@
 			<div class="row" style="margin-left: 10px; margin-right: 10px">
 					<div id="listNav" class="col-md-12">
 						<div class="btn-group btn-group-justified">
-						<a  href="<?php echo base_url('mimo/collection');?>" class="listnav btn btn-group">
+						<a  href="" class="listnav btn btn-group">
 						<i class="material-icons">library_music</i>
 						<p><small>Collection</small></p>
 						</a>
 			
-						<a  href="<?php echo base_url('mimo/audio');?>" class="listnav btn btn-group">
+						<a  href="" class="listnav btn btn-group">
 						<i class="material-icons">album</i>
-						<p><small>Audio</small></p>
+						<p><small>Audios</small></p>
 						</a>
 					
-						<a  href="<?php echo base_url('mimo/video');?>" class="listnav btn btn-group">
+						<a  href="" class="listnav btn btn-group">
 						<i class="material-icons">videocam</i>
-						<p><small>Video</small></p>
+						<p><small>Videos</small></p>
 						</a>
 		
 					</div>
@@ -72,6 +72,7 @@
 	
 	<!-- Post Body (Thoughts) -->
 	<div class="col-md-6 belowtn col-xs-12 col-sm-7">
+		<?php $this->load->view('templates/commentModal');?>
 		<div class="postcont">
 
 		</div>

@@ -54,28 +54,9 @@
 									<input type="text" class="form-control" value="" placeholder="" id="title" name="title"/>
 									<p>Genre:</p> 
 									<select class="form-control" id="selectGenre" name="genre">
-										<option value=" None">None</option>
-										<option value=" Alternative">Alternative</option>
-										<option value=" Blues">Blues</option>
-										<option value=" Classical">Classical Music</option>
-										<option value=" Country Music">Country Music</option>
-										<option value=" Dance Music">Dance Music</option>
-										<option value=" Easy Listening">Easy Listening</option>
-										<option value=" Electronic Music">Electronic Music</option>
-										<option value=" European Music (Folk / Pop)">European Music (Folk / Pop)</option>
-										<option value=" HipHop / Rap">Hip Hop / Rap</option>
-										<option value=" Indie Music">Indie Pop</option>
-										<option value=" Inspirational (incl. Gospel)">Inspirational (incl. Gospel)</option>
-										<option value=" Asian Pop (J-Pop, K-pop, OPM)">Asian Pop (J-Pop, K-pop, OPM)</option>
-										<option value=" Jazz">Jazz</option>
-										<option value=" Latin Music">Latin Music</option>
-										<option value=" New Age">New Age</option>
-										<option value=" Opera">Opera</option>
-										<option value=" Pop (Popular music)">Pop (Popular music)</option>
-										<option value=" R&B / Soul">R&B / Soul</option>
-										<option value=" Reggae">Reggae</option>
-										<option value=" Rock">Rock</option>
-										<option value=" World Music / Beats">World Music / Beats</option>
+										<option value="blues">None</option>
+										<option value="alternative">Alternative</option>
+										<option value="blues">Blues</option>
 										</select>
 								</div>
 							</div>	
