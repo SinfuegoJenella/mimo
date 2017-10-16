@@ -683,5 +683,22 @@ class Mimo extends CI_Controller {
 		
 	}
 
+	public function home()
+	{
+		if($this->login->isLoggedIn()){
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | Welcome";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/home');
+			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
+		
+	}//end of playlist
 }
 

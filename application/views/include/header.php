@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/custom.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/audplay.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/photoupload.css">
+	<link rel="stylesheet" href="http://localhost/mimo/assets/css/browse.css">
 	<script type="text/javascript" src="http://localhost/mimo/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/photoupload.js"></script>

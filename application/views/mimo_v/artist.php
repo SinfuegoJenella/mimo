@@ -14,6 +14,7 @@
 				<li><a href="<?php echo base_url('mimo/genre');?>"> Genres </a></li>
 				<li><a href="<?php echo base_url('mimo/charts');?>"> Charts </a></li>
 			</ul>
+			</nav>
 			</div>
 <div class="container" >
 	<br />
@@ -30,12 +31,6 @@
 <a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> JenJen &emsp;<button type="submit" form="form1" value="Submit" class="btn pill" id="btn">Follow</button> </p></div></div></a>
 <a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> Geisheeeerrr &emsp; <button type="submit" form="form1" value="Submit" class="btn pill" id="btn">Follow</button></p></div></div></a>
 <a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> Audeng &emsp; <button type="submit" form="form1" value="Submit" class="btn pill" id="btn">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> lalagyan pa &emsp;<button type="submit" form="form1" value="Submit" class="btn pill" id="btn">Follow</button> </p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> ba ng follow &emsp; <button type="submit" form="form1" value="Submit" class="btn pill" id="btn">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> button dito? &emsp;<button type="submit" form="form1" value="Submit" class="btn pill" id="btn">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> o subscribe &emsp;<button type="submit" form="form1" value="Submit" class="btn pill" id="btn">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> na lang? &emsp;<button type="submit" form="form1" value="Submit" class="btn pill" id="btn">Follow</button></p></div></div></a>
-<a href="#"><div class="container"><div class="col-lg-12"><p style="color: white;"><i class="material-icons">music_note</i> Hehe &emsp;<button type="submit" form="form1" value="Submit"  class="btn pill" id="btn">Follow</button></p></div></div></a>
 
 </div>
 </div>
@@ -57,18 +52,7 @@
 				<a href="<?php echo base_url('mimo/artistplaylist');?>" ><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; MoiraDelaTorre <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>
 				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; InigoooP <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>
 				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; MarisRacal <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; LittleMmix <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; FifthHarmony <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; BoyceAvenue <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; EdEdEdEdSheee <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; WalaNakomaisip <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; SinoPaBa? <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>				
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; maka-20 lang oh <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>				
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; anuna <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>				
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; Basta <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>				
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; Kunwari <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>				
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; 20 artists <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>				
-				<a href="<?php echo base_url('mimo/artistplaylist');?>"><div class="container"><div class="col-lg-12"><p style="color: white;"><img src="http://localhost/mimo/assets/img/noimage.jpg" class="img-circle" style="width: 40px; height: 40px;" alt="noimage"/> &emsp; na lahat <a style="color: gray;"> - 173,263 followers </a></p></div></div></a>				
+				
 
 			</div>
 		</div>
