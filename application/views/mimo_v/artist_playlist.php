@@ -56,7 +56,13 @@
 </br> </br>
 <div class="container">
 	<div class="margin">
-		<h3 class="txt">Artist</h3>
+			<div style="float: left; padding-top:6%;"> <!-- artist picture -->
+				<div><img src="http://localhost/mimo/assets/img/1.jpg" class="img-circle  "></a></div>
+				
+			</div>
+			<div><!-- artist name -->
+			<div style="padding-top:12%;padding-left:23%"><h3 class="txt">Artist Name</h3></div>
+			</div>
 	</div>
 			<!-- Table starts (table header)-->
 	<div class="tbl">
@@ -65,7 +71,7 @@
 				<tr class="p text-center ">
 					<th> </th>
 					<th >Title</th>
-					<!--<th>Artist</th>-->
+					
 					<th class="hidden-xs">Daily Plays</th>
 				</tr>
 			</thead>
@@ -75,9 +81,9 @@
 					<!-- play button for music-->
 					<td><button type="button" class="btn btn-circle "><span class="glyphicon glyphicon-play" aria-hidden="true"> </span> </button></td>
 					<td>New Rules</td>
-					<!--<td>Dua Lipa</td>-->
+					
 					<td >
-						<!-- maging ellipsis for tablet and phone (shows the daily plays)-->
+						
 						<button type="button" class="btn visible-xs" style="background: transparent" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="" data-content="Daily Plays" >
 						<span class="glyphicon glyphicon-option-vertical" aria-hidden="true"> </span> </button>
 						<span class="hidden-xs">1540</span> 
@@ -88,7 +94,7 @@
 				<tr class="p color-hover">
 					<td><button type="button" class="btn btn-circle"><span class="glyphicon glyphicon-play" aria-hidden="true"> </span> </button></td>
 					<td>Too Good At Goodbyes</td>
-					<!--<td>Sam Smith</td>-->
+					
 					<td>
 						<button type="button" class="btn visible-xs" style="background: transparent" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="" data-content="Daily Plays">
 						<span class="glyphicon glyphicon-option-vertical " aria-hidden="true"> </span> </button> 
@@ -100,7 +106,7 @@
 				<tr class="p color-hover">
 					<td><button type="button" class="btn btn-circle"><span class="glyphicon glyphicon-play" aria-hidden="true"> </span> </button></td>
 					<td>Havana</td>
-					<!--<td>Camila Cabello</td>-->
+					
 					<td>
 						<button type="button" class="btn visible-xs" style="background: transparent" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="" data-content="Daily Plays">
 						<span class="glyphicon glyphicon-option-vertical " aria-hidden="true"> </span> </button>
@@ -112,7 +118,7 @@
 				<tr class="p color-hover">
 					<td><button type="button" class="btn btn-circle"><span class="glyphicon glyphicon-play" aria-hidden="true"> </span> </button></td>
 					<td>rockstar</td>
-					<!--<td>21 Savage</td>-->
+					
 					<td>
 						<button type="button" class="btn visible-xs" style="background: transparent" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="" data-content="Daily Plays">
 						<span class="glyphicon glyphicon-option-vertical " aria-hidden="true"> </span> </button>
@@ -124,7 +130,7 @@
 				<tr class="p color-hover">
 					<td><button type="button" class="btn btn-circle"><span class="glyphicon glyphicon-play" aria-hidden="true"> </span> </button></td>
 					<td>Silence</td>
-					<!--<td>Khalid</td>-->
+				
 					<td>
 						<button type="button" class="btn visible-xs" style="background: transparent" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="" data-content="Daily Plays">
 						<span class="glyphicon glyphicon-option-vertical " aria-hidden="true"> </span> </button>
@@ -137,6 +143,9 @@
 
 
 		</table>
+
+	</div>
+	<!--End table -->
 
 	</div>
 	<!--Thoughts&Audio Modal-->
