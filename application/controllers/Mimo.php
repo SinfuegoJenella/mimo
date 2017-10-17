@@ -16,7 +16,7 @@ class Mimo extends CI_Controller {
 
 		$this->load->model('comments');
 		$this->load->model('upload');
-		$this->load->model('notifications');
+		$this->load->model('notif');
 		$this->load->model('password_tokens');
 
 		$this->load->model('genre','genre');
@@ -310,7 +310,7 @@ class Mimo extends CI_Controller {
 	                			'likes'=>$results['likes'],
 	                			'comments'=>$results['comments'],
 	                			'cover'=>$results['cover'],
-	                			'title'=>$this->topics->link_add($results['title']),
+	                			'title'=>$results['title'],
 	                			'path'=>$results['path'],
 	                			'genre'=>$results['genre']
 	                		);
@@ -341,7 +341,7 @@ class Mimo extends CI_Controller {
 	                			'posted_at'=>$results['posted_at'],
 	                			'likes'=>$results['likes'],
 	                			'comments'=>$results['comments'],
-	                			'name'=>$this->topics->link_add($results['name']),
+	                			'name'=>$results['name'],
 	                			'url'=>$results['url']
 	                		);
 	                	array_push($res,$p);
@@ -371,6 +371,7 @@ class Mimo extends CI_Controller {
 				$this->posts->update($data,$condition);
 				$data = array('id'=>null,'post_id'=>$postid,'user_id'=>$likerid);
 				$this->post_likes->create($data);
+				$this->notify->createNotify('',$postid,'2');
 			}
 			else{
 				$data = array('likes'=>$numlikes-1);
@@ -436,8 +437,8 @@ class Mimo extends CI_Controller {
                       			'videoAbout'=>$this->topics->link_add($post['description']),
                       			'audioPath'=>$post['path'],
                       			'videoPath'=>$post['url'],
-                      			'audioTitle'=>$this->topics->link_add($post['title']),
-                      			'videoTitle'=>$this->topics->link_add($post['name']),
+                      			'audioTitle'=>$post['title'],
+                      			'videoTitle'=>$post['name'],
                       			'audioGenre'=>$post['genre'],
                       			'audioCover'=>$post['cover'],
                       	);
@@ -465,21 +466,25 @@ class Mimo extends CI_Controller {
 				$this->posts->create($data);
 				$topics = $this->topics->getTopics($thoughts);
 				$post_id = $this->posts->c();
-				if($this->notify->createNotify($thoughts)){
-					foreach ($this->notify->createNotify($thoughts) as $key => $n) {
+				if($this->notify->createNotify($thoughts,0,'1')){
+					foreach ($this->notify->createNotify($thoughts,0,'1') as $key => $n) {
 	                    $s = $id;
 	                    $condition = array('username'=>$key);
 	                    if($this->users->read($condition,'id')){
 		                    $r = $this->users->read($condition,'id')[0]['id'];
-		                    
-		                    if ($r != 0) {
-		                    	$data = array('id'=>null,
-		                    				  'type'=>$n["type"],
-		                    				  'receiver'=>$r,
-		                    				  'sender'=>$s,
-		                    				  'extra'=>$n["extra"]);
-		                    	$this->notifications->create($data);
-		                    }
+		                    if($r!=$s){
+			                    if ($r != 0) {
+			                    	$data = array('id'=>null,
+			                    				  'type'=>$n["type"],
+			                    				  'receiver'=>$r,
+			                    				  'sender'=>$s,
+			                    				  'post_id'=>$post_id,
+			                    				  'notifurl'=>'http://localhost/mimo/notification?pid='.$post_id.''
+
+			                    				  );
+			                    	$this->notif->create($data);
+			                    }
+		                	}
 		                }
 	                }
             	}
@@ -529,21 +534,25 @@ class Mimo extends CI_Controller {
 				$this->posts->create($data);
 				$topics = $this->topics->getTopics($desc);
 				$post_id = $this->posts->c();
-				if($this->notify->createNotify($desc)){
-					foreach ($this->notify->createNotify($desc) as $key => $n) {
+				if($this->notify->createNotify($desc,0,'1')){
+					foreach ($this->notify->createNotify($desc,0,'1') as $key => $n) {
 	                    $s = $id;
 	                    $condition = array('username'=>$key);
 	                    if($this->users->read($condition,'id')){
 		                    $r = $this->users->read($condition,'id')[0]['id'];
-		                    
-		                    if ($r != 0) {
-		                    	$data = array('id'=>null,
-		                    				  'type'=>$n["type"],
-		                    				  'receiver'=>$r,
-		                    				  'sender'=>$s,
-		                    				  'extra'=>$n["extra"]);
-		                    	$this->notifications->create($data);
-		                    }
+		                    if($r!=$s){
+			                    if ($r != 0) {
+			                    	$data = array('id'=>null,
+			                    				  'type'=>$n["type"],
+			                    				  'receiver'=>$r,
+			                    				  'sender'=>$s,
+			                    				  'post_id'=>$post_id,
+			                    				  'notifurl'=>'http://localhost/mimo/notification?pid='.$post_id.''
+
+			                    				  );
+			                    	$this->notif->create($data);
+			                    }
+		                	}
 		                }
 	                }
             	}
@@ -589,21 +598,25 @@ class Mimo extends CI_Controller {
 				$this->posts->create($data);
 				$topics = $this->topics->getTopics($desc);
 				$post_id = $this->posts->c();
-				if($this->notify->createNotify($desc)){
-					foreach ($this->notify->createNotify($desc) as $key => $n) {
+				if($this->notify->createNotify($desc,0,'1')){
+					foreach ($this->notify->createNotify($desc,0,'1') as $key => $n) {
 	                    $s = $id;
 	                    $condition = array('username'=>$key);
 	                    if($this->users->read($condition,'id')){
 		                    $r = $this->users->read($condition,'id')[0]['id'];
-		                    
-		                    if ($r != 0) {
-		                    	$data = array('id'=>null,
-		                    				  'type'=>$n["type"],
-		                    				  'receiver'=>$r,
-		                    				  'sender'=>$s,
-		                    				  'extra'=>$n["extra"]);
-		                    	$this->notifications->create($data);
-		                    }
+		                    if($r!=$s){
+			                    if ($r != 0) {
+			                    	$data = array('id'=>null,
+			                    				  'type'=>$n["type"],
+			                    				  'receiver'=>$r,
+			                    				  'sender'=>$s,
+			                    				  'post_id'=>$post_id,
+			                    				  'notifurl'=>'http://localhost/mimo/notification?pid='.$post_id.''
+
+			                    				  );
+			                    	$this->notif->create($data);
+			                    }
+		                	}
 		                }
 	                }
             	}
@@ -635,12 +648,37 @@ class Mimo extends CI_Controller {
 						'id'=>null,
 						'post_id'=>$postid,
 						'user_id'=>$id,
-						'comment'=>$comment
+						'comment'=>$this->topics->link_add($comment)
 						);
 				$this->comments->create($data);
 				$id = $this->comments->c();
 				$datas = $this->comments->aftercom($id);
 				echo json_encode($datas);
+
+				$id = $this->login->isLoggedIn();
+				$this->notify->createNotify('',$postid,'3');
+				if($this->notify->createNotify($comment,0,'1')){
+					foreach ($this->notify->createNotify($comment,0,'4') as $key => $n) {
+	                    $s = $id;
+	                    $condition = array('username'=>$key);
+	                    if($this->users->read($condition,'id')){
+		                    $r = $this->users->read($condition,'id')[0]['id'];
+		                    if($r!=$s){
+			                    if ($r != 0) {
+			                    	$data = array('id'=>null,
+			                    				  'type'=>$n["type"],
+			                    				  'receiver'=>$r,
+			                    				  'sender'=>$s,
+			                    				  'post_id'=>$postid,
+			                    				  'notifurl'=>'http://localhost/mimo/notification?pid='.$postid.''
+
+			                    				  );
+			                    	$this->notif->create($data);
+			                    }
+		                	}
+		                }
+	                }
+            	}
 			}
 			else{
 				
@@ -655,7 +693,17 @@ class Mimo extends CI_Controller {
 		$postid = $this->input->post("postid");
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$query = $this->comments->getcom($postid);
-			echo json_encode($query);
+			$result = array();
+                foreach($query as $post) {
+
+                      $p=array('comment'=>$post['comment'],
+                      			'username'=>$post['username'],
+                      			'picture'=>$post['picture'],
+                      			'posted_at'=>$post['posted_at']
+                      	);
+                      array_push($result,$p);
+                }
+              echo json_encode($result);
 		}
 		else{
 			redirect('error');
