@@ -22,7 +22,7 @@
 	<h3 class="txt">Featured Charts</h3>
 </div>
 
-<div class="row text-center">
+<div class="row text-center"> 
 	<div class="col-md-3" >
 		<div >
 			<!--both a href link papunta sa playlist-->
