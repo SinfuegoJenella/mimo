@@ -14,21 +14,27 @@
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/custom.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/audplay.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/photoupload.css">
+	<link rel="stylesheet" href="http://localhost/mimo/assets/css/browse.css">
 	<script type="text/javascript" src="http://localhost/mimo/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/photoupload.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/likecomment.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/audplay.js"></script>
 
-     <!-- Search NavBar -->
+          <!-- Search NavBar -->
     <script type="text/javascript">
+
     $(document).ready(function() {
         $('.searchbar').keyup(function(e){
             var sWord = $(this).val();
             $('.searchresult').html("");
+            if (e.which == 13) {
+                e.preventDefault()
+                window.location = "http://localhost/mimo/search?q="+sWord;
+            }            
             $.ajax({
                 type: 'POST',
-                url: '<?php echo base_url() ?>mimo/search',
+                url: '<?php echo base_url() ?>search',
                 data:{
                     searchword:sWord
                 },
@@ -43,7 +49,6 @@
                 },
                 error: function(e){
                     console.log(e)
-                    alert('error')
                 }
             });
 
@@ -128,4 +133,21 @@
         });
     });
     </script>
+    <script type="text/javascript">
+    if (window.location.hash && window.location.hash == '#_=_') {
+        if (window.history && history.pushState) {
+            window.history.pushState("", document.title, window.location.pathname);
+        } else {
+            // Prevent scrolling by storing the page's current scroll offset
+            var scroll = {
+                top: document.body.scrollTop,
+                left: document.body.scrollLeft
+            };
+            window.location.hash = '';
+            // Restore the scroll offset, should be flicker free
+            document.body.scrollTop = scroll.top;
+            document.body.scrollLeft = scroll.left;
+        }
+    }
+</script>
 </head>

@@ -13,8 +13,7 @@
 			</div>
 			<div class="col-md-2">
 					
-						<div style="width: 140px; height: 140px; background-image:url('<?php if ($users[0]['picture'] == NULL){ echo 'http://localhost/mimo/assets/img/noimage.jpg'; }
-																else{ echo $users[0]['picture'];} ?>'); border-radius: 50%; 
+						<div style="width: 140px; height: 140px; background-image:url('<?php echo $users[0]['picture'] ?>'); border-radius: 50%; 
 							background-size: cover; margin: 0 auto; "></div>
 
 							<h4 style="color: white" class="text-center user"><?php echo $users[0]['firstname'].' '.$users[0]['lastname'] ?></h4>

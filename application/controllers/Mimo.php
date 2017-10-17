@@ -79,7 +79,11 @@ class Mimo extends CI_Controller {
 			else{
 			//print_r ($image);
 			$profilelink=$this->image->uploadImage($profileimage); 
-				
+				if($profilelink==NULL)
+				{
+					$profilelink=$previousprofile;
+					echo "<script type='text/javascript'>alert('Connection Error');</script>";
+				}
 			}
 			
 			if($headerimage['name']=='') {  
@@ -121,14 +125,13 @@ class Mimo extends CI_Controller {
 			$genre3 = $this->input->post("genre3", TRUE);
 			$mcareer =$this->input->post("mcareer", TRUE);
 			$career="";
-			if($mcareer=="")
-			{
+			if($mcareer==""){
 				$career=$previouscareer;
 			}
 			else{
 				foreach($mcareer as $car)
 				{
-					$career .= $car. " . ";
+					$career .= $car. " , ";
 						
 				}
 			}
@@ -264,21 +267,26 @@ class Mimo extends CI_Controller {
 	public function posts(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$browseUserid = $this->input->post("browseuser");
-			$posts = $this->getposts->readthoughts($browseUserid);
-			$result = array();
-                foreach($posts as $post) {
+			if($this->getposts->readthoughts($browseUserid)){
+				$posts = $this->getposts->readthoughts($browseUserid);
+				$result = array();
+	                foreach($posts as $post) {
 
-                      $p=array('PostId'=>$post['id'],
-                      			'PostUserPicture'=>$post['picture'],
-                      			'PostBody'=>$post['body'],
-                      			'PostUser'=>$post['username'],
-                      			'PostLikes'=>$post['likes'],
-                      			'PostComments'=>$post['comments'],
-                      			'PostDate'=>$post['posted_at']
-                      	);
-                      array_push($result,$p);
-                }
-              echo json_encode($result);
+	                      $p=array('PostId'=>$post['id'],
+	                      			'PostUserPicture'=>$post['picture'],
+	                      			'PostBody'=>$this->topics->link_add($post['body']),
+	                      			'PostUser'=>$post['username'],
+	                      			'PostLikes'=>$post['likes'],
+	                      			'PostComments'=>$post['comments'],
+	                      			'PostDate'=>$post['posted_at']
+	                      	);
+	                      array_push($result,$p);
+	                }
+	              echo json_encode($result);
+          }
+          else{
+          	echo json_encode(array('PostId'=>"error"));
+          }
 		}
 		else{
 			redirect('error');
@@ -287,8 +295,30 @@ class Mimo extends CI_Controller {
 	public function audioposts(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$browseUserid = $this->input->post("browseuser");
-			$posts = $this->getposts->readaudios($browseUserid);
-            echo json_encode($posts);
+			if($this->getposts->readaudios($browseUserid)){
+				$posts = $this->getposts->readaudios($browseUserid);
+	            $res = array();
+	                foreach($posts as $results) {
+	                	$p=array(
+	                			'id'=>$results['id'],
+	                			'username'=>$results['username'],
+	                			'picture'=>$results['picture'],
+	                			'about'=>$this->topics->link_add($results['about']),
+	                			'posted_at'=>$results['posted_at'],
+	                			'likes'=>$results['likes'],
+	                			'comments'=>$results['comments'],
+	                			'cover'=>$results['cover'],
+	                			'title'=>$this->topics->link_add($results['title']),
+	                			'path'=>$results['path'],
+	                			'genre'=>$results['genre']
+	                		);
+	                	array_push($res,$p);
+
+	                }
+			echo json_encode($res);
+            }else{
+        		echo json_encode(array('id'=>"error"));
+        	}
 		}
 		else{
 			redirect('error');
@@ -297,8 +327,29 @@ class Mimo extends CI_Controller {
 	public function videoposts(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$browseUserid = $this->input->post("browseuser");
-			$posts = $this->getposts->readvideos($browseUserid);
-            echo json_encode($posts);
+			if($this->getposts->readvideos($browseUserid)){
+				$posts = $this->getposts->readvideos($browseUserid);
+				$res = array();
+	                foreach($posts as $results) {
+	                	$p=array(
+	                			'id'=>$results['id'],
+	                			'username'=>$results['username'],
+	                			'picture'=>$results['picture'],
+	                			'description'=>$this->topics->link_add($results['description']),
+	                			'posted_at'=>$results['posted_at'],
+	                			'likes'=>$results['likes'],
+	                			'comments'=>$results['comments'],
+	                			'name'=>$this->topics->link_add($results['name']),
+	                			'url'=>$results['url']
+	                		);
+	                	array_push($res,$p);
+
+	                }
+			echo json_encode($res);
+        	}
+        	else{
+        		echo json_encode(array('id'=>"error"));
+        	}
 		}
 		else{
 			redirect('error');
@@ -335,31 +386,35 @@ class Mimo extends CI_Controller {
 			redirect('mimo/errorpage');
 		}
 	}//end of likes function
-	public function search(){
+
+	public function delete(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
-			$search = $this->input->post("searchword");
-			if($search!=''){
-				$query = $this->getposts->getsearch($search);
-				echo json_encode($query);
+			$postid = $this->input->post("postid");
+			$selector = 'type';
+			$condition = array('id'=>$postid);
+			$type = $this->posts->read($condition,$selector)[0]['type'];
+			$this->posts->del($condition);
+			if($type==1){
+				$data = array('post_id'=>$postid);
+				$this->thoughts->del($data,'thoughts');
+				echo $type;
 			}
+			else if($type==2){
+				$data = array('post_id'=>$postid);
+				$this->thoughts->del($data,'audios');
+				echo $type;
+			}
+			else if($type==3){
+				$data = array('post_id'=>$postid);
+				$this->thoughts->del($data,'videos');
+				echo $type;
+			}
+			
 		}
 		else{
-			redirect('mimo/errorpage');
+			redirect('error');
 		}
-	}//end of search()
-	
-	public function searchpage(){
-		$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | Search";
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/searchpage');
-			$this->load->view('include/footer');
-	}//end of searchpage()
-	
-	
+	}
 	public function hallposts(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$userid = $this->login->isLoggedIn();
@@ -374,13 +429,13 @@ class Mimo extends CI_Controller {
                       			'PostLikes'=>$post['likes'],
                       			'PostComments'=>$post['comments'],
                       			'PostDate'=>$post['posted_at'],
-                      			'thoughtBody'=>$post['body'],
-                      			'audioAbout'=>$post['about'],
-                      			'videoAbout'=>$post['description'],
+                      			'thoughtBody'=>$this->topics->link_add($post['body']),
+                      			'audioAbout'=>$this->topics->link_add($post['about']),
+                      			'videoAbout'=>$this->topics->link_add($post['description']),
                       			'audioPath'=>$post['path'],
                       			'videoPath'=>$post['url'],
-                      			'audioTitle'=>$post['title'],
-                      			'videoTitle'=>$post['name'],
+                      			'audioTitle'=>$this->topics->link_add($post['title']),
+                      			'videoTitle'=>$this->topics->link_add($post['name']),
                       			'audioGenre'=>$post['genre'],
                       			'audioCover'=>$post['cover'],
                       	);
@@ -435,16 +490,12 @@ class Mimo extends CI_Controller {
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
 			$noover = uniqid(rand()).'.'.$type;
+			$image= $_FILES['uploadAudioImg'];
+			$audioart=$this->image->uploadImage($image); 
 			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
-			$image= $_FILES['uploadAudioImg'];
-			if($image['name']=='') {
-					$audioart= "https://i.imgur.com/GZr4AiQ.jpg";
-			}
-			else{
-				$audioart=$this->image->uploadImage($image); 
-				}
+			
 		    $id = $this->login->isLoggedIn();
 				$data = array(
 						'id'=>null,
@@ -573,16 +624,31 @@ class Mimo extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$userid = $this->input->post("userid");
 			$followerid = $this->input->post("followerid");
+			//get current number of followers in about table
+				$selector = 'followers';
+				$condition = array('user_id'=>$userid);
+				$cf = $this->about->read($condition,$selector)[0]['followers'];
+
 			if(!$this->followers->read($userid,$followerid)){
 				$data = array('id'=>null, 'user_id'=>$userid,'follower_id'=>$followerid);
 				$this->followers->create($data);
-				echo 'false-true';
+
+				
+				//update number of followers
+				$data = array('followers'=>$cf+1);
+				$this->about->update($data,$condition);
+				$cf=$cf+1;
 			}
 			else{
 				$data = array('user_id'=>$userid,'follower_id'=>$followerid);
 				$this->followers->del($data);
-				echo 'tru-false';
+
+				//update number of followers
+				$data = array('followers'=>$cf-1);
+				$this->about->update($data,$condition);
+				$cf=$cf-1;
 			}
+			echo json_encode(array('followers'=>$cf));
 		}
 		else{
 			redirect('error');
@@ -641,63 +707,7 @@ class Mimo extends CI_Controller {
 		}
 		
 	}//end of playlist
-	
-	
-	
-	public function collection()
-	{
-		if($this->login->isLoggedIn()){
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | My Collection";
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/collection');
-			$this->load->view('include/footer');
-		}
-		else{
-			redirect('accounts/signin');
-		}
-		
-	}//end of collection
-	
-	public function audio()
-	{
-		if($this->login->isLoggedIn()){
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | My Collection";
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/audio');
-			$this->load->view('include/footer');
-		}
-		else{
-			redirect('accounts/signin');
-		}
-		
-	}//end of collection
 
-	public function video()
-	{
-		if($this->login->isLoggedIn()){
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | My Collection";
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/video');
-			$this->load->view('include/footer');
-		}
-		else{
-			redirect('accounts/signin');
-		}
-		
-	}//end of collection
-	
 	public function logout() {
 		
 		if (isset($_COOKIE['SNID'])) {
@@ -721,16 +731,6 @@ class Mimo extends CI_Controller {
 		
 	}
 	
-
-	public function errorpage()
-	{
-		$headerdata['title'] = "MimO | Error Page";
-		$this->load->view('include/header',$headerdata);
-		$this->load->view('mimo_v/error_page');
-		$this->load->view('include/footer');
-		
-	}
-	
 	public function artistplaylist()
 	{
 		$headerdata['title'] = "MimO | Artist Playlist";
@@ -740,5 +740,22 @@ class Mimo extends CI_Controller {
 		
 	}
 
+	public function home()
+	{
+		if($this->login->isLoggedIn()){
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | Welcome";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/home');
+			$this->load->view('include/footer');
+		}
+		else{
+			redirect('accounts/signin');
+		}
+		
+	}//end of playlist
 }
 

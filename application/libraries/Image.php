@@ -23,17 +23,10 @@ class Image {
                 
 
                 $response = file_get_contents($imgurURL, false, $context);
-				if($response === false)
-				{	
-					echo "<script type='text/javascript'>alert('Connection Error');</script>";
-					redirect ('mimo');
-				}
-				else
-				{
                 $response = json_decode($response);	
+				
 				$link=$response->data->link;
 				return $link;
-				}
 				}
         }
 

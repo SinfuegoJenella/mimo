@@ -33,19 +33,19 @@
 			<div class="row" style="margin-left: 10px; margin-right: 10px">
 					<div id="listNav" class="col-md-12">
 						<div class="btn-group btn-group-justified">
-						<a  href="<?php echo base_url('mimo/collection');?>" class="listnav btn btn-group">
+						<a  href="" class="listnav btn btn-group">
 						<i class="material-icons">library_music</i>
 						<p><small>Collection</small></p>
 						</a>
 			
-						<a  href="<?php echo base_url('mimo/audio');?>" class="listnav btn btn-group">
+						<a  href="" class="listnav btn btn-group">
 						<i class="material-icons">album</i>
-						<p><small>Audio</small></p>
+						<p><small>Audios</small></p>
 						</a>
 					
-						<a  href="<?php echo base_url('mimo/video');?>" class="listnav btn btn-group">
+						<a  href="" class="listnav btn btn-group">
 						<i class="material-icons">videocam</i>
-						<p><small>Video</small></p>
+						<p><small>Videos</small></p>
 						</a>
 		
 					</div>
@@ -72,6 +72,7 @@
 	
 	<!-- Post Body (Thoughts) -->
 	<div class="col-md-6 belowtn col-xs-12 col-sm-7">
+		<?php $this->load->view('templates/commentModal');?>
 		<div class="postcont">
 
 		</div>
@@ -135,6 +136,7 @@
 		<!--Para naman to dun sa fixed button ng release ng thoughts at audio-->
 		<?php $this->load->view('include/releasebuttons');?>
 			<?php $this->load->view('templates/commentModal');?>
+			<?php $this->load->view('templates/colmodal');?>
 	</div>
 		
 </div><!--End of the Whole Row (LeftNav, Contents, Third Column -->
@@ -159,12 +161,12 @@ $(document).ready(function(){
         						);}
 
 				if(posts[index].PostType==2){
-								$('.postcont').html($('.postcont').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'" class="user">'+posts[index].PostUser+'</a><small> released an audio!</small><a class="btn del pull-right"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+posts[index].PostDate+'</small></small><small></small></h4></div></div></div><div class="postbodyaudio"><div class="media"><div class="media-left"><a href="#" ><div class="media-object albumCover" style="background-image:url('+posts[index].audioCover+');"></div></a></div><div class="media-body "><h4 style="color: black" class="media-heading"><i class="fa fa-music"></i><b style="color: #ff9926"> Title:</b> '+posts[index].audioTitle+'</h4><h6 style="padding: 5px 2.2em"><b> Artist:</b> '+posts[index].PostUser+'</h6><h6 style="padding: 0 2.2em"><b> Genre:</b>'+posts[index].audioGenre+'</h6><h6 style="padding: 0 2.2em"><b> Year:</b> 2017</h6><p id="audDesc" style="padding: 0 2.2em">'+posts[index].audioAbout+'</p><hr /></div></div><div class="row" ><div class="col-md-12"><audio id="audio" controls controlsList="nodownload" width="100%"><source src="'+posts[index].audioPath+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-did="'+posts[index].PostId+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a><a href="#" class="btn"><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a><a class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> 123,234 plays</small></a></div></div></div></div>'
+								$('.postcont').html($('.postcont').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'" class="user">'+posts[index].PostUser+'</a><small> released an audio!</small><a class="btn del pull-right"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+posts[index].PostDate+'</small></small><small></small></h4></div></div></div><div class="postbodyaudio"><div class="media"><div class="media-left"><a href="#" ><div class="media-object albumCover" style="background-image:url('+posts[index].audioCover+');"></div></a></div><div class="media-body "><h4 style="color: black" class="media-heading"><i class="fa fa-music"></i><b style="color: #ff9926"> Title:</b> '+posts[index].audioTitle+'</h4><h6 style="padding: 5px 2.2em"><b> Artist:</b> '+posts[index].PostUser+'</h6><h6 style="padding: 0 2.2em"><b> Genre:</b>'+posts[index].audioGenre+'</h6><h6 style="padding: 0 2.2em"><b> Year:</b> 2017</h6><p id="audDesc" style="padding: 0 2.2em">'+posts[index].audioAbout+'</p><hr /></div></div><div class="row" ><div class="col-md-12"><audio id="audio" controls controlsList="nodownload" width="100%"><source src="'+posts[index].audioPath+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-did="'+posts[index].PostId+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a><a id="addCollect" class="btn comment" data-toggle="modal" data-target="#collectModal"><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a><a class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> 123,234 plays</small></a></div></div></div></div>'
         						);
 				};
+				
 				if(posts[index].PostType==3){
-								$('.postcont').html($('.postcont').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'" class="user">'+posts[index].PostUser+'</a><small> shared a video!</small><a class="btn del pull-right"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+posts[index].PostDate+'</small></small></h4></div></div></div><div class="postbodyaudio"><h5 class="media-heading text-center"><i class="fa fa-video-camera"></i> '+posts[index].videoTitle+'</h5><div class="row" ><div class="col-md-12"><video src="'+posts[index].videoPath+'" style="width:100%; height: 250px" controls controlsList="nodownload"></video></div></div><h6 style="color: #1e1e1e">'+posts[index].videoAbout+'</h6><br /><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-did="'+posts[index].PostId+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a><a class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> 123,234 plays</small></a></div></div></div></div>'
-
+								$('.postcont').html($('.postcont').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'" class="user">'+posts[index].PostUser+'</a><small> shared a video!</small><br /><small><small> '+posts[index].PostDate+'</small></small></h4></div></div></div><div class="postbodyaudio"><h5 class="media-heading text-center"><i class="fa fa-video-camera"></i> '+posts[index].videoTitle+'</h5><div class="row" ><div class="col-md-12"><video src="'+posts[index].videoPath+'" style="width:100%; height: 250px" controls controlsList="nodownload"></video></div></div><h6 style="color: #1e1e1e">'+posts[index].videoAbout+'</h6><br /><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-did="'+posts[index].PostId+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a><a class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> 123,234 plays</small></a></div></div></div></div>'
         						);
 
 				};
@@ -212,16 +214,14 @@ $(document).ready(function(){
 									});
 									
 								});
-
-					
-
-					
+								
         	});
         },
         error: function(xhr, ajaxOptions, thrownError){
         	console.log(e);
         }
     });
+	
 	function showCommentModal(comments,postid){
 		$('.h4').html('<span></span> Comments<small> on ... post</small>')
 		 $('#commentModal').modal('show')
@@ -230,11 +230,11 @@ $(document).ready(function(){
 			$('.commentatorDiv').html()+'<div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+comments[index].username+'"><div class="media-object commentPic" style="background-image:url('+comments[index].picture+');"></div></a></div><div class="media-body"><h5 class="media-heading"><a style="font-weight:bold" class="user">'+comments[index].username+'</a><small><small> '+comments[index].posted_at+'</small></small></h5><h6>'+comments[index].comment+'</h6></div></div>'
 			)
         });
-		 $('.postComment').attr('data-id' , postid);
+		 $('.postComment').attr('data-cid' , postid);
 
 		 $('.postComment').click(function(e) {
 		 	e.preventDefault();
-		 	var id = $(this).attr("data-id");
+		 	var id = $(this).attr("data-cid");
 
 			var txt = $("#commentBox").val();
 			$("#commentBox").val('');
@@ -260,22 +260,5 @@ $(document).ready(function(){
 		 });
 	}
 });
-</script>
-<script type="text/javascript">
-    if (window.location.hash && window.location.hash == '#_=_') {
-        if (window.history && history.pushState) {
-            window.history.pushState("", document.title, window.location.pathname);
-        } else {
-            // Prevent scrolling by storing the page's current scroll offset
-            var scroll = {
-                top: document.body.scrollTop,
-                left: document.body.scrollLeft
-            };
-            window.location.hash = '';
-            // Restore the scroll offset, should be flicker free
-            document.body.scrollTop = scroll.top;
-            document.body.scrollLeft = scroll.left;
-        }
-    }
 </script>
 </body>

@@ -12,7 +12,7 @@
 					</button>
 					<h4 class="">
 						<span></span> Comments
-						<small> on <?php echo $user[0]['username'];?>'s post</small>
+						<small> on <?php echo $users[0]['username'];?>'s post</small>
 					</h4>
 			</div>
             
@@ -29,8 +29,7 @@
 				<div class="media">
 					<div class="media-left">
 						<a href="#">
-							<div class="media-object commentPic" style="background-image:url('<?php if ($user[0]['picture'] == NULL){ echo ('http://localhost/mimo/assets/img/noimage.jpg'); } 
-																else { echo $user[0]['picture'];} ?>');"></div>
+							<div class="media-object commentPic" style="background-image:url('<?php echo $users[0]['picture'];?>');"></div>
 						</a>
 					</div>
 
