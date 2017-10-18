@@ -14,7 +14,6 @@
 				<li><a href="<?php echo base_url('mimo/genre');?>"> Genres </a></li>
 				<li><a href="<?php echo base_url('mimo/charts');?>"> Charts </a></li>
 			</ul>
-			</nav>
 			</div>
 <div class="container-fluid " style="margin-left: 100px; margin-right: 100px; ">
  <div id="wrapper" >
@@ -62,6 +61,7 @@
 						<!-- Follow button -->
 				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
 				color:grey;background-color:#e1e1e1;" >Follow</div>
+
 			</div>
 		</div>
 		
@@ -162,6 +162,7 @@
 				color:grey;background-color:#e1e1e1;" >Follow</div>
 			</div>
 		</div>
+
 		<!-- End Top 10 Most Followed Artists -->
 		
 		
@@ -220,7 +221,6 @@
 		
 			</div>
 		</div>
-		 
 		
 		<div class="row margin" >
 			
@@ -322,17 +322,6 @@
 						</div>
 					</div>
 				</div>
-
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	<?php $this->load->view('include/releasebuttons');?>
 	<?php $this->load->view('templates/addpostmodal');?>

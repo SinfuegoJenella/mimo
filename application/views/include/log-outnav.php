@@ -26,29 +26,7 @@
                     <li class="presentation"><a class="presentation" href="<?php echo base_url('mimo/browse');?>" class="bar">
 			<i class="material-icons bar">equalizer</i><p class="hidden-sm bar"> Browse</p></a></li>
                     <li role="presentation"><a href="<?php echo base_url('mimo/myStudio?username='.$users[0]['username'].' ');?>" class="bar">
-						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>
-					
-					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" 		class="bar">
-						<i class="material-icons">notifications </i><span class="label label-warning">24</span></a>
-						 <ul class="dropdown-menu" role="menu" style="width: 350px; max-height: 450px; overflow: auto">
-							<li role="presentation">
-								<h6 class="dropdown-header text-center"><b>NOTIFICATIONS</b></h6></li>
-								
-								<!--NOTIF SECTION-->
-								 <?php $this->load->view('templates/notifbox');?>
-								<?php $this->load->view('templates/notifbox');?>
-								<?php $this->load->view('templates/notifcomment');?>
-								<?php $this->load->view('templates/notiflike');?>
-								<?php $this->load->view('templates/notifmention');?>
-								<?php $this->load->view('templates/notifmention');?>
-								<?php $this->load->view('templates/notifcomment');?>
-						
-						<!--END-->
-							
-
-						</ul>
-					</li>
-					
+						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>	
 					 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" class="bar">
 						<i class="material-icons">settings</i> <span class="caret"></span></a>
 						 <ul class="dropdown-menu" role="menu">

@@ -43,7 +43,7 @@
 	</div>
 	
 	
-	<div class="row" style="background-color: #f2f2f2;">
+	<div class="row" style="background-color: #404040;">
 		<!--Profile Info: SHOUTOUT(Parang Bio) -->
 		<div class="col-md-12" style="">
 				<!--Put here the bio 
@@ -58,15 +58,13 @@
 				
 		</div>
 	</div>
-	<br />
-	
 	<div class="row">
-	<ul class="nav nav-tabs nav-justified">
+					<ul class="nav nav-tabs nav-justified">
 						<!-- COLLECTIONS, ALBUMS, THOUGHTS, and FAVORITES TABS-->
-						<li class="active"><a data-toggle="tab" href="#audios"><i class="material-icons">library_music</i>&nbsp;Audios</a></li>
-						<li><a data-toggle="tab" href="#thought" ><span><i class="material-icons">chat_bubble</i></span>&nbsp;Thoughts</a></li>
-						<li><a data-toggle="tab" href="#collections" ><span><i class="material-icons">music_note</i></span>&nbsp;Collections</a></li>
-						<li><a data-toggle="tab" href="#vids" ><i class="material-icons">videocam</i></span>&nbsp;Videos</a></li>
+						<li class="active"><a data-toggle="tab" href="#audios"><i class="fa fa-music"></i>&nbsp;Audios</a></li>
+						<li><a data-toggle="tab" href="#thought" ><span><i class="fa fa-comments"></i></span>&nbsp;Thoughts</a></li>
+						<li><a data-toggle="tab" href="#collections" ><span><i class="fa fa-list-ul"></i></span>&nbsp;Collections</a></li>
+						<li><a data-toggle="tab" href="#vids" ><span><i class="fa fa-video-camera"></i></span>&nbsp;Videos</a></li>
 					</ul>
 
 						<div class="tab-content">
@@ -87,20 +85,19 @@
 						<!-- ALBUMS-->
 							<div id="collections" class="tab-pane fade" >
 							<div class="row">
-								<div class="col-md-3"></div>
+								<div class="col-md-2"></div>
 									
-								<div class="col-md-6">	
-									<!-- PUT HERE THE ALBUMS-->
-
-									<?php $this->load->view('templates/albumbox');?>
-									<?php $this->load->view('templates/albumbox');?>
-									<?php $this->load->view('templates/albumbox');?>
-									<?php $this->load->view('templates/albumbox');?>
-									<?php $this->load->view('templates/albumbox');?>
+								<div class="col-md-8">	
+									<!-- PUT HERE THE COLLECTIONS-->
+								<?php $this->load->view('templates/collectionbox');?>
+								<?php $this->load->view('templates/collectionbox');?>
+								<?php $this->load->view('templates/collectionbox');?>
+								<?php $this->load->view('templates/collectionbox');?>
+									
 									<!-- -->
 								</div>
 								
-								<div class="col-md-3"></div>
+								<div class="col-md-2"></div>
 								
 							</div>
 							</div>
@@ -617,3 +614,21 @@ $(document).ready(function()
 	
 });
 </script>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  }
+}
+</script>
+

@@ -1,5 +1,3 @@
-
-
 <body style="background-color: #e1e1e1">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">

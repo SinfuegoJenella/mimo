@@ -1,5 +1,7 @@
-<body style="background-color: #e1e1e1">
-<?php $this->load->view('include/topnav');?>
+<body style="background: linear-gradient(to bottom right, #bdc3c7 1%, #2c3e50 111%);
+			background-attachment: fixed">
+	<!-- Top Nav Bar -->
+		<br>
 
 <div class="container">
 		<div class="col-md-10" style="padding-top: 80px; margin-left: 100px;  ">
