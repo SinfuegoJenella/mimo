@@ -18,10 +18,7 @@
 					<div class="col-md-6">
 						<label for="sel1"><span class="material-icons">library_music</span>Select:</label>
 						<select class="form-control" id="sel1" style="width: 100%">
-							<option></option>
-							<option>ooption1df</option>
-							<option>3hbjnmbjnvgb</option>
-							<option>4ygvbtvgbhn</option>
+							
 						</select>
 					</div>
 					
@@ -34,7 +31,7 @@
 				
 				<div class="row">
 					<div class="col-md-12">
-						<button type="button" class="btn btn-warning pull-right" id="collectModal">
+						<button type="button" class="btn btn-warning pull-right" id="collecModal">
 							OK!
 						</button>
 					</div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2017 at 10:17 AM
+-- Generation Time: Oct 17, 2017 at 04:50 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -63,13 +63,6 @@ CREATE TABLE `audios` (
   `topics` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='upload audio';
 
---
--- Dumping data for table `audios`
---
-
-INSERT INTO `audios` (`id`, `post_id`, `title`, `genre`, `about`, `date`, `path`, `cover`, `topics`) VALUES
-(1, 1, 'Audio #Testing', 'alternative', 'Audio Testing #topics and mention @sheishei', '2017-10-16 17:58:54', 'http://localhost/mimo/assets/uploads/audios/2868359e482d85e95b.mp3', 'https://i.imgur.com/h79ions.jpg', 'topics,');
-
 -- --------------------------------------------------------
 
 --
@@ -79,7 +72,8 @@ INSERT INTO `audios` (`id`, `post_id`, `title`, `genre`, `about`, `date`, `path`
 CREATE TABLE `collections` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `count` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='music play lists';
 
 -- --------------------------------------------------------
@@ -91,7 +85,7 @@ CREATE TABLE `collections` (
 CREATE TABLE `collection_songs` (
   `id` int(11) UNSIGNED NOT NULL,
   `collection_id` int(11) UNSIGNED NOT NULL,
-  `song_id` int(11) UNSIGNED NOT NULL
+  `post_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -107,16 +101,6 @@ CREATE TABLE `comments` (
   `comment` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `posted_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `post_id`, `user_id`, `comment`, `posted_at`) VALUES
-(1, 3, 2, 'Comment Testing', '2017-10-16 18:03:21'),
-(2, 1, 2, 'Test Comment', '2017-10-16 18:03:36'),
-(3, 2, 1, 'Test comment again', '2017-10-16 18:05:03'),
-(4, 1, 1, 'ayoko na pre', '2017-10-16 18:05:25');
 
 -- --------------------------------------------------------
 
@@ -195,7 +179,23 @@ CREATE TABLE `login_tokens` (
 --
 
 INSERT INTO `login_tokens` (`id`, `user_id`, `token`, `login_time`) VALUES
-(5, 2, 'fb437b64da20dd0c4ba1689a934e2938254d4e31', '2017-10-16 18:08:23');
+(8, 1, '18bd768d299fb094ec4db42434cd38452d6ad701', '2017-10-17 22:53:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `type` int(11) UNSIGNED NOT NULL,
+  `receiver` int(11) UNSIGNED NOT NULL,
+  `sender` int(11) UNSIGNED NOT NULL,
+  `post_id` int(11) UNSIGNED NOT NULL,
+  `notifurl` varchar(255) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -246,15 +246,6 @@ CREATE TABLE `posts` (
   `type` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`id`, `user_id`, `likes`, `comments`, `posted_at`, `type`) VALUES
-(1, 2, 0, 0, '2017-10-16 17:58:54', 2),
-(2, 2, 0, 0, '2017-10-16 18:00:32', 1),
-(3, 1, 2, 0, '2017-10-16 18:01:48', 3);
-
 -- --------------------------------------------------------
 
 --
@@ -266,14 +257,6 @@ CREATE TABLE `post_likes` (
   `post_id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `post_likes`
---
-
-INSERT INTO `post_likes` (`id`, `post_id`, `user_id`) VALUES
-(1, 3, 2),
-(2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -299,13 +282,6 @@ CREATE TABLE `thoughts` (
   `body` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `topics` varchar(400) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `thoughts`
---
-
-INSERT INTO `thoughts` (`id`, `post_id`, `body`, `topics`) VALUES
-(1, 2, 'Share a Thought #test @mimo', 'test,');
 
 -- --------------------------------------------------------
 
@@ -348,13 +324,6 @@ CREATE TABLE `videos` (
   `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `topics` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='for uploading video';
-
---
--- Dumping data for table `videos`
---
-
-INSERT INTO `videos` (`id`, `post_id`, `name`, `description`, `date`, `url`, `topics`) VALUES
-(1, 3, 'Video Testing', 'Test Video #topics and mentions @sheishei', '2017-10-16 18:01:48', 'http://localhost/mimo/assets/uploads/videos/2939159e4838c8f3ca.mp4', 'topics,');
 
 --
 -- Indexes for dumped tables
@@ -400,6 +369,12 @@ ALTER TABLE `followers`
 -- Indexes for table `login_tokens`
 --
 ALTER TABLE `login_tokens`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -463,7 +438,7 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT for table `audios`
 --
 ALTER TABLE `audios`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `collections`
 --
@@ -478,7 +453,7 @@ ALTER TABLE `collection_songs`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `followers`
 --
@@ -488,7 +463,12 @@ ALTER TABLE `followers`
 -- AUTO_INCREMENT for table `login_tokens`
 --
 ALTER TABLE `login_tokens`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `oauth`
 --
@@ -503,12 +483,12 @@ ALTER TABLE `password_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `song_favorites`
 --
@@ -518,7 +498,7 @@ ALTER TABLE `song_favorites`
 -- AUTO_INCREMENT for table `thoughts`
 --
 ALTER TABLE `thoughts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -528,7 +508,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
