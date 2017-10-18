@@ -168,4 +168,5 @@ class search extends CI_Controller {
 			redirect('error');
 		}
 	}//end of videos()
+	
 }

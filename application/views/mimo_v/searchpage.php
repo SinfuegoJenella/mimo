@@ -88,7 +88,7 @@
 	
 	
 <!-- Third Column Div (Beside Contents)-->
-	<div class="col-md-1">
+	<div class="col-md-1 mod">
 	<br /> <br /> <br />
 
 			
@@ -102,6 +102,7 @@
 		<!--Para naman to dun sa fixed button ng release ng thoughts at audio-->
 		<?php $this->load->view('include/releasebuttons');?>
 		<?php $this->load->view('templates/commentModal');?>
+		<?php $this->load->view('templates/colmodal');?>
 	</div>
 		
 </div><!--End of the Whole Row (LeftNav, Contents, Third Column -->
@@ -270,8 +271,67 @@ $(document).ready(function(){
 					});
 					$('[data-audioscollectionid]').click(function(e) {
 						e.preventDefault()
+						$('#sel1').html('<option></option>');
+						$.ajax({
+								type: 'POST',
+								url: '<?php echo base_url() ?>mimo/getcollectionlist',
+								data:{
+									userid:user
+								},
+								success: function(s){
+									var lists = JSON.parse(s)
+									console.log(lists)
+									 $.each(lists, function(index) {
+									 	$('#sel1').html($('#sel1').html()+'<option value="'+lists[index].id+'">'+lists[index].name+'</option>')
+									 });
+								},
+								error: function(e){
+									console.log(e);
+									alert('error');
+								}
+							});
 						var postid = $(this).attr('data-audioscollectionid');
 						alert(postid)
+						$('#collectModal').modal('show')
+						$('#collecModal').attr('data-colid' , postid);
+						$('[data-colid]').click(function(e) {
+							e.preventDefault()
+							var colid = $(this).attr('data-colid');
+							var option = $('#sel1').val();
+							var newcol = $('#text').val();
+							$("#sel1").val('');
+							$("#text").val('');
+							$.ajax({
+								type: 'POST',
+								url: '<?php echo base_url() ?>mimo/addnewcol',
+								data:{
+									colid:colid,
+									option:option,
+									newcol:newcol,
+									userid:user
+								},
+								success: function(s){
+									var status = JSON.parse(s)
+									console.log(status);
+									if(status.status=="Added Successfully"){
+										alert(status.status)
+										$('#collectModal').modal('hide')
+									}
+									else if(status.status=="Already exists Collection list"){
+										alert(status.status)
+									}
+									else if(status.status=="Audio Added to New Collection"){
+															alert(status.status)
+															$('#collectModal').modal('hide')
+														}
+								},
+								error: function(e){
+									console.log(e);
+									alert('error');
+								}
+							});
+
+						});
 					});
 				});
 			}

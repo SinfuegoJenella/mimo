@@ -6,7 +6,7 @@
 	<!--This is below Top Navigation Section -->
 		<div class="col-md-10" style="padding-top: 80px; margin-left: 100px;  ">
 			<h1> Browse </h1>
-
+ 
 			<nav class="navbar navbar-default" style="width:500px;">
 			<ul class="nav navbar-nav ">
 				<li class="navbar: hover;"><a href="<?php echo base_url('mimo/browse');?>">Overview</a></li>
@@ -61,6 +61,7 @@
 						<!-- Follow button -->
 				<div style="padding-left:50%;"><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
 				color:grey;background-color:#e1e1e1;" >Follow</div>
+
 			</div>
 		</div>
 		
@@ -161,6 +162,7 @@
 				color:grey;background-color:#e1e1e1;" >Follow</div>
 			</div>
 		</div>
+
 		<!-- End Top 10 Most Followed Artists -->
 		
 		
@@ -219,7 +221,6 @@
 		
 			</div>
 		</div>
-		
 		
 		<div class="row margin" >
 			
@@ -322,28 +323,9 @@
 					</div>
 				</div>
 		
-			</div>
-		</div>
-	</div>
-	<!-- End of new artists Artists -->
-  </div>
-  </div>
-</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	<?php $this->load->view('include/releasebuttons');?>
 	<?php $this->load->view('templates/addpostmodal');?>
 	<?php $this->load->view('templates/addaudiomodal');?>
 	<?php $this->load->view('templates/addvideomodal');?>
 </div>
 </body>
-
-</html>

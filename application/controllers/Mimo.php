@@ -415,10 +415,76 @@ class Mimo extends CI_Controller {
 			redirect('error');
 		}
 	}
+	public function addnewcol(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$postid = $this->input->post("colid");
+			$collectionList = $this->input->post("option");
+			$newCollection = $this->input->post("newcol");
+			$userid = $this->input->post("userid");
+			if($newCollection!=''||$collectionList!=''){
+				if($newCollection!=''){
+					$data = array(
+									'id'=>null,
+									'user_id'=>$userid,
+									'name'=>$newCollection,
+									'count'=>1
+						);
+					$this->upload->insert('collections',$data);
+					$lastCollectionId = $this->upload->c();
+					$data = array(
+									'id'=>null,
+									'collection_id'=>$lastCollectionId,
+									'post_id'=>$postid
+						);
+					$this->upload->insert('collection_songs',$data);
+					echo json_encode(array('status'=>"Audio Added to New Collection"));
+				}
+				else{
+					$condition = array('collection_id'=>$collectionList,'post_id'=>$postid);
+					if(!$this->upload->select('collection_songs',$condition)){
+						$data = array(
+										'id'=>null,
+										'collection_id'=>$collectionList,
+										'post_id'=>$postid
+							);
+						$this->upload->insert('collection_songs',$data);
+
+						$condition = array('id'=>$collectionList);
+						$count = $this->upload->select('collections',$condition,'count')[0]['count'];
+						$data = array('count'=>$count+1);
+						$this->upload->update('collections',$data,$condition);
+						echo json_encode(array('status'=>"Added Successfully"));
+					}
+					else{
+						echo json_encode(array('status'=>"Already exists Collection list"));
+					}
+				}
+			}
+			else{
+				echo json_encode(array('status'=>""));
+			}
+		}
+		else{
+			redirect('error');
+		}
+	}
+	public function getcollectionlist(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$userid = $this->input->post("userid");
+			$condition = array('user_id'=>$userid);
+			$list = $this->upload->select('collections',$condition);
+			echo json_encode($list);
+		}
+		else{
+			redirect('error');
+		}
+	}
 	public function hallposts(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$start = $this->input->post("start");
 			$userid = $this->login->isLoggedIn();
 			$posts = $this->getposts->allposts($userid);
+			$data = array();
 			$result = array();
                 foreach($posts as $post) {
 
@@ -441,7 +507,12 @@ class Mimo extends CI_Controller {
                       	);
                       array_push($result,$p);
                 }
-              echo json_encode($result);
+                for ($i = $start; $i < $start+5; $i++) {
+			        if ($i < count($result)) {
+			                array_push($data, $result[$i]);
+			        }
+				}
+              echo json_encode($data);
 		}
 		else{
 			redirect('error');

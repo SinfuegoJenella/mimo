@@ -71,7 +71,7 @@
 			<tbody>
 				<tr class="p color-hover">
 					<!-- play button for music-->
-					<td><button type="button" class="btn btn-circle "><span class="glyphicon glyphicon-play" aria-hidden="true"> </span> </button></td>
+					<td><i id="play-pause-button1" class="fa fa-play-circle" style="font-size:36px;"></i> </td>
 					<td>New Rules</td>
 					<!--<td>Dua Lipa</td>-->
 					<td >
@@ -84,7 +84,7 @@
 				</tr>
 			
 				<tr class="p color-hover">
-					<td><button type="button" class="btn btn-circle"><span class="glyphicon glyphicon-play" aria-hidden="true"> </span> </button></td>
+					<td><i id="play-pause-button2" class="fa fa-play-circle" style="font-size:36px;"></i></td>
 					<td>Too Good At Goodbyes</td>
 					<!--<td>Sam Smith</td>-->
 					<td>
@@ -96,7 +96,7 @@
 				</tr>
 
 				<tr class="p color-hover">
-					<td><button type="button" class="btn btn-circle"><span class="glyphicon glyphicon-play" aria-hidden="true"> </span> </button></td>
+					<td><i id="play-pause-button3" class="fa fa-play-circle" style="font-size:36px;"></i></td>
 					<td>Havana</td>
 					<!--<td>Camila Cabello</td>-->
 					<td>
@@ -108,7 +108,7 @@
 				</tr>
 
 				<tr class="p color-hover">
-					<td><button type="button" class="btn btn-circle"><span class="glyphicon glyphicon-play" aria-hidden="true"> </span> </button></td>
+					<td><i id="play-pause-button4" class="fa fa-play-circle" style="font-size:36px;"></i></td>
 					<td>rockstar</td>
 					<!--<td>21 Savage</td>-->
 					<td>
@@ -120,7 +120,7 @@
 				</tr>
 
 				<tr class="p color-hover">
-					<td><button type="button" class="btn btn-circle"><span class="glyphicon glyphicon-play" aria-hidden="true"> </span> </button></td>
+					<td><i id="play-pause-button5" class="fa fa-play-circle" style="font-size:36px;"></i></td>
 					<td>Silence</td>
 					<!--<td>Khalid</td>-->
 					<td>
@@ -143,3 +143,116 @@
 </div>
 
 </body>
+
+<script>
+	var audio1 = new Audio("http://localhost/mimo/assets/audios/Kalimba.mp3");
+
+$('#play-pause-button1').on("click",function(){
+  if($(this).hasClass('fa-play-circle'))
+   {
+     $(this).removeClass('fa-play-circle');
+     $(this).addClass('fa-pause-circle');
+     audio1.play();
+   }
+  else
+   {
+     $(this).removeClass('fa-pause-circle');
+     $(this).addClass('fa-play-circle');
+     audio1.pause();
+   }
+});
+
+audio1.onended = function() {
+     $("#play-pause-button1").removeClass('fa-pause-circle');
+     $("#play-pause-button1").addClass('fa-play-circle');
+};
+
+
+var audio2 = new Audio("http://localhost/mimo/assets/audios/Maid.mp3");
+
+$('#play-pause-button2').on("click",function(){
+  if($(this).hasClass('fa-play-circle'))
+   {
+     $(this).removeClass('fa-play-circle');
+     $(this).addClass('fa-pause-circle');
+     audio2.play();
+   }
+  else
+   {
+     $(this).removeClass('fa-pause-circle');
+     $(this).addClass('fa-play-circle');
+     audio2.pause();
+   }
+});
+
+audio2.onended = function() {
+     $("#play-pause-button2").removeClass('fa-pause-circle');
+     $("#play-pause-button2").addClass('fa-play-circle');
+};
+
+var audio3 = new Audio("http://localhost/mimo/assets/audios/Piano.mp3");
+
+$('#play-pause-button3').on("click",function(){
+  if($(this).hasClass('fa-play-circle'))
+   {
+     $(this).removeClass('fa-play-circle');
+     $(this).addClass('fa-pause-circle');
+     audio3.play();
+   }
+  else
+   {
+     $(this).removeClass('fa-pause-circle');
+     $(this).addClass('fa-play-circle');
+     audio3.pause();
+   }
+});
+
+audio3.onended = function() {
+     $("#play-pause-button3").removeClass('fa-pause-circle');
+     $("#play-pause-button3").addClass('fa-play-circle');
+};
+
+var audio4 = new Audio("http://localhost/mimo/assets/audios/sample.mp3");
+
+$('#play-pause-button4').on("click",function(){
+  if($(this).hasClass('fa-play-circle'))
+   {
+     $(this).removeClass('fa-play-circle');
+     $(this).addClass('fa-pause-circle');
+     audio4.play();
+   }
+  else
+   {
+     $(this).removeClass('fa-pause-circle');
+     $(this).addClass('fa-play-circle');
+     audio4.pause();
+   }
+});
+
+audio4.onended = function() {
+     $("#play-pause-button4").removeClass('fa-pause-circle');
+     $("#play-pause-button4").addClass('fa-play-circle');
+};
+
+var audio5 = new Audio("http://localhost/mimo/assets/audios/Sleep.mp3");
+
+$('#play-pause-button5').on("click",function(){
+  if($(this).hasClass('fa-play-circle'))
+   {
+     $(this).removeClass('fa-play-circle');
+     $(this).addClass('fa-pause-circle');
+     audio5.play();
+   }
+  else
+   {
+     $(this).removeClass('fa-pause-circle');
+     $(this).addClass('fa-play-circle');
+     audio5.pause();
+   }
+});
+
+audio5.onended = function() {
+     $("#play-pause-button5").removeClass('fa-pause-circle');
+     $("#play-pause-button5").addClass('fa-play-circle');
+};
+	</script>
