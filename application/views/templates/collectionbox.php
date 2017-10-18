@@ -1,6 +1,8 @@
 <!--Template para sa isang collection-->
 <div class="forpanel">
-	<button class="accordion"><i class="fa fa-list-ul"></i>&nbsp;Collection 1</button>
+	<a class="delCol" title="Delete Collection"><i class="fa fa-trash-o"></i></a>
+	<button class="accordion"><i class="fa fa-list-ul"></i>&nbsp;Collection 1
+	</button>
 	<div class="panel">
 		<table class="table table-stripped text-center">
 			<th>
