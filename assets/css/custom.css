@@ -1,3 +1,129 @@
+#logoutnav{
+	background-color: rgba(255,255,255,0.3);
+}
+
+.h-video-btn , .h-audio-btn , .h-thought-btn{
+	border-radius: 50%;
+	border: 1px solid black;
+	background-color: #fff;
+	color: black;
+	line-height: 30px;
+	z-index: 1000;
+}
+
+.h-video-btn:focus , .h-audio-btn:focus , .h-thought-btn:focus{
+	outline: none;
+}
+.h-video-btn:hover , .h-audio-btn:hover , .h-thought-btn:hover{
+	background-color:  #ff9900;
+	color: white;
+	transition: 0.4s;
+	border: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(255, 255, 255, 0.3);
+	bottom: 100px;
+}
+
+
+
+.homeBtn{
+	width: 100%;
+	background-color: transparent;
+	border-radius: 1px;
+	color: white;
+	border: 2px solid white;
+	padding: 10px;
+}
+.homeBtn:hover , .homeBtn:focus{
+	background-color: #ff8000;
+	color: white;
+	/*background-color: rgba(255,255,255,0.9);*/
+	border: 2px solid #ff8000;
+	transition: 0.3s ease-in-out;
+	font-weight: bold;
+}
+.homeBtnTwo , .homeBtnTwo:hover, .homeBtnTwo:focus{
+	background-color: #1a1a1a;
+	color: white;
+	width:100%;
+	/*border: 2px solid #ff8000;*/
+	transition: 0.3s ease-in-out;
+	padding: 10px;
+}
+.homeBtnThree , .homeBtnThree:hover , .homeBtnThree:focus {
+
+	width:100%;
+	padding: 10px;
+	background-color: #ff8000;
+	color: white;
+	border: 2px solid #ff8000;
+	transition: 0.3s ease-in-out;
+}
+
+.parallax{ 
+   
+    background-image: url("http://localhost/mimo/assets/img/party.jpg");
+	filter: contrast(100%);
+    height: 500px; 
+	transition: 0.4s ease-in-out;
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	margin:0;
+	
+}
+
+
+.para{
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	margin:0;
+	
+}
+.parallax:hover { 
+
+	filter: contrast(130%);
+}
+
+.para_two:hover{ 
+
+	filter: contrast(80%);
+}
+
+.para_two{ 
+
+    background-image: url("http://localhost/mimo/assets/img/musiclife.jpg");
+    height: 400px; 
+	filter: contrast(75%);
+	transition: 0.4s ease-in-out;
+}
+.para_three{ 
+   
+    background-image: url("http://localhost/mimo/assets/img/headphone.jpg");
+    height: 500px;
+	filter: contrast(70%);
+}
+
+.para_four{ 
+    background-image: url("http://localhost/mimo/assets/img/video.png");
+    height: 500px;
+	filter: contrast(70%);
+}
+.para_five{ 
+    background-image: url("http://localhost/mimo/assets/img/think.jpg");
+    height: 500px;
+	filter: contrast(70%);
+}
+.para_six{ 
+    background-image: url("http://localhost/mimo/assets/img/sese.jpg");
+    height: 568px;
+	filter: contrast(80%);
+}
+
+
+
 .nlock div p a{
 	display: block;
 }
@@ -262,8 +388,8 @@ a.following {
 }
 
 
-.profile{
-	color: #f2f2f2
+.profile , .profile:hover , .profile:focus{
+	color: #f2f2f2;
 }
 
 .tab-content{ 

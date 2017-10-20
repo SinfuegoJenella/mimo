@@ -1,235 +1,159 @@
-<body style="background-color: #e1e1e1; background-image: url('http://localhost/mimo/assets/img/happy.jpg'); background-size:cover; background-attachment:fixed; background-color: rgba(255,255,255,0.9); margin:0 0; background-repeat: no-repeat">
-	<!-- Top Nav Bar -->
-	<?php $this->load->view('include/log-outnav');?>
-		<br>
+<body>
 
-<div class="container" style="position:absolute; padding: 20px; padding-top: 0; width:100%" >
-<div class="row">
-
-</div>
-
-
-<div class="row belowtn" style="margin-right: 10px; ">
-		<div class="col-md-3">
-			
-				<div class="row" style="margin-left: 15px; margin-right:15px">
-					<div class="col-md-12" style="background-color: #808080; color: white; padding: 10px; margin-left: 10px; margin-right:15px">
-						<h4 class="text-center" style="color: white"><?php $this->load->view('include/mimologo')?> Top 10 Most Followed Artist</h4>
-					</div>
-				
-					<div class="row ">
-					<!--TOP LIST-->
-					<div class="col-md-12" style="margin-left: 10px">
-					<?php $this->load->view('templates/toplist');?>
-					<?php $this->load->view('templates/toplist');?>
-					<?php $this->load->view('templates/toplist');?>
-					<?php $this->load->view('templates/toplist');?>
-					<?php $this->load->view('templates/toplist');?>
-					<?php $this->load->view('templates/toplist');?>
-					<?php $this->load->view('templates/toplist');?>
-					<?php $this->load->view('templates/toplist');?>
-					<?php $this->load->view('templates/toplist');?>
-					<?php $this->load->view('templates/toplist');?>
-					</div>
-					<!--END OF TOP LIST-->
-					
-				</div>
-		</div>
-		</div>
-		<div class="col-md-9">
-	
-		<ul class="nav nav-tabs nav-justified searchtab">
-			<!-- COLLECTIONS, ALBUMS, THOUGHTS, and FAVORITES TABS-->
-			<li class="active"><a data-toggle="tab" href="#sartist">&nbsp;Discover Artist</a></li>
-			<li><a data-toggle="tab" href="#sthought">&nbsp;Random Thoughts</a></li>
-			<li><a data-toggle="tab" href="#saudios">&nbsp;Top Audios</a></li>
-			<li><a data-toggle="tab" href="#svids">&nbsp;Top Videos</a></li>
-		</ul>
-
-			<div class="tab-content" style="background-color: rgba(255,255,255,0.9); height: 600px">
-				<?php $this->load->view('templates/commentModal');?>
-					<!-- ARTIST -->
-						<div id="sartist" class="tab-pane fade in active">
-								<div class="row">
-									<div class="col-md-1"></div>
-									<div class="col-md-10 artist">
-										<h2>New Artist</h2>
-									</div>
-									<div class="col-md-1"></div>
-								</div>
-							</div>
-   
-   
-						<!-- AUDIOS-->
-							<div id="sthought" class="tab-pane fade" >
-								<div class="row">
-									<div class="col-md-1"></div>
-									<div class="col-md-10 thoughts">
-									</div>
-									<div class="col-md-1"></div>
-								</div>
-							</div>
-							
-							
-							<!-- THOUGHTS-->
-							<div id="saudios" class="tab-pane fade">
-								<div class="row">
-									<div class="col-md-1"></div>
-									<div class="col-md-10 audios">
-									</div>
-									<div class="col-md-1"></div>
-								</div>
-							</div>	
-							
-							<!-- FAVORITES-->
-							<div id="svids" class="tab-pane fade">
-								<div class="row">
-									<div class="col-md-1"></div>
-									<div class="col-md-10 videos">
-									</div>
-									<div class="col-md-1"></div>
-								</div>
-							</div>
-					</div>
-					
-			</div>	
-	</div>
-		
-			</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-<!--	
 <div class="container-fluid">
 	<div class="row">
+	<div class="parallax">
+		<div style="background-color: rgba(0,0,0,0.1);padding:40px; padding-top: 100px;position:absolute; top:0;width: 100%; height: 500px;">
+			<h1 class="text-center" style="font-size: 90px; color:white; font-family: Kristen ITC">
+				Mimo </h1>
+				
+				<h4 class="text-center hidden-md hidden-lg" style="font-size: 20px; color:white;">wherein music is your world.
+				</h4>
+				
+				<marquee behavior="slide" direction="up" scrollamount="1" class="text-center hidden-xs" style="font-size: 20px; color:white; height: 30px; ">wherein music is your world.</marquee>
+				
+		<div class="row" style="margin: 50px auto;">
+		<div class="col-md-4"></div>
+		
+		<div class="col-md-2">
+		
+		<a href="" class="btn homeBtn hidden-lg hidden-md" style="margin-top: 5px;">Log In!</a>
+		
+		<marquee behavior="slide" direction="up" scrollamount="5" class="text-center hidden-xs" style="font-size: 20px; color:white; height: 50px; "><a href="" class="btn homeBtn" style="margin-top: 5px;">Log In!</a></marquee>
+		</div>
+		
+		<div class="col-md-2">
+		<a href="" class="btn homeBtn hidden-lg hidden-md" style="margin-top: 5px;">Sign up!</a>
+		<marquee behavior="slide" direction="up" scrollamount="5" class="text-center hidden-xs" style="font-size: 20px; color:white; height: 50px; "><a href="" class="btn homeBtn" style="margin-top: 5px;">Sign Up!</a></marquee>
+		</div>
+		<div class="col-md-4"></div>
+		</div>
 	
-		<div class="col-md-8" style="background-color: #e1e1e1">
-			
 		</div>
 		
-		
-		<div class="col-md-4">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel" style="float:right">
-				<!-- Indicators 
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
-				</ol>
-
-				<!-- Wrapper for slides 
-			<div class="carousel-inner">
-				<div class="item active">
-					<img src="http://localhost/mimo/assets/img/ilovemusic1.jpg" alt="Los Angeles" style="width:100%;height: 250px">
-						<div class="carousel-caption">
-							<h4>Share your Talent!</h3>
-							<p>Let others know your amazing musical talent through audios and video.</p>
+	</div>
+	</div>
+	
+	<div class="row" style="background-color: #262626; height: 168px; padding: 10px">
+			<div class="col-md-12" style="padding: 10px;">
+				<h3 class="text-center" style="color: #f2f2f2">Hmm.. Wondering what's  <?php $this->load->view('include/mimologo')?><strong style="font-size: 20px; color:white; font-family: Kristen ITC">Mimo</strong> ?</h3>
+				<p class="text-center" style="color: #f2f2f2; font-size: 16px">
+					Mimo is a music website designed and developed for the aspiring singers and musicians. This lets them share their talent and kind of music to their fellow artists.
+					Like, comment, stream, and share your music, be discovered and be on Mimo's top artist!</p>
+			</div>
+	</div>
+	
+	<!---->
+	<div class="row" style="background-color:">
+		<div class="col-md-12" style="padding: 0;">
+			<div class="para para_two">
+	
+		</div>
+	</div>
+	</div>
+	
+	<div class="row" style="background-color: #4d4d4d; height: 268px; padding: 5px">
+			<div class="col-md-12" style="padding: 10px;">
+			<h4 class="text-center" style="font-size: 30px; color: white;">
+				What's the good thing about Mimo?
+				 </h4>
+				<ul style="color: white">
+					<li style="color: white">
+						<h3 class="text-center">
+						<span class="text-center"><br /><a class="btn h-audio-btn hidden-xs" title="Post a Thought" ><i class="material-icons">music_note</i></a></span>
+						 Share a Song 
+						 </h3>
+						<p class="text-center">Mimo not just let you post or share an audio file but also videos too! There, you can share the video of your song covers and even the music videoo you have created along for your song. &nbsp;&nbsp;&nbsp;</p>
+						
+					</li>
+				</ul>
+			</div>
+	</div>
+	
+	<div class="row" style="background-color:">
+		<div class="col-md-12" style="padding: 0;">
+			<div class="para para_three">
+		</div>
+	</div>
+	</div>
+	
+	<div class="row" style="background-color: #262626; height: 168px">
+			<div class="col-md-12" style="padding: 10px;">
+				<ul style="color: white">
+					<li style="color: white">
+						<h3 class="text-center">
+						<span class="text-center"><br />
+							<a class="btn h-video-btn hidden-xs" title="Post a Thought" ><i class="material-icons">videocam</i></a></span>
+						 Share a Video
+						 </h3>
+						<p class="text-center">Mimo not just let you share your music in an audio file, but also through video files. There, you can post the video of you song covers and even the music video you have produced along for your music track.</p>
+						
+					</li>
+				</ul>
+			</div>
+	</div>
+	
+	<div class="row" style="background-color:">
+		<div class="col-md-12" style="padding: 0;">
+			<div class="para para_four">
+		</div>
+	</div>
+	</div>
+	
+	<div class="row" style="background-color: #262626; height: 168px">
+			<div class="col-md-12" style="padding: 10px;">
+				<ul style="color: white">
+					<li style="color: white">
+						<h3 class="text-center">
+						<span class="text-center"><br />
+							<a class="btn h-thought-btn hidden-xs" title="Post a Thought" ><i class="material-icons">edit</i></a></span>
+						 Share a Thought
+						 </h3>
+						<p class="text-center">Tell us what you think today! Maybe you wanted to say something on what's happening today. That is why we added this feature, for you to communicate with your followers. :) </p>
+						
+					</li>
+				</ul>
+			</div>
+	</div>
+	
+	<div class="row" style="background-color:">
+		<div class="col-md-12" style="padding: 0;">
+			<div class="para para_five">
+		</div>
+	</div>
+	</div>
+	
+	<div class="row" style="background-color:">
+		<div class="col-md-12" style="padding: 0;">
+			<div class="para para_six">
+				<div style="padding:40px; padding-top: 80px;position:absolute; top:0;width: 100%;">
+					<div class="row">
+						<div class="col-md-4">
+							<h2 class="text-center">Join the <strong style="font-size: 30px; color:black; font-family: Kristen ITC">Mimo</strong> community and let the music be your world.</h2>
+							<a href="" class="btn homeBtnTwo" title="Sign Up!" style="margin-top: 90px;">Join now!</a>
+							<a href="" class="btn homeBtnThree" title="Log In!" style="margin-top: 10px;">Log in!</a>
 						</div>
-				</div>
-
-				<div class="item">
-					<img src="http://localhost/mimo/assets/img/mp3.jpg" alt="Chicago" style="width:100%; height: 180px">
-					<div class="carousel-caption">
-						<h4>Sore High!</h3>
-						<p>Gain followers and be on the Top 10 Most Followed Artist.</p>
 					</div>
 				</div>
-    
-				<div class="item">
-					<img src="http://localhost/mimo/assets/img/singer.jpg" alt="New York" style="width:100%; height: 180px">
-					<div class="carousel-caption">
-						<h4>Discover or be discovered!</h3>
-						<p>Show the world what youu got and let others discover you amazing talent.</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Left and right controls
-			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="right carousel-control" href="#myCarousel" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-				<span class="sr-only">Next</span>
-			</a>
-			</div>
-			
-			
-			<div class="row">
-				<h4>Top 10 Most Followed Artists</h4>
-			</div>
-		</div>
-		
-	</div>
-</div>-->
-<!--
-<div class="container belowtn" style="margin-top: 10px" >
-
-	<div class="row" class="" style="background-color:rgba(255,255,255,0.9)">
-		<div class="vtab">
-			<button class="tablinks" onclick="openTab(event, 'Audios')" id="defaultOpen">Audios</button>
-			<button class="tablinks" onclick="openTab(event, 'Artists')">Artist</button>
-			<button class="tablinks" onclick="openTab(event, 'Videos')">Videos</button>
-		</div>
-
-		<div id="Audios" class="vtabcontent">
-			<h3>Audios</h3>
-			<?php //$this->load->view('templates/s_audio')?>
-				<div class="audCard" style="width:100px;float:left">
-				<img src="http://localhost/mimo/assets/img/bp.jpg" width="100px" height="100px">
-				</div>
-		</div>
-
-		<div id="Artists" class="vtabcontent">
-			<h3>Artist</h3>
-				<p>Paris is the capital of France.</p> 
-		</div>
-
-		<div id="Videos" class="vtabcontent">
-			<h3>Videos</h3>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
 		</div>
 	</div>
-</div>
--->
+	</div>
+	
+	<div class="row" style="background-color: #262626; height: 100px">
+			<div class="col-md-12" style="padding: 10px;">
+				<ul style="color: white">
+					<li style="color: white">
+						<h4 class="text-center">
+							<?php $this->load->view('include/mimologo')?><strong style="font-size: 20px; color:white; font-family: Kristen ITC">Mimo</strong> &copy 2017
+							 <span><a class="profile" href="" title="About the Developers">About us!</a></span>
+						 </h4>
+					</li>
+				</ul>
+			</div>
+	</div>
+	
+	</div>
+	
+	
+	
 </body>
-<script>
-function openTab(evt, tabName) {
-    var i, vtabcontent, tablinks;
-    vtabcontent = document.getElementsByClassName("vtabcontent");
-    for (i = 0; i < vtabcontent.length; i++) {
-        vtabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
