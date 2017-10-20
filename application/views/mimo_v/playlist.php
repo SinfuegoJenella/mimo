@@ -6,7 +6,7 @@
 		<h3 class="txt">Global Top 50</h3>
 	</div>
 			<!-- Table starts (table header)-->
-	<div class="tbl">
+	<div class="tbl pre-scrollable" style="max-height:500px; ">
 		<table class="table table-hover ">
 			<thead class="no-hover">
 				<tr class="p text-center ">
@@ -79,7 +79,13 @@
 					</td>
 	
 				</tr>
-
+				
+				
+				
+				
+				
+				
+				
 			</tbody>
 
 
