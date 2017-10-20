@@ -63,7 +63,7 @@
 <script src="http://localhost/mimo/assets/js/particles.js"></script>
 <script src="http://localhost/mimo/assets/js/app.js"></script>
 <!-- footer -->
-<footer id="sticky"><a href="" style="color: white">Mimo</a> &copy&nbsp 2017</footer>
+<footer id="sticky"><a href="" style="color: white">Mimo</a> &copy &nbsp; 2017</footer>
 
 
 
