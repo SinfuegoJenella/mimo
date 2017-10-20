@@ -2,6 +2,11 @@
 		aria-labelledby="audioModal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
+				<div class="alert alert-success" id="audio-alert">
+				    <button type="button" class="close" data-dismiss="alert">x</button>
+				    <strong>Success! </strong>
+				    Audio added successfully!!
+				</div>
 				<!-- Modal Header -->
 				<div class="modal-header" style="background-color: #f9f9f9">
 					<button type="button" class="close reset" 

@@ -107,5 +107,27 @@ class getposts extends CI_Model {
 
 		return $query->result_array();		
 	}
+	public function getcollections($userid){
+		$this->db->select('collections.id,collections.name,users.username')
+			->from('collections')
+			->join('users','users.id = collections.user_id')
+			->where('collections.user_id',$userid);
+
+			$query=$this->db->get();
+
+		return $query->result_array();		
+
+	}
+	public function getcollectionsonglists($postid){
+		$this->db->select('collection_songs.id,collection_songs.post_id,posts.posted_at,audios.title,audios.genre,audios.cover,audios.path,posts.user_id')
+			->from('collection_songs')
+			->join('posts','posts.id = collection_songs.post_id')
+			->join('audios','audios.post_id = collection_songs.post_id')
+			->where('collection_songs.collection_id',$postid);
+
+			$query=$this->db->get();
+
+		return $query->result_array();
+	}
 
 }

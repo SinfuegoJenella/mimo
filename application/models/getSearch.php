@@ -34,7 +34,8 @@ class getSearch extends CI_Model {
 				->like('users.username',$like)
 				->or_like('users.firstname',$like)
 				->or_like('users.lastname',$like)
-				->or_like('thoughts.body', $like);
+				->or_like('thoughts.body', $like)
+				->order_by('posts.posted_at', 'DESC');
 
 		$query=$this->db->get();
 
@@ -49,7 +50,8 @@ class getSearch extends CI_Model {
 				->or_like('users.firstname',$like)
 				->or_like('users.lastname',$like)
 				->or_like('audios.about', $like)
-				->or_like('audios.title', $like);
+				->or_like('audios.title', $like)
+				->order_by('posts.posted_at', 'DESC');
 
 		$query=$this->db->get();
 
@@ -64,7 +66,8 @@ class getSearch extends CI_Model {
 				->or_like('users.firstname',$like)
 				->or_like('users.lastname',$like)
 				->or_like('videos.description', $like)
-				->or_like('videos.name', $like);
+				->or_like('videos.name', $like)
+				->order_by('posts.posted_at', 'DESC');
 
 		$query=$this->db->get();
 

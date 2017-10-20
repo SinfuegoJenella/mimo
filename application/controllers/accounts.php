@@ -68,7 +68,7 @@ class accounts extends CI_Controller
 							);
 						$this->users->create($usersdata);
 						$lastid = $this->users->c();
-					    $data=array('id'=>null,'user_id'=>$lastid,'about'=>null,'genre1'=>null,'genre2'=>null,'genre3'=>null,'career'=>null);
+					    $data=array('id'=>null,'user_id'=>$lastid,'about'=>'','genre1'=>'','genre2'=>'','genre3'=>'','career'=>'');
 					    $this->about->create($data);
 					}//end of users table data insertion
 
@@ -171,7 +171,7 @@ class accounts extends CI_Controller
 				$selector = 'username';
 				$condition = array('username'=>$username);
 				if (!$this->users->read($condition,$selector)) {
-					if (preg_match('/[a-zA-Z0-9_]+/', $username)) {
+					if (preg_match("/^[a-zA-Z0-9_]*$/", $username)) {
 						if (strlen($password) >= 6 && strlen($password) <= 60) {
 							if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 								$selector = 'email';
@@ -190,10 +190,20 @@ class accounts extends CI_Controller
 										);
 					                    $this->users->create($data);
 					                    $lastid = $this->users->c();
-									    $data=array('id'=>null,'user_id'=>$lastid,'about'=>null,'genre1'=>null,'genre2'=>null,'genre3'=>null,'career'=>null);
+									    $data=array('id'=>null,'user_id'=>$lastid,'about'=>'','genre1'=>'','genre2'=>'','genre3'=>'','career'=>'');
 									    $this->about->create($data);
 					                   // Send to email your account has been created
 					                    // $this->mail->sendMail('Welcome to Mimo!', 'Your account has been created!', $email);
+					                    $cstrong = True;
+							            $token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+							            $selector = 'id';
+							            $condition = array('username'=>$username);
+							            $user_id = $this->users->read($condition,$selector)[0]['id'];
+							            $data = array('id'=>null,'token'=>sha1($token),'user_id'=>$user_id);
+							            $this->login_tokens->create($data);
+							                   
+							            setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
+							            setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
 					                    $err = "success";
 		    							echo json_encode(array('status'=>"success",'eventid'=>$err));
 					            	}
@@ -218,7 +228,7 @@ class accounts extends CI_Controller
 						}
 					}
 					else{
-						$err = "Invalid Username (number and letters only)";
+						$err = "Invalid Username (number, letters, and _ only)";
 		    			echo json_encode(array('status'=>"error",'eventid'=>$err));
 					}
 				}
