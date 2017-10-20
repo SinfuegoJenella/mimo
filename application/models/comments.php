@@ -24,9 +24,10 @@ class comments extends CI_Model {
 	}
 	public function aftercom($postid){
 
-		$this->db->select('comments.comment, users.username, users.picture, comments.posted_at')
+		$this->db->select('comments.comment, users.username, users.picture, comments.posted_at, posts.comments,posts.id')
 				->from('comments')
 				->join('users', 'users.id = comments.user_id','left')
+				->join('posts', 'posts.id = comments.post_id','left')
 				->where('comments.id',$postid);
 
 		$query=$this->db->get();

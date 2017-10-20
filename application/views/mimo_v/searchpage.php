@@ -158,7 +158,7 @@ $(document).ready(function(){
         	}
         	else{
 				$.each(res, function(index) {
-					$('.thoughts').html($('.thoughts').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchThoughtPic" style="background-image:url('+res[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" class="user">'+res[index].username+' </a><small><small>'+res[index].posted_at+'</small></small></h4><h5 id="audDesc">'+res[index].body+'</h5></div><div id="likesection"><div class="btn-grp btn-group-justified"><a data-thoughtslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a data-thoughtscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a></div></div></div></div>'
+					$('.thoughts').html($('.thoughts').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchThoughtPic" style="background-image:url('+res[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" class="user">'+res[index].username+' </a><small><small>'+res[index].posted_at+'</small></small></h4><h5 id="audDesc">'+res[index].body+'</h5></div><div id="likesection"><div class="btn-grp btn-group-justified"><a data-thoughtslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a data-thoughtscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a></div></div></div></div>'
 
 
 						);
@@ -196,7 +196,7 @@ $(document).ready(function(){
 								var comments = JSON.parse(s)
         						console.log(comments);
         						//call showCommentModal function to display all comments
-        						showCommentModal(comments,postid);
+        						showCommentModal(comments,postid,1);
 							},
 							error: function(){
 								console.log(e)
@@ -225,7 +225,7 @@ $(document).ready(function(){
         	}
         	else{
 				$.each(res, function(index) {
-					$('.audios').html($('.audios').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchAlbumPic" style="background-image:url('+res[index].cover+');"></div></a></div><div class="media-body"><h4 style="color: black" class="media-heading">'+res[index].title+'<small style="">( by: <a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'""> '+res[index].username+'</a> )</small></h4><h6><b> Genre:</b> '+res[index].genre+'</h6><h6><b> Year:</b> 2017</h6><p id="audDesc">'+res[index].about+'</p><div class="row" ><div class="col-md-12"><audio id="audio" controls controlsList="nodownload" width="100%"><source src="'+res[index].path+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a data-audioslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a  data-audioscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a><a class="btn view disabled"><span class="glyphicon glyphicon-play "></span><small>1,364</small></a><a data-audioscollectionid="'+res[index].id+'" class="btn"><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a></div></div></div></div>'
+					$('.audios').html($('.audios').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchAlbumPic" style="background-image:url('+res[index].cover+');"></div></a></div><div class="media-body"><h4 style="color: black" class="media-heading">'+res[index].title+'<small style="">( by: <a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'""> '+res[index].username+'</a> )</small></h4><h6><b> Genre:</b> '+res[index].genre+'</h6><h6><b> Year:</b> 2017</h6><p id="audDesc">'+res[index].about+'</p><div class="row" ><div class="col-md-12"><audio id="audio" controls controlsList="nodownload" width="100%"><source src="'+res[index].path+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a data-audioslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a  data-audioscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a><a class="btn view disabled"><span class="glyphicon glyphicon-play "></span><small>1,364</small></a><a data-audioscollectionid="'+res[index].id+'" class="btn"><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a></div></div></div></div>'
 
 
 					);
@@ -262,7 +262,7 @@ $(document).ready(function(){
 								var comments = JSON.parse(s)
         						console.log(comments);
         						//call showCommentModal function to display all comments
-        						showCommentModal(comments,postid);
+        						showCommentModal(comments,postid,2);
 							},
 							error: function(){
 								console.log(e)
@@ -291,7 +291,6 @@ $(document).ready(function(){
 								}
 							});
 						var postid = $(this).attr('data-audioscollectionid');
-						alert(postid)
 						$('#collectModal').modal('show')
 						$('#collecModal').attr('data-colid' , postid);
 						$('[data-colid]').click(function(e) {
@@ -314,16 +313,25 @@ $(document).ready(function(){
 									var status = JSON.parse(s)
 									console.log(status);
 									if(status.status=="Added Successfully"){
-										alert(status.status)
-										$('#collectModal').modal('hide')
+										$("#col-alert").fadeIn(500, 0);
+										window.setTimeout(function() {
+							                $('#col-alert').hide(); 
+							                $('#collectModal').modal('hide');
+							            }, 2000);
 									}
 									else if(status.status=="Already exists Collection list"){
-										alert(status.status)
+										$("#colec-alert").fadeIn(500, 0);
+										window.setTimeout(function() {
+							                $("#colec-alert").hide(); 
+							            }, 2000);
 									}
 									else if(status.status=="Audio Added to New Collection"){
-															alert(status.status)
-															$('#collectModal').modal('hide')
-														}
+										$("#col-alert").fadeIn(500, 0);
+										window.setTimeout(function() {
+							                $('#col-alert').hide(); 
+							                $('#collectModal').modal('hide');
+							            }, 2000);
+									}
 								},
 								error: function(e){
 									console.log(e);
@@ -354,7 +362,7 @@ $(document).ready(function(){
         	}
         	else{
 				$.each(res, function(index) {
-					$('.videos').html($('.videos').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchThoughtPic" style="background-image:url('+res[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading">'+res[index].name+'<br /><small>by: <a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'">'+res[index].username+'</a></small></h4><p id="audDesc">'+res[index].description+'</p><div class="row" ><div class="col-md-12"><video src="'+res[index].url+'" style="width:100%; height: 200px" controls controlsList="nodownload"></video></div></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a data-videoslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a data-videoscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment </a><a class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small> 123,234</small></a></div></div></div></div>'
+					$('.videos').html($('.videos').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchThoughtPic" style="background-image:url('+res[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading">'+res[index].name+'<br /><small>by: <a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'">'+res[index].username+'</a></small></h4><p id="audDesc">'+res[index].description+'</p><div class="row" ><div class="col-md-12"><video src="'+res[index].url+'" style="width:100%; height: 200px" controls controlsList="nodownload"></video></div></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a data-videoslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a data-videoscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a><a class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small> 123,234</small></a></div></div></div></div>'
 
 					);
 					$('[data-videoslikeid]').click(function(e) {
@@ -390,7 +398,7 @@ $(document).ready(function(){
 								var comments = JSON.parse(s)
         						console.log(comments);
         						//call showCommentModal function to display all comments
-        						showCommentModal(comments,postid);
+        						showCommentModal(comments,postid,3);
 							},
 							error: function(){
 								console.log(e)
@@ -404,7 +412,7 @@ $(document).ready(function(){
 			console.log(e)
 		}
 	});
-	function showCommentModal(comments,postid){
+	function showCommentModal(comments,postid,type){
 		$('.h4').html('<span></span> Comments<small> on ... post</small>')
 		 $('#commentModal').modal('show')
 		 $.each(comments, function(index) {
@@ -412,10 +420,11 @@ $(document).ready(function(){
 			)
         });
 		$('.postComment').attr('data-cid' , postid);
+		$('.postComment').attr('data-ctype' , type);
 		$('.postComment').click(function(e) {
 		 	e.preventDefault();
 		 	var id = $(this).attr("data-cid");
-
+		 	var type = $(this).attr("data-ctype");
 			var txt = $("#commentBox").val();
 			$("#commentBox").val('');
 			$.ajax({
@@ -430,6 +439,15 @@ $(document).ready(function(){
 						var comment = JSON.parse(r)
 						console.log(comment)
 						$( ".commentatorDiv" ).prepend( '<div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+comment[0].username+'"><div class="media-object commentPic" style="background-image:url('+comment[0].picture+');"></div></a></div><div class="media-body"><h5 class="media-heading"><a style="font-weight:bold" class="user">'+comment[0].username+'</a><small><small> '+comment[0].posted_at+'</small></small></h5><h6>'+comment[0].comment+'</h6></div></div>' );
+						if(type==1){
+							$("[data-thoughtscommentid='"+comment[0].id+"']").html('<span class="fa fa-commenting-o"></span> Comment <small><small>('+comment[0].comments+')</small></small>');
+						}
+						if(type==2){
+							$("[data-audioscommentid='"+comment[0].id+"']").html('<span class="fa fa-commenting-o"></span> Comment <small><small>('+comment[0].comments+')</small></small>');
+						}
+						if(type==3){
+							$("[data-videoscommentid='"+comment[0].id+"']").html('<span class="fa fa-commenting-o"></span> Comment <small><small>('+comment[0].comments+')</small></small>');
+						}
 					}
 				},
 				error: function(e){

@@ -2,6 +2,11 @@
 		aria-labelledby="thoughtModal" aria-hidden="true" style="margin-top: 60px">
 		<div class="modal-dialog">
 			<div class="modal-content">
+				<div class="alert alert-success" id="thought-alert">
+				    <button type="button" class="close" data-dismiss="alert">x</button>
+				    <strong>Success! </strong>
+				    Successfully Posted!!
+				</div>
 				<!-- Modal Body -->
 				<div class="modal-body" style="background-color: #f9f9f9">
 				<button type="button" class="close" 

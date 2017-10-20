@@ -26,4 +26,9 @@ class upload extends CI_Model {
 		$this->db->update($table, $data);
 		return TRUE;	
 	}
+	public function del($table,$data){
+		$this->db->where($data);
+		$this->db->delete($table);
+		return TRUE;	
+	}
 }
