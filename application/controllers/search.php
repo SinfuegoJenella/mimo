@@ -119,7 +119,7 @@ class search extends CI_Controller {
 	                			'likes'=>$results['likes'],
 	                			'comments'=>$results['comments'],
 	                			'cover'=>$results['cover'],
-	                			'title'=>$this->topics->link_add($results['title']),
+	                			'title'=>$results['title'],
 	                			'path'=>$results['path'],
 	                			'genre'=>$results['genre']
 	                		);
@@ -152,7 +152,7 @@ class search extends CI_Controller {
 	                			'posted_at'=>$results['posted_at'],
 	                			'likes'=>$results['likes'],
 	                			'comments'=>$results['comments'],
-	                			'name'=>$this->topics->link_add($results['name']),
+	                			'name'=>$results['name'],
 	                			'url'=>$results['url']
 	                		);
 	                	array_push($res,$p);

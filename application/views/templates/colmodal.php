@@ -2,6 +2,15 @@
 		aria-hidden="true" style="margin-top: 100px; margin: auto;">
 		<div class="modal-dialog">
 			<div class="modal-content">
+				<div class="alert alert-success" id="col-alert">
+				    <strong>Success! </strong>
+				    Added Successfully!!
+				</div>
+				<div class="alert alert-danger" id="colec-alert">
+				    <button type="button" class="close" data-dismiss="alert">x</button>
+				    <strong>Warning! </strong>
+				    Audio Already exists in Collection list!!
+				</div>
 				<!-- Modal Body -->
 				<div class="modal-body" style="background-color: #f9f9f9">
 				<button type="button" class="close" data-dismiss="modal">

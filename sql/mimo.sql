@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2017 at 04:50 PM
+-- Generation Time: Oct 20, 2017 at 02:10 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -42,8 +42,8 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`id`, `user_id`, `about`, `genre1`, `genre2`, `genre3`, `career`, `followers`) VALUES
-(1, 1, NULL, 'Alternative Music', 'Blues', 'Classical Music', 'Music Producer , Production Music Writer , Sound Designer , ', 1),
-(2, 2, NULL, 'Country Music', 'Dance Music', 'Easy Listening', 'Singer , Song Writer , Music Producer , ', 1);
+(1, 1, '', '', '', '', '', 0),
+(2, 2, '', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -63,6 +63,13 @@ CREATE TABLE `audios` (
   `topics` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='upload audio';
 
+--
+-- Dumping data for table `audios`
+--
+
+INSERT INTO `audios` (`id`, `post_id`, `title`, `genre`, `about`, `date`, `path`, `cover`, `topics`) VALUES
+(1, 3, 'Sample Audio', 'blues', 'hoy!! @sheiram !! pakinggan mo #fakingabutcha', '2017-10-20 22:02:19', 'http://localhost/mimo/assets/uploads/audios/1707159ea01e814356.mp3', 'https://i.imgur.com/eG5GhP9.jpg', 'fakingabutcha,');
+
 -- --------------------------------------------------------
 
 --
@@ -76,6 +83,13 @@ CREATE TABLE `collections` (
   `count` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='music play lists';
 
+--
+-- Dumping data for table `collections`
+--
+
+INSERT INTO `collections` (`id`, `user_id`, `name`, `count`) VALUES
+(1, 2, 'Mimo Collection', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -87,6 +101,13 @@ CREATE TABLE `collection_songs` (
   `collection_id` int(11) UNSIGNED NOT NULL,
   `post_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `collection_songs`
+--
+
+INSERT INTO `collection_songs` (`id`, `collection_id`, `post_id`) VALUES
+(1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -113,14 +134,6 @@ CREATE TABLE `followers` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `follower_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `followers`
---
-
-INSERT INTO `followers` (`id`, `user_id`, `follower_id`) VALUES
-(1, 2, 1),
-(2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -179,7 +192,7 @@ CREATE TABLE `login_tokens` (
 --
 
 INSERT INTO `login_tokens` (`id`, `user_id`, `token`, `login_time`) VALUES
-(8, 1, '18bd768d299fb094ec4db42434cd38452d6ad701', '2017-10-17 22:53:12');
+(2, 2, 'b99817f0b1d3b65c6b2f6a536689b0d432dfc9c2', '2017-10-20 21:59:12');
 
 -- --------------------------------------------------------
 
@@ -196,6 +209,14 @@ CREATE TABLE `notifications` (
   `notifurl` varchar(255) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `type`, `receiver`, `sender`, `post_id`, `notifurl`, `date`) VALUES
+(1, 1, 1, 2, 3, 'http://localhost/mimo/notification?pid=3', '2017-10-20 22:02:19'),
+(2, 1, 1, 2, 4, 'http://localhost/mimo/notification?pid=4', '2017-10-20 22:09:46');
 
 -- --------------------------------------------------------
 
@@ -246,6 +267,15 @@ CREATE TABLE `posts` (
   `type` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `likes`, `comments`, `posted_at`, `type`) VALUES
+(1, 1, 0, 0, '2017-10-20 21:54:55', 1),
+(3, 2, 0, 0, '2017-10-20 22:02:19', 2),
+(4, 2, 0, 0, '2017-10-20 22:09:45', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -261,18 +291,6 @@ CREATE TABLE `post_likes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `song_favorites`
---
-
-CREATE TABLE `song_favorites` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
-  `song_id` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `thoughts`
 --
 
@@ -282,6 +300,13 @@ CREATE TABLE `thoughts` (
   `body` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `topics` varchar(400) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `thoughts`
+--
+
+INSERT INTO `thoughts` (`id`, `post_id`, `body`, `topics`) VALUES
+(2, 1, 'Hi!', '');
 
 -- --------------------------------------------------------
 
@@ -306,8 +331,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `password`, `email`, `picture`, `header`, `created`) VALUES
-(1, 'SheiShei', 'Sheira', 'Man-awit', '$2y$10$5OYbHhx7iI.1RZt.YusH1On0bcRXkWUKPlqZZ8lkCZMCwVkxwLwi.', 's.cmanawit@gmail.com', 'https://i.imgur.com/LQq63AL.jpg', 'https://i.imgur.com/B7CeTTN.jpg', '2017-10-16 17:52:30'),
-(2, 'Mimo', 'Mimo', 'Music', '$2y$10$rjx8bNNs2BDcBACeaozifeHmZ81KtdNXKv9jqBiQErUhuXiy/.cH6', 'thisismimomusic@gmail.com', 'https://i.imgur.com/gLKSEYf.jpg', 'https://i.imgur.com/J4JESzZ.jpg', '2017-10-16 17:53:04');
+(1, 'SheiraM', 'Sheira', 'Man-Awit', '$2y$10$CEkdO89FHXmnQT3/bVV22eHBQo2sEwg0cUHNtvaJjNuqZy2Ae1YdC', 's.cmanawit@gmail.com', 'https://i.imgur.com/LQq63AL.jpg', 'https://i.imgur.com/Np6wf8U.jpg', '2017-10-20 21:54:36'),
+(2, 'Mimo', 'Mimo', 'Music', '$2y$10$WfsO6fyKRnW/ucpeI8C6LuByUnswvj0wBecC04APOmsZYWPRRPatm', 'thisismimomusic@gmail.com', 'https://i.imgur.com/LQq63AL.jpg', 'https://i.imgur.com/Np6wf8U.jpg', '2017-10-20 21:59:11');
 
 -- --------------------------------------------------------
 
@@ -324,6 +349,13 @@ CREATE TABLE `videos` (
   `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `topics` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='for uploading video';
+
+--
+-- Dumping data for table `videos`
+--
+
+INSERT INTO `videos` (`id`, `post_id`, `name`, `description`, `date`, `url`, `topics`) VALUES
+(1, 4, 'Fucking Economics!!', '@sheiram di ka nakapag recite uy!', '2017-10-20 22:09:46', 'http://localhost/mimo/assets/uploads/videos/1224659ea03a9e9f7f.mp4', '');
 
 --
 -- Indexes for dumped tables
@@ -402,12 +434,6 @@ ALTER TABLE `post_likes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `song_favorites`
---
-ALTER TABLE `song_favorites`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `thoughts`
 --
 ALTER TABLE `thoughts`
@@ -438,17 +464,17 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT for table `audios`
 --
 ALTER TABLE `audios`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `collection_songs`
 --
 ALTER TABLE `collection_songs`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `comments`
 --
@@ -458,17 +484,17 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `login_tokens`
 --
 ALTER TABLE `login_tokens`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `oauth`
 --
@@ -483,22 +509,17 @@ ALTER TABLE `password_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `song_favorites`
---
-ALTER TABLE `song_favorites`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `thoughts`
 --
 ALTER TABLE `thoughts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -508,7 +529,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

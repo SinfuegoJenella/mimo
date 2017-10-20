@@ -25,6 +25,12 @@
     <script type="text/javascript">
 
     $(document).ready(function() {
+        $('#thought-alert').hide();
+        $('#audio-alert').hide();
+        $('#video-alert').hide();
+        $('#deletes-alert').hide()
+        $('#col-alert').hide()
+        $('#colec-alert').hide()
         $('.searchbar').keyup(function(e){
             var sWord = $(this).val();
             $('.searchresult').html("");
@@ -66,9 +72,14 @@
                 success: function(r){
                     var posts = JSON.parse(r)
                     console.log(posts);
-                        alert('Your thought was successfully posted!');
-                        $('#addThought').modal('hide');
-                        location.reload(true);
+                        $("#thought-alert").fadeIn(500, 0);
+                        window.setTimeout(function() {
+                          $("#thought-alert").fadeTo(500, 0).slideUp(500, function(){
+                            $(this).remove(); 
+                            $('#addThought').modal('hide');
+                            location.reload(true);
+                          });
+                        }, 3000);
                         
                 },
                 error: function(xhr, ajaxOptions, thrownError){
@@ -94,14 +105,15 @@
                 success: function(r){
                     var audios = JSON.parse(r)
                     console.log(audios)
+                    $("#audio-alert").fadeIn(500, 0);
+                        window.setTimeout(function() {
+                          $("#audio-alert").fadeTo(500, 0).slideUp(500, function(){
+                            $(this).remove(); 
+                            $('#addAudio').modal('hide');
+                            location.reload(true);
+                          });
+                        }, 3000);
                    
-                         alert('Successfully posted!');
-                        location.reload(true);
-                        location.reload();
-
-
-
-
                 },
                 error: function(xhr, ajaxOptions, thrownError){
                     console.log(e);
@@ -122,9 +134,14 @@
                 success: function(r){
                     var videos = JSON.parse(r)
                     console.log(videos)
-                    alert('Successfully posted!');
-                    $('#addVideo').modal('hide');
-                    location.reload(true);
+                    $("#video-alert").fadeIn(500, 0);
+                        window.setTimeout(function() {
+                          $("#video-alert").fadeTo(500, 0).slideUp(500, function(){
+                            $(this).remove(); 
+                            $('#addVideo').modal('hide');
+                            location.reload(true);
+                          });
+                        }, 3000);
                 },
                 error: function(xhr, ajaxOptions, thrownError){
                     console.log(e);
