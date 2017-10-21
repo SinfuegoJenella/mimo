@@ -22,13 +22,39 @@
 						<div class="row">
 							<div class="col-md-4">
 								<h6 style="padding: 0 2.2em" class="profile text-center"><b style="color: #ffa31a"><i class="fa fa-music"></i> Genres:</b> <br />
-								<?php echo $about[0]['genre1'].' / ' .$about[0]['genre2'].' / ' .$about[0]['genre3'];?></h6>
+								<?php if ( $about[0]['genre1'] == NULL && $about[0]['genre2'] == NULL && $about[0]['genre1'] == NULL)
+								{
+									echo (" None ");
+								}
+								else
+								{
+									if($about[0]['genre1'] == NULL)
+									{
+										echo $about[0]['genre2'].' . ' .$about[0]['genre3'];
+									}
+									else if($about[0]['genre2'] == NULL)
+									{
+										echo $about[0]['genre1'].' . ' .$about[0]['genre3'];
+									}
+									else if($about[0]['genre3'] == NULL)
+									{
+										echo $about[0]['genre1'].' . ' .$about[0]['genre2'];
+									}
+									else{
+										echo $about[0]['genre1'].' . ' .$about[0]['genre2'].' . ' .$about[0]['genre3']; 
+									}
+								}?> </h6>
 							</div>
 							
 							<div class="col-md-4">
 								<h6 style="padding: 0 2.2em" class="profile text-center"><b style="color: #ffa31a"><i class="fa fa-briefcase"></i>
 								 Career:</b> <br />
-								<?php echo $about[0]['career'];?></h6>
+								<?php if ( $about[0]['career'] == NULL)
+								{
+									echo ("None");
+								}
+								else{
+								echo $about[0]['career'] ; }?></h6>
 							</div>
 							
 							<div class="col-md-4">

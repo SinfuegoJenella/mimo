@@ -15,7 +15,8 @@ class browse extends CI_Controller {
 		$this->load->model('getposts');
 		$this->load->model('getSearch');
 		$this->load->model('getBrowse');
-
+		$this->load->model('artists');
+		
 		$this->load->model('comments');
 		$this->load->model('upload');
 		
@@ -30,10 +31,10 @@ class browse extends CI_Controller {
 		$condition = array('id'=>$id);
 		$data['users'] = $this->users->read($condition);
 		$headerdata['title'] = "MimO | Browse";
-
+		$data['mimoartists'] = $this->artists->mimoartists();
 		$this->load->view('include/header',$headerdata);
 		$this->load->view('include/topnav', $data);
-		$this->load->view('mimo_v/browse',$data);
+		$this->load->view('mimo_v/browse', $data);
 		$this->load->view('include/footer');
 	}//end of index()
 
