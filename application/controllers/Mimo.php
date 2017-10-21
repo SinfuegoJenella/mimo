@@ -44,7 +44,7 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/footer');
 		}
 		else{
-			redirect('accounts/signin');
+			redirect('home');
 		}
 		// echo $this->login->isLoggedIn();
 
@@ -169,7 +169,7 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/footer');
 		}
 		else{
-			redirect('accounts/signin');
+			redirect('home');
 		}
 
 	}//end of settings
@@ -187,7 +187,7 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/footer');
 		}
 		else{
-			redirect('accounts/signin');
+			redirect('home');
 		}
 	}//end of artist
 
@@ -204,7 +204,7 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/footer');
 		}
 		else{
-			redirect('accounts/signin');
+			redirect('home');
 		}
 	}//end of genre
 	
@@ -223,7 +223,7 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/footer');
 		}
 		else{
-			redirect('accounts/signin');
+			redirect('home');
 		}
 	}//end of browse
 	
@@ -266,7 +266,7 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/footer');
 		}
 		else{
-			redirect('accounts/signin');
+			redirect('home');
 		}
 	
 	}//end of myStudio
@@ -412,7 +412,7 @@ class Mimo extends CI_Controller {
 			echo json_encode(array('likes'=>$likes));
 		}
 		else{
-			redirect('mimo/errorpage');
+			redirect('error');
 		}
 	}//end of likes function
 
@@ -616,7 +616,7 @@ class Mimo extends CI_Controller {
 			$noover = uniqid(rand()).'.'.$type;
 			$image= $_FILES['uploadAudioImg'];
 			$audioart=$this->image->uploadImage($image); 
-			$url = "C:\wamp\www\mimo\assets\uploads\audios/".$noover;
+			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
 			
@@ -680,7 +680,7 @@ class Mimo extends CI_Controller {
 			$types = explode('.', $_FILES["vidUpload"]["name"]);
 			$types = strtolower($types[count($types)-1]);
 			$noover = uniqid(rand()).'.'.$types;
-			$url = "C:\wamp\www\mimo\assets\uploads/videos/".$noover;
+			$url = "C:\wamp64\www\mimo\assets\uploads/videos/".$noover;
 		    move_uploaded_file($_FILES['vidUpload']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/videos/".$noover;
 
@@ -904,7 +904,7 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/footer');
 		}
 		else{
-			redirect('accounts/signin');
+			redirect('home');
 		}
 		
 	}//end of charts
@@ -923,7 +923,7 @@ class Mimo extends CI_Controller {
 			$this->load->view('include/footer');
 		}
 		else{
-			redirect('accounts/signin');
+			redirect('home');
 		}
 		
 	}//end of playlist
@@ -936,7 +936,7 @@ class Mimo extends CI_Controller {
 			    }
 			    setcookie("SNID", '', time() - 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
 			    setcookie("SNID_", '1', time() - 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
-        redirect('/accounts/signin');
+        redirect('home');
     }//end of logout
 	
 	
@@ -960,22 +960,5 @@ class Mimo extends CI_Controller {
 		
 	}
 
-	public function home()
-	{
-		if($this->login->isLoggedIn()){
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | Welcome";
-			$this->load->view('include/header',$headerdata);
-			//$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/home');
-			$this->load->view('include/footer');
-		}
-		else{
-			redirect('accounts/signin');
-		}
-		
-	}//end of playlist
 }
 

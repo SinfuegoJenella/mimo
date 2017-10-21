@@ -45,13 +45,15 @@ class Notify {
                         $temp = $mCI->notif->cnotif($postid);
                         $r = $userfollow;
                         $s = $mCI->login->isLoggedIn();
+                        $condition = array('id'=>$s);
+                        $username = $mCI->users->read($condition,'username')[0]['username'];
                         if($r!=$s){
                                 $data = array('id'=>null,
                                                 'type'=>$type,
                                                 'receiver'=>$r,
                                                 'sender'=>$s,
                                                 'post_id'=>'',
-                                                'notifurl'=>'http://localhost/mimo/mimo/myStudio?username='.$s.''
+                                                'notifurl'=>'http://localhost/mimo/mimo/myStudio?username='.$username.''
                                                 );
                                 $mCI->notif->create($data);
                         }
@@ -60,13 +62,15 @@ class Notify {
                         $temp = $mCI->notif->cnotif($postid);
                         $r = $userfollow;
                         $s = $mCI->login->isLoggedIn();
+                        $condition = array('id'=>$s);
+                        $username = $mCI->users->read($condition,'username')[0]['username'];
                         if($r!=$s){
                                 $data = array('id'=>null,
                                                 'type'=>$type,
                                                 'receiver'=>$r,
                                                 'sender'=>$s,
                                                 'post_id'=>'',
-                                                'notifurl'=>'http://localhost/mimo/mimo/myStudio?username='.$s.''
+                                                'notifurl'=>'http://localhost/mimo/mimo/myStudio?username='.$username.''
                                                 );
                                 $mCI->notif->create($data);
                         }

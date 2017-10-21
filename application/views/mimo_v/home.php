@@ -19,12 +19,12 @@
 		
 		<a href="" class="btn homeBtn hidden-lg hidden-md" style="margin-top: 5px;">Log In!</a>
 		
-		<marquee behavior="slide" direction="up" scrollamount="5" class="text-center hidden-xs" style="font-size: 20px; color:white; height: 50px; "><a href="" class="btn homeBtn" style="margin-top: 5px;">Log In!</a></marquee>
+		<marquee behavior="slide" direction="up" scrollamount="5" class="text-center hidden-xs" style="font-size: 20px; color:white; height: 50px; "><a href="<?php echo base_url('accounts/signin');?>" class="btn homeBtn" style="margin-top: 5px;">Log In!</a></marquee>
 		</div>
 		
 		<div class="col-md-2">
 		<a href="" class="btn homeBtn hidden-lg hidden-md" style="margin-top: 5px;">Sign up!</a>
-		<marquee behavior="slide" direction="up" scrollamount="5" class="text-center hidden-xs" style="font-size: 20px; color:white; height: 50px; "><a href="" class="btn homeBtn" style="margin-top: 5px;">Sign Up!</a></marquee>
+		<marquee behavior="slide" direction="up" scrollamount="5" class="text-center hidden-xs" style="font-size: 20px; color:white; height: 50px; "><a href="<?php echo base_url('accounts');?>" class="btn homeBtn" style="margin-top: 5px;">Sign Up!</a></marquee>
 		</div>
 		<div class="col-md-4"></div>
 		</div>
@@ -130,8 +130,8 @@
 					<div class="row">
 						<div class="col-md-4">
 							<h2 class="text-center">Join the <strong style="font-size: 30px; color:black; font-family: Kristen ITC">Mimo</strong> community and let the music be your world.</h2>
-							<a href="" class="btn homeBtnTwo" title="Sign Up!" style="margin-top: 90px;">Join now!</a>
-							<a href="" class="btn homeBtnThree" title="Log In!" style="margin-top: 10px;">Log in!</a>
+							<a href="<?php echo base_url('accounts');?>" class="btn homeBtnTwo" title="Sign Up!" style="margin-top: 90px;">Join now!</a>
+							<a href="<?php echo base_url('accounts/signin');?>" class="btn homeBtnThree" title="Log In!" style="margin-top: 10px;">Log in!</a>
 						</div>
 					</div>
 				</div>

@@ -55,14 +55,14 @@ class Notification extends CI_Controller {
 			$posts = $this->notif->notifpost($postid);
 			$result = array();
                 foreach($posts as $post) {
-
+                	$phpdate = strtotime( $post['posted_at'] );
                       $p=array('PostType'=>$post['type'],
                       			'PostId'=>$post['id'],
                       			'PostUserPicture'=>$post['picture'],
                       			'PostUser'=>$post['username'],
                       			'PostLikes'=>$post['likes'],
                       			'PostComments'=>$post['comments'],
-                      			'PostDate'=>$post['posted_at'],
+                      			'PostDate'=>date( 'M d Y h:i a', $phpdate ),
                       			'thoughtBody'=>$this->topics->link_add($post['body']),
                       			'audioAbout'=>$this->topics->link_add($post['about']),
                       			'videoAbout'=>$this->topics->link_add($post['description']),
@@ -72,6 +72,29 @@ class Notification extends CI_Controller {
                       			'videoTitle'=>$post['name'],
                       			'audioGenre'=>$post['genre'],
                       			'audioCover'=>$post['cover'],
+                      	);
+                      array_push($result,$p);
+                }
+              echo json_encode($result);
+		}
+		else{
+			redirect('error');
+		}
+	}
+	public function getnotif(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$userid = $this->input->post("userid");
+			$notif = $this->notif->getnotif($userid);
+			$result = array();
+                foreach($notif as $post) {
+                	$phpdate = strtotime( $post['date'] );
+                      $p=array('sender'=>$post['sender'],
+                      			'type'=>$post['type'],
+                      			'post_id'=>$post['post_id'],
+                      			'notifurl'=>$post['notifurl'],
+                      			'date'=>date( 'M d Y h:i a', $phpdate ),
+                      			'username'=>$post['username'],
+                      			'picture'=>$post['picture'],
                       	);
                       array_push($result,$p);
                 }
