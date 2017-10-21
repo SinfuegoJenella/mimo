@@ -11,13 +11,22 @@
 					<div class="media-body">
 						<h4 class="media-heading"><a class="user">BTS</a><small> shared a thought!<br /><small> 12:20 AM 2/3/2017</small></small>
 						<a class="btn del pull-right">
-						<span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span>
-						</a>
+						<span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a>
+						<!--REPORT-->
+							<a class="btn del pull-right">
+							<span class="fa fa-exclamation-circle" title="Report this Post!"></span></a>
+						<!---->
 						</h4>
 						
 					</div>	
 				</div>
 			</div>
+					<!--ALERT FOR REPORT POST-->
+					<div class="alert alert-danger alert-dismissable">
+						<a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Post reported!</strong> The post is now held for review.
+					</div>
+					<!---->
 			
 		<!--Post Body -->
 			<div class="postbody">
