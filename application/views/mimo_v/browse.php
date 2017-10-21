@@ -1,264 +1,254 @@
-<body style="background: linear-gradient(to bottom right, #bdc3c7 1%, #2c3e50 111%);
-			background-attachment: fixed">
-	<!-- Top Nav Bar -->
+<body style="background-color: #d9d9d9">	<!-- Top Nav Bar -->
+	<?php $this->load->view('include/log-outnav');?>
 		<br>
 
-<div class="container">
-		<div class="col-md-10" style="padding-top: 80px; margin-left: 100px;  ">
-						<h1> Browse </h1>
+<div class="container" style="position:absolute; padding: 20px; padding-top: 0; width:100%" >
+<div class="row">
 
-			<nav class="navbar navbar-default" style="width:500px;">
-			<ul class="nav navbar-nav ">
-				<li class="navbar: hover;"><a href="<?php echo base_url('mimo/browse');?>">Overview</a></li>
-				<li><a href="<?php echo base_url('mimo/artist');?>"> Artists </a></li>
-				<li><a href="<?php echo base_url('mimo/genre');?>"> Genres </a></li>
-				<li><a href="<?php echo base_url('mimo/charts');?>"> Charts </a></li>
-			</ul>
-			</div>
+</div>
+
+
+<div class="row belowtn" style="margin-right: 10px; ">
+		<div class="col-md-3">
 			
-	<div class="text-center " >
-				<div class="col-md-4 col-sm-4" class="artist" style="padding-top:2%;">
-					<div >
-						<!--both a href link papunta sa playlist-->
-						<div><a href="<?php echo base_url('mimo/artistplaylist');?>" ><img src="http://localhost/mimo/assets/img/1.jpg" class="img-circle  cen"></a></div>			
-						<div style="background-color:#666666; margin-top: 5%; height: 110px;">	
-							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;">Miley Cyrus</a></div>	
-							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
-									232,651 People</h6>
-							<!-- Follow button -->
-							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
-							color:grey;background-color:#e1e1e1;" >Follow</div>
-						</div>
+				<div class="row" style="margin-left: 15px; margin-right:15px">
+					<div class="col-md-12" style="background-color: #AFADAC; color: white; padding: 10px; margin-left: 10px; margin-right:15px">
+						<h4 class="text-center" style="color: white"><?php $this->load->view('include/mimologo')?> Top 10 Most Followed Artist</h4>
 					</div>
-				</div> 
-			
-			
-				<div class="col-md-4 col-sm-4"  style="padding-top:2%;">
-					<div >
-					<!--both a href link papunta sa playlist-->
-						<div><a href="<?php echo base_url('mimo/artistplaylist');?>"><img src="http://localhost/mimo/assets/img/2.jpg" class="img-circle  "></a></div>
-						<div style="background-color:#666666; margin-top: 5%; height: 110px;" >
-							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;" >JLo</a></div>	
-							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
-									232,651 People</h6>
-									<!-- Follow button -->
-							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
-							color:grey;background-color:#e1e1e1;" >Follow</div>
-						</div>
+				
+					<div class="row ">
+					<!--TOP LIST-->
+					<div class="col-md-12" style="margin-left: 10px; padding-top: 20px;">
+					<?php $this->load->view('templates/toplist');?>
+					
 					</div>
+					<!--END OF TOP LIST-->
+					
 				</div>
-			
-				<div class="col-md-4 col-sm-4"  style="padding-top:2%;">
-					<div>
-						<!--both a href link papunta sa playlist-->
-						<div><a href="<?php echo base_url('mimo/artistplaylist');?>"><img src="http://localhost/mimo/assets/img/3.jpg" class="img-circle  "></a></div>
-						<div style="background-color:#666666; margin-top: 5%; height: 110px;">
-							<div><a href="<?php echo base_url('mimo/artistplaylist');?>" style="color:white;" >GD</a></div>
-							<h6 style=" color: white" class=" profile text-center" ><b style="color: #ffa31a"><i class="fa fa-users"></i> Followers:</b> <br />
-									232,651 People</h6>
-									<!-- Follow button -->
-							<div ><button class="btn pill" style="-webkit-border-radius: 16px;-moz-border-radius: 16px;border-radius: 16px; border-color:grey;
-							color:grey;background-color:#e1e1e1;" >Follow</div>
-						</div>
+		</div>
+		</div>
+		<div class="col-md-9">
+	
+		<ul class="nav nav-tabs nav-justified searchtab">
+			<!-- COLLECTIONS, ALBUMS, THOUGHTS, and FAVORITES TABS-->
+			<li class="active"><a data-toggle="tab" href="#sartist">&nbsp;Discover Artist</a></li>
+			<li><a data-toggle="tab" href="#sthought">&nbsp;Random Thoughts</a></li>
+			<li><a data-toggle="tab" href="#saudios">&nbsp;Top Audios</a></li>
+			<li><a data-toggle="tab" href="#svids">&nbsp;Top Videos</a></li>
+			<li><a data-toggle="tab" href="#sgenre">&nbsp;Genres</a></li>
+		</ul>
+
+			<div class="tab-content" style="background-color: rgba(255,255,255,0.9); height: 1000px">
+				<?php $this->load->view('templates/commentModal');?>
+					<!-- ARTIST -->
+						<div id="sartist" class="tab-pane fade in active">
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-10 artist">
+										<h2>New Artist</h2>
+										<div class="col-md-12" style="margin-left: 10px">
+										<?php $this->load->view('templates/s_artist');?>
+										</div>
+									</div>
+									<div class="col-md-1"></div>
+								</div>
+							</div>
+   
+   
+						<!-- AUDIOS-->
+							<div id="sthought" class="tab-pane fade" >
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-10 thoughts">
+										<h2>Thoughts</h2>
+										<div class="col-md-12" style="margin-left: 10px">
+										<?php $this->load->view('templates/s_thought');?>
+										</div>
+									</div>
+									<div class="col-md-1"></div>
+								</div>
+							</div>
+							
+							
+							<!-- THOUGHTS-->
+							<div id="saudios" class="tab-pane fade">
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-10 audios">
+										<h2>Top 10 Audios</h2>
+									<div class="col-md-12" style="margin-left: 10px">
+									<?php $this->load->view('templates/s_audio');?>
+									</div>
+									</div>
+									<div class="col-md-1"></div>
+								</div>
+							</div>	
+							
+							<!-- FAVORITES-->
+							<div id="svids" class="tab-pane fade">
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-10 videos">
+										<h2>Top 10 Videos</h2>
+										<?php $this->load->view('templates/s_video');?>
+									</div>
+									<div class="col-md-1"></div>
+								</div>
+							</div>
+							
+							<!-- FAVORITES-->
+							<div id="sgenre" class="tab-pane fade">
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-10 audios">
+										<h2>Genres</h2>
+									<div class="col-md-12" style="margin-left: 10px">
+									<?php $this->load->view('templates/s_genre');?>
+									</div>
+									</div>
+									<div class="col-md-1"></div>
+								</div>
+							</div>	
 					</div>
-				</div>
+					
+			</div>	
+	</div>
 		
 			</div>
-		</div>
-	<div class="row text-center" style="padding-top:50px;">
-	<div class="col-md-3" >
-		<div >
-			<!--both a href link papunta sa playlist-->
-			<div><a href="<?php echo base_url('mimo/playlist');?>" ><img src="http://localhost/mimo/assets/img/top_gl.jpg" class="img-rounded img-chart "></a></div>			
-			<div><strong><a href="<?php echo base_url('mimo/playlist');?>" class="txt ">Global Top 50</a></strong></div>	
-		</div>
-	</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+<!--	
+<div class="container-fluid">
+	<div class="row">
 	
-	
-	<div class="col-md-3 " >
-		<div>
-		<!--both a href link papunta sa playlist-->
-			<div><a href="<?php echo base_url('mimo/playlist');?>"><img src="http://localhost/mimo/assets/img/top_ph.jpg" class="img-rounded img-chart "></a></div>				
-			<div><strong><a href="<?php echo base_url('mimo/playlist');?>" class="txt ">Philippines Top 50</a></strong></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="<?php echo base_url('mimo/playlist');?>"><img src="http://localhost/mimo/assets/img/vir_ph.jpg" class="img-rounded img-chart "></a></div>					
-			<div><strong><a href="<?php echo base_url('mimo/playlist');?>" class="txt">Philippines Viral 50</a></strong></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="<?php echo base_url('mimo/playlist');?>"><img src="http://localhost/mimo/assets/img/vir_gl.jpg" class="img-rounded img-chart "></a></div>				
-			<div><strong><a href="<?php echo base_url('mimo/playlist');?>" class="txt">Global Viral 50</a></strong></div>
-		</div>
-	</div>
-	
-	</div>
-  
-
-  <div class="row text-center" style="padding-top:50px; margin-left:90px;">
-	<div class="col-md-3 " >
-		<div >
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist" ><img src="http://localhost/mimo/assets/img/alt.png" class="img-rounded img-chart" ></a></div>			
-			<div><a href="/Mimo/playlist" class="txt " style="color:black">Alternative Music</a></div>	
-		</div>
-	</div>
-	
-	
-	<div class="col-md-3 " >
-		<div>
-		<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/blues.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
-			<div><a href="/Mimo/playlist" class="txt " style="color:black">Blues</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/classical.png" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Classical Music</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/country.png" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Country Music</a></div>
-		</div>
-	</div>
-	<div class="col-md-3 " >
-		<div>
-		<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/dance.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Dance Music</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/easy.png" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Easy Listening</a></div>	
-		</div>
-	</div>
-	
-	
-	<div class="col-md-3 " >
-		<div>
-		<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/electronic.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
-			<div><a href="/Mimo/playlist" class="txt " style="color:black">Electronic Music</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/european.png" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">European Music</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/hip.jpg" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Hip Hop / Rap</a></div>
-		</div>
-	</div>
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/indie.png" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Indie Pop</a></div>
-		</div>
-	</div>
-	<div class="col-md-3 " >
-		<div>
-		<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/inspire.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
-			<div><a href="/Mimo/playlist" class="txt " style="color:black">Inspirational Music</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/new.jpg" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">New Age Music</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/opera.jpg" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Opera</a></div>
-		</div>
-	</div>
-	<div class="col-md-3 " >
-		<div>
-		<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/pop.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Pop Music</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/rnb.jpg" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">R&B / Soul</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/reggae.jpg" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Reggae</a></div>
-		</div>
-	</div>
-	<div class="col-md-3 " >
-		<div>
-		<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/rock.jpg" class="img-rounded img-chart " style="width:170px;height:170px;"></a></div>				
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Rock Music</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/singer.jpg" class="img-rounded img-chart " style="width:170px;height:170px"></a></div>					
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">Singer / Songwriter</a></div>	
-		</div>
-	</div>
-	
-	<div class="col-md-3 " >
-		<div>
-			<!--both a href link papunta sa playlist-->
-			<div><a href="/Mimo/playlist"><img src="http://localhost/mimo/assets/img/world.jpg" class="img-rounded img-chart"  style="width:170px;height:170px "></a></div>				
-			<div><a href="/Mimo/playlist" class="txt" style="color:black">World Music / Beats</a></div>
-		</div>
-	</div>
-</nav>
+		<div class="col-md-8" style="background-color: #e1e1e1">
 			
+		</div>
+		
+		
+		<div class="col-md-4">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" style="float:right">
+				<!-- Indicators 
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
 
+				<!-- Wrapper for slides 
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="http://localhost/mimo/assets/img/ilovemusic1.jpg" alt="Los Angeles" style="width:100%;height: 250px">
+						<div class="carousel-caption">
+							<h4>Share your Talent!</h3>
+							<p>Let others know your amazing musical talent through audios and video.</p>
+						</div>
+				</div>
 
-		<?php $this->load->view('include/releasebuttons');?>
-		<?php $this->load->view('templates/addpostmodal');?>
-		<?php $this->load->view('templates/addaudiomodal');?>
-		<?php $this->load->view('templates/addvideomodal');?>
+				<div class="item">
+					<img src="http://localhost/mimo/assets/img/mp3.jpg" alt="Chicago" style="width:100%; height: 180px">
+					<div class="carousel-caption">
+						<h4>Sore High!</h3>
+						<p>Gain followers and be on the Top 10 Most Followed Artist.</p>
+					</div>
+				</div>
+    
+				<div class="item">
+					<img src="http://localhost/mimo/assets/img/singer.jpg" alt="New York" style="width:100%; height: 180px">
+					<div class="carousel-caption">
+						<h4>Discover or be discovered!</h3>
+						<p>Show the world what youu got and let others discover you amazing talent.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Left and right controls
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
+			</div>
+			
+			
+			<div class="row">
+				<h4>Top 10 Most Followed Artists</h4>
+			</div>
+		</div>
+		
+	</div>
+</div>-->
+<!--
+<div class="container belowtn" style="margin-top: 10px" >
+
+	<div class="row" class="" style="background-color:rgba(255,255,255,0.9)">
+		<div class="vtab">
+			<button class="tablinks" onclick="openTab(event, 'Audios')" id="defaultOpen">Audios</button>
+			<button class="tablinks" onclick="openTab(event, 'Artists')">Artist</button>
+			<button class="tablinks" onclick="openTab(event, 'Videos')">Videos</button>
+		</div>
+
+		<div id="Audios" class="vtabcontent">
+			<h3>Audios</h3>
+			<?php //$this->load->view('templates/s_audio')?>
+				<div class="audCard" style="width:100px;float:left">
+				<img src="http://localhost/mimo/assets/img/bp.jpg" width="100px" height="100px">
+				</div>
+		</div>
+
+		<div id="Artists" class="vtabcontent">
+			<h3>Artist</h3>
+				<p>Paris is the capital of France.</p> 
+		</div>
+
+		<div id="Videos" class="vtabcontent">
+			<h3>Videos</h3>
+				<p>Tokyo is the capital of Japan.</p>
+				<p>Tokyo is the capital of Japan.</p>
+				<p>Tokyo is the capital of Japan.</p>
+				<p>Tokyo is the capital of Japan.</p>
+				<p>Tokyo is the capital of Japan.</p>
+				<p>Tokyo is the capital of Japan.</p>
+				<p>Tokyo is the capital of Japan.</p>
+				<p>Tokyo is the capital of Japan.</p>
+				<p>Tokyo is the capital of Japan.</p>
+				<p>Tokyo is the capital of Japan.</p>
+				<p>Tokyo is the capital of Japan.</p>
+		</div>
 	</div>
 </div>
+-->
 </body>
+<script>
+function openTab(evt, tabName) {
+    var i, vtabcontent, tablinks;
+    vtabcontent = document.getElementsByClassName("vtabcontent");
+    for (i = 0; i < vtabcontent.length; i++) {
+        vtabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>

@@ -4,7 +4,7 @@
 						
 						<div class="media-left">
 							<p class="rank">1</p>
-						</div>
+						</div> 
 							
 						<div class="media-left">
 							<a href="#" >
