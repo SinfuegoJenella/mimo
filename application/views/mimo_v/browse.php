@@ -1,71 +1,76 @@
 <body style="background-color: #d9d9d9">	<!-- Top Nav Bar -->
-	<?php $this->load->view('include/log-outnav');?>
-	<br>
-	<div class="container" style="position:absolute; padding: 20px; padding-top: 0; width:100%" >
-		<div class="row belowtn" style="margin-right: 10px; ">
-			<div class="col-md-3">
+<div class="container" style="position:absolute; padding: 20px; padding-top: 0; width:100%" >
+<div class="row">
+
+</div>
+
+
+<div class="row belowtn" style="margin-right: 10px; ">
+		<div class="col-md-3">
+			
 				<div class="row" style="margin-left: 15px; margin-right:15px">
 					<div class="col-md-12" style="background-color: #AFADAC; color: white; padding: 10px; margin-left: 10px; margin-right:15px">
 						<h4 class="text-center" style="color: white"><?php $this->load->view('include/mimologo')?> Top 10 Most Followed Artist</h4>
 					</div>
+				
 					<div class="row ">
 					<!--TOP LIST-->
-						<div class="col-md-12" style="margin-left: 10px; padding-top: 20px;">
-							<?php $this->load->view('templates/toplist');?>
-						</div>
-					<!--END OF TOP LIST-->
+					<div class="col-md-12" style="margin-left: 10px; padding-top: 20px;">
+					<?php $this->load->view('templates/toplist');?>
+					
 					</div>
+					<!--END OF TOP LIST-->
+					
 				</div>
-			</div>
-			<div class="col-md-9">
-				<ul class="nav nav-tabs nav-justified searchtab">
-					<!-- COLLECTIONS, ALBUMS, THOUGHTS, and FAVORITES TABS-->
-					<li class="active"><a data-toggle="tab" href="#sartist">&nbsp;Discover Artist</a></li>
-					<li><a data-toggle="tab" href="#sthought">&nbsp;Random Thoughts</a></li>
-					<li><a data-toggle="tab" href="#saudios">&nbsp;Top Audios</a></li>
-					<li><a data-toggle="tab" href="#svids">&nbsp;Top Videos</a></li>
-					<li><a data-toggle="tab" href="#sgenre">&nbsp;Genres</a></li>
-				</ul>
-				<div class="tab-content" style="background-color: rgba(255,255,255,0.9); height: 100%;">
-					<?php $this->load->view('templates/commentModal');?>
+		</div>
+		</div>
+		<div class="col-md-9">
+	
+		<ul class="nav nav-tabs nav-justified searchtab">
+			<!-- COLLECTIONS, ALBUMS, THOUGHTS, and FAVORITES TABS-->
+			<li class="active"><a data-toggle="tab" href="#sartist">&nbsp;Discover Artist</a></li>
+			<li><a data-toggle="tab" href="#sthought">&nbsp;Random Thoughts</a></li>
+			<li><a data-toggle="tab" href="#saudios">&nbsp;Top Audios</a></li>
+			<li><a data-toggle="tab" href="#svids">&nbsp;Top Videos</a></li>
+			<li><a data-toggle="tab" href="#sgenre">&nbsp;Genres</a></li>
+		</ul>
+
+			<div class="tab-content" style="background-color: rgba(255,255,255,0.9); height: 100%;">
+				<?php $this->load->view('templates/commentModal');?>
 					<!-- ARTIST -->
 						<div id="sartist" class="tab-pane fade in active">
-							<div class="row">
-								<div class="col-md-1"></div>
-									<div class="col-md-10 artist">
-										<h2>New Artist</h2>
-										<div class="col-md-12" style="margin-left: 10px">
-											<?php $this->load->view('templates/s_artist');?>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-10 ">
+										<h2>Discover Artist</h2>
+										<div class="col-md-12 artist" style="margin-left: 10px">
 										</div>
 									</div>
+									<div class="col-md-1"></div>
+								</div>
 							</div>
-						</div>
    
    
-						<!-- AUDIOS-->
-						<div id="sthought" class="tab-pane fade" >
-							<div class="row">
-								<div class="col-md-1"></div>
-									<div class="col-md-10 thoughts">
+							<div id="sthought" class="tab-pane fade" >
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-10">
 										<h2>Thoughts</h2>
-										<div class="col-md-12" style="margin-left: 10px">
-											<?php $this->load->view('templates/s_thought');?>
+										<div class="col-md-12 thoughts" style="margin-left: 10px">
 										</div>
 									</div>
-									
+									<div class="col-md-1"></div>
+								</div>
 							</div>
-						</div>
 							
 							
-							<!-- THOUGHTS-->
-						<div id="saudios" class="tab-pane fade">
-							<div class="row">
-								<div class="col-md-1"></div>
-									<div class="col-md-10 audios">
+							<div id="saudios" class="tab-pane fade">
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-10 ">
 										<h2>Top 10 Audios</h2>
-										<div class="col-md-12" style="margin-left: 10px">
-											<?php $this->load->view('templates/s_audio');?>
-										</div>
+									<div class="col-md-12 audios" style="margin-left: 10px">
+									</div>
 									</div>
 									<div class="col-md-1"></div>
 								</div>
@@ -75,9 +80,10 @@
 							<div id="svids" class="tab-pane fade">
 								<div class="row">
 									<div class="col-md-1"></div>
-									<div class="col-md-10 videos">
+									<div class="col-md-10 ">
 										<h2>Top 10 Videos</h2>
-										<?php $this->load->view('templates/s_video');?>
+										<div class="col-md-12 videos" style="margin-left: 10px">
+										</div>
 									</div>
 									<div class="col-md-1"></div>
 								</div>
@@ -87,152 +93,358 @@
 							<div id="sgenre" class="tab-pane fade">
 								<div class="row">
 									<div class="col-md-1"></div>
-										<div class="col-md-10 audios">
-											<h2>Genres</h2>
-											<div class="col-md-12" style="margin-left: 10px">
-												<?php $this->load->view('templates/s_genre');?>
-											</div>
-										</div>
+									<div class="col-md-10 audios">
+										<h2>Genres</h2>
+									<div class="col-md-12" style="margin-left: 10px">
+									<?php $this->load->view('templates/s_genre');?>
+									</div>
+									</div>
+									<div class="col-md-1"></div>
 								</div>
 							</div>	
-				</div>
-			</div>	
-		</div>
-	</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-<!--	
-<div class="container-fluid">
-	<div class="row">
+					</div>
+					
+			</div>
+			<!-- Para sa POST AND AUDIO MODAL-->
+		<?php $this->load->view('templates/addpostmodal');?>
+		<?php $this->load->view('templates/addaudiomodal');?>
+		<?php $this->load->view('templates/addvideomodal');?>
 	
-		<div class="col-md-8" style="background-color: #e1e1e1">
-			
-		</div>
-		
-		
-		<div class="col-md-4">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel" style="float:right">
-				<!-- Indicators 
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
-				</ol>
-
-				<!-- Wrapper for slides 
-			<div class="carousel-inner">
-				<div class="item active">
-					<img src="http://localhost/mimo/assets/img/ilovemusic1.jpg" alt="Los Angeles" style="width:100%;height: 250px">
-						<div class="carousel-caption">
-							<h4>Share your Talent!</h3>
-							<p>Let others know your amazing musical talent through audios and video.</p>
-						</div>
-				</div>
-
-				<div class="item">
-					<img src="http://localhost/mimo/assets/img/mp3.jpg" alt="Chicago" style="width:100%; height: 180px">
-					<div class="carousel-caption">
-						<h4>Sore High!</h3>
-						<p>Gain followers and be on the Top 10 Most Followed Artist.</p>
-					</div>
-				</div>
-    
-				<div class="item">
-					<img src="http://localhost/mimo/assets/img/singer.jpg" alt="New York" style="width:100%; height: 180px">
-					<div class="carousel-caption">
-						<h4>Discover or be discovered!</h3>
-						<p>Show the world what youu got and let others discover you amazing talent.</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Left and right controls
-			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="right carousel-control" href="#myCarousel" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-				<span class="sr-only">Next</span>
-			</a>
-			</div>
-			
-			
-			<div class="row">
-				<h4>Top 10 Most Followed Artists</h4>
-			</div>
-		</div>
-		
+		<!--Para naman to dun sa fixed button ng release ng thoughts at audio-->
+		<?php $this->load->view('include/releasebuttons');?>
+		<?php $this->load->view('templates/commentModal');?>
+		<?php $this->load->view('templates/colmodal');?>	
 	</div>
-</div>-->
-<!--
-<div class="container belowtn" style="margin-top: 10px" >
+		
+			</div>
+		
+<script type="text/javascript">
+var user = '<?php echo $users[0]['id'];?>'
+$(document).ready(function(){
+	$.ajax({
+		type:'POST',
+		url: '<?php echo base_url() ?>browse/artist',
+		data:{
+		},
+		success: function(s){
+			var res = JSON.parse(s)
+			console.log(res)
+				$.each(res, function(index) {
+					$('.artist').html($('.artist').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchPic" style="background-image:url('+res[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" class="user">'+res[index].username+'</a><small> ( '+res[index].followers+' followers )</small><a data-id="'+res[index].username+'" class="btn btn-info btn-sm pull-right">Visit Studio</a><br /><small><small>'+res[index].career+'</small></small></h4></div></div></div>'
+						);
 
-	<div class="row" class="" style="background-color:rgba(255,255,255,0.9)">
-		<div class="vtab">
-			<button class="tablinks" onclick="openTab(event, 'Audios')" id="defaultOpen">Audios</button>
-			<button class="tablinks" onclick="openTab(event, 'Artists')">Artist</button>
-			<button class="tablinks" onclick="openTab(event, 'Videos')">Videos</button>
-		</div>
+						$('[data-id]').click(function(e) {
+							e.preventDefault()
+							var userid = $(this).attr('data-id');
+							window.location = "http://localhost/mimo/mimo/myStudio?username="+userid;
+						});
 
-		<div id="Audios" class="vtabcontent">
-			<h3>Audios</h3>
-			<?php //$this->load->view('templates/s_audio')?>
-				<div class="audCard" style="width:100px;float:left">
-				<img src="http://localhost/mimo/assets/img/bp.jpg" width="100px" height="100px">
-				</div>
-		</div>
 
-		<div id="Artists" class="vtabcontent">
-			<h3>Artist</h3>
-				<p>Paris is the capital of France.</p> 
-		</div>
+				});
+		},
+		error: function(e){
+			console.log(e)
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'<?php echo base_url() ?>browse/random',
+		data:'',
+		success: function(s){
+			res = JSON.parse(s)
+			console.log(res)
+			$.each(res, function(index) {
+					$('.thoughts').html($('.thoughts').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchThoughtPic" style="background-image:url('+res[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" class="user">'+res[index].username+' </a><small><small>'+res[index].posted_at+'</small></small></h4><h5 id="audDesc">'+res[index].body+'</h5></div><div id="likesection"><div class="btn-grp btn-group-justified"><a data-thoughtslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a data-thoughtscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a></div></div></div></div>'
 
-		<div id="Videos" class="vtabcontent">
-			<h3>Videos</h3>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-				<p>Tokyo is the capital of Japan.</p>
-		</div>
-	</div>
-</div>
--->
-</body>
-<script>
-function openTab(evt, tabName) {
-    var i, vtabcontent, tablinks;
-    vtabcontent = document.getElementsByClassName("vtabcontent");
-    for (i = 0; i < vtabcontent.length; i++) {
-        vtabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+						);
+
+					$('[data-thoughtslikeid]').click(function(e) {
+						e.preventDefault()
+						var postid = $(this).attr('data-thoughtslikeid');
+						$.ajax({
+							type: 'POST',
+							url: '<?php echo base_url() ?>mimo/likes',
+							data:{
+								postid:postid
+							},
+							success: function(s){
+								var likes = JSON.parse(s);
+								$("[data-thoughtslikeid='"+postid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+							},
+							error: function(e){
+								console.log(e);
+								alert('error');
+							}
+						});
+					});
+					$('[data-thoughtscommentid]').click(function(e) {
+						e.preventDefault()
+						$('.commentatorDiv').html('')
+						var postid = $(this).attr('data-thoughtscommentid');
+						$.ajax({
+							type: 'POST',
+							url: '<?php echo base_url() ?>mimo/getcomments',
+							data:{
+								postid:postid
+							},
+							success: function(s){
+								var comments = JSON.parse(s)
+        						console.log(comments);
+        						//call showCommentModal function to display all comments
+        						showCommentModal(comments,postid,1);
+							},
+							error: function(){
+								console.log(e)
+							}
+						});
+					});
+
+				});
+		},
+		error: function(e){
+			console.log(e)
+		}
+	})
+
+	$.ajax({
+		type:'POST',
+		url: '<?php echo base_url() ?>browse/audios',
+		data:{
+		},
+		success: function(s){
+			var res = JSON.parse(s)
+			console.log(res)
+			
+				$.each(res, function(index) {
+					$('.audios').html($('.audios').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchAlbumPic" style="background-image:url('+res[index].cover+');"></div></a></div><div class="media-body"><h4 style="color: black" class="media-heading">'+res[index].title+'<small style="">( by: <a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'""> '+res[index].username+'</a> )</small></h4><h6><b> Genre:</b> '+res[index].genre+'</h6><h6><b> Year:</b> 2017</h6><p id="audDesc">'+res[index].about+'</p><div class="row" ><div class="col-md-12"><audio id="audio" controls controlsList="nodownload" width="100%"><source src="'+res[index].path+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a data-audioslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a  data-audioscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a><a class="btn view disabled"><span class="glyphicon glyphicon-play "></span><small>1,364</small></a><a data-audioscollectionid="'+res[index].id+'" class="btn"><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a></div></div></div></div>'
+
+
+					);
+					$('[data-audioslikeid]').click(function(e) {
+						e.preventDefault()
+						var postid = $(this).attr('data-audioslikeid');
+						$.ajax({
+							type: 'POST',
+							url: '<?php echo base_url() ?>mimo/likes',
+							data:{
+								postid:postid
+							},
+							success: function(s){
+								var likes = JSON.parse(s);
+								$("[data-audioslikeid='"+postid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+							},
+							error: function(e){
+								console.log(e);
+								alert('error');
+							}
+						});
+					});
+					$('[data-audioscommentid]').click(function(e) {
+						e.preventDefault()
+						$('.commentatorDiv').html('')
+						var postid = $(this).attr('data-audioscommentid');
+						$.ajax({
+							type: 'POST',
+							url: '<?php echo base_url() ?>mimo/getcomments',
+							data:{
+								postid:postid
+							},
+							success: function(s){
+								var comments = JSON.parse(s)
+        						console.log(comments);
+        						//call showCommentModal function to display all comments
+        						showCommentModal(comments,postid,2);
+							},
+							error: function(){
+								console.log(e)
+							}
+						});
+					});
+					$('[data-audioscollectionid]').click(function(e) {
+						e.preventDefault()
+						$('#sel1').html('<option></option>');
+						$.ajax({
+								type: 'POST',
+								url: '<?php echo base_url() ?>mimo/getcollectionlist',
+								data:{
+									userid:user
+								},
+								success: function(s){
+									var lists = JSON.parse(s)
+									console.log(lists)
+									 $.each(lists, function(index) {
+									 	$('#sel1').html($('#sel1').html()+'<option value="'+lists[index].id+'">'+lists[index].name+'</option>')
+									 });
+								},
+								error: function(e){
+									console.log(e);
+									alert('error');
+								}
+							});
+						var postid = $(this).attr('data-audioscollectionid');
+						$('#collectModal').modal('show')
+						$('#collecModal').attr('data-colid' , postid);
+						$('[data-colid]').click(function(e) {
+							e.preventDefault()
+							var colid = $(this).attr('data-colid');
+							var option = $('#sel1').val();
+							var newcol = $('#text').val();
+							$("#sel1").val('');
+							$("#text").val('');
+							$.ajax({
+								type: 'POST',
+								url: '<?php echo base_url() ?>mimo/addnewcol',
+								data:{
+									colid:colid,
+									option:option,
+									newcol:newcol,
+									userid:user
+								},
+								success: function(s){
+									var status = JSON.parse(s)
+									console.log(status);
+									if(status.status=="Added Successfully"){
+										$("#col-alert").fadeIn(500, 0);
+										window.setTimeout(function() {
+							                $('#col-alert').hide(); 
+							                $('#collectModal').modal('hide');
+							            }, 2000);
+									}
+									else if(status.status=="Already exists Collection list"){
+										$("#colec-alert").fadeIn(500, 0);
+										window.setTimeout(function() {
+							                $("#colec-alert").hide(); 
+							            }, 2000);
+									}
+									else if(status.status=="Audio Added to New Collection"){
+										$("#col-alert").fadeIn(500, 0);
+										window.setTimeout(function() {
+							                $('#col-alert').hide(); 
+							                $('#collectModal').modal('hide');
+							            }, 2000);
+									}
+								},
+								error: function(e){
+									console.log(e);
+									alert('error');
+								}
+							});
+
+						});
+					});
+				});
+			
+		},
+		error: function(e){
+			console.log(e)
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url: '<?php echo base_url() ?>browse/videos',
+		data:{
+		},
+		success: function(s){
+			var res = JSON.parse(s)
+			console.log(res)
+				$.each(res, function(index) {
+					$('.videos').html($('.videos').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchThoughtPic" style="background-image:url('+res[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading">'+res[index].name+'<br /><small>by: <a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'">'+res[index].username+'</a></small></h4><p id="audDesc">'+res[index].description+'</p><div class="row" ><div class="col-md-12"><video src="'+res[index].url+'" style="width:100%; height: 200px" controls controlsList="nodownload"></video></div></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a data-videoslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a data-videoscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a><a class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small> 123,234</small></a></div></div></div></div>'
+
+					);
+					$('[data-videoslikeid]').click(function(e) {
+						e.preventDefault()
+						var postid = $(this).attr('data-videoslikeid');
+						$.ajax({
+							type: 'POST',
+							url: '<?php echo base_url() ?>mimo/likes',
+							data:{
+								postid:postid
+							},
+							success: function(s){
+								var likes = JSON.parse(s);
+								$("[data-videoslikeid='"+postid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+							},
+							error: function(e){
+								console.log(e);
+								alert('error');
+							}
+						});
+					});
+					$('[data-videoscommentid]').click(function(e) {
+						e.preventDefault()
+						$('.commentatorDiv').html('')
+						var postid = $(this).attr('data-videoscommentid');
+						$.ajax({
+							type: 'POST',
+							url: '<?php echo base_url() ?>mimo/getcomments',
+							data:{
+								postid:postid
+							},
+							success: function(s){
+								var comments = JSON.parse(s)
+        						console.log(comments);
+        						//call showCommentModal function to display all comments
+        						showCommentModal(comments,postid,3);
+							},
+							error: function(){
+								console.log(e)
+							}
+						});
+					});
+				});
+			
+		},
+		error: function(e){
+			console.log(e)
+		}
+	});
+	function showCommentModal(comments,postid,type){
+		$('.h4').html('<span></span> Comments<small> on ... post</small>')
+		 $('#commentModal').modal('show')
+		 $.each(comments, function(index) {
+	        $('.commentatorDiv').html($('.commentatorDiv').html()+'<div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+comments[index].username+'"><div class="media-object commentPic" style="background-image:url('+comments[index].picture+');"></div></a></div><div class="media-body"><h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+comments[index].username+'" style="font-weight:bold" class="user">'+comments[index].username+'</a><small><small> '+comments[index].posted_at+'</small></small></h5><h6>'+comments[index].comment+'</h6></div></div>'
+			)
+        });
+		$('.postComment').attr('data-cid' , postid);
+		$('.postComment').attr('data-ctype' , type);
+		$('.postComment').click(function(e) {
+		 	e.preventDefault();
+		 	var id = $(this).attr("data-cid");
+		 	var type = $(this).attr("data-ctype");
+			var txt = $("#commentBox").val();
+			$("#commentBox").val('');
+			$.ajax({
+				type:'POST',
+				url: '<?php echo base_url() ?>mimo/comment',
+				data:{
+					comment:txt,
+					postid:id
+				},
+				success: function(r){
+					if(r!=''){
+						var comment = JSON.parse(r)
+						console.log(comment)
+						$( ".commentatorDiv" ).prepend( '<div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+comment[0].username+'"><div class="media-object commentPic" style="background-image:url('+comment[0].picture+');"></div></a></div><div class="media-body"><h5 class="media-heading"><a style="font-weight:bold" class="user">'+comment[0].username+'</a><small><small> '+comment[0].posted_at+'</small></small></h5><h6>'+comment[0].comment+'</h6></div></div>' );
+						if(type==1){
+							$("[data-thoughtscommentid='"+comment[0].id+"']").html('<span class="fa fa-commenting-o"></span> Comment <small><small>('+comment[0].comments+')</small></small>');
+						}
+						if(type==2){
+							$("[data-audioscommentid='"+comment[0].id+"']").html('<span class="fa fa-commenting-o"></span> Comment <small><small>('+comment[0].comments+')</small></small>');
+						}
+						if(type==3){
+							$("[data-videoscommentid='"+comment[0].id+"']").html('<span class="fa fa-commenting-o"></span> Comment <small><small>('+comment[0].comments+')</small></small>');
+						}
+					}
+				},
+				error: function(e){
+					console.log(e);
+				}
+
+			});
+		 });
+	}
+})
 </script>
+</body>
+

@@ -23,7 +23,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="presentation" role="presentation"><a href="<?php echo base_url('');?>" class="bar">
 			<i class="material-icons bar">speaker</i><p class="bar hidden-sm"> Music Hall</p></a></li>
-                    <li class="presentation"><a class="presentation" href="<?php echo base_url('mimo/browse');?>" class="bar">
+                    <li class="presentation"><a class="presentation" href="<?php echo base_url('browse');?>" class="bar">
 			<i class="material-icons bar">equalizer</i><p class="hidden-sm bar"> Browse</p></a></li>
                     <li role="presentation"><a href="<?php echo base_url('mimo/myStudio?username='.$users[0]['username'].' ');?>" class="bar">
 						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>
