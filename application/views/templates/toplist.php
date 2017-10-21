@@ -12,7 +12,7 @@
 							</a>
 						</div>
 						<div class="media-body">
-						<h5 class="media-heading"><a href="#" class="user" style="color:black;">nightingale</a><br />
+						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" class="user" style="color:black;">nightingale</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> 254,000 followers</h6>
 						</div>	
@@ -30,7 +30,7 @@
 							</a>
 						</div>
 						<div class="media-body">
-						<h5 class="media-heading"><a href="#" class="user" style="color:black;">nightingale</a><br />
+						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" class="user" style="color:black;">nightingale</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> 254,000 followers</h6>
 						</div>	
@@ -48,7 +48,7 @@
 							</a>
 						</div>
 						<div class="media-body">
-						<h5 class="media-heading"><a href="#" class="user" style="color:black;">nightingale</a><br />
+						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" class="user" style="color:black;">nightingale</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> 254,000 followers</h6>
 						</div>	
@@ -66,7 +66,7 @@
 							</a>
 						</div>
 						<div class="media-body">
-						<h5 class="media-heading"><a href="#" class="user" style="color:black;">nightingale</a><br />
+						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" class="user" style="color:black;">nightingale</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> 254,000 followers</h6>
 						</div>	
@@ -84,7 +84,7 @@
 							</a>
 						</div>
 						<div class="media-body">
-						<h5 class="media-heading"><a href="#" class="user" style="color:black;">nightingale</a><br />
+						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" class="user" style="color:black;">nightingale</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> 254,000 followers</h6>
 						</div>	
@@ -102,7 +102,7 @@
 							</a>
 						</div>
 						<div class="media-body">
-						<h5 class="media-heading"><a href="#" class="user" style="color:black;">nightingale</a><br />
+						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" class="user" style="color:black;">nightingale</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> 254,000 followers</h6>
 						</div>	
@@ -120,7 +120,7 @@
 							</a>
 						</div>
 						<div class="media-body">
-						<h5 class="media-heading"><a href="#" class="user" style="color:black;">nightingale</a><br />
+						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" class="user" style="color:black;">nightingale</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> 254,000 followers</h6>
 						</div>	
@@ -138,7 +138,7 @@
 							</a>
 						</div>
 						<div class="media-body">
-						<h5 class="media-heading"><a href="#" class="user" style="color:black;">nightingale</a><br />
+						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" class="user" style="color:black;">nightingale</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> 254,000 followers</h6>
 						</div>	
@@ -156,7 +156,7 @@
 							</a>
 						</div>
 						<div class="media-body">
-						<h5 class="media-heading"><a href="#" class="user" style="color:black;">nightingale</a><br />
+						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" class="user" style="color:black;">nightingale</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> 254,000 followers</h6>
 						</div>	
@@ -174,7 +174,7 @@
 							</a>
 						</div>
 						<div class="media-body">
-						<h5 class="media-heading"><a href="#" class="user" style="color:black;">nightingale</a><br />
+						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $users[0]['username'];?>" class="user" style="color:black;">nightingale</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> 254,000 followers</h6>
 						</div>	

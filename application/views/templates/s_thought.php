@@ -19,7 +19,7 @@
 					<a href="#" id="likeBtn" type="button" class="btn like">
 						<span class="fa fa-heart-o">
 						</span> Like <small>
-						<small>(12,367)</small></small></a>
+						<small>(0)</small></small></a>
 						
 					<a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal">
 						<span class="fa fa-commenting-o"></span> Comment </a>
@@ -51,7 +51,7 @@
 					<a href="#" id="likeBtn" type="button" class="btn like">
 						<span class="fa fa-heart-o">
 						</span> Like <small>
-						<small>(12,367)</small></small></a>
+						<small>(0)</small></small></a>
 						
 					<a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal">
 						<span class="fa fa-commenting-o"></span> Comment </a>
@@ -83,7 +83,7 @@
 					<a href="#" id="likeBtn" type="button" class="btn like">
 						<span class="fa fa-heart-o">
 						</span> Like <small>
-						<small>(12,367)</small></small></a>
+						<small>(0)</small></small></a>
 						
 					<a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal">
 						<span class="fa fa-commenting-o"></span> Comment </a>
@@ -115,7 +115,7 @@
 					<a href="#" id="likeBtn" type="button" class="btn like">
 						<span class="fa fa-heart-o">
 						</span> Like <small>
-						<small>(12,367)</small></small></a>
+						<small>(0)</small></small></a>
 						
 					<a class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal">
 						<span class="fa fa-commenting-o"></span> Comment </a>
