@@ -3,7 +3,7 @@ class Image {
         //pakigawang public function lang pag nilagay na sa library  wala ng static mahirap tawagin
         public function uploadImage($formname) {
                if ($formname['size'] > 10240000) {
-                        die('Image too big, must be 10MB or less!');
+                        redirect ('error');
                 } 
 				else
 				{
@@ -23,10 +23,17 @@ class Image {
                 
 
                 $response = file_get_contents($imgurURL, false, $context);
+				if($response === false)
+				{	
+					//echo "<script type='text/javascript'>alert('Connection Error');</script>";
+					redirect ('error');
+				}
+				else
+				{
                 $response = json_decode($response);	
-				
 				$link=$response->data->link;
 				return $link;
+				}
 				}
         }
 

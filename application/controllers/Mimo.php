@@ -13,7 +13,8 @@ class Mimo extends CI_Controller {
 		$this->load->model('followers','followers');
 		$this->load->model('post_likes','post_likes');
 		$this->load->model('getposts');
-
+		$this->load->model('artists');
+		
 		$this->load->model('comments');
 		$this->load->model('upload');
 		$this->load->model('notif');
@@ -75,17 +76,12 @@ class Mimo extends CI_Controller {
 			$profileimage= $_FILES['imgProfile'];
 			$headerimage= $_FILES['imgHeader'];
 			if($profileimage['name']=='') {
-					//echo "<h2>An Image Please.</h2>";
+					
 					$profilelink=$previousprofile;
 			}
 			else{
-			//print_r ($image);
+			
 			$profilelink=$this->image->uploadImage($profileimage); 
-				if($profilelink==NULL)
-				{
-					$profilelink=$previousprofile;
-					echo "<script type='text/javascript'>alert('Connection Error');</script>";
-				}
 			}
 			
 			if($headerimage['name']=='') {  
@@ -133,7 +129,7 @@ class Mimo extends CI_Controller {
 			else{
 				foreach($mcareer as $car)
 				{
-					$career .= $car. " , ";
+					$career .= $car. ".";
 						
 				}
 			}
@@ -180,10 +176,11 @@ class Mimo extends CI_Controller {
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
+			$data['mimoartists'] = $this->artists->mimoartists();
 			$headerdata['title'] = "MimO | Artist";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/artist');
+			$this->load->view('mimo_v/artist', $data);
 			$this->load->view('include/footer');
 		}
 		else{
@@ -594,13 +591,17 @@ class Mimo extends CI_Controller {
 			$genre = $_POST['genre'];
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
-			$noover = uniqid(rand()).'.'.$type;
-			$image= $_FILES['uploadAudioImg'];
-			$audioart=$this->image->uploadImage($image); 
+			$noover = uniqid(rand()).'.'.$type; 
 			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
-			
+			$image= $_FILES['uploadAudioImg'];
+			if($image['name']=='') {
+					$audioart= "https://i.imgur.com/GZr4AiQ.jpg";
+			}
+			else{
+				$audioart=$this->image->uploadImage($image); 
+				}
 		    $id = $this->login->isLoggedIn();
 				$data = array(
 						'id'=>null,
