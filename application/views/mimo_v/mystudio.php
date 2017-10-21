@@ -42,7 +42,7 @@
 									else{
 										echo $about[0]['genre1'].' . ' .$about[0]['genre2'].' . ' .$about[0]['genre3']; 
 									}
-									}?></h6>
+								}?> </h6>
 							</div>
 							
 							<div class="col-md-4">

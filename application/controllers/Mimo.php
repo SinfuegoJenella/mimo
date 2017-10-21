@@ -13,6 +13,7 @@ class Mimo extends CI_Controller {
 		$this->load->model('followers','followers');
 		$this->load->model('post_likes','post_likes');
 		$this->load->model('getposts');
+		$this->load->model('artists');
 
 		$this->load->model('comments');
 		$this->load->model('upload');
@@ -125,9 +126,10 @@ class Mimo extends CI_Controller {
 				$career=$previouscareer;
 			}
 			else{
+				
 				foreach($mcareer as $car)
 				{
-					$career .= $car. " . ";
+					$career .= $car. ".";
 						
 				}
 			}
@@ -174,10 +176,12 @@ class Mimo extends CI_Controller {
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
+			$data['newartists'] = $this->artists->newartists();
+			$data['mimoartists'] = $this->artists->mimoartists();
 			$headerdata['title'] = "MimO | Artist";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/artist');
+			$this->load->view('mimo_v/artist', $data);
 			$this->load->view('include/footer');
 		}
 		else{
@@ -757,5 +761,6 @@ class Mimo extends CI_Controller {
 		}
 		
 	}//end of playlist
+
 }
 

@@ -3,7 +3,7 @@ class Image {
         //pakigawang public function lang pag nilagay na sa library  wala ng static mahirap tawagin
         public function uploadImage($formname) {
                if ($formname['size'] > 10240000) {
-                        die('Image too big, must be 10MB or less!');
+                        redirect ('error');
                 } 
 				else
 				{

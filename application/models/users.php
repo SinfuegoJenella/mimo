@@ -35,4 +35,6 @@ class users extends CI_Model {
 		$lastid = $this->db->insert_id();
 		return $lastid;
 	}
+	
 }
+?>

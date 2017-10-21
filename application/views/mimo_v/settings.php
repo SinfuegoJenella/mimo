@@ -209,34 +209,37 @@
 							<div class="col-md-12">
 								<label>I'm a(n):</label>
 								<div class="row">
-							
+							<?php	
+								$myString = $about[0]['career'];
+								$myArray = explode('.', $myString); 
+								 ?>
 								<div class="col-md-3">
 					
-									<input type="checkbox" name="mcareer[]" value="Singer"> Singer<br>
-									<input type="checkbox" name="mcareer[]" value="Song Writer"> Song Writer<br>
-									<input type="checkbox" name="mcareer[]" value="Music Producer"> Music Producer<br>
-									<input type="checkbox" name="mcareer[]" value="Composer"> Composer<br>
+									<input type="checkbox" name="mcareer[]" value="Singer" <?php if(in_array('Singer', $myArray)) echo "checked='checked'"; ?>> Singer<br>
+									<input type="checkbox" name="mcareer[]" value="Song Writer" <?php if(in_array('Song Writer', $myArray)) echo "checked='checked'"; ?>> Song Writer<br>
+									<input type="checkbox" name="mcareer[]" value="Music Producer" <?php if(in_array('Music Producer', $myArray)) echo "checked='checked'"; ?> > Music Producer<br>
+									<input type="checkbox" name="mcareer[]" value="Composer" <?php if(in_array('Composer', $myArray)) echo "checked='checked'"; ?> > Composer<br>
 								</div>
 								
 								<div class="col-md-3">
-									<input type="checkbox" name="mcareer[]" value="DJ"> DJ<br>
-									<input type="checkbox" name="mcareer[]" value="Rockstar"> Rockstar<br>
-									<input type="checkbox" name="mcareer[]" value="Instrumentalist"> Instrumentalist<br>
-									<input type="checkbox" name="mcareer[]" value="Background Singer"> Background Singer<br>
+									<input type="checkbox" name="mcareer[]" value="DJ" <?php if(in_array('DJ', $myArray)) echo "checked='checked'"; ?>> DJ<br>
+									<input type="checkbox" name="mcareer[]" value="Rockstar" <?php if(in_array('Rockstar', $myArray)) echo "checked='checked'"; ?> > Rockstar<br>
+									<input type="checkbox" name="mcareer[]" value="Instrumentalist" <?php if(in_array('Instrumentalist', $myArray)) echo "checked='checked'"; ?>> Instrumentalist<br>
+									<input type="checkbox" name="mcareer[]" value="Background Singer" <?php if(in_array('Background Singer', $myArray)) echo "checked='checked'"; ?>> Background Singer<br>
 								</div>
 								
 								<div class="col-md-3">
-									<input type="checkbox" name="mcareer[]" value="Lyricist">Lyricist<br>
-									<input type="checkbox" name="mcareer[]" value="Band Member"> Band Member<br>
-									<input type="checkbox" name="mcareer[]" value="Production Music Writer"> Production Music Writer<br>
-									<input type="checkbox" name="mcareer[]" value="Sound Designer"> Sound Designer<br>
+									<input type="checkbox" name="mcareer[]" value="Lyricist" <?php if(in_array('Lyricist', $myArray)) echo "checked='checked'"; ?>>Lyricist<br>
+									<input type="checkbox" name="mcareer[]" value="Band Member" <?php if(in_array('Band Member', $myArray)) echo "checked='checked'"; ?>> Band Member<br>
+									<input type="checkbox" name="mcareer[]" value="Production Music Writer" <?php if(in_array('Production Music Writer', $myArray)) echo "checked='checked'"; ?>> Production Music Writer<br>
+									<input type="checkbox" name="mcareer[]" value="Sound Designer" <?php if(in_array('Sound Designer', $myArray)) echo "checked='checked'"; ?>> Sound Designer<br>
 								</div>
 								
 								<div class="col-md-3">
-									<input type="checkbox" name="mcareer[]" value="Sound Designer"> Sound Designer<br>
-									<input type="checkbox" name="mcareer[]" value="Accompanist"> Accompanist<br>
-									<input type="checkbox" name="mcareer[]" value="Session Singer"> Session Singer<br>
-									<input type="checkbox" name="mcareer[]" value="Session Musician"> Session Musician<br>
+									<input type="checkbox" name="mcareer[]" value="Music Designer" <?php if(in_array('Music Designer', $myArray)) echo "checked='checked'"; ?>> Music Designer<br>
+									<input type="checkbox" name="mcareer[]" value="Accompanist" <?php if(in_array('Accompanist', $myArray)) echo "checked='checked'"; ?>> Accompanist<br>
+									<input type="checkbox" name="mcareer[]" value="Session Singer" <?php if(in_array('Session Singer', $myArray)) echo "checked='checked'"; ?>> Session Singer<br>
+									<input type="checkbox" name="mcareer[]" value="Session Musician" <?php if(in_array('Session Musician', $myArray)) echo "checked='checked'"; ?>> Session Musician<br>
 								</div>
 								
 								</div>
