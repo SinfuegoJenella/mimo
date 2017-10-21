@@ -86,6 +86,11 @@ class accounts extends CI_Controller
 				    setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
 				    setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
 
+				    $modified = date("Y-m-d H:i:s");
+				    $data = array('modified'=>$modified);
+				    $con = array('email'=>$userData['email']);
+				    $this->users->update($data, $con);
+
 				    $this->facebook->destroy_session();
 					// Remove user data from session
 					$this->session->unset_userdata('userData');
@@ -278,6 +283,12 @@ class accounts extends CI_Controller
 			                   
 			            setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
 			            setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
+
+			            $modified = date("Y-m-d H:i:s");
+					    $data = array('modified'=>$modified);
+					    $con = array('username'=>$username);
+					    $this->users->update($data, $con);
+				    
 			            $err = "Success";
 		    			echo json_encode(array('status'=>"success",'eventid'=>$err));
 			        }

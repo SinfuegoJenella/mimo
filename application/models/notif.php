@@ -42,4 +42,14 @@ class notif extends CI_Model {
 		$this->db->insert('notifications', $data);
 		return TRUE;	
 	}
+	public function getnotif($userid){
+		$this->db->select('notifications.sender, notifications.type, notifications.post_id,notifications.notifurl,notifications.date, users.username,users.picture')
+				->from('notifications')
+				->join('users', 'users.id = notifications.sender')
+				->where('notifications.receiver',$userid);
+
+		$query=$this->db->get();
+
+		return $query->result_array();
+	}
 }
