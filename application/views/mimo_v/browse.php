@@ -38,7 +38,7 @@
 			<li><a data-toggle="tab" href="#sgenre">&nbsp;Genres</a></li>
 		</ul>
 
-			<div class="tab-content" style="background-color: rgba(255,255,255,0.9); height: 1000px">
+			<div class="tab-content" style="background-color: rgba(255,255,255,0.9); height: 100%;">
 				<?php $this->load->view('templates/commentModal');?>
 					<!-- ARTIST -->
 						<div id="sartist" class="tab-pane fade in active">
