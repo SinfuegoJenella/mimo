@@ -208,25 +208,6 @@ class Mimo extends CI_Controller {
 		}
 	}//end of genre
 	
-
-	public function browse()
-	{
-		if($this->login->isLoggedIn()){
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | Browse";
-
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/browse');
-			$this->load->view('include/footer');
-		}
-		else{
-			redirect('home');
-		}
-	}//end of browse
-	
 	public function myStudio()
 	{
 		if($this->login->isLoggedIn()){
