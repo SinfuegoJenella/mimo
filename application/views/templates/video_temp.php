@@ -14,6 +14,10 @@
 					<a class="btn del pull-right">
 						<span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span>
 						</a>
+					<!--REPORT-->
+					<a class="btn del pull-right">
+						<span class="fa fa-exclamation-circle" title="Report this Post!"></span></a>
+					<!---->
 					<br />
 					<small><small> 12:20 AM 2/3/2017</small></small>
 					</h4>

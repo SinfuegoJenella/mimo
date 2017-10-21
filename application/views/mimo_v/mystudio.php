@@ -3,6 +3,7 @@
 	
 	<br />
 	<br />
+	
 	<div class="row">
 				<!-- Header -->
 					<!-- Sa 'background-image: url('') mo ilagay yung mga header at profile pic -->
@@ -120,6 +121,7 @@
 							            <strong>Success! </strong>
 							            Deleted Successfully!
 							        </div>
+									
 								<!-- foreach collection -->
 								<?php 
 								foreach($collectionList as $data['cl']){
@@ -134,7 +136,6 @@
 								?>
 									<!-- -->
 								</div>
-								
 								<div class="col-md-2"></div>
 								
 							</div>
