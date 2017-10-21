@@ -1,84 +1,71 @@
 <body style="background-color: #d9d9d9">	<!-- Top Nav Bar -->
 	<?php $this->load->view('include/log-outnav');?>
-		<br>
-
-<div class="container" style="position:absolute; padding: 20px; padding-top: 0; width:100%" >
-<div class="row">
-
-</div>
-
-
-<div class="row belowtn" style="margin-right: 10px; ">
-		<div class="col-md-3">
-			
+	<br>
+	<div class="container" style="position:absolute; padding: 20px; padding-top: 0; width:100%" >
+		<div class="row belowtn" style="margin-right: 10px; ">
+			<div class="col-md-3">
 				<div class="row" style="margin-left: 15px; margin-right:15px">
 					<div class="col-md-12" style="background-color: #AFADAC; color: white; padding: 10px; margin-left: 10px; margin-right:15px">
 						<h4 class="text-center" style="color: white"><?php $this->load->view('include/mimologo')?> Top 10 Most Followed Artist</h4>
 					</div>
-				
 					<div class="row ">
 					<!--TOP LIST-->
-					<div class="col-md-12" style="margin-left: 10px; padding-top: 20px;">
-					<?php $this->load->view('templates/toplist');?>
-					
-					</div>
+						<div class="col-md-12" style="margin-left: 10px; padding-top: 20px;">
+							<?php $this->load->view('templates/toplist');?>
+						</div>
 					<!--END OF TOP LIST-->
-					
+					</div>
 				</div>
-		</div>
-		</div>
-		<div class="col-md-9">
-	
-		<ul class="nav nav-tabs nav-justified searchtab">
-			<!-- COLLECTIONS, ALBUMS, THOUGHTS, and FAVORITES TABS-->
-			<li class="active"><a data-toggle="tab" href="#sartist">&nbsp;Discover Artist</a></li>
-			<li><a data-toggle="tab" href="#sthought">&nbsp;Random Thoughts</a></li>
-			<li><a data-toggle="tab" href="#saudios">&nbsp;Top Audios</a></li>
-			<li><a data-toggle="tab" href="#svids">&nbsp;Top Videos</a></li>
-			<li><a data-toggle="tab" href="#sgenre">&nbsp;Genres</a></li>
-		</ul>
-
-			<div class="tab-content" style="background-color: rgba(255,255,255,0.9); height: 100%;">
-				<?php $this->load->view('templates/commentModal');?>
+			</div>
+			<div class="col-md-9">
+				<ul class="nav nav-tabs nav-justified searchtab">
+					<!-- COLLECTIONS, ALBUMS, THOUGHTS, and FAVORITES TABS-->
+					<li class="active"><a data-toggle="tab" href="#sartist">&nbsp;Discover Artist</a></li>
+					<li><a data-toggle="tab" href="#sthought">&nbsp;Random Thoughts</a></li>
+					<li><a data-toggle="tab" href="#saudios">&nbsp;Top Audios</a></li>
+					<li><a data-toggle="tab" href="#svids">&nbsp;Top Videos</a></li>
+					<li><a data-toggle="tab" href="#sgenre">&nbsp;Genres</a></li>
+				</ul>
+				<div class="tab-content" style="background-color: rgba(255,255,255,0.9); height: 100%;">
+					<?php $this->load->view('templates/commentModal');?>
 					<!-- ARTIST -->
 						<div id="sartist" class="tab-pane fade in active">
-								<div class="row">
-									<div class="col-md-1"></div>
+							<div class="row">
+								<div class="col-md-1"></div>
 									<div class="col-md-10 artist">
 										<h2>New Artist</h2>
 										<div class="col-md-12" style="margin-left: 10px">
-										<?php $this->load->view('templates/s_artist');?>
+											<?php $this->load->view('templates/s_artist');?>
 										</div>
 									</div>
-									<div class="col-md-1"></div>
-								</div>
 							</div>
+						</div>
    
    
 						<!-- AUDIOS-->
-							<div id="sthought" class="tab-pane fade" >
-								<div class="row">
-									<div class="col-md-1"></div>
+						<div id="sthought" class="tab-pane fade" >
+							<div class="row">
+								<div class="col-md-1"></div>
 									<div class="col-md-10 thoughts">
 										<h2>Thoughts</h2>
 										<div class="col-md-12" style="margin-left: 10px">
-										<?php $this->load->view('templates/s_thought');?>
+											<?php $this->load->view('templates/s_thought');?>
 										</div>
 									</div>
-									<div class="col-md-1"></div>
-								</div>
+									
 							</div>
+						</div>
 							
 							
 							<!-- THOUGHTS-->
-							<div id="saudios" class="tab-pane fade">
-								<div class="row">
-									<div class="col-md-1"></div>
+						<div id="saudios" class="tab-pane fade">
+							<div class="row">
+								<div class="col-md-1"></div>
 									<div class="col-md-10 audios">
 										<h2>Top 10 Audios</h2>
-									<div class="col-md-12" style="margin-left: 10px">
-									<?php $this->load->view('templates/s_audio');?>
-									</div>
+										<div class="col-md-12" style="margin-left: 10px">
+											<?php $this->load->view('templates/s_audio');?>
+										</div>
 									</div>
 									<div class="col-md-1"></div>
 								</div>
@@ -100,21 +87,18 @@
 							<div id="sgenre" class="tab-pane fade">
 								<div class="row">
 									<div class="col-md-1"></div>
-									<div class="col-md-10 audios">
-										<h2>Genres</h2>
-									<div class="col-md-12" style="margin-left: 10px">
-									<?php $this->load->view('templates/s_genre');?>
-									</div>
-									</div>
-									<div class="col-md-1"></div>
+										<div class="col-md-10 audios">
+											<h2>Genres</h2>
+											<div class="col-md-12" style="margin-left: 10px">
+												<?php $this->load->view('templates/s_genre');?>
+											</div>
+										</div>
 								</div>
 							</div>	
-					</div>
-					
+				</div>
 			</div>	
+		</div>
 	</div>
-		
-			</div>
 		
 		
 		
