@@ -13,8 +13,7 @@ class Mimo extends CI_Controller {
 		$this->load->model('followers','followers');
 		$this->load->model('post_likes','post_likes');
 		$this->load->model('getposts');
-		$this->load->model('artists');
-		
+
 		$this->load->model('comments');
 		$this->load->model('upload');
 		$this->load->model('notif');
@@ -76,12 +75,17 @@ class Mimo extends CI_Controller {
 			$profileimage= $_FILES['imgProfile'];
 			$headerimage= $_FILES['imgHeader'];
 			if($profileimage['name']=='') {
-					
+					//echo "<h2>An Image Please.</h2>";
 					$profilelink=$previousprofile;
 			}
 			else{
-			
+			//print_r ($image);
 			$profilelink=$this->image->uploadImage($profileimage); 
+				if($profilelink==NULL)
+				{
+					$profilelink=$previousprofile;
+					echo "<script type='text/javascript'>alert('Connection Error');</script>";
+				}
 			}
 			
 			if($headerimage['name']=='') {  
@@ -129,7 +133,7 @@ class Mimo extends CI_Controller {
 			else{
 				foreach($mcareer as $car)
 				{
-					$career .= $car. ".";
+					$career .= $car. " , ";
 						
 				}
 			}
@@ -176,11 +180,10 @@ class Mimo extends CI_Controller {
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
-			$data['mimoartists'] = $this->artists->mimoartists();
 			$headerdata['title'] = "MimO | Artist";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/artist', $data);
+			$this->load->view('mimo_v/artist');
 			$this->load->view('include/footer');
 		}
 		else{
@@ -316,7 +319,8 @@ class Mimo extends CI_Controller {
 	                			'cover'=>$results['cover'],
 	                			'title'=>$results['title'],
 	                			'path'=>$results['path'],
-	                			'genre'=>$results['genre']
+	                			'genre'=>$results['genre'],
+	                			'views'=>$results['views']
 	                		);
 	                	array_push($res,$p);
 
@@ -346,7 +350,8 @@ class Mimo extends CI_Controller {
 	                			'likes'=>$results['likes'],
 	                			'comments'=>$results['comments'],
 	                			'name'=>$results['name'],
-	                			'url'=>$results['url']
+	                			'url'=>$results['url'],
+	                			'plays'=>$results['plays']
 	                		);
 	                	array_push($res,$p);
 
@@ -511,6 +516,8 @@ class Mimo extends CI_Controller {
                       			'videoTitle'=>$post['name'],
                       			'audioGenre'=>$post['genre'],
                       			'audioCover'=>$post['cover'],
+                      			'audioviews'=>$post['views'],
+                      			'videoviews'=>$post['plays'],
                       	);
                       array_push($result,$p);
                 }
@@ -591,17 +598,13 @@ class Mimo extends CI_Controller {
 			$genre = $_POST['genre'];
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
-			$noover = uniqid(rand()).'.'.$type; 
+			$noover = uniqid(rand()).'.'.$type;
+			$image= $_FILES['uploadAudioImg'];
+			$audioart=$this->image->uploadImage($image); 
 			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
-			$image= $_FILES['uploadAudioImg'];
-			if($image['name']=='') {
-					$audioart= "https://i.imgur.com/GZr4AiQ.jpg";
-			}
-			else{
-				$audioart=$this->image->uploadImage($image); 
-				}
+			
 		    $id = $this->login->isLoggedIn();
 				$data = array(
 						'id'=>null,
@@ -941,6 +944,35 @@ class Mimo extends CI_Controller {
 		$this->load->view('include/footer');
 		
 	}
-
+	public function audioview(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$audioid = $this->input->post("audioid");
+			$condition = array('post_id'=>$audioid);
+			$currentnumview = $this->upload->select('audios',$condition,'views')[0]['views'];
+			$updatednumview = $currentnumview+1;
+			$data = array('views'=>$updatednumview);
+			$condition = array('post_id'=>$audioid);
+			$this->upload->update('audios',$data,$condition);
+			echo json_encode(array('views'=>$updatednumview));
+		}
+		else{
+			redirect('error');
+		}
+	}
+	public function videoview(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$videoid = $this->input->post("videoid");
+			$condition = array('post_id'=>$videoid);
+			$currentnumview = $this->upload->select('videos',$condition,'plays')[0]['plays'];
+			$updatednumview = $currentnumview+1;
+			$data = array('plays'=>$updatednumview);
+			$condition = array('post_id'=>$videoid);
+			$this->upload->update('videos',$data,$condition);
+			echo json_encode(array('views'=>$updatednumview));
+		}
+		else{
+			redirect('error');
+		}
+	}
 }
 

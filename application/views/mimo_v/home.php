@@ -63,7 +63,7 @@
 						<span class="text-center"><br /><a class="btn h-audio-btn hidden-xs" title="Post a Thought" ><i class="material-icons">music_note</i></a></span>
 						 Share a Song 
 						 </h3>
-						<p class="text-center">Mimo not just let you post or share an audio file but also videos too! There, you can share the video of your song covers and even the music videoo you have created along for your song. &nbsp;&nbsp;&nbsp;</p>
+						<p class="text-center">Upload your musical masterpiece in an audio file! Customize audio art. Share and let your music be discovered by your fellow artists. &nbsp;&nbsp;&nbsp;</p>
 						
 					</li>
 				</ul>

@@ -10,6 +10,7 @@ class accounts extends CI_Controller
 		$this->load->library('mail');
 		$this->load->model('users','users');
 		$this->load->model('auth');
+		$this->load->model('upload');
 		$this->load->model('about','about');
 		$this->load->model('password_tokens');
     }
@@ -72,7 +73,11 @@ class accounts extends CI_Controller
 					    $this->about->create($data);
 					}//end of users table data insertion
 
-					redirect('accounts/signup/'.$userData['oauth_uid'].'');
+					$cstrong = True;
+				    $token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+				    $data = array('id'=>null,'username'=>$userData['oauth_uid'],'token'=>sha1($token));
+				    $this->upload->insert('oauth_token',$data);
+					redirect('accounts/signup/'.$token.'');
 				}
 				else{
 					$cstrong = True;
@@ -121,30 +126,37 @@ class accounts extends CI_Controller
         }
     }
 	
-    public function signup($authid) {
+    public function signup($token) {
     	if(!$this->login->isLoggedIn()){
-    	$selector = 'username';
-    	$condition = array('username'=>$authid);
-    	if($this->users->read($condition,$selector)){
+    	$condition = array('token'=>sha1($token));
+    	$authid = $this->upload->select('oauth_token',$condition,'username')[0]['username'];
+    	if($this->upload->select('oauth_token',$condition)){
     		if(isset($_POST['next'])){
-    		
     			$username = $this->input->post("stagename");
 	    		$data = array('username'=>$username);
 	    		$id = $this->login->isLoggedIn();
-	    		$condition = array('username'=>$authid);
-	    		$this->users->update($data,$condition);
-	    		
-	    		$cstrong = True;
-				$token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
-				$selector = 'id';
-				$condition = array('username'=>$username);
-				$user_id = $this->users->read($condition,$selector)[0]['id'];
-				$data = array('id'=>null,'token'=>sha1($token),'user_id'=>$user_id);
-				$this->login_tokens->create($data);
-					                   
-				setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
-				setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
-	    		redirect('mimo');
+	    		if(!$this->users->read($data,'username')){
+		    		$condition = array('username'=>$authid);
+		    		$this->users->update($data,$condition);
+		    		
+		    		$data = array('token'=>sha1($token));
+		    		$this->upload->del('oauth_token',$data);
+
+		    		$cstrong = True;
+					$token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+					$selector = 'id';
+					$condition = array('username'=>$username);
+					$user_id = $this->users->read($condition,$selector)[0]['id'];
+					$data = array('id'=>null,'token'=>sha1($token),'user_id'=>$user_id);
+					$this->login_tokens->create($data);
+						                   
+					setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
+					setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
+		    		redirect('mimo');
+	    		}
+	    		else{
+	    			 echo "<script type='text/javascript'>alert('username already taken');</script>";
+	    		}
     		}
     	}
     	else{
@@ -160,7 +172,7 @@ class accounts extends CI_Controller
 			$this->load->view('include/footer');
 		}
 		else{
-			redirect('mimo');
+			redirect('error');
 		}
     }
     public function createaccount(){

@@ -49,29 +49,6 @@ class browse extends CI_Controller {
 		}
 	}//end of artist()
 
-	public function random(){
-		if ($_SERVER['REQUEST_METHOD'] == "POST") {
-			$result = $this->getBrowse->getthoughtsearch();
-			$res = array();
-	                foreach($result as $results) {
-	                	$p=array(
-	                			'id'=>$results['id'],
-	                			'username'=>$results['username'],
-	                			'picture'=>$results['picture'],
-	                			'body'=>$this->topics->link_add($results['body']),
-	                			'posted_at'=>$results['posted_at'],
-	                			'likes'=>$results['likes'],
-	                			'comments'=>$results['comments']
-	                		);
-	                	array_push($res,$p);
-
-	                }
-				echo json_encode($res);
-		}
-		else{
-			redirect('error');
-		}
-	}
 	public function audios(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				$result = $this->getBrowse->getaudiosearch();
@@ -87,7 +64,8 @@ class browse extends CI_Controller {
 	                			'cover'=>$results['cover'],
 	                			'title'=>$results['title'],
 	                			'path'=>$results['path'],
-	                			'genre'=>$results['genre']
+	                			'genre'=>$results['genre'],
+	                			'views'=>$results['views']
 	                		);
 	                	array_push($res,$p);
 
@@ -113,7 +91,9 @@ class browse extends CI_Controller {
 	                			'likes'=>$results['likes'],
 	                			'comments'=>$results['comments'],
 	                			'name'=>$results['name'],
-	                			'url'=>$results['url']
+	                			'url'=>$results['url'],
+	                			'plays'=>$results['plays']
+
 	                		);
 	                	array_push($res,$p);
 

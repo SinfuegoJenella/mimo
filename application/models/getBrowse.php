@@ -12,24 +12,12 @@ class getBrowse extends CI_Model {
 
 		return $query->result_array();
 	}
-	public function getthoughtsearch(){
-		$this->db->select('users.username,users.picture,posts.id,thoughts.body,posts.posted_at,posts.likes,posts.comments')
-				->from('posts')
-				->join('users', 'users.id = posts.user_id')
-				->join('thoughts', 'thoughts.post_id = posts.id')
-				->order_by('rand()')
-				->limit(10);
-
-		$query=$this->db->get();
-
-		return $query->result_array();
-	}
 	public function getaudiosearch(){
-		$this->db->select('users.username,posts.id,posts.posted_at,posts.likes,posts.comments,audios.about,audios.cover,audios.title,audios.path,audios.genre')
+		$this->db->select('users.username,posts.id,posts.posted_at,posts.likes,posts.comments,audios.about,audios.cover,audios.title,audios.path,audios.genre,audios.views')
 				->from('posts')
 				->join('users', 'users.id = posts.user_id')
 				->join('audios', 'audios.post_id = posts.id')
-				->order_by('likes', 'DESC')
+				->order_by('views', 'DESC')
 				->limit(10);
 
 		$query=$this->db->get();
@@ -37,11 +25,11 @@ class getBrowse extends CI_Model {
 		return $query->result_array();
 	}
 	public function getvideosearch(){
-		$this->db->select('users.picture,users.username,posts.id,posts.posted_at,posts.likes,posts.comments,videos.description,videos.name,videos.url')
+		$this->db->select('users.picture,users.username,posts.id,posts.posted_at,posts.likes,posts.comments,videos.description,videos.name,videos.url,videos.plays')
 				->from('posts')
 				->join('users', 'users.id = posts.user_id')
 				->join('videos', 'videos.post_id = posts.id')
-				->order_by('likes', 'DESC')
+				->order_by('plays', 'DESC')
 				->limit(10);
 
 		$query=$this->db->get();
