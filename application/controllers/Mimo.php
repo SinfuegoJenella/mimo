@@ -474,9 +474,9 @@ class Mimo extends CI_Controller {
 										'post_id'=>$postid
 							);
 						$this->upload->insert('collection_songs',$data);
-						echo json_encode(array('status'=>"Audio Added to New Collection"));
+						echo json_encode(array('status'=>"Audio successfully added to the new collection!"));
 					}
-					echo json_encode(array('status'=>"Already exists Collection list"));
+					echo json_encode(array('status'=>"This audio already exists in this collection list"));
 				}
 				else{
 					$condition = array('collection_id'=>$collectionList,'post_id'=>$postid);
@@ -495,7 +495,7 @@ class Mimo extends CI_Controller {
 						echo json_encode(array('status'=>"Added Successfully"));
 					}
 					else{
-						echo json_encode(array('status'=>"Already exists Collection list"));
+						echo json_encode(array('status'=>"Already exists in collection list."));
 					}
 				}
 			}
@@ -1011,7 +1011,7 @@ class Mimo extends CI_Controller {
 				echo json_encode(array('status'=>'The post is now held for review.'));
 			}
 			else{
-				echo json_encode(array('status'=>'You Already Report This Post.'));
+				echo json_encode(array('status'=>'You have already reported this post.'));
 			}
 		}
 		else{
