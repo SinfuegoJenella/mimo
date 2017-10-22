@@ -586,11 +586,7 @@ $(document).ready(function()
         	console.log(videoposts)
         	if(videoposts.id==="error"){
         		//Edit mo to
-<<<<<<< HEAD
-        			$('.videos').html("<h4 class='text-center'>No shared videos yet. <span class='fa fa-video-camera'></span></h4>")
-=======
         			$('.videos').html('<h4 class="text-center">No shared videos yet. <span class="fa fa-video-camera"></span></h4>')
->>>>>>> master
         		}
         	else{
         	$.each(videoposts, function(index) {
