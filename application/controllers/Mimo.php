@@ -631,13 +631,7 @@ class Mimo extends CI_Controller {
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
 			$noover = uniqid(rand()).'.'.$type;
-<<<<<<< HEAD
-			$image= $_FILES['uploadAudioImg'];
-			$audioart=$this->image->uploadImage($image); 
-			$url = "C:\wamp\www\mimo\assets\uploads\audios/".$noover;
-=======
 			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
->>>>>>> master
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
 			$image= $_FILES['uploadAudioImg'];
@@ -934,16 +928,6 @@ class Mimo extends CI_Controller {
 	public function collectionlist()
 	{
 		if($this->login->isLoggedIn()){
-<<<<<<< HEAD
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | Collections Play Room";
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/collectionlist');
-			$this->load->view('include/footer');
-=======
 			$colid = $_GET['name'];
 			if(isset($_GET['name'])){
 				$con = array('name'=>$colid);
@@ -975,7 +959,6 @@ class Mimo extends CI_Controller {
 			else{
 				redirect('mimo');
 			}
->>>>>>> master
 		}
 		else{
 			redirect('home');
