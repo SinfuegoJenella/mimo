@@ -121,7 +121,6 @@
 							            <strong>Success! </strong>
 							            Deleted Successfully!
 							        </div>
-									
 								<!-- foreach collection -->
 								<?php 
 								foreach($collectionList as $data['cl']){
