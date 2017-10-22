@@ -468,7 +468,7 @@ class Mimo extends CI_Controller {
 						echo json_encode(array('status'=>"Added Successfully"));
 					}
 					else{
-						echo json_encode(array('status'=>"Already exists Collection list"));
+						echo json_encode(array('status'=>"This audio already exists in this collection list!"));
 					}
 				}
 			}
@@ -606,7 +606,7 @@ class Mimo extends CI_Controller {
 			$noover = uniqid(rand()).'.'.$type;
 			$image= $_FILES['uploadAudioImg'];
 			$audioart=$this->image->uploadImage($image); 
-			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
+			$url = "C:\wamp\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
 			
@@ -670,7 +670,7 @@ class Mimo extends CI_Controller {
 			$types = explode('.', $_FILES["vidUpload"]["name"]);
 			$types = strtolower($types[count($types)-1]);
 			$noover = uniqid(rand()).'.'.$types;
-			$url = "C:\wamp64\www\mimo\assets\uploads/videos/".$noover;
+			$url = "C:\wamp\www\mimo\assets\uploads/videos/".$noover;
 		    move_uploaded_file($_FILES['vidUpload']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/videos/".$noover;
 
@@ -899,7 +899,7 @@ class Mimo extends CI_Controller {
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
 			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | Collections-Play Room";
+			$headerdata['title'] = "MimO | Collections Play Room";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
 			$this->load->view('mimo_v/collectionlist');
@@ -956,7 +956,7 @@ class Mimo extends CI_Controller {
 				echo json_encode(array('status'=>'The post is now held for review.'));
 			}
 			else{
-				echo json_encode(array('status'=>'You Already Report This Post.'));
+				echo json_encode(array('status'=>'You have already reported this post.'));
 			}
 		}
 		else{

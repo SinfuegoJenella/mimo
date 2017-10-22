@@ -207,7 +207,6 @@ jQuery(function ($) {
         var index = 0,
             playing = false,
             mediaPath = 'http://localhost/mimo/assets/audios/',
-            extension = '',
             tracks = [{
                 "track": 1,
                 "name": "Kalimba",
@@ -215,7 +214,7 @@ jQuery(function ($) {
                 "genre": "Classical",
                 "year": "2017",
                 "cover": "http://localhost/mimo/assets/img/latin.jpg",
-                "file": "Kalimba"
+                "file": "http://localhost/mimo/assets/audios/Kalimba.mp3"
             }, {
                 "track": 2,
                 "name": "Sleep",
@@ -223,7 +222,7 @@ jQuery(function ($) {
 				"genre": "Blues",
                 "year": "2017",
 				"cover": "http://localhost/mimo/assets/img/bp.jpg",
-                "file": "Sleep"
+                "file": "http://localhost/mimo/assets/audios/Sleep.mp3"
             }, {
                 "track": 3,
                 "name": "Piano",
@@ -231,7 +230,7 @@ jQuery(function ($) {
 				"genre": "None",
                 "year": "2017",
 				"cover": "http://localhost/mimo/assets/img/reggae.jpg",
-                "file": "Piano"
+                "file": "http://localhost/mimo/assets/audios/Piano.mp3"
             }, {
                 "track": 4,
                 "name": "Ho Hey",
@@ -239,7 +238,7 @@ jQuery(function ($) {
 				"genre": "Alternatives",
                 "year": "2017",
 				"cover": "http://localhost/mimo/assets/img/latin.jpg",
-                "file": "sample"
+                "file": "http://localhost/mimo/assets/audios/sample.mp3"
             }, {
                 "track": 5,
                 "name": "Maid",
@@ -247,7 +246,7 @@ jQuery(function ($) {
 				"genre": "Blues",
                 "year": "2017",
 				"cover": "http://localhost/mimo/assets/img/blues.jpg",
-                "file": "Maid"
+                "file": "http://localhost/mimo/assets/audios/Maid.mp3"
             }],
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
@@ -322,13 +321,13 @@ jQuery(function ($) {
                 $('#plList li:eq(' + id + ')').addClass('plSel');
                 npTitle.text(tracks[id].name);
                 index = id;
-                audio.src = mediaPath + tracks[id].file + extension;
+                audio.src = tracks[id].file;
             },
             playTrack = function (id) {
                 loadTrack(id);
                 audio.play();
             };
-        extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+        
         loadTrack(index);
     }
 });

@@ -137,7 +137,7 @@
 								}
 								else{
 									//Edit mo to
-									echo '<p>No collections</p>';
+									echo '<h4 class="text-center">No collections yet. <span class="fa fa-pencil"></span></h4>';
 								}
 								?>
 									<!-- -->
@@ -220,7 +220,7 @@ $(document).ready(function()
         	console.log(posts);
         	if(posts.PostId==="error"){
         		//Edit mo to
-        			$('.thoughts').html('No thoughts')
+        			$('.thoughts').html("<h4 class='text-center'>No shared thought yet. <i class='fa fa-pencil'></i></h4>")
         		}
         	else{
         	$.each(posts, function(index) {
@@ -334,7 +334,7 @@ $(document).ready(function()
         	console.log(audioposts)
         	if(audioposts.id==="error"){
         		//Edit mo to
-        			$('.audios').html(' No audios')
+        			$('.audios').html('<h4 class="text-center">No released audios yet. <span class="fa fa-music"></span></h4>')
         		}
         	else{
         	$.each(audioposts, function(index) {
@@ -537,7 +537,7 @@ $(document).ready(function()
         	console.log(videoposts)
         	if(videoposts.id==="error"){
         		//Edit mo to
-        			$('.videos').html('No videos')
+        			$('.videos').html("<h4 class='text-center'>No shared videos yet. <span class='fa fa-video-camera'></span></h4>")
         		}
         	else{
         	$.each(videoposts, function(index) {
