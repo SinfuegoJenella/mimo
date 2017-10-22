@@ -367,25 +367,63 @@ class accounts extends CI_Controller
 		}
     }
     public function change_password(){
-    	if(isset($_GET['token'])){
-    		$token = $_GET['token'];
-    		$selector = 'user_id';
-    		$condition = array('token'=>sha1($token));
-    		if($this->password_tokens->read($condition,$selector)){
-	    		$data['token'] = $_GET['token'];
-	    		$headerdata['title'] = "MimO | Login/Sign up";
-				$this->load->view('include/header',$headerdata);
-				$this->load->view('mimo_v/changepass',$data);
-				$this->load->view('include/footer');
-			}
-			else{
+    	if(!$this->login->isLoggedIn()){
+	    	if(isset($_GET['token'])){
+	    		$token = $_GET['token'];
+	    		$selector = 'user_id';
+	    		$condition = array('token'=>sha1($token));
+	    		if($this->password_tokens->read($condition,$selector)){
+		    		$data['token'] = $_GET['token'];
+		    		$headerdata['title'] = "MimO | Login/Sign up";
+					$this->load->view('include/header',$headerdata);
+					$this->load->view('mimo_v/changepass',$data);
+					$this->load->view('include/footer');
+				}
+				else{
+					redirect('/accounts');
+				}
+	    	}
+	    	else{
 				redirect('/accounts');
 			}
+		}
+		else{
+			redirect('error');
+		}
+    }
+    public function forgot_password(){
+    	if(!$this->login->isLoggedIn()){
+	    	$headerdata['title'] = "MimO | Recover Account";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('mimo_v/forgot-password');
+			$this->load->view('include/footer');
+		}
+		else{
+			redirect('error');
+		}
+    }
+    public function fg(){
+    	if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    		$email = $this->input->post("email");
+    		$con = array('email'=>$email);
+    		if($this->users->read($con,'email')){
+    			$cstrong = True;
+	       		$token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+				$selector = 'id';
+				$condition = array('email'=>$email);
+				$userid = $this->users->read($condition,$selector)[0]['id'];
+				$data = array('id'=>null,'token'=>sha1($token),'user_id'=>$userid);
+				$this->password_tokens->create($data);
+				$this->mail->sendMail('Forgot Password!', "<a href='http://localhost/mimo/accounts/change_password?token=$token'>Click here to change your password!</a>", $email);
+    			echo json_encode(array('status'=>"success"));
+    		}
+    		else{
+    			echo json_encode(array('status'=>"error"));
+    		}
     	}
     	else{
-			redirect('/accounts');
-		}
-    	
+    		redirect('error');
+    	}
     }
    
 }
