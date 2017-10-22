@@ -165,6 +165,25 @@ $(document).ready(function(){
 
 						);
 						$('.report-alert').hide()
+								$.ajax({
+									type:'POST',
+									url:'<?php echo base_url() ?>mimo/checklikes',
+									data:{
+										postid:res[index].id,
+										userid:user
+									},
+									success: function(s){
+										var stat = JSON.parse(s)
+										console.log(stat)
+										if(stat.stat=='like'){
+											$("[data-thoughtslikeid='"+res[index].id+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+res[index].likes+')</small></small>');
+										}
+									},
+									error: function(e){
+										console.log(e)
+									}
+
+								})
 					$('[data-thoughtslikeid]').click(function(e) {
 						e.preventDefault()
 						var postid = $(this).attr('data-thoughtslikeid');
@@ -176,7 +195,12 @@ $(document).ready(function(){
 							},
 							success: function(s){
 								var likes = JSON.parse(s);
-								$("[data-thoughtslikeid='"+postid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+								if(likes.stats=='unlike'){
+												$("[data-thoughtslikeid='"+postid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
+											else{
+												$("[data-thoughtslikeid='"+postid+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
 							},
 							error: function(e){
 								console.log(e);
@@ -258,6 +282,26 @@ $(document).ready(function(){
 
 					);
 						$('.report-aalert').hide()
+
+								$.ajax({
+									type:'POST',
+									url:'<?php echo base_url() ?>mimo/checklikes',
+									data:{
+										postid:res[index].id,
+										userid:user
+									},
+									success: function(s){
+										var stat = JSON.parse(s)
+										console.log(stat)
+										if(stat.stat=='like'){
+											$("[data-audioslikeid='"+res[index].id+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+res[index].likes+')</small></small>');
+										}
+									},
+									error: function(e){
+										console.log(e)
+									}
+
+								})
 					$('[data-audioslikeid]').click(function(e) {
 						e.preventDefault()
 						var postid = $(this).attr('data-audioslikeid');
@@ -269,7 +313,12 @@ $(document).ready(function(){
 							},
 							success: function(s){
 								var likes = JSON.parse(s);
-								$("[data-audioslikeid='"+postid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+								if(likes.stats=='unlike'){
+												$("[data-audioslikeid='"+postid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
+											else{
+												$("[data-audioslikeid='"+postid+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
 							},
 							error: function(e){
 								console.log(e);
@@ -441,6 +490,25 @@ $(document).ready(function(){
 
 					);
 					$('.report-valert').hide()
+								$.ajax({
+									type:'POST',
+									url:'<?php echo base_url() ?>mimo/checklikes',
+									data:{
+										postid:res[index].id,
+										userid:user
+									},
+									success: function(s){
+										var stat = JSON.parse(s)
+										console.log(stat)
+										if(stat.stat=='like'){
+											$("[data-videoslikeid='"+res[index].id+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+res[index].likes+')</small></small>');
+										}
+									},
+									error: function(e){
+										console.log(e)
+									}
+
+								})
 					$('[data-videoslikeid]').click(function(e) {
 						e.preventDefault()
 						var postid = $(this).attr('data-videoslikeid');
@@ -452,7 +520,12 @@ $(document).ready(function(){
 							},
 							success: function(s){
 								var likes = JSON.parse(s);
-								$("[data-videoslikeid='"+postid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+								if(likes.stats=='unlike'){
+												$("[data-videoslikeid='"+postid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
+											else{
+												$("[data-videoslikeid='"+postid+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
 							},
 							error: function(e){
 								console.log(e);
