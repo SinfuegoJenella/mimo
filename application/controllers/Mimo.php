@@ -872,43 +872,6 @@ class Mimo extends CI_Controller {
 			redirect('error');
 		}
 	}
-	public function charts()
-	{
-		if($this->login->isLoggedIn()){
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | Charts";
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('include/topnav');
-			$this->load->view('mimo_v/charts');
-			$this->load->view('include/footer');
-		}
-		else{
-			redirect('home');
-		}
-		
-	}//end of charts
-	
-	
-	public function playlist()
-	{
-		if($this->login->isLoggedIn()){
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | Charts";
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/playlist');
-			$this->load->view('include/footer');
-		}
-		else{
-			redirect('home');
-		}
-		
-	}//end of playlist
 
 	public function logout() {
 		
@@ -922,24 +885,21 @@ class Mimo extends CI_Controller {
     }//end of logout
 	
 	
-	
-	public function audioplayer()
+	public function collectionlist()
 	{
-
-		$headerdata['title'] = "MimO | Audio Player";
-		$this->load->view('include/header',$headerdata);
-		$this->load->view('mimo_v/audio_player');
-		$this->load->view('include/footer');
-		
-	}
-	
-	public function artistplaylist()
-	{
-		$headerdata['title'] = "MimO | Artist Playlist";
-		$this->load->view('include/header',$headerdata);
-		$this->load->view('mimo_v/artist_playlist');
-		$this->load->view('include/footer');
-		
+		if($this->login->isLoggedIn()){
+			$id = $this->login->isLoggedIn();
+			$condition = array('id'=>$id);
+			$data['users'] = $this->users->read($condition);
+			$headerdata['title'] = "MimO | Collections-Play Room";
+			$this->load->view('include/header',$headerdata);
+			$this->load->view('include/topnav', $data);
+			$this->load->view('mimo_v/collectionlist');
+			$this->load->view('include/footer');
+		}
+		else{
+			redirect('home');
+		}
 	}
 
 }
