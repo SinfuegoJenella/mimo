@@ -64,10 +64,7 @@
 			
 		</div>
 		<!--End of Left Nav Section -->
-			<!--MP3 Player Section-->
-			<!-- MP3 Player Section-->
-		
-		
+			
 	<!-- Content Section -->
 	
 	<!-- Post Body (Thoughts) -->
@@ -83,51 +80,7 @@
 	<div class="col-md-3">
 	<br /> <br /> <br />
 	
-	<!--DONT MIND MUNA TONG AUDIO PLAYER-->
-	<!--<div class="row hidden-sm hidden-xs" id="audplayer">
-				<div class="col-md-12">
-				<div class="wrapper">
-					<div class="music music-cover">
-						<img src="http://localhost/mimo/assets/img/bp.jpg" alt="" class="cover-img" />
-					</div>
-					
-					<div class="music album-controls">
-						<img src="http://localhost/mimo/assets/img/bp.jpg" alt="" class="album-img" />
-							<div class="album-info">
-								<span class="song-title">Track Title<span>
-								<span class="album-artist">Singer</span>
-								<span class="album-artist">Album: Into The Pink</span>
-								<span class="song-utility">
-									<i class="fa fa-home" aria-hidden="true"></i>
-									<i class="fa fa-random" aria-hidden="true"></i>
-									<i class="fa fa-retweet" aria-hidden="true"></i>
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-								</span>
-							</div>
-					</div>
-
-					<div class="music music-controls">
-						<span class="seek-bar">
-							<span class="knot"></span>
-						</span>
-						<span class="song-buffer"></span>
-						<span class="song-current-time">00:00</span><span class="play">
-							<i class="fa fa-play" aria-hidden="false"></i>
-							<span class="song-duration">00:00</span>
-						</span>
-					</div>
-				
-				</div>
-			</div>
-			</div>
 	
-			<audio controls id="music-player" preload="auto" >
-				<source src="http://localhost/mimo/assets/audios/sample.mp3" type="audio/mpeg">
-					Your browser does not support the audio element.
-			</audio>
-			
-			
-		
 	<!-- Para sa POST AND AUDIO MODAL-->
 	<?php $this->load->view('templates/addpostmodal');?>
 	<?php $this->load->view('templates/addaudiomodal');?>
@@ -160,7 +113,7 @@ $(document).ready(function(){
         	console.log(posts);
         	if(posts.PostId==="error"){
         		//Edit mo to
-        			$('.postcont').html('No posts')
+        			$('.postcont').html('<h4 class="text-center">Follow artists to see what they post here. <span class="fa fa-pencil"></span></h4>')
         		}
         	else{
         	$.each(posts, function(index) {
