@@ -228,54 +228,9 @@ jQuery(function ($) {
     if (supportsAudio) {
         var index = 0,
             playing = false,
-<<<<<<< HEAD
-            mediaPath = 'http://localhost/mimo/assets/audios/',
-            tracks = [{
-                "track": 1,
-                "name": "Kalimba",
-                "artist": "raider",
-                "genre": "Classical",
-                "year": "2017",
-                "cover": "http://localhost/mimo/assets/img/latin.jpg",
-                "file": "http://localhost/mimo/assets/audios/Kalimba.mp3"
-            }, {
-                "track": 2,
-                "name": "Sleep",
-                "artist": "maroonie",
-				"genre": "Blues",
-                "year": "2017",
-				"cover": "http://localhost/mimo/assets/img/bp.jpg",
-                "file": "http://localhost/mimo/assets/audios/Sleep.mp3"
-            }, {
-                "track": 3,
-                "name": "Piano",
-                "artist": "maroonie", 
-				"genre": "None",
-                "year": "2017",
-				"cover": "http://localhost/mimo/assets/img/reggae.jpg",
-                "file": "http://localhost/mimo/assets/audios/Piano.mp3"
-            }, {
-                "track": 4,
-                "name": "Ho Hey",
-                "artist": "Oh Yeah Ho", 
-				"genre": "Alternatives",
-                "year": "2017",
-				"cover": "http://localhost/mimo/assets/img/latin.jpg",
-                "file": "http://localhost/mimo/assets/audios/sample.mp3"
-            }, {
-                "track": 5,
-                "name": "Maid",
-				"artist": "nightingale",
-				"genre": "Blues",
-                "year": "2017",
-				"cover": "http://localhost/mimo/assets/img/blues.jpg",
-                "file": "http://localhost/mimo/assets/audios/Maid.mp3"
-            }],
-=======
             // mediaPath = 'http://localhost/mimo/assets/audios/',
             // extension = '',
             tracks = <?php echo $res; ?>,
->>>>>>> master
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
                     trackName = value.name,
@@ -355,11 +310,6 @@ jQuery(function ($) {
                 loadTrack(id);
                 audio.play();
             };
-<<<<<<< HEAD
-        
-=======
-        // extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
->>>>>>> master
         loadTrack(index);
     }
 });
