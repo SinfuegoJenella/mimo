@@ -7,15 +7,15 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Expires" content="-1">
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
-	<link href="http://localhost/mimo/assets/img/mimologo3.png" rel="icon" type="image/png"  />
+    <link href="http://localhost/mimo/assets/img/mimologo3.png" rel="icon" type="image/png"  />
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/fonts/material-icons.css">
-	<link rel="stylesheet" href="http://localhost/mimo/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="http://localhost/mimo/assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/custom.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/audplay.css">
     <link rel="stylesheet" href="http://localhost/mimo/assets/css/photoupload.css">
-	<link rel="stylesheet" href="http://localhost/mimo/assets/css/browse.css">
-	<script type="text/javascript" src="http://localhost/mimo/assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://localhost/mimo/assets/css/browse.css">
+    <script type="text/javascript" src="http://localhost/mimo/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/photoupload.js"></script>
     <script type="text/javascript" src="http://localhost/mimo/assets/js/likecomment.js"></script>
@@ -91,6 +91,20 @@
     </script>
     <script type="text/javascript">
     $(document).ready(function(){
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url() ?>mimo/reviewposts',
+            data:{
+                
+            },
+            success: function(s){
+                console.log(s)
+            },
+            error: function(e){
+                console.log(e)
+            }
+
+        })
         $('#releasebtn').click(function(e) {
             e.preventDefault();
             // var file_data = $('#audioUpload').prop('files')[0];   
