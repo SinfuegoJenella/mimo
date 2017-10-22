@@ -32,7 +32,7 @@
 				<td><a href="http://localhost/mimo/mimo/myStudio?username=<?php echo $username; ?>"><?php echo $username; ?></a></td>
 				<td class="hidden-xs"><?php echo $csl['genre']; ?></td>
 				<td class="hidden-xs"><?php $phpdate = strtotime( $csl['posted_at'] ); echo date( 'Y', $phpdate ); ?></td>
-				<td><a title="Play" href="" data-source="<?php echo $csl['path']; ?>"><i class="fa fa-play-circle"></i></a>
+				<td><a title="Play" href="http://localhost/mimo/mimo/collectionlist?name=<?php echo $cl['name']; ?>" data-source="<?php echo $csl['path']; ?>"><i class="fa fa-play-circle"></i></a>
 					<?php if($user[0]['id']==$users[0]['id']){ ?>
 					<a onclick="deletecolsong(<?php echo $csl['id']; ?>)" title="Remove from Collection"><i class="fa fa-remove"></i></a><?php }?>
 
