@@ -225,12 +225,32 @@ $(document).ready(function()
         	else{
         	$.each(posts, function(index) {
         		$('.thoughts').html(
-        						$('.thoughts').html()+'<div data-alert="'+posts[index].PostId+'" class="alert alert-danger report-alert" ></div><div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'">'+posts[index].PostUser+'</a><small> shared a thought!<a data-reportpost="'+posts[index].PostId+'" class="btn pull-right"><span class="fa fa-exclamation-circle" title="Report this Post!"></span></a><a class="btn del pull-right" data-toggle="modal" data-delid="'+posts[index].PostId+'"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small>'+posts[index].PostDate+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[index].PostBody+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-did="'+posts[index].PostId+'" ><span class="fa fa-commenting-o"></span> Comment <small><small>('+posts[index].PostComments+')</small></small></a></div></div></div>'
+        						$('.thoughts').html()+'<div data-alert="'+posts[index].PostId+'" class="alert alert-danger report-alert" ></div><div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+posts[index].PostUserPicture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user" href="http://localhost/mimo/mimo/myStudio?username='+posts[index].PostUser+'">'+posts[index].PostUser+'</a><small> shared a thought!<a data-reportpost="'+posts[index].PostId+'" class="btn pull-right"><span class="fa fa-exclamation-circle" title="Report this Post!"></span></a><a class="btn del pull-right" data-toggle="modal" data-delid="'+posts[index].PostId+'"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small>'+posts[index].PostDate+'</small></small></h4></div></div></div><div class="postbody"><div class="postbodycont">'+posts[index].PostBody+'</div></div><div id="likesection"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-id="'+posts[index].PostId+'" aria-pressed="false"><span class="fa fa-heart-o"></span> Like <small><small>('+posts[index].PostLikes+')</small></small></a><a class="commentBtn btn comment" data-did="'+posts[index].PostId+'" ><span class="fa fa-commenting-o"></span> Comment <small><small>('+posts[index].PostComments+')</small></small></a></div></div></div>'
         						);
 						$('.report-alert').hide()
 								if(check=='not'){
 									$('a.del').empty();
 								}
+
+								$.ajax({
+									type:'POST',
+									url:'<?php echo base_url() ?>mimo/checklikes',
+									data:{
+										postid:posts[index].PostId,
+										userid:user
+									},
+									success: function(s){
+										var stat = JSON.parse(s)
+										console.log(stat)
+										if(stat.stat=='like'){
+											$("[data-id='"+posts[index].PostId+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+posts[index].PostLikes+')</small></small>');
+										}
+									},
+									error: function(e){
+										console.log(e)
+									}
+
+								})
 								
 								//if like button click
 								$('[data-id]').click(function(e) {
@@ -244,7 +264,12 @@ $(document).ready(function()
 										},
 										success: function(s){
 											var likes = JSON.parse(s);
-											$("[data-id='"+buttonid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+											if(likes.stats=='unlike'){
+												$("[data-id='"+buttonid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
+											else{
+												$("[data-id='"+buttonid+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
 										},
 										error: function(e){
 											console.log(e);
@@ -339,13 +364,32 @@ $(document).ready(function()
         	else{
         	$.each(audioposts, function(index) {
 
-        		$('.audios').html($('.audios').html()+'<div data-aalert="'+audioposts[index].id+'" class="alert alert-danger report-aalert" ></div><div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+audioposts[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user">'+audioposts[index].username+'</a><small> released an audio!</small><a data-areportpost="'+audioposts[index].id+'" class="btn pull-right"><span class="fa fa-exclamation-circle" title="Report this Post!"></span></a><a class="btn del pull-right" data-toggle="modal" data-delid="'+audioposts[index].id+'"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+audioposts[index].posted_at+'</small></small><small></small></h4></div></div></div><div class="postbodyaudio"><div class="media"><div class="media-left"><a href="#" ><div class="media-object albumCover" style="background-image:url('+audioposts[index].cover+');"></div></a></div><div class="media-body "><h4 style="color: black" class="media-heading"><i class="fa fa-music"></i><b style="color: #ff9926"> Title:</b> '+audioposts[index].title+'</h4><h6 style="padding: 5px 2.2em"><b> Artist:</b> '+audioposts[index].username+'</h6><h6 style="padding: 0 2.2em"><b> Genre:</b>'+audioposts[index].genre+'</h6><h6 style="padding: 0 2.2em"><b> Year:</b> 2017</h6><p id="audDesc" style="padding: 0 2.2em">'+audioposts[index].about+'</p><hr /></div></div><div class="row" ><div class="col-md-12"><audio data-audioend="'+audioposts[index].id+'" id="audio" controls controlsList="nodownload" width="100%"><source src="'+audioposts[index].path+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-postid="'+audioposts[index].id+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+audioposts[index].likes+')</small></small></a><a class="commentBtn btn comment" data-postdid="'+audioposts[index].id+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+audioposts[index].comments+')</small></small></a><a data-audioscollectionid="'+audioposts[index].id+'" id="addCollect" class="btn comment" data-toggle="modal" ><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a><a class="btn view disabled" data-audioendplay="'+audioposts[index].id+'"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> '+audioposts[index].views+' plays</small></a></div></div></div></div>'
+        		$('.audios').html($('.audios').html()+'<div data-aalert="'+audioposts[index].id+'" class="alert alert-danger report-aalert" ></div><div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+audioposts[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user">'+audioposts[index].username+'</a><small> released an audio!</small><a data-areportpost="'+audioposts[index].id+'" class="btn pull-right"><span class="fa fa-exclamation-circle" title="Report this Post!"></span></a><a class="btn del pull-right" data-toggle="modal" data-delid="'+audioposts[index].id+'"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+audioposts[index].posted_at+'</small></small><small></small></h4></div></div></div><div class="postbodyaudio"><div class="media"><div class="media-left"><a href="#" ><div class="media-object albumCover" style="background-image:url('+audioposts[index].cover+');"></div></a></div><div class="media-body "><h4 style="color: black" class="media-heading"><i class="fa fa-music"></i><b style="color: #ff9926"> Title:</b> '+audioposts[index].title+'</h4><h6 style="padding: 5px 2.2em"><b> Artist:</b> '+audioposts[index].username+'</h6><h6 style="padding: 0 2.2em"><b> Genre:</b>'+audioposts[index].genre+'</h6><h6 style="padding: 0 2.2em"><b> Year:</b> 2017</h6><p id="audDesc" style="padding: 0 2.2em">'+audioposts[index].about+'</p><hr /></div></div><div class="row" ><div class="col-md-12"><audio data-audioend="'+audioposts[index].id+'" id="audio" controls controlsList="nodownload" width="100%"><source src="'+audioposts[index].path+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-postid="'+audioposts[index].id+'" aria-pressed="false" ><span class="fa fa-heart-o"></span> Like <small><small>('+audioposts[index].likes+')</small></small></a><a class="commentBtn btn comment" data-postdid="'+audioposts[index].id+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+audioposts[index].comments+')</small></small></a><a data-audioscollectionid="'+audioposts[index].id+'" id="addCollect" class="btn comment" data-toggle="modal" ><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a><a class="btn view disabled" data-audioendplay="'+audioposts[index].id+'"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> '+audioposts[index].views+' plays</small></a></div></div></div></div>'
 
         			);
 					$('.report-aalert').hide()
 								if(check=='not'){
 									$('a.del').empty();
 								}
+								$.ajax({
+									type:'POST',
+									url:'<?php echo base_url() ?>mimo/checklikes',
+									data:{
+										postid:audioposts[index].id,
+										userid:user
+									},
+									success: function(s){
+										var stat = JSON.parse(s)
+										console.log(stat)
+										if(stat.stat=='like'){
+											$("[data-postid='"+audioposts[index].id+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+audioposts[index].likes+')</small></small>');
+										}
+									},
+									error: function(e){
+										console.log(e)
+									}
+
+								})
 								$('[data-postid]').click(function(e) {
 									e.preventDefault();
 									var buttonid = $(this).attr('data-postid');
@@ -357,7 +401,12 @@ $(document).ready(function()
 										},
 										success: function(s){
 											var likes = JSON.parse(s);
-											$("[data-postid='"+buttonid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+											if(likes.stats=='unlike'){
+												$("[data-postid='"+buttonid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
+											else{
+												$("[data-postid='"+buttonid+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
 										},
 										error: function(e){
 											console.log(e);
@@ -541,7 +590,7 @@ $(document).ready(function()
         		}
         	else{
         	$.each(videoposts, function(index) {
-        		$('.videos').html($('.videos').html()+'<div data-vlert="'+videoposts[index].id+'" class="alert alert-danger report-valert" ></div><div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+videoposts[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user">'+videoposts[index].username+'</a><small> shared a video!</small><a data-vreportpost="'+videoposts[index].id+'" class="btn pull-right"><span class="fa fa-exclamation-circle" title="Report this Post!"></span></a><a class="btn del pull-right" data-toggle="modal" data-delid="'+videoposts[index].id+'"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+videoposts[index].posted_at+'</small></small></h4></div></div></div><div class="postbodyaudio"><h5 class="media-heading text-center"><i class="fa fa-video-camera"></i> '+videoposts[index].name+'</h5><div class="row" ><div class="col-md-12"><video data-videoend="'+videoposts[index].id+'" src="'+videoposts[index].url+'" style="width:100%; height: 250px" controls controlsList="nodownload"></video></div></div><h6 style="color: #1e1e1e">'+videoposts[index].description+'</h6><br /><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-likeid="'+videoposts[index].id+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+videoposts[index].likes+')</small></small></a><a class="commentBtn btn comment" data-comid="'+videoposts[index].id+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+videoposts[index].comments+')</small></small></a><a data-videoendplay="'+videoposts[index].id+'" class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> 123,234 plays</small></a></div></div></div></div>'
+        		$('.videos').html($('.videos').html()+'<div data-vlert="'+videoposts[index].id+'" class="alert alert-danger report-valert" ></div><div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+videoposts[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user">'+videoposts[index].username+'</a><small> shared a video!</small><a data-vreportpost="'+videoposts[index].id+'" class="btn pull-right"><span class="fa fa-exclamation-circle" title="Report this Post!"></span></a><a class="btn del pull-right" data-toggle="modal" data-delid="'+videoposts[index].id+'"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+videoposts[index].posted_at+'</small></small></h4></div></div></div><div class="postbodyaudio"><h5 class="media-heading text-center"><i class="fa fa-video-camera"></i> '+videoposts[index].name+'</h5><div class="row" ><div class="col-md-12"><video data-videoend="'+videoposts[index].id+'" src="'+videoposts[index].url+'" style="width:100%; height: 250px" controls controlsList="nodownload"></video></div></div><h6 style="color: #1e1e1e">'+videoposts[index].description+'</h6><br /><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-likeid="'+videoposts[index].id+'" aria-pressed="false"><span class="fa fa-heart-o"></span> Like <small><small>('+videoposts[index].likes+')</small></small></a><a class="commentBtn btn comment" data-comid="'+videoposts[index].id+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+videoposts[index].comments+')</small></small></a><a data-videoendplay="'+videoposts[index].id+'" class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> 123,234 plays</small></a></div></div></div></div>'
 
         			);
 						$('.report-valert').hide()
@@ -549,6 +598,26 @@ $(document).ready(function()
 								if(check=='not'){
 									$('a.del').empty();
 								}
+
+								$.ajax({
+									type:'POST',
+									url:'<?php echo base_url() ?>mimo/checklikes',
+									data:{
+										postid:videoposts[index].id,
+										userid:user
+									},
+									success: function(s){
+										var stat = JSON.parse(s)
+										console.log(stat)
+										if(stat.stat=='like'){
+											$("[data-likeid='"+videoposts[index].id+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+videoposts[index].likes+')</small></small>');
+										}
+									},
+									error: function(e){
+										console.log(e)
+									}
+
+								})
 
 								$('[data-likeid]').click(function(e) {
 									e.preventDefault();
@@ -561,7 +630,12 @@ $(document).ready(function()
 										},
 										success: function(s){
 											var likes = JSON.parse(s);
-											$("[data-likeid='"+buttonid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+											if(likes.stats=='unlike'){
+												$("[data-likeid='"+buttonid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
+											else{
+												$("[data-likeid='"+buttonid+"']").html('<span class="fa fa-heart"></span> Like <small><small>('+likes.likes+')</small></small>');
+											}
 										},
 										error: function(e){
 											console.log(e);

@@ -380,6 +380,11 @@ class Mimo extends CI_Controller {
 				$data = array('id'=>null,'post_id'=>$postid,'user_id'=>$likerid);
 				$this->post_likes->create($data);
 				$this->notify->createNotify('',$postid,'2');
+
+				$selector = 'likes';
+				$condition = array('id'=>$postid);
+				$likes = $this->posts->read($condition,$selector)[0]['likes'];
+				echo json_encode(array('likes'=>$likes,'stats'=>'like'));
 			}
 			else{
 				$data = array('likes'=>$numlikes-1);
@@ -387,16 +392,35 @@ class Mimo extends CI_Controller {
 				$this->posts->update($data,$condition);
 				$data = array('post_id'=>$postid,'user_id'=>$likerid);
 				$this->post_likes->del($data);
+
+				$selector = 'likes';
+				$condition = array('id'=>$postid);
+				$likes = $this->posts->read($condition,$selector)[0]['likes'];
+				echo json_encode(array('likes'=>$likes,'stats'=>'unlike'));
 			}
-			$selector = 'likes';
-			$condition = array('id'=>$postid);
-			$likes = $this->posts->read($condition,$selector)[0]['likes'];
-			echo json_encode(array('likes'=>$likes));
+			
 		}
 		else{
 			redirect('error');
 		}
 	}//end of likes function
+	public function checklikes(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$postid = $this->input->post("postid");
+			$userid = $this->input->post("userid");
+
+			$con = array('post_id'=>$postid,'user_id'=>$userid);
+			if($this->upload->select('post_likes',$con)){
+				echo json_encode(array('stat'=>'like'));
+			}
+			else{
+				echo json_encode(array('stat'=>'notlike'));
+			}
+		}	
+		else{
+			redirect('error');
+		}
+	}
 
 	public function delete(){
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
