@@ -32,13 +32,13 @@
                     <form class="form" role="form" method="post" action="" accept-charset="UTF-8" id="login-nav">
                     <div id="log"></div>
                         <div class="form-group">
-                        <label class="sr-only" for="username" >Stage Name</label>
-                        <input type="text" class="form-control signupForm" id="username" placeholder="Stage Name" name="username" required>
+                            <label class="sr-only" for="username" >Stage Name</label>
+                            <input type="text" class="form-control signupForm" id="username" placeholder="Stage Name" name="username" required>
                         </div>
                     <div class="form-group">
                         <label class="sr-only" for="password">Password</label>
                         <input type="password" class="form-control signupForm" id="password" placeholder="Password" name="password" required>
-                        <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                        <div class="help-block text-right"><a href="http://localhost/mimo/accounts/forgot_password">Forget the password ?</a></div>
                     </div>
                     <div class="form-group">
                         <button type="button" class="btn btn-custom btn-block" name="signin" id="signin">Sign In</button>

@@ -20,8 +20,17 @@
             <div class="row">
                 <div class="col-md-12">
                     <p><i class="material-icons">public</i> Change Password</p>
+                        <div class="alert alert-success" id="fp-alert">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <strong>Success! </strong>
+                           Password Changed
+                        </div>
+                        <div class="alert alert-danger" id="fgw-alert">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <strong>Incorrect! </strong>
+                            Password not match.
+                        </div>
                     <form class="form" role="form" method="post" action="" accept-charset="UTF-8" id="login-nav">
-                    <div id="log"></div>
                         <div class="form-group">
                         <label class="sr-only" for="password" >Password</label>
                         <input type="password" class="form-control signupForm" id="password" placeholder="New Password" name="password" required>
@@ -60,6 +69,9 @@
 
 
 <script type="text/javascript">
+$(document).ready(function(){  
+    $('#fp-alert').hide()
+    $('#fgw-alert').hide()
     $('#signin').click(function() {
         var token = '<?php echo $token; ?>'
         var pass = $("#password").val();
@@ -84,17 +96,26 @@
                 var res = JSON.parse(r)
                 console.log(res);
                 if(res.status=='success'){
-                    alert('Password Changed!')
                     if(cbox=='true'){
-                        window.location = "http://localhost/mimo/accounts/signin";
+                        $("#fp-alert").fadeIn(500, 0);
+                        window.setTimeout(function() {
+                            $("#fp-alert").hide(500, 0)
+                        }, 3000);
+                        location.href="http://localhost/mimo/accounts/signin";
                     }
                     else{
-                        window.location = "http://localhost/mimo/";
+                        $("#fp-alert").fadeIn(500, 0);
+                        window.setTimeout(function() {
+                            $("#fp-alert").hide(500, 0)
+                        }, 3000);
+                        location.href="http://localhost/mimo/";
                     }
                 }
                 else{
-                    $("#log").attr('class', 'alert alert-danger');
-                    $( "#log" ).text(res.error);
+                     $("#fgw-alert").fadeIn(500, 0);
+                        window.setTimeout(function() {
+                            $("#fgw-alert").hide(500, 0)
+                    }, 3000);
                 }
             },
             error: function(e){
@@ -105,6 +126,8 @@
         });
 
     });
+})
+    
     
 </script>
 </body>
