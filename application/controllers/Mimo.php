@@ -242,7 +242,6 @@ class Mimo extends CI_Controller {
 			$headerdata['title'] = "MimO | My Studio";
 			$this->load->view('include/header',$headerdata);
 			$this->load->view('include/topnav', $data);
-			$this->load->view('include/topnav');
 			$this->load->view('mimo_v/mystudio');
 			$this->load->view('include/footer');
 		}
@@ -435,21 +434,25 @@ class Mimo extends CI_Controller {
 			$userid = $this->input->post("userid");
 			if($newCollection!=''||$collectionList!=''){
 				if($newCollection!=''){
-					$data = array(
-									'id'=>null,
-									'user_id'=>$userid,
-									'name'=>$newCollection,
-									'count'=>1
-						);
-					$this->upload->insert('collections',$data);
-					$lastCollectionId = $this->upload->c();
-					$data = array(
-									'id'=>null,
-									'collection_id'=>$lastCollectionId,
-									'post_id'=>$postid
-						);
-					$this->upload->insert('collection_songs',$data);
-					echo json_encode(array('status'=>"Audio Added to New Collection"));
+					$con = array('user_id'=>$userid);
+					if(!$this->upload->select('collections',$con,'name')){
+						$data = array(
+										'id'=>null,
+										'user_id'=>$userid,
+										'name'=>$newCollection,
+										'count'=>13
+							);
+						$this->upload->insert('collections',$data);
+						$lastCollectionId = $this->upload->c();
+						$data = array(
+										'id'=>null,
+										'collection_id'=>$lastCollectionId,
+										'post_id'=>$postid
+							);
+						$this->upload->insert('collection_songs',$data);
+						echo json_encode(array('status'=>"Audio Added to New Collection"));
+					}
+					echo json_encode(array('status'=>"Already exists Collection list"));
 				}
 				else{
 					$condition = array('collection_id'=>$collectionList,'post_id'=>$postid);
@@ -896,14 +899,37 @@ class Mimo extends CI_Controller {
 	public function collectionlist()
 	{
 		if($this->login->isLoggedIn()){
-			$id = $this->login->isLoggedIn();
-			$condition = array('id'=>$id);
-			$data['users'] = $this->users->read($condition);
-			$headerdata['title'] = "MimO | Collections-Play Room";
-			$this->load->view('include/header',$headerdata);
-			$this->load->view('include/topnav', $data);
-			$this->load->view('mimo_v/collectionlist');
-			$this->load->view('include/footer');
+			$colid = $_GET['name'];
+			if(isset($_GET['name'])){
+				$con = array('name'=>$colid);
+				if($this->upload->select('collections',$con)){
+				$id = $this->upload->select('collections',$con)[0]['id'];
+				$cdata['id'] = $id;
+				$user_id = $this->upload->select('collections',$con,'user_id')[0]['user_id'];
+				$cdata['colid'] = $colid;
+				$cdata['user_id'] = $user_id;
+
+				$con = array('user_id'=>$user_id);
+				$colist = $this->upload->select('collections',$con);
+				$cdata['colist'] = $colist;
+
+				$id = $this->login->isLoggedIn();
+				$condition = array('id'=>$id);
+				$data['users'] = $this->users->read($condition);
+				
+				$headerdata['title'] = "MimO | My Studio";
+				$this->load->view('include/header',$headerdata);
+				$this->load->view('include/topnav', $data);
+				$this->load->view('mimo_v/collectionlist',$cdata);
+				$this->load->view('include/footer');
+				}
+				else{
+					redirect('mimo');
+				}
+			}
+			else{
+				redirect('mimo');
+			}
 		}
 		else{
 			redirect('home');

@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="https://cdn.plyr.io/2.0.13/plyr.css">
-<script type="text/javascript" src="http://localhost/mimo/assets/js/jquery.min.js"></script>
 <script src="https://api.html5media.info/1.1.8/html5media.min.js" type="text/javascript" ></script>
 <script src="https://cdn.plyr.io/2.0.13/plyr.js" type="text/javascript" ></script>
 <style>
@@ -167,14 +166,37 @@ background-position: center right; color:#fff;">
 <div class="container belowtn" style="padding-top: 15px; min-height: 100%; background-color: rgba(0,0,0,0.6);">
 	<div class="row">
 		<div class="col-md-12">
-			<h3 class="text-center"><span class="fa fa-list"></span>&nbsp;&nbsp;Title of Collection
+			<h3 class="text-center"><span class="fa fa-list"></span>&nbsp;&nbsp;<?php echo $_GET['name'] ?>
 			</h3>
 			<span><a style="color: white" class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" ><i class="fa fa-chevron-down"></i></a>
 				<ul class="dropdown-menu" style="position:inline;">
-                    <li><a href="">Collection1</a></li>
-                     <li><a href="">Collection2</a></li>
-                     <li><a href="">Collection3</a></li>
+                    <?php foreach ($colist as $c) { ?>
+                     <li><a href="http://localhost/mimo/mimo/collectionlist?name=<?php echo $c['name']; ?>"><?php echo $c['name']; ?></a></li>
+                     <?php } 
+                     $lists = $this->getposts->getcolsong($id);
+                     $res = array();
+                     $i=0;
+                     foreach ($lists as $l) {
+                        $i++;
+                        $con = array('id'=>$l['user_id']);
+                        $username = $this->users->read($con,'username')[0]['username'];
+                        $phpdate = strtotime( $l['posted_at'] );
+                        $p=array(
+
+                                'track'=>$i,
+                                'name'=>$l['title'],
+                                'artist'=>$username,
+                                'genre'=>$l['genre'],
+                                'year'=>date( 'Y', $phpdate ),
+                                'cover'=>$l['cover'],
+                                'file'=>$l['path']
+                            );
+                        array_push($res,$p);
+                     }
+                     $res = json_encode($res);
+                     ?>
 					</ul></span>
+                    
 		</div>
 	</div>
     <div class="add-bottom">
@@ -206,49 +228,9 @@ jQuery(function ($) {
     if (supportsAudio) {
         var index = 0,
             playing = false,
-            mediaPath = 'http://localhost/mimo/assets/audios/',
-            extension = '',
-            tracks = [{
-                "track": 1,
-                "name": "Kalimba",
-                "artist": "raider",
-                "genre": "Classical",
-                "year": "2017",
-                "cover": "http://localhost/mimo/assets/img/latin.jpg",
-                "file": "Kalimba"
-            }, {
-                "track": 2,
-                "name": "Sleep",
-                "artist": "maroonie",
-				"genre": "Blues",
-                "year": "2017",
-				"cover": "http://localhost/mimo/assets/img/bp.jpg",
-                "file": "Sleep"
-            }, {
-                "track": 3,
-                "name": "Piano",
-                "artist": "maroonie", 
-				"genre": "None",
-                "year": "2017",
-				"cover": "http://localhost/mimo/assets/img/reggae.jpg",
-                "file": "Piano"
-            }, {
-                "track": 4,
-                "name": "Ho Hey",
-                "artist": "Oh Yeah Ho", 
-				"genre": "Alternatives",
-                "year": "2017",
-				"cover": "http://localhost/mimo/assets/img/latin.jpg",
-                "file": "sample"
-            }, {
-                "track": 5,
-                "name": "Maid",
-				"artist": "nightingale",
-				"genre": "Blues",
-                "year": "2017",
-				"cover": "http://localhost/mimo/assets/img/blues.jpg",
-                "file": "Maid"
-            }],
+            // mediaPath = 'http://localhost/mimo/assets/audios/',
+            // extension = '',
+            tracks = <?php echo $res; ?>,
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
                     trackName = value.name,
@@ -322,13 +304,13 @@ jQuery(function ($) {
                 $('#plList li:eq(' + id + ')').addClass('plSel');
                 npTitle.text(tracks[id].name);
                 index = id;
-                audio.src = mediaPath + tracks[id].file + extension;
+                audio.src = tracks[id].file;
             },
             playTrack = function (id) {
                 loadTrack(id);
                 audio.play();
             };
-        extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+        // extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
         loadTrack(index);
     }
 });

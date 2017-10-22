@@ -334,7 +334,7 @@ $(document).ready(function()
         	console.log(audioposts)
         	if(audioposts.id==="error"){
         		//Edit mo to
-        			$('.audios').html(' No audios')
+        			$('.audios').html('<h4 class="text-center">No released audios yet. <span class="fa fa-music"></span></h4>')
         		}
         	else{
         	$.each(audioposts, function(index) {
@@ -537,7 +537,7 @@ $(document).ready(function()
         	console.log(videoposts)
         	if(videoposts.id==="error"){
         		//Edit mo to
-        			$('.videos').html('No videos')
+        			$('.videos').html('<h4 class="text-center">No shared videos yet. <span class="fa fa-video-camera"></span></h4>')
         		}
         	else{
         	$.each(videoposts, function(index) {
