@@ -495,42 +495,47 @@ class Mimo extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$start = $this->input->post("start");
 			$userid = $this->login->isLoggedIn();
-			$posts = $this->getposts->allposts($userid);
-			$data = array();
-			$result = array();
-                foreach($posts as $post) {
-                	$phpdate = strtotime( $post['posted_at'] );
-                      $p=array('PostType'=>$post['type'],
-                      			'PostId'=>$post['id'],
-                      			'PostUserPicture'=>$post['picture'],
-                      			'PostUser'=>$post['username'],
-                      			'PostLikes'=>$post['likes'],
-                      			'PostComments'=>$post['comments'],
-                      			'PostDate'=>date( 'M d Y h:i a', $phpdate ),
-                      			'thoughtBody'=>$this->topics->link_add($post['body']),
-                      			'audioAbout'=>$this->topics->link_add($post['about']),
-                      			'videoAbout'=>$this->topics->link_add($post['description']),
-                      			'audioPath'=>$post['path'],
-                      			'videoPath'=>$post['url'],
-                      			'audioTitle'=>$post['title'],
-                      			'videoTitle'=>$post['name'],
-                      			'audioGenre'=>$post['genre'],
-                      			'audioCover'=>$post['cover'],
-                      			'audioviews'=>$post['views'],
-                      			'videoviews'=>$post['plays'],
-                      	);
-                      array_push($result,$p);
-                }
-                for ($i = $start; $i < $start+5; $i++) {
-			        if ($i < count($result)) {
-			                array_push($data, $result[$i]);
-			        }
-				}
-              echo json_encode($data);
-		}
-		else{
-			redirect('error');
-		}
+			if($this->getposts->allposts($userid)){
+				$posts = $this->getposts->allposts($userid);
+				$data = array();
+				$result = array();
+	                foreach($posts as $post) {
+	                	$phpdate = strtotime( $post['posted_at'] );
+	                      $p=array('PostType'=>$post['type'],
+	                      			'PostId'=>$post['id'],
+	                      			'PostUserPicture'=>$post['picture'],
+	                      			'PostUser'=>$post['username'],
+	                      			'PostLikes'=>$post['likes'],
+	                      			'PostComments'=>$post['comments'],
+	                      			'PostDate'=>date( 'M d Y h:i a', $phpdate ),
+	                      			'thoughtBody'=>$this->topics->link_add($post['body']),
+	                      			'audioAbout'=>$this->topics->link_add($post['about']),
+	                      			'videoAbout'=>$this->topics->link_add($post['description']),
+	                      			'audioPath'=>$post['path'],
+	                      			'videoPath'=>$post['url'],
+	                      			'audioTitle'=>$post['title'],
+	                      			'videoTitle'=>$post['name'],
+	                      			'audioGenre'=>$post['genre'],
+	                      			'audioCover'=>$post['cover'],
+	                      			'audioviews'=>$post['views'],
+	                      			'videoviews'=>$post['plays'],
+	                      	);
+	                      array_push($result,$p);
+	                }
+	                for ($i = $start; $i < $start+5; $i++) {
+				        if ($i < count($result)) {
+				                array_push($data, $result[$i]);
+				        }
+					}
+	              echo json_encode($data);
+        }
+        else{
+          	echo json_encode(array('PostId'=>"error"));
+        }
+	}
+	else{
+		redirect('error');
+	}
 	}//end of hallposts
 
 	public function thoughts(){
@@ -929,6 +934,45 @@ class Mimo extends CI_Controller {
 			$condition = array('post_id'=>$videoid);
 			$this->upload->update('videos',$data,$condition);
 			echo json_encode(array('views'=>$updatednumview));
+		}
+		else{
+			redirect('error');
+		}
+	}
+	public function reportpost(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$reportid = $this->input->post("reportid");
+			$userid = $this->input->post("userid");
+			$con = array('post_id'=>$reportid,'user_id'=>$userid);
+			if(!$this->upload->select('report',$con)){
+
+				$con = array('id'=>$reportid);
+				$reportnum = $this->upload->select('posts',$con,'reports')[0]['reports'];
+				$data = array('id'=>null,'post_id'=>$reportid,'user_id'=>$userid);
+				$this->upload->insert('report',$data);
+				$data = array('reports'=>$reportnum+1);
+				$con = array('id'=>$reportid);
+				$this->upload->update('posts',$data,$con);
+				echo json_encode(array('status'=>'The post is now held for review.'));
+			}
+			else{
+				echo json_encode(array('status'=>'You Already Report This Post.'));
+			}
+		}
+		else{
+			redirect('error');
+		}
+	}
+	public function reviewposts(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$posts = $this->upload->select('posts');
+			foreach ($posts as $p) {
+				if($p['reports']>=20){
+					$data = array('id'=>$p['id']);
+					$this->upload->del('posts',$data);
+					echo 'success';
+				}
+			}
 		}
 		else{
 			redirect('error');

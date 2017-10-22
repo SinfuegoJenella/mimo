@@ -48,7 +48,7 @@
                      <li role="presentation">
 							        	<a href="<?php echo base_url('mimo/settings');?>">Account Settings</a></li>
                             <li role="presentation"><a href="<?php echo base_url('mimo/logout');?>">Logout</a></li>
-						</li>
+
 						</ul>
                 </ul>
             </div>
