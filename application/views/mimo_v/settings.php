@@ -209,7 +209,7 @@
 								<div class="row">
 							<?php	
 								$myString = $about[0]['career'];
-								$myArray = explode('.', $myString); 
+								$myArray = explode(',', $myString); 
 								 ?>
 								<div class="col-md-3">
 					
