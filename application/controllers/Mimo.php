@@ -133,7 +133,7 @@ class Mimo extends CI_Controller {
 			else{
 				foreach($mcareer as $car)
 				{
-					$career .= $car. " , ";
+					$career .= $car. ",";
 						
 				}
 			}
@@ -607,12 +607,17 @@ class Mimo extends CI_Controller {
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
 			$noover = uniqid(rand()).'.'.$type;
-			$image= $_FILES['uploadAudioImg'];
-			$audioart=$this->image->uploadImage($image); 
 			$url = "C:\wamp64\www\mimo\assets\uploads\audios/".$noover;
 		    move_uploaded_file($_FILES['file']['tmp_name'], $url);
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
-			
+			$image= $_FILES['uploadAudioImg'];
+			if($image['name']=='') {
+					$audioart= "https://i.imgur.com/GZr4AiQ.jpg";
+			}
+			else{
+				$audioart=$this->image->uploadImage($image); 
+				}
+				
 		    $id = $this->login->isLoggedIn();
 				$data = array(
 						'id'=>null,
