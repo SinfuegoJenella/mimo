@@ -19,9 +19,6 @@ class Image {
                 $context = stream_context_create($options);
 
                 $imgurURL = "https://api.imgur.com/3/image";
-
-                
-
                 $response = file_get_contents($imgurURL, false, $context);
 				if($response === false)
 				{	

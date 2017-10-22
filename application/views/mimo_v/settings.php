@@ -40,6 +40,7 @@
 						<div class="tab-content">
    
 							<div id="account" class="tab-pane fade in active">
+							
 								<form role="form" method="post" class="form-group" enctype="multipart/form-data" >
 								<div class="row">
 								<br />
@@ -209,7 +210,7 @@
 								<div class="row">
 							<?php	
 								$myString = $about[0]['career'];
-								$myArray = explode('.', $myString); 
+								$myArray = explode(',', $myString); 
 								 ?>
 								<div class="col-md-3">
 					
@@ -227,7 +228,7 @@
 								</div>
 								
 								<div class="col-md-3">
-									<input type="checkbox" name="mcareer[]" value="Lyricist" <?php if(in_array('Lyricist', $myArray)) echo "checked='checked'"; ?>>Lyricist<br>
+									<input type="checkbox" name="mcareer[]" value="Lyricist" <?php if(in_array('Lyricist', $myArray)) echo "checked='checked'"; ?>> Lyricist<br>
 									<input type="checkbox" name="mcareer[]" value="Band Member" <?php if(in_array('Band Member', $myArray)) echo "checked='checked'"; ?>> Band Member<br>
 									<input type="checkbox" name="mcareer[]" value="Production Music Writer" <?php if(in_array('Production Music Writer', $myArray)) echo "checked='checked'"; ?>> Production Music Writer<br>
 									<input type="checkbox" name="mcareer[]" value="Sound Designer" <?php if(in_array('Sound Designer', $myArray)) echo "checked='checked'"; ?>> Sound Designer<br>

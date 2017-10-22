@@ -30,18 +30,18 @@
 								{
 									if($about[0]['genre1'] == NULL)
 									{
-										echo $about[0]['genre2'].' . ' .$about[0]['genre3'];
+										echo $about[0]['genre2'].' / ' .$about[0]['genre3'];
 									}
 									else if($about[0]['genre2'] == NULL)
 									{
-										echo $about[0]['genre1'].' . ' .$about[0]['genre3'];
+										echo $about[0]['genre1'].' / ' .$about[0]['genre3'];
 									}
 									else if($about[0]['genre3'] == NULL)
 									{
-										echo $about[0]['genre1'].' . ' .$about[0]['genre2'];
+										echo $about[0]['genre1'].' / ' .$about[0]['genre2'];
 									}
 									else{
-										echo $about[0]['genre1'].' . ' .$about[0]['genre2'].' . ' .$about[0]['genre3']; 
+										echo $about[0]['genre1'].' / ' .$about[0]['genre2'].' / ' .$about[0]['genre3']; 
 									}
 								}?> </h6>
 							</div>

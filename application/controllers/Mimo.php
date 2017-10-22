@@ -111,13 +111,19 @@ class Mimo extends CI_Controller {
 					'header'=>$headerlink
 					);
 			$this->users->update($data,$condition);
-			
+			echo '<script>
+					alert("Changes saved");
+					window.location = "http://localhost/mimo/mimo/myStudio?username='.$data['username'].'";
+			</script>';
 			}
 			if(isset($_POST['mymusic'])){
 			$id = $this->login->isLoggedIn();
 			$selector= 'career';
 			$condition = array('user_id'=>$id);
 			$previouscareer= $this->about->read($condition,$selector)[0]['career'];
+			$selector= 'username';
+			$condition = array('id'=>$id);
+			$previoususername= $this->users->read($condition,$selector)[0]['username'];
 			$genre1 = $this->input->post("genre1", TRUE);
 			$genre2 = $this->input->post("genre2", TRUE);
 			$genre3 = $this->input->post("genre3", TRUE);
@@ -129,7 +135,7 @@ class Mimo extends CI_Controller {
 			else{
 				foreach($mcareer as $car)
 				{
-					$career .= $car. ".";
+					$career .= $car. ",";
 						
 				}
 			}
@@ -151,6 +157,10 @@ class Mimo extends CI_Controller {
 					);
 			
 			$this->about->update($data,$condition);
+			echo '<script>
+					alert("Changes saved");
+					window.location = "http://localhost/mimo/mimo/myStudio?username='.$previoususername.'";
+			</script>';
 			}
 			$id = $this->login->isLoggedIn();
 			$condition = array('id'=>$id);
