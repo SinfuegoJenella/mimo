@@ -304,7 +304,7 @@ $(document).ready(function()
         	else{
         	$.each(audioposts, function(index) {
 
-        		$('.audios').html($('.audios').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+audioposts[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user">'+audioposts[index].username+'</a><small> released an audio!</small><a class="btn del pull-right" data-toggle="modal" data-delid="'+audioposts[index].id+'"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+audioposts[index].posted_at+'</small></small><small></small></h4></div></div></div><div class="postbodyaudio"><div class="media"><div class="media-left"><a href="#" ><div class="media-object albumCover" style="background-image:url('+audioposts[index].cover+');"></div></a></div><div class="media-body "><h4 style="color: black" class="media-heading"><i class="fa fa-music"></i><b style="color: #ff9926"> Title:</b> '+audioposts[index].title+'</h4><h6 style="padding: 5px 2.2em"><b> Artist:</b> '+audioposts[index].username+'</h6><h6 style="padding: 0 2.2em"><b> Genre:</b>'+audioposts[index].genre+'</h6><h6 style="padding: 0 2.2em"><b> Year:</b> 2017</h6><p id="audDesc" style="padding: 0 2.2em">'+audioposts[index].about+'</p><hr /></div></div><div class="row" ><div class="col-md-12"><audio id="audio" controls controlsList="nodownload" width="100%"><source src="'+audioposts[index].path+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-postid="'+audioposts[index].id+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+audioposts[index].likes+')</small></small></a><a class="commentBtn btn comment" data-postdid="'+audioposts[index].id+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+audioposts[index].comments+')</small></small></a><a data-audioscollectionid="'+audioposts[index].id+'" id="addCollect" class="btn comment" data-toggle="modal" ><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a><a class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> 123,234 plays</small></a></div></div></div></div>'
+        		$('.audios').html($('.audios').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+audioposts[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user">'+audioposts[index].username+'</a><small> released an audio!</small><a class="btn del pull-right" data-toggle="modal" data-delid="'+audioposts[index].id+'"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+audioposts[index].posted_at+'</small></small><small></small></h4></div></div></div><div class="postbodyaudio"><div class="media"><div class="media-left"><a href="#" ><div class="media-object albumCover" style="background-image:url('+audioposts[index].cover+');"></div></a></div><div class="media-body "><h4 style="color: black" class="media-heading"><i class="fa fa-music"></i><b style="color: #ff9926"> Title:</b> '+audioposts[index].title+'</h4><h6 style="padding: 5px 2.2em"><b> Artist:</b> '+audioposts[index].username+'</h6><h6 style="padding: 0 2.2em"><b> Genre:</b>'+audioposts[index].genre+'</h6><h6 style="padding: 0 2.2em"><b> Year:</b> 2017</h6><p id="audDesc" style="padding: 0 2.2em">'+audioposts[index].about+'</p><hr /></div></div><div class="row" ><div class="col-md-12"><audio data-audioend="'+audioposts[index].id+'" id="audio" controls controlsList="nodownload" width="100%"><source src="'+audioposts[index].path+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-postid="'+audioposts[index].id+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+audioposts[index].likes+')</small></small></a><a class="commentBtn btn comment" data-postdid="'+audioposts[index].id+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+audioposts[index].comments+')</small></small></a><a data-audioscollectionid="'+audioposts[index].id+'" id="addCollect" class="btn comment" data-toggle="modal" ><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a><a class="btn view disabled" data-audioendplay="'+audioposts[index].id+'"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> '+audioposts[index].views+' plays</small></a></div></div></div></div>'
 
         			);
 								if(check=='not'){
@@ -431,7 +431,25 @@ $(document).ready(function()
 
 									});
 								});
+								$('[data-audioend]').on('ended',function(){
+									var audioid = $(this).attr('data-audioend');
+							      	$.ajax({
+							      		type: 'POST',
+							      		url: '<?php echo base_url() ?>mimo/audioview',
+							      		data:{
+							      			audioid:audioid
+							      		},
+							      		success: function(s){
+							      			var views = JSON.parse(s)
+							      			console.log(views)
+							      			$("[data-audioendplay='"+audioid+"']").html('<span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> '+views.views+' plays</small>');
+							      		},
+							      		error: function(e){
+							      			console.log(e)
+							      		}
 
+							      	})
+							    });
 
 								
 
@@ -461,7 +479,7 @@ $(document).ready(function()
         		}
         	else{
         	$.each(videoposts, function(index) {
-        		$('.videos').html($('.videos').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+videoposts[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user">'+videoposts[index].username+'</a><small> shared a video!</small><a class="btn del pull-right" data-toggle="modal" data-delid="'+videoposts[index].id+'"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+videoposts[index].posted_at+'</small></small></h4></div></div></div><div class="postbodyaudio"><h5 class="media-heading text-center"><i class="fa fa-video-camera"></i> '+videoposts[index].name+'</h5><div class="row" ><div class="col-md-12"><video src="'+videoposts[index].url+'" style="width:100%; height: 250px" controls controlsList="nodownload"></video></div></div><h6 style="color: #1e1e1e">'+videoposts[index].description+'</h6><br /><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-likeid="'+videoposts[index].id+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+videoposts[index].likes+')</small></small></a><a class="commentBtn btn comment" data-comid="'+videoposts[index].id+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+videoposts[index].comments+')</small></small></a><a class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> 123,234 plays</small></a></div></div></div></div>'
+        		$('.videos').html($('.videos').html()+'<div class="posttemp"><div class="posthead"><div class="media"><div class="media-left"><a href="#" ><div class="media-object postPic" style="background-image:url('+videoposts[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a class="user">'+videoposts[index].username+'</a><small> shared a video!</small><a class="btn del pull-right" data-toggle="modal" data-delid="'+videoposts[index].id+'"><span class="fa fa-trash del" data-toggle="tooltip" data-placement="top" title="Delete"></span></a><br /><small><small> '+videoposts[index].posted_at+'</small></small></h4></div></div></div><div class="postbodyaudio"><h5 class="media-heading text-center"><i class="fa fa-video-camera"></i> '+videoposts[index].name+'</h5><div class="row" ><div class="col-md-12"><video data-videoend="'+videoposts[index].id+'" src="'+videoposts[index].url+'" style="width:100%; height: 250px" controls controlsList="nodownload"></video></div></div><h6 style="color: #1e1e1e">'+videoposts[index].description+'</h6><br /><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a href="#" id="likeBtn" type="button" class="btn like" data-likeid="'+videoposts[index].id+'" aria-pressed="false" onclick="handleBtnClick(event)"><span class="fa fa-heart-o"></span> Like <small><small>('+videoposts[index].likes+')</small></small></a><a class="commentBtn btn comment" data-comid="'+videoposts[index].id+'" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+videoposts[index].comments+')</small></small></a><a data-videoendplay="'+videoposts[index].id+'" class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> 123,234 plays</small></a></div></div></div></div>'
 
         			);
 
@@ -521,7 +539,26 @@ $(document).ready(function()
 						            showDeleteModal(delid)
 
 						        });
-						
+
+								$('[data-videoend]').on('ended',function(){
+									var videoid = $(this).attr('data-videoend');
+							      	$.ajax({
+							      		type: 'POST',
+							      		url: '<?php echo base_url() ?>mimo/videoview',
+							      		data:{
+							      			videoid:videoid
+							      		},
+							      		success: function(s){
+							      			var views = JSON.parse(s)
+							      			console.log(views)
+							      			$("[data-videoendplay='"+videoid+"']").html('<span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small class="pull-right"> '+views.views+' plays</small>');
+							      		},
+							      		error: function(e){
+							      			console.log(e)
+							      		}
+
+							      	})
+							    });
         		});
 						
 			}

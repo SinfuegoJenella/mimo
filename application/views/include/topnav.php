@@ -29,7 +29,7 @@
 						<i class="material-icons bar">headset_mic</i><p class="hidden-sm bar">My Studio</p></a></li>
 					
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" 		class="bar">
-						<i class="material-icons">notifications </i><span class="label label-warning"></span></a>
+						<i class="material-icons">notifications </i><span class="label label-warning notifnum"></span></a>
 						 <ul class="dropdown-menu" role="menu" style="width: 350px; max-height: 450px; overflow: auto">
 							<li role="presentation" class="notif">
 								<h6 class="dropdown-header text-center"><b>NOTIFICATIONS</b></h6></li>
@@ -59,6 +59,21 @@ var userid = '<?php echo $users[0]['id'];?>'
 $(document).ready(function(){
 	$.ajax({
 		type:'POST',
+		url: '<?php echo base_url() ?>notification/notifstatus',
+		data:{
+			userid:userid
+		},
+		success: function(s){
+			n = JSON.parse(s)
+			console.log(n)
+			$('.notifnum').html(n.status)
+		},
+		error: function(e){
+			console.log(e)
+		}
+	})
+	$.ajax({
+		type:'POST',
 		url: '<?php echo base_url() ?>notification/getnotif',
 		data:{
 			userid:userid
@@ -67,26 +82,69 @@ $(document).ready(function(){
 			var notif = JSON.parse(s)
 			console.log(notif)
 			$.each(notif, function(index) {
-				if(notif[index].type==5){
-					$('<li role="presentation" style=""><a href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> followed you.<span class="fa fa-check-circle pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+				if(notif[index].status==1){
+				
+					if(notif[index].type==5){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> followed you.<span class="fa fa-check-circle pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
+					if(notif[index].type==6){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> Unfollowed you.<span class="fa fa-check-circle pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
+					if(notif[index].type==1){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> mentioned you on a post..<span class="fa fa-tag nicon pull-right"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
+					if(notif[index].type==2){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> liked your post.<span class="fa fa-heart pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
+					if(notif[index].type==3){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> commented on your post.<span class="fa fa-commenting pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
+					if(notif[index].type==4){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> mentioned you on a comment.<span class="fa fa-commenting pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
 				}
-				if(notif[index].type==6){
-					$('<li role="presentation" style=""><a href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> Unfollowed you.<span class="fa fa-check-circle pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
-				}
-				if(notif[index].type==1){
-					$('<li role="presentation" style=""><a href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> mentioned you on a post..<span class="fa fa-tag nicon pull-right"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
-				}
-				if(notif[index].type==2){
-					$('<li role="presentation" style=""><a href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> liked your post.<span class="fa fa-heart pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
-				}
-				if(notif[index].type==3){
-					$('<li role="presentation" style=""><a href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> commented on your post.<span class="fa fa-commenting pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
-				}
-				if(notif[index].type==4){
-					$('<li role="presentation" style=""><a href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> mentioned you on a comment.<span class="fa fa-commenting pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+				else{
+					if(notif[index].type==5){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big><b> followed you.</b><span class="fa fa-check-circle pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
+					if(notif[index].type==6){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> <b>Unfollowed you.</b><span class="fa fa-check-circle pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
+					if(notif[index].type==1){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big><b> mentioned you on a post.</b><span class="fa fa-tag nicon pull-right"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
+					if(notif[index].type==2){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big> <b>liked your post.</b><span class="fa fa-heart pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
+					if(notif[index].type==3){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big><b> commented on your post.</b><span class="fa fa-commenting pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
+					if(notif[index].type==4){
+						$('<li role="presentation" style=""><a data-nid="'+notif[index].id+'" href="'+notif[index].notifurl+'" class="nlock" style="padding:10px"><div class="media"><div class="media-left media-top"><div class="media-object commentPic" style="background-image:url('+notif[index].picture+');"></div></div><div class="media-body"><h6 class="media-heading"><big style="color: #008ae6"><b>'+notif[index].username+'</b></big><b> mentioned you on a comment.</b><span class="fa fa-commenting pull-right nicon"></h6><h6 class="media-heading"><small>'+notif[index].date+'</small><h6></div></div></a></li>').insertAfter("li.notif");
+					};
 				}
 
+
+
+
 			})
+ 				 $('[data-nid]').click(function() {
+					var notifid = $(this).attr('data-nid');
+					$.ajax({
+						type:'post',
+						url:'<?php echo base_url() ?>notification/notifchangestatus',
+						data:{
+							notifid:notifid
+						},
+						success: function(s){
+							console.log(s)
+						},
+						error: function(e){
+							console.log(e)
+						}
+
+					})
+				})
 		},
 		error: function(e){
 			console.log(e)

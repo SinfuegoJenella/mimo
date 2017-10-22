@@ -19,7 +19,7 @@ class getposts extends CI_Model {
 	}
 	public function readaudios($userid=null){
 
-		$this->db->select('users.picture,posts.id, posts.likes, posts.comments, posts.posted_at,users.username, audios.title,audios.genre,audios.cover,audios.path,audios.about')
+		$this->db->select('users.picture,posts.id, posts.likes, posts.comments, posts.posted_at,users.username, audios.title,audios.genre,audios.cover,audios.path,audios.about,audios.views')
 				->from('posts')
 				->join('audios', 'audios.post_id = posts.id')
 				->join('users', 'users.id = posts.user_id')
@@ -41,7 +41,7 @@ class getposts extends CI_Model {
 	}
 	public function readvideos($userid=null){
 
-		$this->db->select('users.picture,posts.id, posts.likes, posts.comments, posts.posted_at,users.username, videos.url,videos.description,videos.name')
+		$this->db->select('users.picture,posts.id, posts.likes, posts.comments, posts.posted_at,users.username, videos.url,videos.description,videos.name,videos.plays')
 				->from('posts')
 				->join('videos', 'videos.post_id = posts.id')
 				->join('users', 'users.id = posts.user_id')
@@ -55,7 +55,7 @@ class getposts extends CI_Model {
 	}
 	public function allposts($userid=null){
 
-		$this->db->select('users.picture,posts.id, posts.type, posts.likes, posts.comments, posts.posted_at,users.username, thoughts.body, audios.title,audios.genre,audios.cover,audios.path,audios.about,videos.url,videos.description,videos.name')
+		$this->db->select('users.picture,posts.id, posts.type, posts.likes, posts.comments, posts.posted_at,users.username, thoughts.body, audios.title,audios.genre,audios.cover,audios.path,audios.about,audios.views,videos.url,videos.description,videos.name,videos.plays')
 				->from('posts')
 				->join('thoughts', 'thoughts.post_id = posts.id','left')
 				->join('videos', 'videos.post_id = posts.id','left')

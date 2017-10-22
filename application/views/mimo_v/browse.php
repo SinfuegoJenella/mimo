@@ -29,10 +29,8 @@
 		<ul class="nav nav-tabs nav-justified searchtab">
 			<!-- COLLECTIONS, ALBUMS, THOUGHTS, and FAVORITES TABS-->
 			<li class="active"><a data-toggle="tab" href="#sartist">&nbsp;Discover Artist</a></li>
-			<li><a data-toggle="tab" href="#sthought">&nbsp;Random Thoughts</a></li>
 			<li><a data-toggle="tab" href="#saudios">&nbsp;Top Audios</a></li>
 			<li><a data-toggle="tab" href="#svids">&nbsp;Top Videos</a></li>
-			<li><a data-toggle="tab" href="#sgenre">&nbsp;Genres</a></li>
 		</ul>
 
 			<div class="tab-content" style="background-color: rgba(255,255,255,0.9); height: 100%;">
@@ -51,19 +49,6 @@
 							</div>
    
    
-							<div id="sthought" class="tab-pane fade" >
-								<div class="row">
-									<div class="col-md-1"></div>
-									<div class="col-md-10">
-										<h2>Thoughts</h2>
-										<div class="col-md-12 thoughts" style="margin-left: 10px">
-										</div>
-									</div>
-									<div class="col-md-1"></div>
-								</div>
-							</div>
-							
-							
 							<div id="saudios" class="tab-pane fade">
 								<div class="row">
 									<div class="col-md-1"></div>
@@ -89,19 +74,7 @@
 								</div>
 							</div>
 							
-							<!-- FAVORITES-->
-							<div id="sgenre" class="tab-pane fade">
-								<div class="row">
-									<div class="col-md-1"></div>
-									<div class="col-md-10 audios">
-										<h2>Genres</h2>
-									<div class="col-md-12" style="margin-left: 10px">
-									<?php $this->load->view('templates/s_genre');?>
-									</div>
-									</div>
-									<div class="col-md-1"></div>
-								</div>
-							</div>	
+							
 					</div>
 					
 			</div>
@@ -146,66 +119,6 @@ $(document).ready(function(){
 			console.log(e)
 		}
 	});
-	$.ajax({
-		type:'POST',
-		url:'<?php echo base_url() ?>browse/random',
-		data:'',
-		success: function(s){
-			res = JSON.parse(s)
-			console.log(res)
-			$.each(res, function(index) {
-					$('.thoughts').html($('.thoughts').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchThoughtPic" style="background-image:url('+res[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" class="user">'+res[index].username+' </a><small><small>'+res[index].posted_at+'</small></small></h4><h5 id="audDesc">'+res[index].body+'</h5></div><div id="likesection"><div class="btn-grp btn-group-justified"><a data-thoughtslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a data-thoughtscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a></div></div></div></div>'
-
-
-						);
-
-					$('[data-thoughtslikeid]').click(function(e) {
-						e.preventDefault()
-						var postid = $(this).attr('data-thoughtslikeid');
-						$.ajax({
-							type: 'POST',
-							url: '<?php echo base_url() ?>mimo/likes',
-							data:{
-								postid:postid
-							},
-							success: function(s){
-								var likes = JSON.parse(s);
-								$("[data-thoughtslikeid='"+postid+"']").html('<span class="fa fa-heart-o"></span> Like <small><small>('+likes.likes+')</small></small>');
-							},
-							error: function(e){
-								console.log(e);
-								alert('error');
-							}
-						});
-					});
-					$('[data-thoughtscommentid]').click(function(e) {
-						e.preventDefault()
-						$('.commentatorDiv').html('')
-						var postid = $(this).attr('data-thoughtscommentid');
-						$.ajax({
-							type: 'POST',
-							url: '<?php echo base_url() ?>mimo/getcomments',
-							data:{
-								postid:postid
-							},
-							success: function(s){
-								var comments = JSON.parse(s)
-        						console.log(comments);
-        						//call showCommentModal function to display all comments
-        						showCommentModal(comments,postid,1);
-							},
-							error: function(){
-								console.log(e)
-							}
-						});
-					});
-
-				});
-		},
-		error: function(e){
-			console.log(e)
-		}
-	})
 
 	$.ajax({
 		type:'POST',
@@ -217,7 +130,7 @@ $(document).ready(function(){
 			console.log(res)
 			
 				$.each(res, function(index) {
-					$('.audios').html($('.audios').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchAlbumPic" style="background-image:url('+res[index].cover+');"></div></a></div><div class="media-body"><h4 style="color: black" class="media-heading">'+res[index].title+'<small style="">( by: <a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'""> '+res[index].username+'</a> )</small></h4><h6><b> Genre:</b> '+res[index].genre+'</h6><h6><b> Year:</b> 2017</h6><p id="audDesc">'+res[index].about+'</p><div class="row" ><div class="col-md-12"><audio id="audio" controls controlsList="nodownload" width="100%"><source src="'+res[index].path+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a data-audioslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a  data-audioscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a><a class="btn view disabled"><span class="glyphicon glyphicon-play "></span><small>1,364</small></a><a data-audioscollectionid="'+res[index].id+'" class="btn"><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a></div></div></div></div>'
+					$('.audios').html($('.audios').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchAlbumPic" style="background-image:url('+res[index].cover+');"></div></a></div><div class="media-body"><h4 style="color: black" class="media-heading">'+res[index].title+'<small style="">( by: <a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'""> '+res[index].username+'</a> )</small></h4><h6><b> Genre:</b> '+res[index].genre+'</h6><h6><b> Year:</b> 2017</h6><p id="audDesc">'+res[index].about+'</p><div class="row" ><div class="col-md-12"><audio data-audioend="'+res[index].id+'" id="audio" controls controlsList="nodownload" width="100%"><source src="'+res[index].path+'" type="audio/mpeg">Your browser does not support the audio element.</audio></div></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a data-audioslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a  data-audioscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a><a data-audioendplay="'+res[index].id+'" class="btn view disabled"><span class="glyphicon glyphicon-play "></span><small>'+res[index].views+'</small></a><a data-audioscollectionid="'+res[index].id+'" class="btn"><span class="fa fa-plus-square collect" data-toggle="tooltip" data-placement="top" title="Add To Collections"></span></a></div></div></div></div>'
 
 
 					);
@@ -333,6 +246,25 @@ $(document).ready(function(){
 
 						});
 					});
+								$('[data-audioend]').on('ended',function(){
+									var audioid = $(this).attr('data-audioend');
+							      	$.ajax({
+							      		type: 'POST',
+							      		url: '<?php echo base_url() ?>mimo/audioview',
+							      		data:{
+							      			audioid:audioid
+							      		},
+							      		success: function(s){
+							      			var views = JSON.parse(s)
+							      			console.log(views)
+							      			$("[data-audioendplay='"+audioid+"']").html('<span class="glyphicon glyphicon-play "></span><small>'+views.views+'</small>');
+							      		},
+							      		error: function(e){
+							      			console.log(e)
+							      		}
+
+							      	})
+							    });
 				});
 			
 		},
@@ -349,7 +281,7 @@ $(document).ready(function(){
 			var res = JSON.parse(s)
 			console.log(res)
 				$.each(res, function(index) {
-					$('.videos').html($('.videos').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchThoughtPic" style="background-image:url('+res[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading">'+res[index].name+'<br /><small>by: <a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'">'+res[index].username+'</a></small></h4><p id="audDesc">'+res[index].description+'</p><div class="row" ><div class="col-md-12"><video src="'+res[index].url+'" style="width:100%; height: 200px" controls controlsList="nodownload"></video></div></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a data-videoslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a data-videoscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a><a class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small> 123,234</small></a></div></div></div></div>'
+					$('.videos').html($('.videos').html()+'<div class="searchbox"><div class="media"><div class="media-left"><a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'" ><div class="media-object srchThoughtPic" style="background-image:url('+res[index].picture+');"></div></a></div><div class="media-body"><h4 class="media-heading">'+res[index].name+'<br /><small>by: <a href="http://localhost/mimo/mimo/myStudio?username='+res[index].username+'">'+res[index].username+'</a></small></h4><p id="audDesc">'+res[index].description+'</p><div class="row" ><div class="col-md-12"><video data-videoend="'+res[index].id+'" src="'+res[index].url+'" style="width:100%; height: 200px" controls controlsList="nodownload"></video></div></div></div><div id="likesectionaud"><div class="btn-grp btn-group-justified"><a data-videoslikeid="'+res[index].id+'" id="likeBtn" type="button" class="btn like"><span class="fa fa-heart-o"></span> Like <small><small>('+res[index].likes+')</small></small></a><a data-videoscommentid="'+res[index].id+'" class="commentBtn btn comment" data-toggle="modal" data-target="#commentModal"><span class="fa fa-commenting-o"></span> Comment <small><small>('+res[index].comments+')</small></small></a><a data-videoendplay="'+res[index].id+'" class="btn view disabled"><span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small> '+res[index].plays+'</small></a></div></div></div></div>'
 
 					);
 					$('[data-videoslikeid]').click(function(e) {
@@ -392,6 +324,25 @@ $(document).ready(function(){
 							}
 						});
 					});
+								$('[data-videoend]').on('ended',function(){
+									var videoid = $(this).attr('data-videoend');
+							      	$.ajax({
+							      		type: 'POST',
+							      		url: '<?php echo base_url() ?>mimo/videoview',
+							      		data:{
+							      			videoid:videoid
+							      		},
+							      		success: function(s){
+							      			var views = JSON.parse(s)
+							      			console.log(views)
+							      			$("[data-videoendplay='"+videoid+"']").html('<span style="font-size: 12px;" class="glyphicon glyphicon-play"></span><small> '+views.views+'</small>');
+							      		},
+							      		error: function(e){
+							      			console.log(e)
+							      		}
+
+							      	})
+							    });
 				});
 			
 		},

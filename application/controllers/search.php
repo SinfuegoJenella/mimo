@@ -121,7 +121,8 @@ class search extends CI_Controller {
 	                			'cover'=>$results['cover'],
 	                			'title'=>$results['title'],
 	                			'path'=>$results['path'],
-	                			'genre'=>$results['genre']
+	                			'genre'=>$results['genre'],
+	                			'views'=>$results['views']
 	                		);
 	                	array_push($res,$p);
 
@@ -153,7 +154,8 @@ class search extends CI_Controller {
 	                			'likes'=>$results['likes'],
 	                			'comments'=>$results['comments'],
 	                			'name'=>$results['name'],
-	                			'url'=>$results['url']
+	                			'url'=>$results['url'],
+	                			'plays'=>$results['plays']
 	                		);
 	                	array_push($res,$p);
 

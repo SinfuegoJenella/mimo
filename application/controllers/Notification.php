@@ -95,10 +95,46 @@ class Notification extends CI_Controller {
                       			'date'=>date( 'M d Y h:i a', $phpdate ),
                       			'username'=>$post['username'],
                       			'picture'=>$post['picture'],
+                      			'id'=>$post['id'],
+                      			'status'=>$post['status']
                       	);
                       array_push($result,$p);
                 }
               echo json_encode($result);
+		}
+		else{
+			redirect('error');
+		}
+	}
+
+
+	public function notifchangestatus(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$notifid = $this->input->post("notifid");
+			$con = array('id'=>$notifid);
+			$status = $this->upload->select('notifications',$con,'status')[0]['status'];
+			echo $status;
+			if($status==0){
+				$data = array('status'=>1);
+				$this->upload->update('notifications',$data,$con);
+			}
+
+		}
+		else{
+			redirect('error');
+		}
+	}
+	public function notifstatus(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST") {
+			$userid = $this->input->post("userid");
+			$unseen = 0;
+			$notif = $this->notif->getnotif($userid);
+			foreach ($notif as $n) {
+				if($n['status']==0){
+					$unseen = $unseen+1;
+				}
+			}
+			echo json_encode(array('status'=>$unseen));
 		}
 		else{
 			redirect('error');

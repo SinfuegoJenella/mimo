@@ -42,7 +42,7 @@ class getSearch extends CI_Model {
 		return $query->result_array();
 	}
 	public function getaudiosearch($like){
-		$this->db->select('users.username,posts.id,posts.posted_at,posts.likes,posts.comments,audios.about,audios.cover,audios.title,audios.path,audios.genre')
+		$this->db->select('users.username,posts.id,posts.posted_at,posts.likes,posts.comments,audios.about,audios.cover,audios.title,audios.path,audios.genre,audios.views')
 				->from('posts')
 				->join('users', 'users.id = posts.user_id')
 				->join('audios', 'audios.post_id = posts.id')
@@ -58,7 +58,7 @@ class getSearch extends CI_Model {
 		return $query->result_array();
 	}
 	public function getvideosearch($like){
-		$this->db->select('users.picture,users.username,posts.id,posts.posted_at,posts.likes,posts.comments,videos.description,videos.name,videos.url')
+		$this->db->select('users.picture,users.username,posts.id,posts.posted_at,posts.likes,posts.comments,videos.description,videos.name,videos.url,videos.plays')
 				->from('posts')
 				->join('users', 'users.id = posts.user_id')
 				->join('videos', 'videos.post_id = posts.id')
