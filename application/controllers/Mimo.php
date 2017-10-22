@@ -111,10 +111,10 @@ class Mimo extends CI_Controller {
 					'header'=>$headerlink
 					);
 			$this->users->update($data,$condition);
-			echo '<script>
-					alert("Changes saved");
-					window.location = "http://localhost/mimo/mimo/myStudio?username='.$data['username'].'";
-			</script>';
+			// echo '<script>
+					// alert("Changes saved");
+					// window.location = "http://localhost/mimo/mimo/myStudio?username='.$data['username'].'";
+			// </script>';
 			}
 			if(isset($_POST['mymusic'])){
 			$id = $this->login->isLoggedIn();

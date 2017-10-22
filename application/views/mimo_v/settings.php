@@ -40,7 +40,6 @@
 						<div class="tab-content">
    
 							<div id="account" class="tab-pane fade in active">
-							
 								<form role="form" method="post" class="form-group" enctype="multipart/form-data" >
 								<div class="row">
 								<br />

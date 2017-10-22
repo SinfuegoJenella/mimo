@@ -19,8 +19,7 @@
 						<h5 class="media-heading"><a href="http://localhost/mimo/mimo/myStudio?username='.$mimo['username'].'" class="user" style="color:black;">'.$mimo['username'].'</a><br />
 						</h5>
 						<h6 id="audDesc" ><i class="fa fa-users" ></i> '.$mimo['followers'].' followers</h6>
-						</div>	
-		
+						<a id="follow" class="btn follow" style="margin: 10px"><i class="fa fa-bell-o"></i><span> Follow</span></a></div>
 						</div> ';} ?>
 						
 						
