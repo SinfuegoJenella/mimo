@@ -166,12 +166,12 @@ background-position: center right; color:#fff;">
 <div class="container belowtn" style="padding-top: 15px; min-height: 100%; background-color: rgba(0,0,0,0.6);">
 	<div class="row">
 		<div class="col-md-12">
-			<h3 class="text-center"><span class="fa fa-list"></span>&nbsp;&nbsp;<?php echo $_GET['name'] ?>
+			<h3 class="text-center"><span class="fa fa-list"></span>&nbsp;&nbsp;<?php echo $name ?>
 			</h3>
 			<span><a style="color: white" class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" ><i class="fa fa-chevron-down"></i></a>
 				<ul class="dropdown-menu" style="position:inline;">
                     <?php foreach ($colist as $c) { ?>
-                     <li><a href="http://localhost/mimo/mimo/collectionlist?name=<?php echo $c['name']; ?>"><?php echo $c['name']; ?></a></li>
+                     <li><a href="http://localhost/mimo/mimo/collectionlist?name=<?php echo $c['id']; ?>"><?php echo $c['name']; ?></a></li>
                      <?php } 
                      $lists = $this->getposts->getcolsong($id);
                      $res = array();

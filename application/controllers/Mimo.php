@@ -458,8 +458,6 @@ class Mimo extends CI_Controller {
 			$userid = $this->input->post("userid");
 			if($newCollection!=''||$collectionList!=''){
 				if($newCollection!=''){
-					$con = array('user_id'=>$userid);
-					if(!$this->upload->select('collections',$con,'name')){
 						$data = array(
 										'id'=>null,
 										'user_id'=>$userid,
@@ -475,8 +473,7 @@ class Mimo extends CI_Controller {
 							);
 						$this->upload->insert('collection_songs',$data);
 						echo json_encode(array('status'=>"Audio successfully added to the new collection!"));
-					}
-					echo json_encode(array('status'=>"This audio already exists in this collection list"));
+
 				}
 				else{
 					$condition = array('collection_id'=>$collectionList,'post_id'=>$postid);
@@ -678,7 +675,7 @@ class Mimo extends CI_Controller {
 				$data = array(
 							'id'=>null,
 							'post_id'=>$post_id,
-							'title'=>$title,
+							'title'=>strip_tags($title),
 							'genre'=>$genre,
 							'about'=>$desc,
 							'path'=>$path,
@@ -742,7 +739,7 @@ class Mimo extends CI_Controller {
 				$data = array(
 							'id'=>null,
 							'post_id'=>$post_id,
-							'name'=>$title,
+							'name'=>strip_tags($title),
 							'description'=>$desc,
 							'url'=>$path,
 							'topics'=>$topics
@@ -930,13 +927,16 @@ class Mimo extends CI_Controller {
 		if($this->login->isLoggedIn()){
 			$colid = $_GET['name'];
 			if(isset($_GET['name'])){
-				$con = array('name'=>$colid);
+				$con = array('id'=>$colid);
 				if($this->upload->select('collections',$con)){
-				$id = $this->upload->select('collections',$con)[0]['id'];
-				$cdata['id'] = $id;
+				$name = $this->upload->select('collections',$con)[0]['name'];
+				$cdata['name'] = $name;
 				$user_id = $this->upload->select('collections',$con,'user_id')[0]['user_id'];
 				$cdata['colid'] = $colid;
 				$cdata['user_id'] = $user_id;
+				$cdata['id']=$colid;
+
+
 
 				$con = array('user_id'=>$user_id);
 				$colist = $this->upload->select('collections',$con);
