@@ -495,7 +495,7 @@ class Mimo extends CI_Controller {
 						echo json_encode(array('status'=>"Added Successfully"));
 					}
 					else{
-						echo json_encode(array('status'=>"Already exists in collection list."));
+						echo json_encode(array('status'=>"This audio already exists in this collection list!"));
 					}
 				}
 			}

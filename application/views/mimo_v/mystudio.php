@@ -221,6 +221,7 @@ $(document).ready(function()
         	if(posts.PostId==="error"){
         		//Edit mo to
         			$('.thoughts').html('<h5 class="text-center">No shared thoughts yet.</h5>')
+
         		}
         	else{
         	$.each(posts, function(index) {

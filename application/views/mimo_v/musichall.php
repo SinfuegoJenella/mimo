@@ -66,7 +66,6 @@
 	<div class="col-md-3">
 	<br /> <br /> <br />
 	
-	<!--DONT MIND MUNA TONG AUDIO PLAYER-->
 	<!-- Para sa POST AND AUDIO MODAL-->
 	<?php $this->load->view('templates/addpostmodal');?>
 	<?php $this->load->view('templates/addaudiomodal');?>
@@ -100,6 +99,7 @@ $(document).ready(function(){
         	if(posts.PostId==="error"){
         		//Edit mo to
         			$('.postcont').html('<h5 class="text-center" style="margin-top: 40px">Your music hall is empty. Go to <a href="http://localhost/mimo/browse">Browse </a>to discover and follow artists to stay updated from here!</h5>')
+
         		}
         	else{
         	$.each(posts, function(index) {
