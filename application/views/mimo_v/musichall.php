@@ -1,4 +1,4 @@
-<body style="background-color: #d9d9d9">
+<body style="background-color: #e6e6e6">
 
 	<!--This is below Top Navigation Section -->
 <div class="container">
@@ -30,24 +30,10 @@
 			
 			<!-- End of Left Nav Profile Section -->
 
-			<div class="row" style="margin-left: 10px; margin-right: 10px">
-					<div id="listNav" class="col-md-12">
-						<div class="btn-group btn-group-justified">
-						<a  href="" class="listnav btn btn-group">
-						<i class="material-icons">library_music</i>
-						<p><small>Collection</small></p>
-						</a>
-			
-						<a  href="" class="listnav btn btn-group">
-						<i class="material-icons">album</i>
-						<p><small>Audios</small></p>
-						</a>
-					
-						<a  href="" class="listnav btn btn-group">
-						<i class="material-icons">videocam</i>
-						<p><small>Videos</small></p>
-						</a>
-		
+			<div class="row" style="margin: 10px">
+				<div id="listNav" class="col-md-12">
+					<div class="btn-group btn-group-justified">
+					<a class="btn sideBtn" href="http://localhost/mimo/mimo/settings"><span class="fa fa-gear"></span> Edit Profile</a>
 					</div>
 				</div>
 			</div>
@@ -79,7 +65,6 @@
 <!-- Third Column Div (Beside Contents)-->
 	<div class="col-md-3">
 	<br /> <br /> <br />
-	
 	
 	<!-- Para sa POST AND AUDIO MODAL-->
 	<?php $this->load->view('templates/addpostmodal');?>
@@ -113,7 +98,8 @@ $(document).ready(function(){
         	console.log(posts);
         	if(posts.PostId==="error"){
         		//Edit mo to
-        			$('.postcont').html('<h4 class="text-center">Follow artists to see what they post here. <span class="fa fa-pencil"></span></h4>')
+        			$('.postcont').html('<h5 class="text-center" style="margin-top: 40px">Your music hall is empty. Go to <a href="http://localhost/mimo/browse">Browse </a>to discover and follow artists to stay updated from here!</h5>')
+
         		}
         	else{
         	$.each(posts, function(index) {

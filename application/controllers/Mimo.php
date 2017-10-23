@@ -472,7 +472,8 @@ class Mimo extends CI_Controller {
 										'post_id'=>$postid
 							);
 						$this->upload->insert('collection_songs',$data);
-						echo json_encode(array('status'=>"Audio Added to New Collection"));
+						echo json_encode(array('status'=>"Audio successfully added to the new collection!"));
+
 				}
 				else{
 					$condition = array('collection_id'=>$collectionList,'post_id'=>$postid);

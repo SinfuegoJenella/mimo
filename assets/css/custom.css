@@ -2,6 +2,19 @@
 	background-color: rgba(255,255,255,0.3);
 }
 
+.sideBtn{
+	background-color: #ff9933;
+	color: white;
+	border-radius: 20px;
+	
+}
+.sideBtn:hover{
+	background-color:  #262626;
+	color: white;
+	transition:.3s;
+	
+}
+
 .h-video-btn , .h-audio-btn , .h-thought-btn{
 	border-radius: 50%;
 	border: 1px solid black;
@@ -33,7 +46,7 @@
 	border: 2px solid white;
 	padding: 10px;
 }
-.homeBtn:hover , .homeBtn:focus{
+.homeBtn:hover , .homeBtn:focus {
 	background-color: #ff8000;
 	color: white;
 	/*background-color: rgba(255,255,255,0.9);*/
