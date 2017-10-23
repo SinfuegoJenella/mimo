@@ -8,15 +8,8 @@
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
 			 <form class="navbar-form navbar-left" action="<?php echo base_url('search'); ?>">
-                    <div class="input-group">
 						<!--Search Bar -->
                         <input class="form-control searchbar" id="searchbar" type="text" placeholder="Search" autocomplete="off">
-                        <div class="input-group-btn">
-                            <a class="btn btn-block searchBtn" id="searchbtn" role="button" 
-								href="<?php echo base_url('search'); ?>"> <i class="glyphicon glyphicon-search"></i></a>
-                        </div>
-						
-                    </div>
 					<ul class="list-group searchresult" style="position: absolute; width:400px; z-index:100"></ul>
                 </form>
 				<!-- Nav Items -->
