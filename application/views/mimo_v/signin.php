@@ -33,7 +33,7 @@
                     <div id="log"></div>
                         <div class="form-group">
                             <label class="sr-only" for="username" >Stage Name</label>
-                            <input type="text" class="form-control signupForm" id="username" placeholder="Stage Name" name="username" required>
+                            <input type="text" class="form-control signupForm" id="username" placeholder="Stagename" name="username" required>
                         </div>
                     <div class="form-group">
                         <label class="sr-only" for="password">Password</label>

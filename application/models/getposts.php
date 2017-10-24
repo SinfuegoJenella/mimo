@@ -63,7 +63,7 @@ class getposts extends CI_Model {
 				->join('followers', 'followers.user_id = posts.user_id', 'left')
 				->join('users','users.id = posts.user_id')
 				->where('followers.follower_id',$userid)
-				->or_where('posts.user_id',$userid)
+				// ->or_where('posts.user_id',$userid)
 				->order_by('posts.posted_at', 'DESC');
 
 		$query=$this->db->get();

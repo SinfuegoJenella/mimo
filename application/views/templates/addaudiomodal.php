@@ -170,4 +170,18 @@ uploadAudioImg.onchange = function(e){
     });
 });
  </script>
+
+ <script>
+ $(document).ready(function() {
+$('#releasebtn').attr('disabled', true);
+$('#audioUpload').change(function() {
+    if ($('#audioUpload').val() == '')		{
+        $('#releasebtn').attr('disabled' , true);
+    }else{
+        $('#releasebtn').attr('disabled' , false);
+    }
+});
+});
+</script>
+
 		<!--End of Add Audio Modal-->

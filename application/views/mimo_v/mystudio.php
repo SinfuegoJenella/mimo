@@ -495,13 +495,13 @@ $(document).ready(function()
 							                            $('#collectModal').modal('hide');
 							                        }, 2000);
 												}
-												else if(status.status=="Already exists Collection list"){
+												else if(status.status=="This audio already exists in this collection list!"){
 													$("#colec-alert").fadeIn(500, 0);
 													window.setTimeout(function() {
 							                            $("#colec-alert").hide(); 
 							                        }, 2000);
 												}
-												else if(status.status=="Audio Added to New Collection"){
+												else if(status.status=="Audio successfully added to the new collection!"){
 													$("#col-alert").fadeIn(500, 0);
 													window.setTimeout(function() {
 							                            $('#col-alert').hide(); 

@@ -15,7 +15,7 @@
                         <div class="alert alert-success" id="fp-alert">
                             <button type="button" class="close" data-dismiss="alert">x</button>
                             <strong>Success! </strong>
-                            We sent a verification link in your email. kung wala pang natanggap pindutin uli ang submit.
+                            We sent a verification link to your email. If you haven't received yet, please click "Submit" again.
                         </div>
                         <div class="alert alert-danger" id="fgw-alert">
                             <button type="button" class="close" data-dismiss="alert">x</button>
