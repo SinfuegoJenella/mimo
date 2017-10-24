@@ -225,12 +225,12 @@ class accounts extends CI_Controller
 		    							echo json_encode(array('status'=>"success",'eventid'=>$err));
 					            	}
 					            	else{
-					            		$err = "Password don't match";
+					            		$err = "Passwords dont match!";
 		    							echo json_encode(array('status'=>"error",'eventid'=>$err));
 					            	}
 					            }
 					            else{
-					            	$err = "Email in Use";
+					            	$err = "The email you have entered is already in use.";
 		    						echo json_encode(array('status'=>"error",'eventid'=>$err));
 					            }
 							}
@@ -240,22 +240,22 @@ class accounts extends CI_Controller
 							}
 						}
 						else{
-							$err = "Invalid Password length";
+							$err = "Invalid password length. Password must be atleast 6-character long.";
 		    				echo json_encode(array('status'=>"error",'eventid'=>$err));
 						}
 					}
 					else{
-						$err = "Invalid Username (number, letters, and _ only)";
+						$err = "Invalid Username (Accepted characters are: Letters, numbers, and _)";
 		    			echo json_encode(array('status'=>"error",'eventid'=>$err));
 					}
 				}
 				else{
-					$err = "Stage Name Already taken";
+					$err = "Stagename already taken.";
 		    		echo json_encode(array('status'=>"error",'eventid'=>$err));
 				}
 			}
 			else{
-				$err = "Fill All Required Fields";
+				$err = "Please fill out all required fields.";
 		    	echo json_encode(array('status'=>"error",'eventid'=>$err));
 			}
 		}
@@ -317,7 +317,7 @@ class accounts extends CI_Controller
 			}
 		    else{
 		    	// echo 'mali';
-		    	$err = "Username Does not exists";
+		    	$err = "Username does not exist";
 		    	echo json_encode(array('status'=>"error",'eventid'=>$err));
 		    }
 		}

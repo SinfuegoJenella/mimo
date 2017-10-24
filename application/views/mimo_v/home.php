@@ -145,11 +145,12 @@
 					<li style="color: white">
 						<h4 class="text-center">
 							<?php $this->load->view('include/mimologo')?><strong style="font-size: 20px; color:white; font-family: Kristen ITC">Mimo</strong> &copy 2017
-							 <span><a class="profile" href="" title="About the Developers">About us!</a></span>
+							 <span><a class="profile" style="cursor:pointer" data-toggle="modal" data-target="#aboutus" title="About the Developers">About us!</a></span>
 						 </h4>
 					</li>
 				</ul>
 			</div>
+			<?php $this->load->view('templates/aboutus');?>
 	</div>
 	
 	</div>

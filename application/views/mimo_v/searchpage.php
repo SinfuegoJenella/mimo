@@ -124,7 +124,7 @@ $(document).ready(function(){
 			console.log(res)
 			if(res.id==="error"){
 				//Edit mo to
-        		$('.artist').html(' No artist found for '+toSearch)
+        		$('.artist').html(' <h5 class="text-center"><span class="fa fa-search"></span> No artist found for <b>'+toSearch+'</b></h5>')
         	}
         	else{
 				$.each(res, function(index) {
@@ -156,7 +156,7 @@ $(document).ready(function(){
 			console.log(res)
 			if(res.id==="error"){
 				//Edit mo to
-        		$('.thoughts').html(' No Shared Thoughts found for '+toSearch)
+        		$('.thoughts').html('  <h5 class="text-center"><span class="fa fa-search"></span> No shared thoughts found for <b>'+toSearch+'</b></h5>')
         	}
         	else{
 				$.each(res, function(index) {
@@ -273,7 +273,7 @@ $(document).ready(function(){
 			console.log(res)
 			if(res.id==="error"){
 				//Edit mo to
-        		$('.audios').html(' No Audio Tracks found for '+toSearch)
+        		$('.audios').html(' <h5 class="text-center"><span class="fa fa-search"></span> No audios found for <b>'+toSearch+'</b></h5>')
         	}
         	else{
 				$.each(res, function(index) {
@@ -397,13 +397,13 @@ $(document).ready(function(){
 							                $('#collectModal').modal('hide');
 							            }, 2000);
 									}
-									else if(status.status=="Already exists Collection list"){
+									else if(status.status=="This audio already exists in this collection list!"){
 										$("#colec-alert").fadeIn(500, 0);
 										window.setTimeout(function() {
 							                $("#colec-alert").hide(); 
 							            }, 2000);
 									}
-									else if(status.status=="Audio Added to New Collection"){
+									else if(status.status=="Audio successfully added to the new collection!"){
 										$("#col-alert").fadeIn(500, 0);
 										window.setTimeout(function() {
 							                $('#col-alert').hide(); 
@@ -482,7 +482,7 @@ $(document).ready(function(){
 			console.log(res)
 			if(res.id==="error"){
 				//Edit mo to
-        		$('.videos').html(' No Videos found for '+toSearch)
+        		$('.videos').html('  <h5 class="text-center"><span class="fa fa-search"></span> No video found for <b>'+toSearch+'</b></h5>')
         	}
         	else{
 				$.each(res, function(index) {

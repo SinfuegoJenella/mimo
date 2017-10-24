@@ -52,4 +52,23 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+		$('#sel1').change(function() {
+			if( $(this).val() == 0) {
+				$('#text').prop( "disabled", false );
+			} else {       
+				$('#text').prop( "disabled", true );
+				$('#text').val('');
+			}
+		});
+		$('#text').onkeyup(function() {
+			if( $(this).val() == 0) {
+				$('#sel1').prop( "disabled", false );
+				$('#text').val('');
+			} else {       
+				$('#sel1').prop( "disabled", true  );
+			}
+		});
+		</script>
 		<!--End of Add Thought Modal-->

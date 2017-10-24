@@ -625,6 +625,9 @@ class Mimo extends CI_Controller {
 			$title = $_POST['title'];
 			$desc = $_POST['audDescInput'];
 			$genre = $_POST['genre'];
+			if($title==''){
+				$title = 'Untitled';
+			}
 			$type = explode('.', $_FILES["file"]["name"]);
 			$type = strtolower($type[count($type)-1]);
 			$noover = uniqid(rand()).'.'.$type;
@@ -633,7 +636,7 @@ class Mimo extends CI_Controller {
 		    $path = "http://localhost/mimo/assets/uploads/audios/".$noover;
 			$image= $_FILES['uploadAudioImg'];
 			if($image['name']=='') {
-					$audioart= "https://i.imgur.com/GZr4AiQ.jpg";
+					$audioart= "https://i.imgur.com/rtZYgdC.jpg";
 			}
 			else{
 				$audioart=$this->image->uploadImage($image); 
@@ -696,6 +699,9 @@ class Mimo extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$title = $_POST['title'];
 			$desc = $_POST['vidDescInput'];
+			if($title==''){
+				$title = 'Untitled';
+			}
 			$types = explode('.', $_FILES["vidUpload"]["name"]);
 			$types = strtolower($types[count($types)-1]);
 			$noover = uniqid(rand()).'.'.$types;

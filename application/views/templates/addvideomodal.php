@@ -119,4 +119,17 @@ vidUpload.onchange = function(e){
     });
 });
  </script>
+  <script>
+ $(document).ready(function() {
+$('#videobtn').attr('disabled', true);
+$('#vidUpload').change(function() {
+    if ($('#vidUpload').val() == '')		{
+        $('#videobtn').attr('disabled' , true);
+    }else{
+        $('#videobtn').attr('disabled' , false);
+    }
+});
+});
+</script>
+
 		<!--End of Add Audio Modal-->
